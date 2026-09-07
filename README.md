@@ -463,6 +463,15 @@ the force-push keeps `gh-pages` at a single commit however often it happens, so
 nothing accumulates. **Campus data changes do not wait for either schedule**: the
 scrape's commit fires this workflow's push trigger.
 
+The *building* is well under a minute. The run is not: after force-pushing
+`gh-pages` it waits for Pages to serve that exact archive, comparing a sha256
+rather than settling for a 200 — the previous deployment answers 200 for the
+whole window and would prove nothing. For a ~32 MB site of ~1,800 files, Pages
+has taken **between ten and fourteen minutes** to catch up, so the wait is
+budgeted at 35. The first three publishes here all reported "Pages never served
+this build" on a ten-minute budget while the deploy was working perfectly, which
+is a worse failure than having no check at all.
+
 ## Routing
 
 `map.geojson` says where places are. `routing.json` says how to walk between
