@@ -12,7 +12,7 @@
 # ccc-server has a URL to fetch, the same way carls-app/map-data serves
 # Carleton's. That is why this publishes the data files it did not build.
 #
-# Everything lands in ./dist, which is what gets force-pushed to gh-pages.
+# Everything lands in ./dist, which is what gets uploaded and deployed to Pages.
 #
 # Adapted from carls-app/map-tiles, which does the same job for Carleton.
 #
@@ -127,9 +127,9 @@ PAGES_FILE_LIMIT=100000000
 # style names but the tileset lacks, a source feature that reached no layer, a
 # gzipped tile. None of them notice a build that is perfectly well-formed and
 # simply has far less in it than it should — which is what a degraded upstream
-# looks like. A truncated planet build sails through, the workflow force-pushes
-# the result over a good one, and since something now renders, it stays broken
-# until someone looks.
+# looks like. A truncated planet build sails through, the workflow deploys the
+# result over a good one, and since something now renders, it stays broken until
+# someone looks.
 #
 # These are tripwires, not targets: set below the current numbers so ordinary
 # drift never trips them. A bbox or zoom change in TIERS moves the tile count

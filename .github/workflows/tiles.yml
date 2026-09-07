@@ -44,14 +44,19 @@ on:
   # this the workflow could only be exercised by merging it.
   pull_request:
 
-# Required to force-push the built site to gh-pages. PR runs never reach the
-# publish step, and pull_request from a fork gets a read-only token regardless.
+# Deploying through the Pages Actions integration rather than by force-pushing a
+# branch, so this needs `pages: write` and the OIDC token `deploy-pages` uses to
+# prove the deployment came from this workflow — and no longer needs write access
+# to the repository's contents at all.
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   # PRs get their own group so a dry run can never queue behind, or cancel, a
-  # scheduled publish.
+  # scheduled publish. Publishes are never cancelled mid-flight: a half-finished
+  # Pages deployment is worse than a queued one.
   group: >-
     ${{ github.event_name == 'pull_request'
         && format('tiles-dryrun-{0}', github.ref)
@@ -61,7 +66,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -140,74 +145,53 @@ jobs:
       - name: Verify the routing graph
         run: uv run scripts/verify.py
 
-      - name: Publish to gh-pages
+      - name: Upload the site
+        # Everything after this is the deploy job. Splitting them is what lets
+        # the build stop waiting: this job's work is done once dist/ is correct
+        # and uploaded, and whether Pages has finished serving it is a separate
+        # question with its own answer.
         if: github.event_name != 'pull_request'
-        # Force-push a single fresh commit. This branch is entirely owned by this
-        # workflow and there is nothing on it to preserve; without the force-push
-        # every rebuild would add another multi-megabyte blob to history forever.
-        run: |
-          cd dist
-          git init --quiet -b gh-pages
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit --quiet -m "Build tiles from ${GITHUB_SHA::7} ($(date -u +%Y-%m-%d))"
-          git push --force --quiet \
-            "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" \
-            gh-pages
-          echo "Published $(find . -type f | wc -l) files to gh-pages"
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          path: dist
 
-      - name: Verify the published site
-        if: github.event_name != 'pull_request'
-        # Pages takes a minute or two to pick up the push. Checking the live site
-        # is what catches the whole class of "the build was fine but the thing
-        # the app fetches is not" — including ccc-server's map.geojson, which is
-        # the reason the data files are published here at all.
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    # Declaring the environment is what makes the deployment show up on the
+    # repository's Pages settings and in the environment history, and it is what
+    # `deploy-pages` reports its status back to.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to Pages
+        # This is the whole reason for the rewrite. Force-pushing a gh-pages
+        # branch tells you the push worked and nothing about the deployment, so
+        # the old workflow polled the live URL for a sha256 match and guessed at
+        # a timeout — a guess it got wrong twice, reporting three false failures
+        # over deployments that were fine. This action returns when GitHub says
+        # the deployment succeeded, which is the fact we actually wanted.
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
+
+      - name: Check the deployed site
+        # A short confirmation, not a wait. `deploy-pages` has already reported
+        # success, so this is not polling for the deployment to happen — it is
+        # checking that what Pages serves is what the app will actually fetch,
+        # which is a different property and the one that caught the
+        # stodevx.github.io redirect. Deliberately no `curl -L`: a redirect
+        # appearing here means the site is being served differently than the
+        # styles were built for, and should fail loudly.
         run: |
-          # The canonical host — see SITE_URL in build-tiles.sh. Checked without
-          # curl -L on purpose: if this ever starts redirecting, that is a real
-          # change in how the site is served and should fail here rather than be
-          # silently followed.
           base="https://stolaf.dev/campus-map-data"
-          want=$(sha256sum dist/campus.pmtiles | cut -d' ' -f1)
-
-          # Wait until Pages is serving *this* build. Waiting for a 200 is not
-          # enough: the previous deployment answers 200 for the whole window, so
-          # every check below would pass against stale content and prove nothing
-          # about what was just pushed.
-          #
-          # Thirty-five minutes, which sounds absurd until you measure it. This
-          # site is ~32 MB across ~1,800 files — 985 tiles, 768 glyph ranges —
-          # and GitHub Pages takes its time with that. The first three publishes
-          # here all reported "Pages never served this build" on a ten-minute
-          # budget while the deploy was working perfectly: the run that pushed
-          # gh-pages at 18:39:25 was failed at 18:49:31, and the content it
-          # wanted was live by 18:53. A check that cries wolf on every green
-          # publish is worse than no check, so the window is now roughly triple
-          # the longest deploy observed rather than a little over it.
-          got=""
-          for i in $(seq 1 70); do
-            got=$(curl -sS "$base/campus.pmtiles" | sha256sum | cut -d' ' -f1)
-            [ "$got" = "$want" ] && break
-            echo "waiting for Pages to serve this build ($i/70)"
-            sleep 30
-          done
-          if [ "$got" != "$want" ]; then
-            echo "Pages never served this build in 35 minutes — wanted $want," >&2
-            echo "still getting $got" >&2
-            echo "The push to gh-pages itself succeeded — that step is above and is" >&2
-            echo "green — so this is about serving, not building. Check, in order:" >&2
-            echo "  * Pages enabled and deploying from the gh-pages branch?" >&2
-            echo "  * A redirect rather than the file? The custom domain may have" >&2
-            echo "    changed; see SITE_URL in build-tiles.sh." >&2
-            echo "  * Simply slower than 35 minutes? Compare the sha by hand before" >&2
-            echo "    concluding anything is broken." >&2
-            exit 1
-          fi
-
           for path in style.json style-pmtiles.json map.json map.geojson routing.json index.html; do
-            code=$(curl -sS -o /dev/null -w '%{http_code}' "$base/$path")
+            code=$(curl -sS -m 30 -o /dev/null -w '%{http_code}' "$base/$path" || echo 000)
             echo "$path -> $code"
-            [ "$code" = "200" ] || exit 1
+            [ "$code" = "200" ] || { echo "::error::$base/$path returned $code"; exit 1; }
           done
-          echo "Published site verified at $base"
+          echo "Deployed to ${{ steps.deployment.outputs.page_url }}"
