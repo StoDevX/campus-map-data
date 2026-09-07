@@ -3,6 +3,302 @@
     "accessibility": "unknown",
     "address": null,
     "categories": {
+      "building": true,
+      "administrative": true,
+      "academic": true
+    },
+    "center": [
+      44.462587377562706,
+      -93.19111927824842
+    ],
+    "departments": [
+      {
+        "href": "https://wp.stolaf.edu/flatenartbarn/",
+        "label": "Flaten Art Barn"
+      }
+    ],
+    "description": "The Flaten Art Barn, which opened fall 2013 in its new location adjacent to the wind turbine, is a reconstruction of a 1932 building that served as the first home of the college's Art Department. It is named after its designer/builder and the founder of what is now the Department of Art and Art History, Arnold Flaten.",
+    "floors": [],
+    "id": "ab",
+    "name": "Flaten Art Barn",
+    "offices": [],
+    "outline": [
+      [
+        44.4626711084608,
+        -93.1912580112776
+      ],
+      [
+        44.462674309001,
+        -93.1910875065451
+      ],
+      [
+        44.4625529390361,
+        -93.1910826619308
+      ],
+      [
+        44.4625490524746,
+        -93.1912535718035
+      ],
+      [
+        44.4626711084608,
+        -93.1912580112776
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "AB",
+    "type": "Administrative & Academic",
+    "links": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
+      "athletics": true
+    },
+    "center": [
+      44.461955084863654,
+      -93.17908126573995
+    ],
+    "departments": [
+      {
+        "href": "https://wp.stolaf.edu/commencement/",
+        "label": "commencement"
+      }
+    ],
+    "description": "The Ade Christenson Complex on the east side of campus is home to Klein Field at Manitou, the Manitou Track, and Tom Porter Hall. The playing and running surfaces are first-class competition sites for the football and men's and women's track and field teams. Two classrooms, locker rooms, an athletic training room, offices for coaches and staff, and a weight room make Tom Porter Hall a convenient home to the football, track and field, and men's and women's hockey teams. The lobby overlooks the west end zone and track, and it has a clear view of the bleachers and press box. The venue is also the home of the college's commencement ceremonies.",
+    "floors": [],
+    "id": "aca",
+    "name": "Ade Christenson Complex",
+    "offices": [],
+    "outline": [
+      [
+        44.4621246162232,
+        -93.1802671839635
+      ],
+      [
+        44.4621676148933,
+        -93.1802443532806
+      ],
+      [
+        44.462210632766,
+        -93.1802175529424
+      ],
+      [
+        44.4622584392698,
+        -93.1801803150789
+      ],
+      [
+        44.4623154761956,
+        -93.1801319776318
+      ],
+      [
+        44.4623434592878,
+        -93.1800958303231
+      ],
+      [
+        44.4623677763442,
+        -93.1800553010324
+      ],
+      [
+        44.4623950919879,
+        -93.1800053996184
+      ],
+      [
+        44.4624318124507,
+        -93.179919879105
+      ],
+      [
+        44.4624540836046,
+        -93.1798391798498
+      ],
+      [
+        44.4624648437932,
+        -93.1797632228009
+      ],
+      [
+        44.4624693375161,
+        -93.1796956802714
+      ],
+      [
+        44.4624672050975,
+        -93.1781005939236
+      ],
+      [
+        44.4622914585288,
+        -93.1780978756216
+      ],
+      [
+        44.4622573942142,
+        -93.1780655766955
+      ],
+      [
+        44.4621943446295,
+        -93.1780205010312
+      ],
+      [
+        44.462155177429,
+        -93.1779980045215
+      ],
+      [
+        44.462117086035,
+        -93.1779836611214
+      ],
+      [
+        44.4620693986676,
+        -93.1779749932772
+      ],
+      [
+        44.4620324798644,
+        -93.1779737320426
+      ],
+      [
+        44.4620052800976,
+        -93.1779736853302
+      ],
+      [
+        44.4619544587382,
+        -93.1779796743982
+      ],
+      [
+        44.4618980972237,
+        -93.1779945379229
+      ],
+      [
+        44.4618531851849,
+        -93.1780152090559
+      ],
+      [
+        44.4617843456373,
+        -93.1780677398387
+      ],
+      [
+        44.4617505471016,
+        -93.178093423571
+      ],
+      [
+        44.4617184200096,
+        -93.1781283644423
+      ],
+      [
+        44.4616982252422,
+        -93.1781521266782
+      ],
+      [
+        44.4615829274638,
+        -93.1778538437831
+      ],
+      [
+        44.4615151653649,
+        -93.1778504535412
+      ],
+      [
+        44.4615159719272,
+        -93.1783873271792
+      ],
+      [
+        44.4614843499299,
+        -93.1783854739547
+      ],
+      [
+        44.4614858982996,
+        -93.1786690343607
+      ],
+      [
+        44.4614389169611,
+        -93.1786683103186
+      ],
+      [
+        44.4614384001963,
+        -93.1789424671601
+      ],
+      [
+        44.4614177488349,
+        -93.1789439134477
+      ],
+      [
+        44.4614162004634,
+        -93.1792014325919
+      ],
+      [
+        44.4614347866895,
+        -93.179199985406
+      ],
+      [
+        44.4614358189368,
+        -93.1794755885352
+      ],
+      [
+        44.461481251908,
+        -93.1794777588649
+      ],
+      [
+        44.4614802196615,
+        -93.1797634887023
+      ],
+      [
+        44.4615656338353,
+        -93.1797680566355
+      ],
+      [
+        44.4615672873508,
+        -93.1799050847506
+      ],
+      [
+        44.4615705482191,
+        -93.1800206601984
+      ],
+      [
+        44.4615887695841,
+        -93.1801125623436
+      ],
+      [
+        44.4616323777369,
+        -93.1802002433052
+      ],
+      [
+        44.4616938628945,
+        -93.180252759715
+      ],
+      [
+        44.4617505163267,
+        -93.1802741512969
+      ],
+      [
+        44.4621246162232,
+        -93.1802671839635
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "ACA",
+    "type": "Athletics",
+    "links": [
+      {
+        "href": "https://athletics.stolaf.edu/sports/football",
+        "label": "football"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/mens-track-and-field",
+        "label": "men's"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/womens-track-and-field",
+        "label": "women's"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/mens-ice-hockey",
+        "label": "men's"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/womens-ice-hockey",
+        "label": "women's"
+      }
+    ]
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
       "parking": true,
       "accessible-parking": true
     },
@@ -601,252 +897,6 @@
     "accessibility": "unknown",
     "address": null,
     "categories": {
-      "building": true,
-      "athletics": true
-    },
-    "center": [
-      44.461955084863654,
-      -93.17908126573995
-    ],
-    "departments": [
-      {
-        "href": "https://wp.stolaf.edu/commencement/",
-        "label": "commencement"
-      }
-    ],
-    "description": "The Ade Christenson Complex on the east side of campus is home to Klein Field at Manitou, the Manitou Track, and Tom Porter Hall. The playing and running surfaces are first-class competition sites for the football and men's and women's track and field teams. Two classrooms, locker rooms, an athletic training room, offices for coaches and staff, and a weight room make Tom Porter Hall a convenient home to the football, track and field, and men's and women's hockey teams. The lobby overlooks the west end zone and track, and it has a clear view of the bleachers and press box. The venue is also the home of the college's commencement ceremonies.",
-    "floors": [],
-    "id": "adechristensoncomplex",
-    "name": "Ade Christenson Complex",
-    "offices": [],
-    "outline": [
-      [
-        44.4621246162232,
-        -93.1802671839635
-      ],
-      [
-        44.4621676148933,
-        -93.1802443532806
-      ],
-      [
-        44.462210632766,
-        -93.1802175529424
-      ],
-      [
-        44.4622584392698,
-        -93.1801803150789
-      ],
-      [
-        44.4623154761956,
-        -93.1801319776318
-      ],
-      [
-        44.4623434592878,
-        -93.1800958303231
-      ],
-      [
-        44.4623677763442,
-        -93.1800553010324
-      ],
-      [
-        44.4623950919879,
-        -93.1800053996184
-      ],
-      [
-        44.4624318124507,
-        -93.179919879105
-      ],
-      [
-        44.4624540836046,
-        -93.1798391798498
-      ],
-      [
-        44.4624648437932,
-        -93.1797632228009
-      ],
-      [
-        44.4624693375161,
-        -93.1796956802714
-      ],
-      [
-        44.4624672050975,
-        -93.1781005939236
-      ],
-      [
-        44.4622914585288,
-        -93.1780978756216
-      ],
-      [
-        44.4622573942142,
-        -93.1780655766955
-      ],
-      [
-        44.4621943446295,
-        -93.1780205010312
-      ],
-      [
-        44.462155177429,
-        -93.1779980045215
-      ],
-      [
-        44.462117086035,
-        -93.1779836611214
-      ],
-      [
-        44.4620693986676,
-        -93.1779749932772
-      ],
-      [
-        44.4620324798644,
-        -93.1779737320426
-      ],
-      [
-        44.4620052800976,
-        -93.1779736853302
-      ],
-      [
-        44.4619544587382,
-        -93.1779796743982
-      ],
-      [
-        44.4618980972237,
-        -93.1779945379229
-      ],
-      [
-        44.4618531851849,
-        -93.1780152090559
-      ],
-      [
-        44.4617843456373,
-        -93.1780677398387
-      ],
-      [
-        44.4617505471016,
-        -93.178093423571
-      ],
-      [
-        44.4617184200096,
-        -93.1781283644423
-      ],
-      [
-        44.4616982252422,
-        -93.1781521266782
-      ],
-      [
-        44.4615829274638,
-        -93.1778538437831
-      ],
-      [
-        44.4615151653649,
-        -93.1778504535412
-      ],
-      [
-        44.4615159719272,
-        -93.1783873271792
-      ],
-      [
-        44.4614843499299,
-        -93.1783854739547
-      ],
-      [
-        44.4614858982996,
-        -93.1786690343607
-      ],
-      [
-        44.4614389169611,
-        -93.1786683103186
-      ],
-      [
-        44.4614384001963,
-        -93.1789424671601
-      ],
-      [
-        44.4614177488349,
-        -93.1789439134477
-      ],
-      [
-        44.4614162004634,
-        -93.1792014325919
-      ],
-      [
-        44.4614347866895,
-        -93.179199985406
-      ],
-      [
-        44.4614358189368,
-        -93.1794755885352
-      ],
-      [
-        44.461481251908,
-        -93.1794777588649
-      ],
-      [
-        44.4614802196615,
-        -93.1797634887023
-      ],
-      [
-        44.4615656338353,
-        -93.1797680566355
-      ],
-      [
-        44.4615672873508,
-        -93.1799050847506
-      ],
-      [
-        44.4615705482191,
-        -93.1800206601984
-      ],
-      [
-        44.4615887695841,
-        -93.1801125623436
-      ],
-      [
-        44.4616323777369,
-        -93.1802002433052
-      ],
-      [
-        44.4616938628945,
-        -93.180252759715
-      ],
-      [
-        44.4617505163267,
-        -93.1802741512969
-      ],
-      [
-        44.4621246162232,
-        -93.1802671839635
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "ACA",
-    "type": "Athletics",
-    "links": [
-      {
-        "href": "https://athletics.stolaf.edu/sports/football",
-        "label": "football"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/mens-track-and-field",
-        "label": "men's"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/womens-track-and-field",
-        "label": "women's"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/mens-ice-hockey",
-        "label": "men's"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/womens-ice-hockey",
-        "label": "women's"
-      }
-    ]
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
       "point-of-interest": true,
       "admissions": true
     },
@@ -886,7 +936,7 @@
     "departments": [],
     "description": "Alumni Hall is home to the Advancement Divison, which includes the offices of Development, Annual Giving, Alumni and Parent Relations, Stewardship, and Advancement Services. Also house in the building are Marketing and Communication, College Events, and Music Orgnaizations, which provides support for the ensemble tours and Christmas Festival. As part of the Clemens V. Granskou Compex, named in the honor of the fifth president of St. Olaf College, Alumni Hall connects to the Hall of Music, which serves as an annex to Christiansen Hall of Music.",
     "floors": [],
-    "id": "alumnihall",
+    "id": "ahl",
     "name": "Alumni Hall",
     "offices": [],
     "outline": [
@@ -953,100 +1003,429 @@
     "address": null,
     "categories": {
       "building": true,
-      "administrative": true,
-      "academic": true
+      "residence-hall": true,
+      "housing": true
     },
     "center": [
-      44.46200255375263,
-      -93.18404842223394
+      44.458825989958484,
+      -93.18687009680924
     ],
     "departments": [],
-    "description": "Worship is the primary purposes of Boe Chapel, which houses the Office of College Ministrat. During daily chapel services the community hears from faculty members, students and campus guests. And each Sunday morning while school is in session, the Student Congregation gathers for worship. Student and faculty musicians offer the fits and talents, not just as soloists but as members of bands, choirs, orchestras, and small ensembles.",
-    "floors": [],
-    "id": "boememorialchapel",
-    "name": "Boe Memorial Chapel",
+    "description": "Hilleboe and Kittelsby, which are connected by a common entrance, offer the largest triple rooms on campus, and house around 360 first-year and upper class students.",
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2025/03/Hill-Kitt_Room-Number-Plans.pdf",
+        "label": "Hilleboe and Kittelsby Floor Plans"
+      }
+    ],
+    "id": "akh",
+    "name": "(Agnes) Kittelsby Hall",
     "offices": [],
     "outline": [
       [
-        44.4621600558594,
-        -93.1840017321279
+        44.4586614074463,
+        -93.1867429007932
       ],
       [
-        44.4621589960559,
-        -93.183838429189
+        44.4587176810381,
+        -93.1868302269203
       ],
       [
-        44.4621427495791,
-        -93.183838429189
+        44.4587001704841,
+        -93.1868536927121
       ],
       [
-        44.4621426322506,
-        -93.183711251101
+        44.4587638265484,
+        -93.1869525415294
       ],
       [
-        44.4621284367755,
-        -93.1837108342827
+        44.4587829752894,
+        -93.1869298770347
       ],
       [
-        44.46210258473,
-        -93.1837106465348
+        44.4589518481271,
+        -93.1871914610556
       ],
       [
-        44.4620911846167,
-        -93.183710920521
+        44.459016134191,
+        -93.1872948023476
       ],
       [
-        44.4620918911532,
-        -93.1837953765307
+        44.4590437790426,
+        -93.1873406299018
       ],
       [
-        44.4617053778503,
-        -93.1837968425813
+        44.4591249688875,
+        -93.1872407102927
       ],
       [
-        44.4617052400042,
-        -93.1840714009698
+        44.459096337309,
+        -93.1871926180857
       ],
       [
-        44.4620576318154,
-        -93.1840701864475
+        44.4591163047187,
+        -93.187169725419
       ],
       [
-        44.4620576318154,
-        -93.1841013624794
+        44.4590500394621,
+        -93.1870715323719
       ],
       [
-        44.4620870640083,
-        -93.1841011980877
+        44.4590317281817,
+        -93.187093625538
       ],
       [
-        44.4620871819781,
-        -93.184144085456
+        44.4587386603548,
+        -93.1866379218725
       ],
       [
-        44.4621200282262,
-        -93.1841445804278
+        44.4587301288524,
+        -93.1866495155295
       ],
       [
-        44.4621202635245,
-        -93.1841171979813
+        44.4586872110037,
+        -93.1865550073717
       ],
       [
-        44.4621877223034,
-        -93.1841171979813
+        44.4586036667837,
+        -93.1865528702797
       ],
       [
-        44.4621877223034,
-        -93.1840022262013
+        44.4586042053737,
+        -93.1865810441419
       ],
       [
-        44.4621600558594,
-        -93.1840017321279
+        44.4586033724828,
+        -93.1866843755524
+      ],
+      [
+        44.4586614074463,
+        -93.1867429007932
       ]
     ],
     "photo": null,
-    "abbreviation": "BMC",
-    "type": "Administrative & Academic",
+    "abbreviation": "AKH",
+    "type": "Residence Hall",
+    "links": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
+      "residence-hall": true,
+      "housing": true
+    },
+    "center": [
+      44.459770849013154,
+      -93.18502653834668
+    ],
+    "departments": [],
+    "description": "Larson Hall houses 307 students, including the college's international students. The circular arrangement of each floor in Larson creates a strong community atmosphere.",
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/wp-content/blogs.dir/100/files/2013/03/Larson-Hall-Typical-Floors-Plan-.pdf",
+        "label": "Larson Hall Floor Plan"
+      }
+    ],
+    "id": "alh",
+    "name": "(Agnes) Larson Hall",
+    "offices": [],
+    "outline": [
+      [
+        44.459951960535,
+        -93.1846984717505
+      ],
+      [
+        44.4599133804188,
+        -93.1846980423558
+      ],
+      [
+        44.459901874086,
+        -93.1847570428053
+      ],
+      [
+        44.4599161951294,
+        -93.1847705992813
+      ],
+      [
+        44.4598962087582,
+        -93.1848442431683
+      ],
+      [
+        44.4598694414235,
+        -93.1848482496544
+      ],
+      [
+        44.4598636305482,
+        -93.184813117442
+      ],
+      [
+        44.4598215771821,
+        -93.1848120996507
+      ],
+      [
+        44.4598215137068,
+        -93.1848200578259
+      ],
+      [
+        44.4597816543791,
+        -93.18481860525
+      ],
+      [
+        44.4597679103518,
+        -93.1848564081538
+      ],
+      [
+        44.4597726690838,
+        -93.1849232832352
+      ],
+      [
+        44.459787087616,
+        -93.1849287566702
+      ],
+      [
+        44.4597899779901,
+        -93.1849675674837
+      ],
+      [
+        44.4597583095352,
+        -93.1849823294988
+      ],
+      [
+        44.4597631907306,
+        -93.1850623343563
+      ],
+      [
+        44.4597637857325,
+        -93.1850748577697
+      ],
+      [
+        44.459796556989,
+        -93.1850829057763
+      ],
+      [
+        44.4598004668156,
+        -93.1851137952457
+      ],
+      [
+        44.4598414956154,
+        -93.1851132580531
+      ],
+      [
+        44.4598446206532,
+        -93.1851000222757
+      ],
+      [
+        44.4598646352532,
+        -93.1850991059941
+      ],
+      [
+        44.4598751170125,
+        -93.1851487388119
+      ],
+      [
+        44.4599114588499,
+        -93.1851353063035
+      ],
+      [
+        44.4599115915709,
+        -93.1851285761254
+      ],
+      [
+        44.4599248604617,
+        -93.1851286174478
+      ],
+      [
+        44.4599239852728,
+        -93.1851378296711
+      ],
+      [
+        44.459980497443,
+        -93.1851113670995
+      ],
+      [
+        44.4599794324705,
+        -93.1850747454803
+      ],
+      [
+        44.4599758098971,
+        -93.1850746457673
+      ],
+      [
+        44.4599758098971,
+        -93.1850282720374
+      ],
+      [
+        44.4599968477487,
+        -93.185021056769
+      ],
+      [
+        44.4599968342843,
+        -93.1849770213538
+      ],
+      [
+        44.4599919332324,
+        -93.1849766234001
+      ],
+      [
+        44.4599920755706,
+        -93.1849665721504
+      ],
+      [
+        44.459995768671,
+        -93.1849659747707
+      ],
+      [
+        44.459994845396,
+        -93.1849139281798
+      ],
+      [
+        44.4599681031118,
+        -93.1849095686557
+      ],
+      [
+        44.4599670734032,
+        -93.1848749188386
+      ],
+      [
+        44.459978571388,
+        -93.1848481445515
+      ],
+      [
+        44.4600090990944,
+        -93.1848266352904
+      ],
+      [
+        44.4599903771291,
+        -93.1847359988714
+      ],
+      [
+        44.459951960535,
+        -93.1846984717505
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "ALH",
+    "type": "Residence Hall",
+    "links": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
+      "residence-hall": true,
+      "housing": true
+    },
+    "center": [
+      44.46049305763946,
+      -93.18528348348943
+    ],
+    "departments": [],
+    "description": "Mellby Hall houses 190 students in a warm and comfortable atmosphere. Mellby is the oldest hall on campus and its historic appeal truly stands out. It features a kitchen, TV lounge, computer facilities, and a comfortable main lounge and fireplace.",
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Bsmt-Floor-Mellby-plans.pdf",
+        "label": "Basement Floor Mellby plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/First-Floor-Mellby-plans.pdf",
+        "label": "First Floor Mellby plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Mellby-plans.pdf",
+        "label": "Second Floor Mellby plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Mellby-plans.pdf",
+        "label": "Third Floor Mellby plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Fourth-Floor-Mellby-plans.pdf",
+        "label": "Fourth Floor Mellby plans"
+      }
+    ],
+    "id": "amh",
+    "name": "(Agnes) Mellby Hall",
+    "offices": [],
+    "outline": [
+      [
+        44.4608727637579,
+        -93.1853712559994
+      ],
+      [
+        44.4608713916892,
+        -93.1851931658926
+      ],
+      [
+        44.4607989983474,
+        -93.1851929520936
+      ],
+      [
+        44.4607986931579,
+        -93.1851592131681
+      ],
+      [
+        44.4607372730965,
+        -93.185160281265
+      ],
+      [
+        44.4607375776452,
+        -93.1851925253938
+      ],
+      [
+        44.4605885018428,
+        -93.1851932656056
+      ],
+      [
+        44.4604345611911,
+        -93.1851939528168
+      ],
+      [
+        44.460434273311,
+        -93.1851767491808
+      ],
+      [
+        44.4604014017504,
+        -93.1851768857247
+      ],
+      [
+        44.4604015966627,
+        -93.1851941055304
+      ],
+      [
+        44.4602604883436,
+        -93.1851957233962
+      ],
+      [
+        44.4602599068112,
+        -93.1853733014633
+      ],
+      [
+        44.4603658129389,
+        -93.1853732861919
+      ],
+      [
+        44.4604843246808,
+        -93.1853733014633
+      ],
+      [
+        44.4605970574376,
+        -93.1853729636967
+      ],
+      [
+        44.4607580003548,
+        -93.1853718964982
+      ],
+      [
+        44.4608727637579,
+        -93.1853712559994
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "AMH",
+    "type": "Residence Hall",
     "links": []
   },
   {
@@ -1090,7 +1469,7 @@
     ],
     "description": "With dining facilities, a bookstore, a post office, the Lion's Pause student club, and more, Buntrock Commons is the hub of campus. Learn more here. Related Links Bookstore Buntrock Commons Information Desk Ole Dining Post Office Student Activities Taylor Center for Equity and Inclusion",
     "floors": [],
-    "id": "buntrockcommons",
+    "id": "bc",
     "name": "Buntrock Commons",
     "offices": [],
     "outline": [
@@ -1250,6 +1629,107 @@
       "academic": true
     },
     "center": [
+      44.46200255375263,
+      -93.18404842223394
+    ],
+    "departments": [],
+    "description": "Worship is the primary purposes of Boe Chapel, which houses the Office of College Ministrat. During daily chapel services the community hears from faculty members, students and campus guests. And each Sunday morning while school is in session, the Student Congregation gathers for worship. Student and faculty musicians offer the fits and talents, not just as soloists but as members of bands, choirs, orchestras, and small ensembles.",
+    "floors": [],
+    "id": "bmc",
+    "name": "Boe Memorial Chapel",
+    "offices": [],
+    "outline": [
+      [
+        44.4621600558594,
+        -93.1840017321279
+      ],
+      [
+        44.4621589960559,
+        -93.183838429189
+      ],
+      [
+        44.4621427495791,
+        -93.183838429189
+      ],
+      [
+        44.4621426322506,
+        -93.183711251101
+      ],
+      [
+        44.4621284367755,
+        -93.1837108342827
+      ],
+      [
+        44.46210258473,
+        -93.1837106465348
+      ],
+      [
+        44.4620911846167,
+        -93.183710920521
+      ],
+      [
+        44.4620918911532,
+        -93.1837953765307
+      ],
+      [
+        44.4617053778503,
+        -93.1837968425813
+      ],
+      [
+        44.4617052400042,
+        -93.1840714009698
+      ],
+      [
+        44.4620576318154,
+        -93.1840701864475
+      ],
+      [
+        44.4620576318154,
+        -93.1841013624794
+      ],
+      [
+        44.4620870640083,
+        -93.1841011980877
+      ],
+      [
+        44.4620871819781,
+        -93.184144085456
+      ],
+      [
+        44.4621200282262,
+        -93.1841445804278
+      ],
+      [
+        44.4621202635245,
+        -93.1841171979813
+      ],
+      [
+        44.4621877223034,
+        -93.1841171979813
+      ],
+      [
+        44.4621877223034,
+        -93.1840022262013
+      ],
+      [
+        44.4621600558594,
+        -93.1840017321279
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "BMC",
+    "type": "Administrative & Academic",
+    "links": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
+      "administrative": true,
+      "academic": true
+    },
+    "center": [
       44.462728465948366,
       -93.1847828695919
     ],
@@ -1269,7 +1749,7 @@
     ],
     "description": "In additional to housing classrooms, studios, and offices for the Art Department and Dance Department, the Center for Art and Dance is home to the Flaten Art Museum, which presents exhibits of renowned works and contains and extensive permanent collection of traditional and contemporary textiles, paintings, sculpture, ceramics, and works on paper. Related Links Art and Art History Dance Department Flaten Art Museum",
     "floors": [],
-    "id": "centerforartanddance",
+    "id": "cad",
     "name": "Center for Art and Dance",
     "offices": [],
     "outline": [
@@ -1407,7 +1887,7 @@
     ],
     "description": "Christiansen Hall of Music is a home of the Music Department and part of the Music Organizations staff that supports concerts and tours by the ensembles. Named after St. Olaf choir founder F. Melius Christiansen, the building houses Urness Recital Hall, the Margaret Skoglund Reception Room, the Halvorson Music Library, three ensemble rehearsal rooms, classrooms, practice rooms, faculty studios, and the electronic music studio. Related Links Music Department Christmas Festival",
     "floors": [],
-    "id": "christiansenhallofmusic",
+    "id": "chm",
     "name": "Christiansen Hall of Music",
     "offices": [],
     "outline": [
@@ -1546,7 +2026,7 @@
         "label": "View Ellingson Hall Floor Plan"
       }
     ],
-    "id": "ellingsonhall",
+    "id": "eh",
     "name": "Ellingson Hall",
     "offices": [],
     "outline": [
@@ -1655,7 +2135,7 @@
     "description": null,
     "floors": [],
     "id": "evcharger",
-    "name": "Buntrock Commons Parking Lot - Electric Vehicle Charger",
+    "name": "Electric Vehicle Charger",
     "offices": [],
     "outline": null,
     "photo": null,
@@ -2252,118 +2732,6 @@
     "address": null,
     "categories": {
       "building": true,
-      "administrative": true,
-      "academic": true
-    },
-    "center": [
-      44.462587377562706,
-      -93.19111927824842
-    ],
-    "departments": [
-      {
-        "href": "https://wp.stolaf.edu/flatenartbarn/",
-        "label": "Flaten Art Barn"
-      }
-    ],
-    "description": "The Flaten Art Barn, which opened fall 2013 in its new location adjacent to the wind turbine, is a reconstruction of a 1932 building that served as the first home of the college's Art Department. It is named after its designer/builder and the founder of what is now the Department of Art and Art History, Arnold Flaten.",
-    "floors": [],
-    "id": "flatenartbarn",
-    "name": "Flaten Art Barn",
-    "offices": [],
-    "outline": [
-      [
-        44.4626711084608,
-        -93.1912580112776
-      ],
-      [
-        44.462674309001,
-        -93.1910875065451
-      ],
-      [
-        44.4625529390361,
-        -93.1910826619308
-      ],
-      [
-        44.4625490524746,
-        -93.1912535718035
-      ],
-      [
-        44.4626711084608,
-        -93.1912580112776
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "AB",
-    "type": "Administrative & Academic",
-    "links": []
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "building": true,
-      "administrative": true,
-      "academic": true
-    },
-    "center": [
-      44.462553046562725,
-      -93.18547321144605
-    ],
-    "departments": [
-      {
-        "href": "https://wp.stolaf.edu/music",
-        "label": "Music Department"
-      }
-    ],
-    "description": "The Hall of Music, which opened in February 2012, provides extended space for the Music Department. Complementing Christiansen Hall of Music, the new Hall of Music (more commonly known as the \"Music Box\") hosts 36 practice rooms, including two concerto rooms with two grand pianos; four chamber music rehearsal spaces; a reed room for double reeds; a percussion suite; 12 faculty studios; and the Music Department office. The Hall of Music connects with Alumni Hall to the west and the Center for Art and Dance (home to the Art/Art History and Dance departments) to the east. Related Links Music Department",
-    "floors": [],
-    "id": "hallofmusic",
-    "name": "(Tweet) Hall of Music",
-    "offices": [],
-    "outline": [
-      [
-        44.4626654575067,
-        -93.185209436179
-      ],
-      [
-        44.4624986925651,
-        -93.1852057045773
-      ],
-      [
-        44.4624987964291,
-        -93.1852828384192
-      ],
-      [
-        44.4624059214301,
-        -93.1852828213512
-      ],
-      [
-        44.4624058765506,
-        -93.1856645191087
-      ],
-      [
-        44.4626357306837,
-        -93.1856636926586
-      ],
-      [
-        44.462666110181,
-        -93.1856636926586
-      ],
-      [
-        44.4626654575067,
-        -93.185209436179
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "HOM",
-    "type": "Administrative & Academic",
-    "links": []
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "building": true,
       "residence-hall": true,
       "housing": true
     },
@@ -2379,7 +2747,7 @@
         "label": "Hilleboe and Kittelsby Floor Plans"
       }
     ],
-    "id": "hillboehall",
+    "id": "ghh",
     "name": "(Gertrude) Hilleboe Hall",
     "offices": [],
     "outline": [
@@ -2448,7 +2816,7 @@
     "departments": [],
     "description": "Holland Hall was dedicated in 1925 as part of the celebrations for the college's 50th anniversary. Architects for the building drew inspiration for the building's design from Mon-Saint-Michel, the fortress monastery on the coast of Normandy, France. In particular, they designed it to resemble the Merville - the monastery's assembly hall and dining area. Although the power plant built in 1935 was the first building on campus to display the limestone-studded Norma Gothic style that has become the hallmark of the Hill, it wasn't until Holland Hall was built that the architectural style made its full impact. Longtime faculty member Peter Olai Holland, who also served as the college's treasurer and director of finance, was St. Olaf President Lars W. Boe's \"right-hand man\". Related Links St. Olaf College News - November 1, 2017: The new Holland Hall",
     "floors": [],
-    "id": "hollandhall",
+    "id": "hh",
     "name": "Holland Hall",
     "offices": [],
     "outline": [
@@ -2551,7 +2919,7 @@
         "label": "Hoyme Hall Floor Plans"
       }
     ],
-    "id": "hoymehall",
+    "id": "hmh",
     "name": "Hoyme Hall",
     "offices": [],
     "outline": [
@@ -2730,6 +3098,68 @@
     "address": null,
     "categories": {
       "building": true,
+      "administrative": true,
+      "academic": true
+    },
+    "center": [
+      44.462553046562725,
+      -93.18547321144605
+    ],
+    "departments": [
+      {
+        "href": "https://wp.stolaf.edu/music",
+        "label": "Music Department"
+      }
+    ],
+    "description": "The Hall of Music, which opened in February 2012, provides extended space for the Music Department. Complementing Christiansen Hall of Music, the new Hall of Music (more commonly known as the \"Music Box\") hosts 36 practice rooms, including two concerto rooms with two grand pianos; four chamber music rehearsal spaces; a reed room for double reeds; a percussion suite; 12 faculty studios; and the Music Department office. The Hall of Music connects with Alumni Hall to the west and the Center for Art and Dance (home to the Art/Art History and Dance departments) to the east. Related Links Music Department",
+    "floors": [],
+    "id": "hom",
+    "name": "(Tweet) Hall of Music",
+    "offices": [],
+    "outline": [
+      [
+        44.4626654575067,
+        -93.185209436179
+      ],
+      [
+        44.4624986925651,
+        -93.1852057045773
+      ],
+      [
+        44.4624987964291,
+        -93.1852828384192
+      ],
+      [
+        44.4624059214301,
+        -93.1852828213512
+      ],
+      [
+        44.4624058765506,
+        -93.1856645191087
+      ],
+      [
+        44.4626357306837,
+        -93.1856636926586
+      ],
+      [
+        44.462666110181,
+        -93.1856636926586
+      ],
+      [
+        44.4626654575067,
+        -93.185209436179
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "HOM",
+    "type": "Administrative & Academic",
+    "links": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
       "residence-hall": true,
       "housing": true
     },
@@ -2745,7 +3175,7 @@
         "label": "Kildahl Floor Plans"
       }
     ],
-    "id": "kildahlhall",
+    "id": "kh",
     "name": "Kildahl Hall",
     "offices": [],
     "outline": [
@@ -2828,318 +3258,6 @@
     ],
     "photo": null,
     "abbreviation": "KH",
-    "type": "Residence Hall",
-    "links": []
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "building": true,
-      "residence-hall": true,
-      "housing": true
-    },
-    "center": [
-      44.458825989958484,
-      -93.18687009680924
-    ],
-    "departments": [],
-    "description": "Hilleboe and Kittelsby, which are connected by a common entrance, offer the largest triple rooms on campus, and house around 360 first-year and upper class students.",
-    "floors": [
-      {
-        "href": "https://wp.stolaf.edu/residencelife/files/2025/03/Hill-Kitt_Room-Number-Plans.pdf",
-        "label": "Hilleboe and Kittelsby Floor Plans"
-      }
-    ],
-    "id": "kittlesbyhall",
-    "name": "(Agnes) Kittelsby Hall",
-    "offices": [],
-    "outline": [
-      [
-        44.4586614074463,
-        -93.1867429007932
-      ],
-      [
-        44.4587176810381,
-        -93.1868302269203
-      ],
-      [
-        44.4587001704841,
-        -93.1868536927121
-      ],
-      [
-        44.4587638265484,
-        -93.1869525415294
-      ],
-      [
-        44.4587829752894,
-        -93.1869298770347
-      ],
-      [
-        44.4589518481271,
-        -93.1871914610556
-      ],
-      [
-        44.459016134191,
-        -93.1872948023476
-      ],
-      [
-        44.4590437790426,
-        -93.1873406299018
-      ],
-      [
-        44.4591249688875,
-        -93.1872407102927
-      ],
-      [
-        44.459096337309,
-        -93.1871926180857
-      ],
-      [
-        44.4591163047187,
-        -93.187169725419
-      ],
-      [
-        44.4590500394621,
-        -93.1870715323719
-      ],
-      [
-        44.4590317281817,
-        -93.187093625538
-      ],
-      [
-        44.4587386603548,
-        -93.1866379218725
-      ],
-      [
-        44.4587301288524,
-        -93.1866495155295
-      ],
-      [
-        44.4586872110037,
-        -93.1865550073717
-      ],
-      [
-        44.4586036667837,
-        -93.1865528702797
-      ],
-      [
-        44.4586042053737,
-        -93.1865810441419
-      ],
-      [
-        44.4586033724828,
-        -93.1866843755524
-      ],
-      [
-        44.4586614074463,
-        -93.1867429007932
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "AKH",
-    "type": "Residence Hall",
-    "links": []
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "building": true,
-      "residence-hall": true,
-      "housing": true
-    },
-    "center": [
-      44.459770849013154,
-      -93.18502653834668
-    ],
-    "departments": [],
-    "description": "Larson Hall houses 307 students, including the college's international students. The circular arrangement of each floor in Larson creates a strong community atmosphere.",
-    "floors": [
-      {
-        "href": "https://wp.stolaf.edu/residencelife/wp-content/blogs.dir/100/files/2013/03/Larson-Hall-Typical-Floors-Plan-.pdf",
-        "label": "Larson Hall Floor Plan"
-      }
-    ],
-    "id": "larsonhall",
-    "name": "(Agnes) Larson Hall",
-    "offices": [],
-    "outline": [
-      [
-        44.459951960535,
-        -93.1846984717505
-      ],
-      [
-        44.4599133804188,
-        -93.1846980423558
-      ],
-      [
-        44.459901874086,
-        -93.1847570428053
-      ],
-      [
-        44.4599161951294,
-        -93.1847705992813
-      ],
-      [
-        44.4598962087582,
-        -93.1848442431683
-      ],
-      [
-        44.4598694414235,
-        -93.1848482496544
-      ],
-      [
-        44.4598636305482,
-        -93.184813117442
-      ],
-      [
-        44.4598215771821,
-        -93.1848120996507
-      ],
-      [
-        44.4598215137068,
-        -93.1848200578259
-      ],
-      [
-        44.4597816543791,
-        -93.18481860525
-      ],
-      [
-        44.4597679103518,
-        -93.1848564081538
-      ],
-      [
-        44.4597726690838,
-        -93.1849232832352
-      ],
-      [
-        44.459787087616,
-        -93.1849287566702
-      ],
-      [
-        44.4597899779901,
-        -93.1849675674837
-      ],
-      [
-        44.4597583095352,
-        -93.1849823294988
-      ],
-      [
-        44.4597631907306,
-        -93.1850623343563
-      ],
-      [
-        44.4597637857325,
-        -93.1850748577697
-      ],
-      [
-        44.459796556989,
-        -93.1850829057763
-      ],
-      [
-        44.4598004668156,
-        -93.1851137952457
-      ],
-      [
-        44.4598414956154,
-        -93.1851132580531
-      ],
-      [
-        44.4598446206532,
-        -93.1851000222757
-      ],
-      [
-        44.4598646352532,
-        -93.1850991059941
-      ],
-      [
-        44.4598751170125,
-        -93.1851487388119
-      ],
-      [
-        44.4599114588499,
-        -93.1851353063035
-      ],
-      [
-        44.4599115915709,
-        -93.1851285761254
-      ],
-      [
-        44.4599248604617,
-        -93.1851286174478
-      ],
-      [
-        44.4599239852728,
-        -93.1851378296711
-      ],
-      [
-        44.459980497443,
-        -93.1851113670995
-      ],
-      [
-        44.4599794324705,
-        -93.1850747454803
-      ],
-      [
-        44.4599758098971,
-        -93.1850746457673
-      ],
-      [
-        44.4599758098971,
-        -93.1850282720374
-      ],
-      [
-        44.4599968477487,
-        -93.185021056769
-      ],
-      [
-        44.4599968342843,
-        -93.1849770213538
-      ],
-      [
-        44.4599919332324,
-        -93.1849766234001
-      ],
-      [
-        44.4599920755706,
-        -93.1849665721504
-      ],
-      [
-        44.459995768671,
-        -93.1849659747707
-      ],
-      [
-        44.459994845396,
-        -93.1849139281798
-      ],
-      [
-        44.4599681031118,
-        -93.1849095686557
-      ],
-      [
-        44.4599670734032,
-        -93.1848749188386
-      ],
-      [
-        44.459978571388,
-        -93.1848481445515
-      ],
-      [
-        44.4600090990944,
-        -93.1848266352904
-      ],
-      [
-        44.4599903771291,
-        -93.1847359988714
-      ],
-      [
-        44.459951960535,
-        -93.1846984717505
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "ALH",
     "type": "Residence Hall",
     "links": []
   },
@@ -6227,6 +6345,34 @@
     "accessibility": "unknown",
     "address": null,
     "categories": {
+      "point-of-interest": true,
+      "memorial": true
+    },
+    "center": [
+      44.4611170645712,
+      -93.1839371800899
+    ],
+    "departments": [],
+    "description": "Built by members of the St. Olaf community over the summer of 2003, this Scandinavian-style wooden tower commemorates the lives of students who have died while enrolled at St. Olaf. The chimes, tuned to the key of F. Melius Christiansen’s iconic hymn “Beautiful Savior,” are engraved with the names of those students. On windy days, the sound of the chimes can be heard almost everywhere on campus. It serves as a precious and beautiful reminder of those we have lost both past and present here on the Hill.",
+    "floors": [],
+    "id": "memorialchimetower",
+    "name": "Memorial Chime Tower",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [
+      {
+        "href": "https://150th.stolaf.edu/then-and-now/stop-10/",
+        "label": "Website"
+      }
+    ]
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
       "building": true,
       "administrative": true
     },
@@ -6242,7 +6388,7 @@
     ],
     "description": "The Norman E. Madson building houses the offices of the Facilities Department and the college's power plant.",
     "floors": [],
-    "id": "madsonfacilitiesbuilding",
+    "id": "mfb",
     "name": "Madson Facilities Building",
     "offices": [],
     "outline": [
@@ -6297,152 +6443,6 @@
       "housing": true
     },
     "center": [
-      44.46049305763946,
-      -93.18528348348943
-    ],
-    "departments": [],
-    "description": "Mellby Hall houses 190 students in a warm and comfortable atmosphere. Mellby is the oldest hall on campus and its historic appeal truly stands out. It features a kitchen, TV lounge, computer facilities, and a comfortable main lounge and fireplace.",
-    "floors": [
-      {
-        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Bsmt-Floor-Mellby-plans.pdf",
-        "label": "Basement Floor Mellby plans"
-      },
-      {
-        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/First-Floor-Mellby-plans.pdf",
-        "label": "First Floor Mellby plans"
-      },
-      {
-        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Mellby-plans.pdf",
-        "label": "Second Floor Mellby plans"
-      },
-      {
-        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Mellby-plans.pdf",
-        "label": "Third Floor Mellby plans"
-      },
-      {
-        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Fourth-Floor-Mellby-plans.pdf",
-        "label": "Fourth Floor Mellby plans"
-      }
-    ],
-    "id": "mellbyhall",
-    "name": "(Agnes) Mellby Hall",
-    "offices": [],
-    "outline": [
-      [
-        44.4608727637579,
-        -93.1853712559994
-      ],
-      [
-        44.4608713916892,
-        -93.1851931658926
-      ],
-      [
-        44.4607989983474,
-        -93.1851929520936
-      ],
-      [
-        44.4607986931579,
-        -93.1851592131681
-      ],
-      [
-        44.4607372730965,
-        -93.185160281265
-      ],
-      [
-        44.4607375776452,
-        -93.1851925253938
-      ],
-      [
-        44.4605885018428,
-        -93.1851932656056
-      ],
-      [
-        44.4604345611911,
-        -93.1851939528168
-      ],
-      [
-        44.460434273311,
-        -93.1851767491808
-      ],
-      [
-        44.4604014017504,
-        -93.1851768857247
-      ],
-      [
-        44.4604015966627,
-        -93.1851941055304
-      ],
-      [
-        44.4602604883436,
-        -93.1851957233962
-      ],
-      [
-        44.4602599068112,
-        -93.1853733014633
-      ],
-      [
-        44.4603658129389,
-        -93.1853732861919
-      ],
-      [
-        44.4604843246808,
-        -93.1853733014633
-      ],
-      [
-        44.4605970574376,
-        -93.1853729636967
-      ],
-      [
-        44.4607580003548,
-        -93.1853718964982
-      ],
-      [
-        44.4608727637579,
-        -93.1853712559994
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "AMH",
-    "type": "Residence Hall",
-    "links": []
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "point-of-interest": true,
-      "memorial": true
-    },
-    "center": [
-      44.4611170645712,
-      -93.1839371800899
-    ],
-    "departments": [],
-    "description": "Built by members of the St. Olaf community over the summer of 2003, this Scandinavian-style wooden tower commemorates the lives of students who have died while enrolled at St. Olaf. The chimes, tuned to the key of F. Melius Christiansen’s iconic hymn “Beautiful Savior,” are engraved with the names of those students. On windy days, the sound of the chimes can be heard almost everywhere on campus. It serves as a precious and beautiful reminder of those we have lost both past and present here on the Hill.",
-    "floors": [],
-    "id": "memorialchimetower",
-    "name": "Memorial Chime Tower",
-    "offices": [],
-    "outline": null,
-    "photo": null,
-    "abbreviation": null,
-    "type": null,
-    "links": [
-      {
-        "href": "https://150th.stolaf.edu/then-and-now/stop-10/",
-        "label": "Website"
-      }
-    ]
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "building": true,
-      "residence-hall": true,
-      "housing": true
-    },
-    "center": [
       44.46380675971595,
       -93.1821022555456
     ],
@@ -6454,7 +6454,7 @@
         "label": "Mohn Hall Floor Plans"
       }
     ],
-    "id": "mohnhall",
+    "id": "mh",
     "name": "Mohn Hall",
     "offices": [],
     "outline": [
@@ -6790,7 +6790,7 @@
     ],
     "description": "Built in 1877, Old Main was the first - and originally the only - building to occupy Manitou Heights, containing classrooms, a library, housing for students and faculty, and a dining room. Through the years, Old Main has housed various departments in the humanities and now is home to the Religion Department. The hill to the east of the building is a popular sledding venue for students and local neighbors.",
     "floors": [],
-    "id": "oldmain",
+    "id": "om",
     "name": "Old Main",
     "offices": [],
     "outline": [
@@ -7008,7 +7008,7 @@
         "label": "Third Floor Rand plans"
       }
     ],
-    "id": "randhall",
+    "id": "rh",
     "name": "Rand Hall",
     "offices": [],
     "outline": [
@@ -7223,298 +7223,6 @@
       "academic": true
     },
     "center": [
-      44.45962835994278,
-      -93.18309470925271
-    ],
-    "departments": [
-      {
-        "href": "https://wp.stolaf.edu/cs/",
-        "label": "Computer Science"
-      },
-      {
-        "href": "https://wp.stolaf.edu/mathbio/",
-        "label": "Mathematical Biology"
-      },
-      {
-        "href": "https://wp.stolaf.edu/math/",
-        "label": "Mathematics"
-      },
-      {
-        "href": "https://wp.stolaf.edu/statistics/",
-        "label": "Statistics"
-      }
-    ],
-    "description": "This building was renovated as part of the same project that opened Regents Hall in 2008. The building - along with the adjacent Regents Hall of Natural Sciences - has become an invaluable teaching tool for the nearly 40 percent of St. Olaf students who pursue a major or concentration in the natural sciences or mathematics. Related Links Computer Science Mathematical Biology Mathematics Statistics",
-    "floors": [],
-    "id": "regentshallofmathematicalsciences",
-    "name": "Regents Hall of Mathematical Sciences",
-    "offices": [],
-    "outline": [
-      [
-        44.4597385379006,
-        -93.1832791282117
-      ],
-      [
-        44.4597378076124,
-        -93.1829073945673
-      ],
-      [
-        44.4596225611029,
-        -93.1829083548664
-      ],
-      [
-        44.4596249321397,
-        -93.1832811736756
-      ],
-      [
-        44.4597385379006,
-        -93.1832791282117
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "RMS",
-    "type": "Administrative & Academic",
-    "links": []
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "building": true,
-      "administrative": true,
-      "academic": true
-    },
-    "center": [
-      44.45915820707928,
-      -93.18163381614522
-    ],
-    "departments": [
-      {
-        "href": "https://wp.stolaf.edu/biology/",
-        "label": "Biology"
-      },
-      {
-        "href": "https://wp.stolaf.edu/bmols/",
-        "label": "Biomolecular Science"
-      },
-      {
-        "href": "https://wp.stolaf.edu/chemistry/",
-        "label": "Chemistry"
-      },
-      {
-        "href": "https://wp.stolaf.edu/environmental-studies/",
-        "label": "Environmental Studies"
-      },
-      {
-        "href": "https://wp.stolaf.edu/mathbio/",
-        "label": "Mathematical Biology"
-      },
-      {
-        "href": "https://wp.stolaf.edu/naturallands/",
-        "label": "Natural Lands"
-      },
-      {
-        "href": "https://wp.stolaf.edu/neuroscience/",
-        "label": "Neuroscience"
-      },
-      {
-        "href": "https://wp.stolaf.edu/nursing/",
-        "label": "Nursing"
-      },
-      {
-        "href": "https://wp.stolaf.edu/physics/",
-        "label": "Physics"
-      },
-      {
-        "href": "https://wp.stolaf.edu/psych/",
-        "label": "Psychology"
-      }
-    ],
-    "description": "With such features as a green roof, aggressive daylighting, and the minimization of chemical and biological waste, LEED Platinum-certified Regents Hall is not simply a model for responsible environmental stewardship, but a daily working example of sustainability in practice. Since opening in fall 2008, the building - along with the adjacent Regents Hall of Mathematical Sciences - has become an invaluable teaching tool for nearly 40 percent of St. Olaf students who pursue a major or concentration in the natural sciences or mathematics. Related Links Biology Biomolecular Science Chemistry Environmental Studies Mathematical Biology Natural Lands Neuroscience Nursing Physics Psychology",
-    "floors": [],
-    "id": "regentshallofnaturalsciences",
-    "name": "Regents Hall of Natural Sciences",
-    "offices": [],
-    "outline": [
-      [
-        44.4594555919129,
-        -93.1825093860992
-      ],
-      [
-        44.4594537831747,
-        -93.1824413198518
-      ],
-      [
-        44.45945305673,
-        -93.1823734656068
-      ],
-      [
-        44.4594495514579,
-        -93.1822604782054
-      ],
-      [
-        44.4593915762654,
-        -93.1822626611115
-      ],
-      [
-        44.459372122527,
-        -93.1815848175509
-      ],
-      [
-        44.4592756628957,
-        -93.1815859557164
-      ],
-      [
-        44.4592737663114,
-        -93.1815381240208
-      ],
-      [
-        44.4592474840581,
-        -93.1815358458932
-      ],
-      [
-        44.4592477546324,
-        -93.1811201603769
-      ],
-      [
-        44.4592574985142,
-        -93.1808908546209
-      ],
-      [
-        44.4591928158305,
-        -93.1808876961444
-      ],
-      [
-        44.4591954170655,
-        -93.1807521250966
-      ],
-      [
-        44.459135069923,
-        -93.1807674314908
-      ],
-      [
-        44.45913774746,
-        -93.1806528468847
-      ],
-      [
-        44.4590887041425,
-        -93.1806452543239
-      ],
-      [
-        44.4590599834231,
-        -93.1806494305916
-      ],
-      [
-        44.4590318903987,
-        -93.180661988141
-      ],
-      [
-        44.4590048232394,
-        -93.1806795070857
-      ],
-      [
-        44.4589998310575,
-        -93.1808153251701
-      ],
-      [
-        44.4589548090718,
-        -93.1808419341672
-      ],
-      [
-        44.458952956077,
-        -93.1808889717521
-      ],
-      [
-        44.4589348018539,
-        -93.1808832773315
-      ],
-      [
-        44.4589391951841,
-        -93.1811121069804
-      ],
-      [
-        44.4589487224003,
-        -93.1812945961371
-      ],
-      [
-        44.4589665034554,
-        -93.1814352462595
-      ],
-      [
-        44.4589935988442,
-        -93.1815605217157
-      ],
-      [
-        44.4589377820348,
-        -93.1815707714931
-      ],
-      [
-        44.4589388662614,
-        -93.181782220538
-      ],
-      [
-        44.4590402032168,
-        -93.1817427395813
-      ],
-      [
-        44.4590719054022,
-        -93.1818930699491
-      ],
-      [
-        44.4590843691703,
-        -93.182037325909
-      ],
-      [
-        44.4590838344318,
-        -93.182316718132
-      ],
-      [
-        44.4591033357131,
-        -93.1823129308348
-      ],
-      [
-        44.4591057747353,
-        -93.1824173267489
-      ],
-      [
-        44.4591569852014,
-        -93.1824150495197
-      ],
-      [
-        44.4591554431817,
-        -93.1825877560229
-      ],
-      [
-        44.4593035711455,
-        -93.1825911938755
-      ],
-      [
-        44.4593280350138,
-        -93.1825867822492
-      ],
-      [
-        44.4593271444279,
-        -93.1825153167767
-      ],
-      [
-        44.4594555919129,
-        -93.1825093860992
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "RNS",
-    "type": "Administrative & Academic",
-    "links": []
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "building": true,
-      "administrative": true,
-      "academic": true
-    },
-    "center": [
       44.4613811377029,
       -93.18211364117417
     ],
@@ -7550,7 +7258,7 @@
     ],
     "description": "Completed in 1942 and named in honor of 1905 alumnus Ole Rolvaag, former St. Olaf professor of Norwegian and author of Giants in the Earth, Rolvaag Library is the largest of three libraries on the St. Olaf campus (the others are the Hustad Science Library in Regents Hall and then Halvorson Music Library in Christiansen Hall of Music). Special Collections and College Archives are located on the second floor of Rolvaag Memorial Library. The Halvorson Music Library is located in the Christiansen Hall of Music. The fourth floor of Rolvaag is home to the Information Technology (IT) Department and the Digital Scholarship Center (DiSCO), which provides the campus community assistance with technology and digital scholarship. The English Department and classrooms are located on the fifth floor of the library in the original section of the building. Related Links College Archives Digital Scholarship Center (DiSCO) English Department Information Technology (IT) Hong Kierkegaard Library - The Hong Kierkegaard Library is now located in Steensland Hall Information Technology (IT) Helpdesk Norwegian American Historical Association (NAHA) Special Collections",
     "floors": [],
-    "id": "rolvaagmemoriallibrary",
+    "id": "rml",
     "name": "Rolvaag Memorial Library",
     "offices": [],
     "outline": [
@@ -7750,6 +7458,425 @@
       "academic": true
     },
     "center": [
+      44.45962835994278,
+      -93.18309470925271
+    ],
+    "departments": [
+      {
+        "href": "https://wp.stolaf.edu/cs/",
+        "label": "Computer Science"
+      },
+      {
+        "href": "https://wp.stolaf.edu/mathbio/",
+        "label": "Mathematical Biology"
+      },
+      {
+        "href": "https://wp.stolaf.edu/math/",
+        "label": "Mathematics"
+      },
+      {
+        "href": "https://wp.stolaf.edu/statistics/",
+        "label": "Statistics"
+      }
+    ],
+    "description": "This building was renovated as part of the same project that opened Regents Hall in 2008. The building - along with the adjacent Regents Hall of Natural Sciences - has become an invaluable teaching tool for the nearly 40 percent of St. Olaf students who pursue a major or concentration in the natural sciences or mathematics. Related Links Computer Science Mathematical Biology Mathematics Statistics",
+    "floors": [],
+    "id": "rms",
+    "name": "Regents Hall of Mathematical Sciences",
+    "offices": [],
+    "outline": [
+      [
+        44.4597385379006,
+        -93.1832791282117
+      ],
+      [
+        44.4597378076124,
+        -93.1829073945673
+      ],
+      [
+        44.4596225611029,
+        -93.1829083548664
+      ],
+      [
+        44.4596249321397,
+        -93.1832811736756
+      ],
+      [
+        44.4597385379006,
+        -93.1832791282117
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "RMS",
+    "type": "Administrative & Academic",
+    "links": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
+      "administrative": true,
+      "academic": true
+    },
+    "center": [
+      44.45915820707928,
+      -93.18163381614522
+    ],
+    "departments": [
+      {
+        "href": "https://wp.stolaf.edu/biology/",
+        "label": "Biology"
+      },
+      {
+        "href": "https://wp.stolaf.edu/bmols/",
+        "label": "Biomolecular Science"
+      },
+      {
+        "href": "https://wp.stolaf.edu/chemistry/",
+        "label": "Chemistry"
+      },
+      {
+        "href": "https://wp.stolaf.edu/environmental-studies/",
+        "label": "Environmental Studies"
+      },
+      {
+        "href": "https://wp.stolaf.edu/mathbio/",
+        "label": "Mathematical Biology"
+      },
+      {
+        "href": "https://wp.stolaf.edu/naturallands/",
+        "label": "Natural Lands"
+      },
+      {
+        "href": "https://wp.stolaf.edu/neuroscience/",
+        "label": "Neuroscience"
+      },
+      {
+        "href": "https://wp.stolaf.edu/nursing/",
+        "label": "Nursing"
+      },
+      {
+        "href": "https://wp.stolaf.edu/physics/",
+        "label": "Physics"
+      },
+      {
+        "href": "https://wp.stolaf.edu/psych/",
+        "label": "Psychology"
+      }
+    ],
+    "description": "With such features as a green roof, aggressive daylighting, and the minimization of chemical and biological waste, LEED Platinum-certified Regents Hall is not simply a model for responsible environmental stewardship, but a daily working example of sustainability in practice. Since opening in fall 2008, the building - along with the adjacent Regents Hall of Mathematical Sciences - has become an invaluable teaching tool for nearly 40 percent of St. Olaf students who pursue a major or concentration in the natural sciences or mathematics. Related Links Biology Biomolecular Science Chemistry Environmental Studies Mathematical Biology Natural Lands Neuroscience Nursing Physics Psychology",
+    "floors": [],
+    "id": "rns",
+    "name": "Regents Hall of Natural Sciences",
+    "offices": [],
+    "outline": [
+      [
+        44.4594555919129,
+        -93.1825093860992
+      ],
+      [
+        44.4594537831747,
+        -93.1824413198518
+      ],
+      [
+        44.45945305673,
+        -93.1823734656068
+      ],
+      [
+        44.4594495514579,
+        -93.1822604782054
+      ],
+      [
+        44.4593915762654,
+        -93.1822626611115
+      ],
+      [
+        44.459372122527,
+        -93.1815848175509
+      ],
+      [
+        44.4592756628957,
+        -93.1815859557164
+      ],
+      [
+        44.4592737663114,
+        -93.1815381240208
+      ],
+      [
+        44.4592474840581,
+        -93.1815358458932
+      ],
+      [
+        44.4592477546324,
+        -93.1811201603769
+      ],
+      [
+        44.4592574985142,
+        -93.1808908546209
+      ],
+      [
+        44.4591928158305,
+        -93.1808876961444
+      ],
+      [
+        44.4591954170655,
+        -93.1807521250966
+      ],
+      [
+        44.459135069923,
+        -93.1807674314908
+      ],
+      [
+        44.45913774746,
+        -93.1806528468847
+      ],
+      [
+        44.4590887041425,
+        -93.1806452543239
+      ],
+      [
+        44.4590599834231,
+        -93.1806494305916
+      ],
+      [
+        44.4590318903987,
+        -93.180661988141
+      ],
+      [
+        44.4590048232394,
+        -93.1806795070857
+      ],
+      [
+        44.4589998310575,
+        -93.1808153251701
+      ],
+      [
+        44.4589548090718,
+        -93.1808419341672
+      ],
+      [
+        44.458952956077,
+        -93.1808889717521
+      ],
+      [
+        44.4589348018539,
+        -93.1808832773315
+      ],
+      [
+        44.4589391951841,
+        -93.1811121069804
+      ],
+      [
+        44.4589487224003,
+        -93.1812945961371
+      ],
+      [
+        44.4589665034554,
+        -93.1814352462595
+      ],
+      [
+        44.4589935988442,
+        -93.1815605217157
+      ],
+      [
+        44.4589377820348,
+        -93.1815707714931
+      ],
+      [
+        44.4589388662614,
+        -93.181782220538
+      ],
+      [
+        44.4590402032168,
+        -93.1817427395813
+      ],
+      [
+        44.4590719054022,
+        -93.1818930699491
+      ],
+      [
+        44.4590843691703,
+        -93.182037325909
+      ],
+      [
+        44.4590838344318,
+        -93.182316718132
+      ],
+      [
+        44.4591033357131,
+        -93.1823129308348
+      ],
+      [
+        44.4591057747353,
+        -93.1824173267489
+      ],
+      [
+        44.4591569852014,
+        -93.1824150495197
+      ],
+      [
+        44.4591554431817,
+        -93.1825877560229
+      ],
+      [
+        44.4593035711455,
+        -93.1825911938755
+      ],
+      [
+        44.4593280350138,
+        -93.1825867822492
+      ],
+      [
+        44.4593271444279,
+        -93.1825153167767
+      ],
+      [
+        44.4594555919129,
+        -93.1825093860992
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "RNS",
+    "type": "Administrative & Academic",
+    "links": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
+      "athletics": true
+    },
+    "center": [
+      44.46333655885924,
+      -93.18742430848505
+    ],
+    "departments": [
+      {
+        "href": "https://wp.stolaf.edu/kinesiology/",
+        "label": "Kinesiology Department"
+      }
+    ],
+    "description": "Skoglund Center hosts varsity basketball and volleyball games in its 2008-seat arena, and its natatorium is home to the swimming and diving teams. Men's Basketball Women's Basketball Volleyball Skoglund also has a field house, racquetball courts, wrestling room, locker rooms, an athletic training room, and is home to the Kinesiology Department. Outdoor tennis courts are located behind the building, near the softball, baseball and soccer fields. In addition to housing athletics, Skoglund Center is used for large ensemble performances - including the annual St. Olaf Christmas Festival.",
+    "floors": [],
+    "id": "sac",
+    "name": "Skoglund Athletic Center and Auditorium",
+    "offices": [],
+    "outline": [
+      [
+        44.4630709104736,
+        -93.1876797627862
+      ],
+      [
+        44.4635854101179,
+        -93.1876824640202
+      ],
+      [
+        44.4635852158574,
+        -93.1871340155898
+      ],
+      [
+        44.4630722459462,
+        -93.1871345581722
+      ],
+      [
+        44.4630709104736,
+        -93.1876797627862
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "SAC",
+    "type": "Athletics",
+    "links": [
+      {
+        "href": "https://athletics.stolaf.edu/sports/mens-basketball",
+        "label": "Men's Basketball"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/womens-basketball",
+        "label": "Women's Basketball"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/womens-volleyball/",
+        "label": "Volleyball"
+      },
+      {
+        "href": "https://christmas.stolaf.edu/",
+        "label": "Christmas Festival"
+      }
+    ]
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
+      "administrative": true,
+      "academic": true
+    },
+    "center": [
+      44.45961122173032,
+      -93.18069501128926
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "sh",
+    "name": "Steensland Hall",
+    "offices": [],
+    "outline": [
+      [
+        44.4597314568622,
+        -93.1805786541271
+      ],
+      [
+        44.459634811886,
+        -93.1805826947492
+      ],
+      [
+        44.4596378939767,
+        -93.1806551717246
+      ],
+      [
+        44.4596048712934,
+        -93.180655765511
+      ],
+      [
+        44.4596061414463,
+        -93.1807340617729
+      ],
+      [
+        44.4596353536723,
+        -93.1807358413355
+      ],
+      [
+        44.4596366238245,
+        -93.1808230354102
+      ],
+      [
+        44.4597318800318,
+        -93.1808230354102
+      ],
+      [
+        44.4597314568622,
+        -93.1805786541271
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "SH",
+    "type": "Administrative & Academic",
+    "links": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "building": true,
+      "administrative": true,
+      "academic": true
+    },
+    "center": [
       44.46162745656645,
       -93.18592133043929
     ],
@@ -7761,7 +7888,7 @@
     ],
     "description": "Hector Skifter Hall houses the administrative offices for Broadcast Media and extended practice/studio space for the Music Department. Home to the college's organ studies, Skifter Hall has been specifically redesigned and renovated to house several practice organs and rehearsal spaces acoustically engineered for the instrument. The Tormodsgaard-Bakken Recital Hall (Studio A) contains a Dobson three-manual tracker organ and is used for studio sessions, musical instruction, and rehearsals.",
     "floors": [],
-    "id": "skifterhall",
+    "id": "skh",
     "name": "Skifter Hall",
     "offices": [],
     "outline": [
@@ -7827,72 +7954,6 @@
     "accessibility": "unknown",
     "address": null,
     "categories": {
-      "building": true,
-      "athletics": true
-    },
-    "center": [
-      44.46333655885924,
-      -93.18742430848505
-    ],
-    "departments": [
-      {
-        "href": "https://wp.stolaf.edu/kinesiology/",
-        "label": "Kinesiology Department"
-      }
-    ],
-    "description": "Skoglund Center hosts varsity basketball and volleyball games in its 2008-seat arena, and its natatorium is home to the swimming and diving teams. Men's Basketball Women's Basketball Volleyball Skoglund also has a field house, racquetball courts, wrestling room, locker rooms, an athletic training room, and is home to the Kinesiology Department. Outdoor tennis courts are located behind the building, near the softball, baseball and soccer fields. In addition to housing athletics, Skoglund Center is used for large ensemble performances - including the annual St. Olaf Christmas Festival.",
-    "floors": [],
-    "id": "skoglund",
-    "name": "Skoglund Athletic Center and Auditorium",
-    "offices": [],
-    "outline": [
-      [
-        44.4630709104736,
-        -93.1876797627862
-      ],
-      [
-        44.4635854101179,
-        -93.1876824640202
-      ],
-      [
-        44.4635852158574,
-        -93.1871340155898
-      ],
-      [
-        44.4630722459462,
-        -93.1871345581722
-      ],
-      [
-        44.4630709104736,
-        -93.1876797627862
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "SAC",
-    "type": "Athletics",
-    "links": [
-      {
-        "href": "https://athletics.stolaf.edu/sports/mens-basketball",
-        "label": "Men's Basketball"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/womens-basketball",
-        "label": "Women's Basketball"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/womens-volleyball/",
-        "label": "Volleyball"
-      },
-      {
-        "href": "https://christmas.stolaf.edu/",
-        "label": "Christmas Festival"
-      }
-    ]
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
       "point-of-interest": true,
       "dining": true
     },
@@ -7916,67 +7977,6 @@
         "label": "Website"
       }
     ]
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "building": true,
-      "administrative": true,
-      "academic": true
-    },
-    "center": [
-      44.45961122173032,
-      -93.18069501128926
-    ],
-    "departments": [],
-    "description": null,
-    "floors": [],
-    "id": "steenslandhall",
-    "name": "Steensland Hall",
-    "offices": [],
-    "outline": [
-      [
-        44.4597314568622,
-        -93.1805786541271
-      ],
-      [
-        44.459634811886,
-        -93.1805826947492
-      ],
-      [
-        44.4596378939767,
-        -93.1806551717246
-      ],
-      [
-        44.4596048712934,
-        -93.180655765511
-      ],
-      [
-        44.4596061414463,
-        -93.1807340617729
-      ],
-      [
-        44.4596353536723,
-        -93.1807358413355
-      ],
-      [
-        44.4596366238245,
-        -93.1808230354102
-      ],
-      [
-        44.4597318800318,
-        -93.1808230354102
-      ],
-      [
-        44.4597314568622,
-        -93.1805786541271
-      ]
-    ],
-    "photo": null,
-    "abbreviation": "SH",
-    "type": "Administrative & Academic",
-    "links": []
   },
   {
     "accessibility": "unknown",
@@ -8095,7 +8095,7 @@
     ],
     "description": "Formerly the women's gymnasium and once serving as the chapel, the Theater Building is home to the Theater Department. The building contains two major performance spaces: Kelsey Theater, named in honor of Elizabeth Walsingham Kelsey, who was director of dramatics for more than three decades; and the smaller Haugen Theater, named in honor of former Professor of Theater Ralph A. Haugen. Related Links Our Theaters Upcoming Productions Tickets",
     "floors": [],
-    "id": "theaterbuilding",
+    "id": "tb",
     "name": "Theater Building",
     "offices": [],
     "outline": [
@@ -8149,85 +8149,6 @@
     "accessibility": "unknown",
     "address": null,
     "categories": {
-      "point-of-interest": true,
-      "dining": true
-    },
-    "center": [
-      44.4619428027804,
-      -93.1827252306007
-    ],
-    "departments": [],
-    "description": "Located on the first floor of Buntrock Commons, The Cage offers various made-to-order menu options along with a variety of healthy, freshly-made grab and go items. Enjoy fair trade organic Peace coffee, house-made bakery items, multiple flavors of ice cream, and a vast array of bottled beverages.",
-    "floors": [],
-    "id": "thecage",
-    "name": "The Cage",
-    "offices": [],
-    "outline": null,
-    "photo": null,
-    "abbreviation": null,
-    "type": null,
-    "links": [
-      {
-        "href": "https://stolaf.cafebonappetit.com/",
-        "label": "Website"
-      }
-    ]
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "point-of-interest": true,
-      "dining": true
-    },
-    "center": [
-      44.4619428027804,
-      -93.1831264460544
-    ],
-    "departments": [],
-    "description": "Located on the second floor of Buntrock Commons on the beautiful St. Olaf campus. This room is open to reserve 7 days a week, and weekly dining offerings are served Monday - Friday, 11:00 a.m. - 1:30 p.m. The Kings' Dining Room is the perfect spot to have a delicious, made from scratch meal, whether it is for a business meeting or a gathering of friends and family!",
-    "floors": [],
-    "id": "thekingsdiningroom",
-    "name": "The Kings' Dining Room",
-    "offices": [],
-    "outline": null,
-    "photo": null,
-    "abbreviation": null,
-    "type": null,
-    "links": [
-      {
-        "href": "https://stolaf.cafebonappetit.com/",
-        "label": "Website"
-      }
-    ]
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
-      "point-of-interest": true,
-      "dining": true
-    },
-    "center": [
-      44.4620957097842,
-      -93.1825499423393
-    ],
-    "departments": [],
-    "description": "On-campus Pizza Delivery, weekends only",
-    "floors": [],
-    "id": "thelionspause",
-    "name": "The Lion's Pause",
-    "offices": [],
-    "outline": null,
-    "photo": null,
-    "abbreviation": null,
-    "type": null,
-    "links": []
-  },
-  {
-    "accessibility": "unknown",
-    "address": null,
-    "categories": {
       "building": true,
       "residence-hall": true,
       "housing": true
@@ -8264,7 +8185,7 @@
         "label": "Fifth Floor Thorson"
       }
     ],
-    "id": "thorsonhall",
+    "id": "th",
     "name": "Thorson Hall",
     "offices": [],
     "outline": [
@@ -8346,79 +8267,80 @@
     "accessibility": "unknown",
     "address": null,
     "categories": {
-      "building": true,
-      "administrative": true,
-      "academic": true
+      "point-of-interest": true,
+      "dining": true
     },
     "center": [
-      44.461940745932466,
-      -93.18048110811989
+      44.4619428027804,
+      -93.1827252306007
     ],
     "departments": [],
-    "description": "Part of the Ade Christenson Complex, Tom Porter Hall contains classrooms, offices, locker rooms, and athletic training room, and a weight room used by the variety football, track and field, and hockey teams. The facility is named after St. Olaf football coach Tom Porter '51. Related Links Football Men's Track and Field Women's Track and Field Men's Hockey Women's Hockey",
+    "description": "Located on the first floor of Buntrock Commons, The Cage offers various made-to-order menu options along with a variety of healthy, freshly-made grab and go items. Enjoy fair trade organic Peace coffee, house-made bakery items, multiple flavors of ice cream, and a vast array of bottled beverages.",
     "floors": [],
-    "id": "tomporterhall",
-    "name": "Tom Porter Hall",
+    "id": "thecage",
+    "name": "The Cage",
     "offices": [],
-    "outline": [
-      [
-        44.4620989558769,
-        -93.1806429474503
-      ],
-      [
-        44.4621007876142,
-        -93.1803524816947
-      ],
-      [
-        44.4618142274094,
-        -93.1803492378782
-      ],
-      [
-        44.4617483736235,
-        -93.1803485830064
-      ],
-      [
-        44.4617472856021,
-        -93.1804438700035
-      ],
-      [
-        44.4618145191295,
-        -93.1804433256245
-      ],
-      [
-        44.4618151346271,
-        -93.1806419745748
-      ],
-      [
-        44.4620989558769,
-        -93.1806429474503
-      ]
-    ],
+    "outline": null,
     "photo": null,
-    "abbreviation": "TPH",
-    "type": "Administrative & Academic",
+    "abbreviation": null,
+    "type": null,
     "links": [
       {
-        "href": "https://athletics.stolaf.edu/sports/football",
-        "label": "Football"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/mens-track-and-field",
-        "label": "Men's Track and Field"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/womens-track-and-field",
-        "label": "Women's Track and Field"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/mens-ice-hockey",
-        "label": "Men's Hockey"
-      },
-      {
-        "href": "https://athletics.stolaf.edu/sports/womens-ice-hockey",
-        "label": "Women's Hockey"
+        "href": "https://stolaf.cafebonappetit.com/",
+        "label": "Website"
       }
     ]
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "point-of-interest": true,
+      "dining": true
+    },
+    "center": [
+      44.4619428027804,
+      -93.1831264460544
+    ],
+    "departments": [],
+    "description": "Located on the second floor of Buntrock Commons on the beautiful St. Olaf campus. This room is open to reserve 7 days a week, and weekly dining offerings are served Monday - Friday, 11:00 a.m. - 1:30 p.m. The Kings' Dining Room is the perfect spot to have a delicious, made from scratch meal, whether it is for a business meeting or a gathering of friends and family!",
+    "floors": [],
+    "id": "thekingsdiningroom",
+    "name": "The Kings' Dining Room",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [
+      {
+        "href": "https://stolaf.cafebonappetit.com/",
+        "label": "Website"
+      }
+    ]
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "point-of-interest": true,
+      "dining": true
+    },
+    "center": [
+      44.4620957097842,
+      -93.1825499423393
+    ],
+    "departments": [],
+    "description": "On-campus Pizza Delivery, weekends only",
+    "floors": [],
+    "id": "thelionspause",
+    "name": "The Lion's Pause",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": []
   },
   {
     "accessibility": "unknown",
@@ -8520,7 +8442,7 @@
     ],
     "description": "Tomson Hall opened in 2011 after an extensive renovation of the 1960s-era Science Center. The building is named in honor of O. Jay Tomson '58 and his wife, Patricia McCarthy Tomson '59. Tomson houses a number of academic departments and administrative offices. Academic Departments Asian Conversations Asian Studies Classics Education French German Languages Across the Curriculum Norwegian Nordic Studies Russian Spanish Administrative Offices Admissions Business Office Academic Success Center Dean of Studies Financial Aid Institute for Freedom and Community (IFC) The Smith Center - International Studies and Global Engagement The Piper Center Office of the President Provost and Dean of the College Registrar's Office Residence Life Fun fact: The movie A Serious Man was filmed in this building in 2008, just prior to its renovation.",
     "floors": [],
-    "id": "tomsonhall",
+    "id": "toh",
     "name": "Tomson Hall",
     "offices": [],
     "outline": [
@@ -9058,6 +8980,84 @@
     "accessibility": "unknown",
     "address": null,
     "categories": {
+      "building": true,
+      "administrative": true,
+      "academic": true
+    },
+    "center": [
+      44.461940745932466,
+      -93.18048110811989
+    ],
+    "departments": [],
+    "description": "Part of the Ade Christenson Complex, Tom Porter Hall contains classrooms, offices, locker rooms, and athletic training room, and a weight room used by the variety football, track and field, and hockey teams. The facility is named after St. Olaf football coach Tom Porter '51. Related Links Football Men's Track and Field Women's Track and Field Men's Hockey Women's Hockey",
+    "floors": [],
+    "id": "tph",
+    "name": "Tom Porter Hall",
+    "offices": [],
+    "outline": [
+      [
+        44.4620989558769,
+        -93.1806429474503
+      ],
+      [
+        44.4621007876142,
+        -93.1803524816947
+      ],
+      [
+        44.4618142274094,
+        -93.1803492378782
+      ],
+      [
+        44.4617483736235,
+        -93.1803485830064
+      ],
+      [
+        44.4617472856021,
+        -93.1804438700035
+      ],
+      [
+        44.4618145191295,
+        -93.1804433256245
+      ],
+      [
+        44.4618151346271,
+        -93.1806419745748
+      ],
+      [
+        44.4620989558769,
+        -93.1806429474503
+      ]
+    ],
+    "photo": null,
+    "abbreviation": "TPH",
+    "type": "Administrative & Academic",
+    "links": [
+      {
+        "href": "https://athletics.stolaf.edu/sports/football",
+        "label": "Football"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/mens-track-and-field",
+        "label": "Men's Track and Field"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/womens-track-and-field",
+        "label": "Women's Track and Field"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/mens-ice-hockey",
+        "label": "Men's Hockey"
+      },
+      {
+        "href": "https://athletics.stolaf.edu/sports/womens-ice-hockey",
+        "label": "Women's Hockey"
+      }
+    ]
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
       "point-of-interest": true,
       "visitor-information": true
     },
@@ -9421,7 +9421,7 @@
         "label": "Third Floor Ytterboe Hall plans"
       }
     ],
-    "id": "ytterboehall",
+    "id": "ytt",
     "name": "Ytterboe Hall",
     "offices": [],
     "outline": [

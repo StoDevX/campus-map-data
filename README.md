@@ -258,17 +258,156 @@ Two deliberate details:
   to the committed `data/residence-life.json`, floor plans stay at their last
   known good values, everything else still updates, and the run summary says so.
 
-## Not in scope: tiles
+## The tileset
 
-[`carls-app/map-tiles`][map-tiles] builds the vector basemap AAO renders, and it
-**already covers St. Olaf** — its `CAMPUS_BBOX` spans both campuses and downtown
-Northfield, at full z14–z15 detail. What it does not have is a St. Olaf campus
-layer; its `campus_buildings` and `campus_building_labels` are Carleton's, built
-from Carleton's live endpoint.
+`./build-tiles.sh` builds a MapLibre vector basemap with St. Olaf's campus
+layers joined into it, and publishes it to GitHub Pages alongside the data.
+Adapted from [`carls-app/map-tiles`][map-tiles], which does the same job for
+Carleton; the pipeline, the graduated extraction and most of the checks are
+theirs.
 
-So giving AAO a St. Olaf overlay is a change to that repo — two more tippecanoe
-inputs reading this repo's `map.geojson` — not a second tileset here. Its
-`scripts/campus-layers.py` already unwraps exactly the `GeometryCollection`
-shape `map.geojson` emits, because that is Carleton's shape too.
+```console
+$ sudo apt-get install -y tippecanoe   # or: brew install tippecanoe
+$ ./build-tiles.sh                     # ~40s from a clean checkout
+```
+
+It pulls a few hundred tiles out of the [Protomaps][pm] daily planet build over
+HTTP range requests — no planet download, no OSM processing — tiles this repo's
+own `map.geojson` with tippecanoe, and `tile-join`s the two into one archive.
+Output lands in `dist/`, which is exactly what gets published. Nothing is
+committed to the default branch.
+
+[pm]: https://build.protomaps.com
+
+| | |
+| --- | ---: |
+| `campus.pmtiles` | 6.2 MB |
+| `tiles/**/*.pbf` | 985 files, 11 MB (uncompressed — see below) |
+| `fonts/`, `sprites/` | 14 MB |
+| site total | 32 MB |
+
+```
+z0=1   z1=1   z2=1   z3=1   z4=1    z5=1    z6=1     z7=1
+z8=1   z9=2   z10=6  z11=20 z12=64  z13=256 z14=144  z15=484
+```
+
+The geographic coverage matches map-tiles deliberately: full detail over both
+campuses and Northfield, street-level out to Apple Valley and Faribault. AAO is
+one app over two colleges and students move between them, so matching bboxes
+means the two tilesets are interchangeable rather than each being wrong outside
+its own campus.
+
+### Three campus layers, not two
+
+map-tiles tiles Carleton's data as footprints and label anchors. St. Olaf's does
+not fit that shape:
+
+    buildings 38     parking 72     athletics 8     poi 10
+
+**More than half the places are parking.** Putting 46 parking polygons in a
+layer called `campus_buildings` would be a lie the style then has to work
+around, and drawing 72 parking labels at the zoom where you want building names
+buries the campus. So:
+
+| Layer | Geometry | Features | Zooms |
+| --- | --- | ---: | --- |
+| `campus_buildings` | MultiPolygon | 38 | z14+ |
+| `campus_grounds` | MultiPolygon | 54 | z14+ |
+| `campus_labels` | Point | 128 | z15+ |
+
+Every anchor carries a `kind`, which is what lets the style bring each sort of
+place in at the zoom where it stops being clutter — buildings at z15, points of
+interest and fields at z16, parking at z17. `buildingId` is on all three layers
+and is the source feature's `id`, the same property name map-tiles uses, so
+AAO's selection code keys off it unchanged.
+
+The 26 accessible-parking points get their own `kind` for one reason: they all
+share the name "Accessible Parking", and without it the style stamps that label
+26 times across campus.
+
+### The theme
+
+St. Olaf's colours are black and old gold, and the temptation with a brand
+palette is to paint the map with it. That makes a bad basemap — a wayfinding
+map's ground has to recede so the app's markers can be read against it, and gold
+over the whole frame leaves nothing for the foreground to be brighter than.
+
+So the brand is spent in exactly one place: **the campus buildings**, which are
+the subject of this map and the one thing on it that is the college's own data.
+Everything else is a warm neutral tuned to sit underneath — water muted from
+stock's vivid cyan, parks desaturated (the Natural Lands are 350 acres of the
+frame), institutional land a whisper above the earth tone.
+
+The one departure that needed proving rather than taste: **the OSM building
+layer is warm, not grey.** map-tiles has to paint both of its building layers
+one colour, because Carleton's hand-drawn footprints disagree with OSM's badly
+enough that any colour difference becomes a doubled, misregistered outline. The
+question was whether St. Olaf's have the same problem — the source layer is
+named `buildings_openstreet`, which is suggestive but proves nothing.
+
+Rendering the tileset with the OSM buildings layer forced to pure red answers
+it: across the campus core the overhang is a handful of narrow strips, the
+widest being two slivers along the west edge of Rolvaag. Almost every OSM
+footprint on campus sits entirely under a college polygon, so the campus can
+safely have its own colour. The OSM layer is kept in the same warm hue family
+anyway, so that where a sliver does show it reads as part of the same building —
+and so downtown Northfield, which has no campus data at all, stays in the same
+palette instead of turning grey.
+
+That diagnostic also corrected a wrong guess of my own: the pale shapes that
+look like duplicate buildings beside New Hall and Rolvaag are not buildings.
+They are OSM's `school` landuse, which blankets the campus, plus this repo's own
+`campus_grounds`.
+
+### Two styles
+
+The same tileset is published twice, with a style for each:
+
+| Style | Source | Works when |
+| --- | --- | --- |
+| `style.json` | `tiles/{z}/{x}/{y}.pbf` | always |
+| `style-pmtiles.json` | `pmtiles://…/campus.pmtiles` | only if the MapLibre binary was compiled with PMTiles support |
+
+In MapLibre GL JS you register the `pmtiles://` protocol at runtime with
+`addProtocol`. **In MapLibre Native you cannot** — it is the compile-time CMake
+option `MLN_WITH_PMTILES`, and AAO consumes a prebuilt `MapLibre.xcframework`.
+So `style.json` is the supported path and `style-pmtiles.json` is there to try:
+if it renders, it is one request for the whole tileset instead of one per tile.
+
+Two constraints inherited from map-tiles, both of which bite silently:
+
+- **`.pbf` tiles are stored uncompressed.** Vector tiles are normally gzipped,
+  but Pages will not set `Content-Encoding` on an arbitrary `.pbf`, so a gzipped
+  tile arrives as garbage with no error. The PMTiles archive keeps its internal
+  gzip, because PMTiles readers decompress from a declared field rather than an
+  HTTP header. CI asserts the tree is not gzipped on every build.
+- **Schema and style must move together.** The tiles are Protomaps Basemap
+  schema v4; the style is generated from `@protomaps/basemaps`, the matching
+  style package. A mismatch does not error — it renders a blank map.
+
+### Using it from AAO
+
+```ts
+export const MAP_STYLE_URL = 'https://stodevx.github.io/campus-map-data/style.json'
+```
 
 [map-tiles]: https://github.com/carls-app/map-tiles
+
+## Publishing
+
+GitHub Pages serves the `gh-pages` branch, which `.github/workflows/tiles.yml`
+force-pushes on every build. It carries the tileset **and the campus data**:
+
+| URL | |
+| --- | --- |
+| `…/style.json` | the map style |
+| `…/campus.pmtiles`, `…/tiles/{z}/{x}/{y}.pbf` | the tileset, twice |
+| `…/map.json`, `…/map.geojson`, `…/data/` | the campus data |
+| `…/` | a preview map you can pan around to check a build |
+
+all under `https://stodevx.github.io/campus-map-data`.
+
+The data files are published because Pages serves one branch and ccc-server
+needs a URL — `carls-app/map-data` serves Carleton's the same way. They are
+*copied* into `dist/` rather than rebuilt, and CI diffs the copy against the
+committed files, so the tiles and the data are provably the same revision.

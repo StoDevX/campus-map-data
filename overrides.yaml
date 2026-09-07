@@ -7,9 +7,9 @@
 #
 # Four sections, applied in this order:
 #
-#   ids        Source name -> id. The default id is the name with its spaces and
-#              punctuation removed ("Old Main" -> oldmain); this is for the ones
-#              that produces something unusable.
+#   ids        Layer slug -> source name -> id. The default id is the name with
+#              its spaces and punctuation removed ("New Hall" -> newhall); this
+#              is for the ones that produces something unusable.
 #   removals   Ids to drop from map.json / map.geojson entirely.
 #   changes    Fields merged onto a place, keyed by id. Any field of a record
 #              can be set; `centerpoint` sets the label anchor.
@@ -21,23 +21,84 @@
 # reproduced deliberately so consumers do not have to change. See build.py.
 
 ids:
-  # The full name is a mouthful nobody uses; on campus this is Skoglund.
-  Skoglund Athletic Center and Auditorium: skoglund
-  # Two names for adjacent facilities, joined with an ampersand.
-  Klein Field at Manitou & Manitou Track: field-kleinfield
-  # 47 characters of id for one charging point.
-  Buntrock Commons Parking Lot - Electric Vehicle Charger: evcharger
+  # Buildings are keyed by the college's own abbreviation, from the ABB field of
+  # the buildings layer. These are the identifiers on the signage and in campus
+  # speech — RNS, BMC, TOH — so they are what someone hardcoding a building in
+  # AAO would reach for, and they are stable in a way a name is not: Regents Hall
+  # of Mathematical Sciences can be renamed without RMS changing. All 31 are
+  # unique.
+  #
+  # Listed here rather than read from ABB at build time, deliberately. An id is a
+  # primary key, and deriving it from a mutable source field would let a college
+  # edit to ABB silently repoint every reference to that building. Pinned here,
+  # such an edit is a diff in this file instead.
+  #
+  # Keyed by layer first, because a bare name is ambiguous: the parking lot
+  # beside Old Main is also called "Old Main", and a flat name -> id map gave
+  # both of them `om`. Within a layer, the key is the *source* name, matched
+  # before the spelling corrections under `changes` — hence "Hillboe" and
+  # "Kittlesby" here and the corrected spellings there. verify.py fails if an
+  # entry stops applying.
+  buildings:
+    "Flaten Art Barn": ab
+    "Ade Christenson Complex": aca
+    "Alumni Hall": ahl
+    "(Agnes) Kittlesby Hall": akh
+    "(Agnes) Larson Hall": alh
+    "(Agnes) Mellby Hall": amh
+    "Buntrock Commons": bc
+    "Boe Memorial Chapel": bmc
+    "Center for Art and Dance": cad
+    "Christiansen Hall of Music": chm
+    "Ellingson Hall": eh
+    "(Gertrude) Hillboe Hall": ghh
+    "Holland Hall": hh
+    "Hoyme Hall": hmh
+    "(Tweet) Hall of Music": hom
+    "Kildahl Hall": kh
+    "Madson Facilities Building": mfb
+    "Mohn Hall": mh
+    "Old Main": om
+    "Rand Hall": rh
+    "Rolvaag Memorial Library": rml
+    "Regents Hall of Mathematical Sciences": rms
+    "Regents Hall of Natural Sciences": rns
+    "Skoglund Athletic Center and Auditorium": sac
+    "Steensland Hall": sh
+    "Skifter Hall": skh
+    "Theater Building": tb
+    "Thorson Hall": th
+    "Tomson Hall": toh
+    "Tom Porter Hall": tph
+    "Ytterboe Hall": ytt
+
+  # The seven buildings the college gives no abbreviation — New Hall, the
+  # Townhouses, Tostrud Center, STOGROW Farm, the President's House, the Pump
+  # House and the Water Tank — keep the default slugified name, which for all
+  # seven reads fine: `newhall`, `tostrudcenter`, `watertank`.
+
+  # Not buildings, so no abbreviation exists; these are just unwieldy names.
+  athletic-fields:
+    "Klein Field at Manitou & Manitou Track": field-kleinfield
+  points-of-interest:
+    "Buntrock Commons Parking Lot - Electric Vehicle Charger": evcharger
 
 removals: []
 
 changes:
   # Spelling corrections. The ArcGIS layer disagrees with the college's own
-  # Residence Life pages, which title this page "Hilleboe and Kittelsby Halls",
+  # Residence Life pages, which title that page "Hilleboe and Kittelsby Halls",
   # and with the building signage.
-  - id: hillboehall
+  - id: ghh
     name: (Gertrude) Hilleboe Hall
-  - id: kittlesbyhall
+  - id: akh
     name: (Agnes) Kittelsby Hall
+
+  # The source name is a 54-character sentence that renders as a three-line
+  # label sitting across the whole of Buntrock's parking lot. It is a charging
+  # point; the lot it is in is already labelled.
+  - id: evcharger
+    name: Electric Vehicle Charger
 
   # The layer says "Course"; its own description says "the courts", and there
   # are several of them.

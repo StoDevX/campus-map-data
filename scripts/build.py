@@ -250,10 +250,13 @@ def assign_ids(places: list[dict], overrides: dict) -> None:
     of the group gets to be the unsuffixed one. `verify.py` reports them,
     because a numbered id usually means the source data wants an override.
     """
-    by_name = overrides.get("ids") or {}
+    # Scoped by layer, because a bare name is ambiguous across layers: the
+    # parking lot beside Old Main is also called "Old Main", and a flat
+    # name->id map silently gave both the same id.
+    by_layer = overrides.get("ids") or {}
 
     def base_for(place: dict) -> str:
-        explicit = by_name.get(place["name"])
+        explicit = (by_layer.get(place["slug"]) or {}).get(place["name"])
         if explicit:
             return explicit
         prefix = ID_PREFIXES.get(place["slug"])

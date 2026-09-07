@@ -49,6 +49,39 @@ url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_
 url_api = "https://api.github.com/repos/rhysd/actionlint/releases/assets/384924919"
 provenance = "github-attestations"
 
+[[tools.node]]
+version = "26.7.0"
+backend = "core:node"
+specifiers = ["26.7.0"]
+
+[tools.node."platforms.linux-arm64"]
+checksum = "sha256:925aa6157dd37542d0d7f2e28b7bf61e7b39284411210b0498bc3788db4aef68"
+url = "https://nodejs.org/dist/v26.7.0/node-v26.7.0-linux-arm64.tar.gz"
+
+[tools.node."platforms.linux-arm64-musl"]
+checksum = "sha256:e650560ab1ecec0eb5845b43b87d6024c87b4e143c3e044cbb607cc135dbaadb"
+url = "https://unofficial-builds.nodejs.org/download/release/v26.7.0/node-v26.7.0-linux-arm64-musl.tar.gz"
+
+[tools.node."platforms.linux-x64"]
+checksum = "sha256:bd6b6c31e377bad9ad579bed72e5bc11f4c879ac9452ad51d30e646ea3d828df"
+url = "https://nodejs.org/dist/v26.7.0/node-v26.7.0-linux-x64.tar.gz"
+
+[tools.node."platforms.linux-x64-musl"]
+checksum = "sha256:84fc4e29e5f86022a40bac50a28a1b9275dd1f32eebbf4db499e2573ff822124"
+url = "https://unofficial-builds.nodejs.org/download/release/v26.7.0/node-v26.7.0-linux-x64-musl.tar.gz"
+
+[tools.node."platforms.macos-arm64"]
+checksum = "sha256:7ee659a7768e641bbfd5360940660b8e8fd0052f77488f365562bac522fc15d4"
+url = "https://nodejs.org/dist/v26.7.0/node-v26.7.0-darwin-arm64.tar.gz"
+
+[tools.node."platforms.macos-x64"]
+checksum = "sha256:f279d1ed28ce57f7788bf23435d2ad7fdd7438904ad5c4d8a1081a7cde3d4b96"
+url = "https://nodejs.org/dist/v26.7.0/node-v26.7.0-darwin-x64.tar.gz"
+
+[tools.node."platforms.windows-x64"]
+checksum = "sha256:d3bd72755141ed32bbcd841228ee81897c8a98d50dfa7dae2179399a0a7c90f8"
+url = "https://nodejs.org/dist/v26.7.0/node-v26.7.0-win-x64.zip"
+
 [[tools.python]]
 version = "3.14.7"
 backend = "core:python"
@@ -65,7 +98,7 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [tools.python."platforms.linux-x64"]
-checksum = "blake3:60f3e4c964c2dfe4641f750a7f6a1f7eacac3907be308b76c7c95f8e9dc77f29"
+checksum = "sha256:3959f92825141e04adf44982d3a83ee57af0877e893b0796e04c1468749d9b04"
 url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260901/cpython-3.14.7+20260901-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
@@ -88,6 +121,46 @@ provenance = "github-attestations"
 checksum = "sha256:ca3c33ca924dfcab3b74205a7a58a88b0255135c53f95497b26b5e60700fd66d"
 url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260901/cpython-3.14.7+20260901-x86_64-pc-windows-msvc-install_only_stripped.tar.gz"
 provenance = "github-attestations"
+
+[[tools.shellcheck]]
+version = "0.11.0"
+backend = "aqua:koalaman/shellcheck"
+specifiers = ["0.11.0"]
+
+[tools.shellcheck."platforms.linux-arm64"]
+checksum = "sha256:12b331c1d2db6b9eb13cfca64306b1b157a86eb69db83023e261eaa7e7c14588"
+url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.aarch64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056934"
+
+[tools.shellcheck."platforms.linux-arm64-musl"]
+checksum = "sha256:12b331c1d2db6b9eb13cfca64306b1b157a86eb69db83023e261eaa7e7c14588"
+url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.aarch64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056934"
+
+[tools.shellcheck."platforms.linux-x64"]
+checksum = "sha256:8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198"
+url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056942"
+
+[tools.shellcheck."platforms.linux-x64-musl"]
+checksum = "sha256:8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198"
+url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056942"
+
+[tools.shellcheck."platforms.macos-arm64"]
+checksum = "sha256:56affdd8de5527894dca6dc3d7e0a99a873b0f004d7aabc30ae407d3f48b0a79"
+url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.darwin.aarch64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056932"
+
+[tools.shellcheck."platforms.macos-x64"]
+checksum = "sha256:3c89db4edcab7cf1c27bff178882e0f6f27f7afdf54e859fa041fca10febe4c6"
+url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.darwin.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056930"
+
+[tools.shellcheck."platforms.windows-x64"]
+checksum = "sha256:8a4e35ab0b331c85d73567b12f2a444df187f483e5079ceffa6bda1faa2e740e"
+url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.zip"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056944"
 
 [[tools.uv]]
 version = "0.12.3"

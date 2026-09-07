@@ -209,20 +209,29 @@ def verify_map_geojson(report: Report, records: list[dict]) -> None:
 def verify_overrides(report: Report, records: list[dict]) -> None:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
     known = {record["id"] for record in records}
-    names = {record["name"] for record in records}
+    layers = set(slugs())
 
     for change in overrides.get("changes") or []:
         report.check(
             change["id"] in known,
             f"overrides.yaml: changes entry for unknown id {change['id']!r}",
         )
-    # `ids` is keyed by the *source* name, so an entry whose key no longer
-    # appears is an override that has quietly stopped applying.
-    for name, mapped in (overrides.get("ids") or {}).items():
-        report.check(
-            mapped in known or name in names,
-            f"overrides.yaml: ids entry {name!r} matches no place",
-        )
+
+    # An `ids` entry that stopped applying is invisible in the output — the
+    # place just quietly reverts to its default id — so the requested id must
+    # actually exist. That also catches the entry mapping two places to one id:
+    # both get numbered, and the bare id is then in nobody's hands.
+    for slug, mapping in (overrides.get("ids") or {}).items():
+        if not report.check(
+            slug in layers, f"overrides.yaml: ids has no such layer {slug!r}"
+        ):
+            continue
+        for name, mapped in (mapping or {}).items():
+            report.check(
+                mapped in known,
+                f"overrides.yaml: ids entry {slug}/{name!r} -> {mapped!r} "
+                f"produced no place with that id",
+            )
 
 
 def verify_reproducible(report: Report) -> None:

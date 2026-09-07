@@ -1,0 +1,175 @@
+name: Build and publish tiles
+
+on:
+  # Whenever the data changes. The scrape workflow commits map.geojson and
+  # data/ to main, and that push lands here — so a campus edit reaches the
+  # tileset the same morning it reaches the data, without either workflow
+  # knowing about the other.
+  push:
+    branches: [main]
+    paths:
+      - map.geojson
+      - map.json
+      - data/**
+      - build-tiles.sh
+      - site/**
+      - scripts/campus-layers.py
+      - scripts/explode.py
+      - scripts/make-style.mjs
+      - scripts/verify-tiles.py
+      - package.json
+      - package-lock.json
+      - mise.toml
+      - mise.lock
+      - .github/workflows/tiles.yml
+
+  workflow_dispatch:
+
+  schedule:
+    # Daily at 07:00 UTC, an hour after the scrape. Protomaps rebuilds the
+    # planet every day from OSM minutely replication — the build this pulls from
+    # carries OSM data to about 04:00 UTC the same day — so a daily run means an
+    # OSM edit reaches the app roughly a day later. The force-push keeps
+    # gh-pages at a single commit however often this runs.
+    - cron: "0 7 * * *"
+
+  # Dry run on every PR: build and check the output, publish nothing. Without
+  # this the workflow could only be exercised by merging it.
+  pull_request:
+
+# Required to force-push the built site to gh-pages. PR runs never reach the
+# publish step, and pull_request from a fork gets a read-only token regardless.
+permissions:
+  contents: write
+
+concurrency:
+  # PRs get their own group so a dry run can never queue behind, or cancel, a
+  # scheduled publish.
+  group: >-
+    ${{ github.event_name == 'pull_request'
+        && format('tiles-dryrun-{0}', github.ref)
+        || 'publish-tiles' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Installs node, python, uv and the pmtiles CLI from mise.toml/mise.lock.
+      # build-tiles.sh calls `mise install` itself too, so this mostly serves to
+      # cache them across runs.
+      - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
+
+      - name: Install tippecanoe
+        # Tiles the campus layers and joins them into the basemap. build-tiles.sh
+        # fetches the rest of its toolchain itself, but tippecanoe is a C++ build
+        # with no prebuilt releases and the distro package is both current and
+        # instant.
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq tippecanoe
+          tippecanoe --version
+
+      - name: Build
+        run: ./build-tiles.sh
+
+      - name: Check the tiles are not gzipped
+        # Pages will not set Content-Encoding on a .pbf, so a gzipped tile would
+        # reach the app as garbage. This is the failure that is hardest to spot
+        # on device, so it is worth asserting in CI rather than trusting.
+        run: |
+          bad=0
+          while IFS= read -r f; do
+            if [ "$(head -c 2 "$f" | od -An -tx1 | tr -d ' \n')" = "1f8b" ]; then
+              echo "gzipped tile: $f"
+              bad=1
+            fi
+          done < <(find dist/tiles -name '*.pbf')
+          [ "$bad" = 0 ] || exit 1
+          echo "OK: $(find dist/tiles -name '*.pbf' | wc -l) tiles stored uncompressed"
+
+      - name: Check the published data matches the committed data
+        # build-tiles.sh copies map.json, map.geojson and data/ into dist so that
+        # ccc-server has a URL to fetch. If that copy ever diverged, the app
+        # would read one revision of the campus data while the tiles were built
+        # from another — which renders fine and is wrong.
+        run: |
+          diff -q map.json dist/map.json
+          diff -q map.geojson dist/map.geojson
+          diff -r -q data dist/data
+          echo "OK: published data is byte-identical to the committed data"
+
+      - name: Summarise the build
+        # On a PR this is the payoff: the numbers that would have been
+        # published, visible in the run summary without anything being published.
+        run: |
+          {
+            echo "| | |"
+            echo "| --- | ---: |"
+            echo "| campus.pmtiles | $(numfmt --to=iec --suffix=B "$(wc -c < dist/campus.pmtiles)") |"
+            echo "| tiles | $(find dist/tiles -name '*.pbf' | wc -l) files |"
+            echo "| glyph ranges | $(find dist/fonts -name '*.pbf' | wc -l) |"
+            echo "| style layers | $(python3 -c 'import json;print(len(json.load(open("dist/style.json"))["layers"]))') |"
+            echo "| source-layers | $(python3 -c 'import json;print(len({l["source-layer"] for l in json.load(open("dist/style.json"))["layers"] if "source-layer" in l}))') |"
+            echo "| places in map.json | $(python3 -c 'import json;print(len(json.load(open("dist/map.json"))))') |"
+            echo
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              echo "Dry run — nothing published."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish to gh-pages
+        if: github.event_name != 'pull_request'
+        # Force-push a single fresh commit. This branch is entirely owned by this
+        # workflow and there is nothing on it to preserve; without the force-push
+        # every rebuild would add another multi-megabyte blob to history forever.
+        run: |
+          cd dist
+          git init --quiet -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit --quiet -m "Build tiles from ${GITHUB_SHA::7} ($(date -u +%Y-%m-%d))"
+          git push --force --quiet \
+            "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" \
+            gh-pages
+          echo "Published $(find . -type f | wc -l) files to gh-pages"
+
+      - name: Verify the published site
+        if: github.event_name != 'pull_request'
+        # Pages takes a minute or two to pick up the push. Checking the live site
+        # is what catches the whole class of "the build was fine but the thing
+        # the app fetches is not" — including ccc-server's map.geojson, which is
+        # the reason the data files are published here at all.
+        run: |
+          base="https://stodevx.github.io/campus-map-data"
+          want=$(sha256sum dist/campus.pmtiles | cut -d' ' -f1)
+
+          # Wait until Pages is serving *this* build. Waiting for a 200 is not
+          # enough: the previous deployment answers 200 for the whole window, so
+          # every check below would pass against stale content and prove nothing
+          # about what was just pushed.
+          got=""
+          for i in $(seq 1 20); do
+            got=$(curl -sS "$base/campus.pmtiles" | sha256sum | cut -d' ' -f1)
+            [ "$got" = "$want" ] && break
+            echo "waiting for Pages to serve this build ($i/20)"
+            sleep 30
+          done
+          if [ "$got" != "$want" ]; then
+            echo "Pages never served this build — wanted $want, still getting $got" >&2
+            echo "If this is the first ever run, Pages may not be enabled: set it to" >&2
+            echo "deploy from the gh-pages branch in the repository settings." >&2
+            exit 1
+          fi
+
+          for path in style.json style-pmtiles.json map.json map.geojson index.html; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' "$base/$path")
+            echo "$path -> $code"
+            [ "$code" = "200" ] || exit 1
+          done
+          echo "Published site verified at $base"

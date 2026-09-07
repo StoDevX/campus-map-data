@@ -1,1 +1,4 @@
 .DS_Store
+dist/
+.work/
+node_modules/
