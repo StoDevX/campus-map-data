@@ -180,18 +180,39 @@ jobs:
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
 
       - name: Check the deployed site
-        # A short confirmation, not a wait. `deploy-pages` has already reported
-        # success, so this is not polling for the deployment to happen — it is
-        # checking that what Pages serves is what the app will actually fetch,
-        # which is a different property and the one that caught the
-        # stodevx.github.io redirect. Deliberately no `curl -L`: a redirect
-        # appearing here means the site is being served differently than the
-        # styles were built for, and should fail loudly.
+        # A confirmation, not a wait. `deploy-pages` has already reported the
+        # deployment successful; this checks the separate property that what
+        # Pages *serves* is what the app will fetch — which is what caught the
+        # stodevx.github.io redirect. Deliberately no `curl -L`: a redirect here
+        # means the site is served differently than the styles were built for,
+        # and should fail loudly.
+        #
+        # The two minutes of grace are for CDN propagation, not for the
+        # deployment. On the first run of this workflow the deployment was
+        # reported successful at 19:35:27 and this step asked for style.json in
+        # the same second and got a 403 — the edge was still swapping. Every URL
+        # answered 200 moments later. Two minutes is generous for that and still
+        # bounded, because unlike the old branch-push check there is no unknown
+        # here to guess at: GitHub has already told us the deploy landed.
         run: |
           base="https://stolaf.dev/campus-map-data"
-          for path in style.json style-pmtiles.json map.json map.geojson routing.json index.html; do
-            code=$(curl -sS -m 30 -o /dev/null -w '%{http_code}' "$base/$path" || echo 000)
+          paths="style.json style-pmtiles.json map.json map.geojson routing.json index.html"
+
+          for path in $paths; do
+            code=""
+            for _ in $(seq 1 12); do
+              code=$(curl -sS -m 30 -o /dev/null -w '%{http_code}' "$base/$path" || echo 000)
+              [ "$code" = "200" ] && break
+              sleep 10
+            done
             echo "$path -> $code"
-            [ "$code" = "200" ] || { echo "::error::$base/$path returned $code"; exit 1; }
+            if [ "$code" != "200" ]; then
+              echo "::error::$base/$path returned $code two minutes after a successful deployment"
+              echo "The deployment itself succeeded — see the step above — so this is about" >&2
+              echo "serving. A 404 suggests the file is missing from dist/; a 3xx suggests the" >&2
+              echo "custom domain changed, which would also mean SITE_URL in build-tiles.sh is" >&2
+              echo "now wrong and the styles are pointing at the wrong host." >&2
+              exit 1
+            fi
           done
           echo "Deployed to ${{ steps.deployment.outputs.page_url }}"

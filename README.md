@@ -489,6 +489,12 @@ means the site is served differently than the styles were built for. That is the
 check that caught the `stodevx.github.io` redirect, and it is worth keeping — it
 just should not have been carrying the deployment wait on its back.
 
+It does allow two minutes, though, for a different reason: CDN propagation. On
+the first Actions deployment, GitHub reported success at 19:35:27 and the check
+asked for `style.json` in the same second and got a 403 — the edge was still
+swapping, and every URL answered 200 moments later. That is a bounded, known
+wait rather than a guess, because the deployment itself is already confirmed.
+
 ## Routing
 
 `map.geojson` says where places are. `routing.json` says how to walk between
