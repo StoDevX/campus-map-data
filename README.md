@@ -418,8 +418,9 @@ export const MAP_STYLE_URL = 'https://stolaf.dev/campus-map-data/style.json'
 
 ## Publishing
 
-GitHub Pages serves the `gh-pages` branch, which `.github/workflows/tiles.yml`
-force-pushes on every build. It carries the tileset **and the campus data**:
+`.github/workflows/tiles.yml` builds the site into `dist/`, uploads it as a Pages
+artifact and deploys it through the Pages Actions integration. It carries the
+tileset **and the campus data**:
 
 | URL | |
 | --- | --- |
@@ -458,19 +459,35 @@ and the build this pulls from carries OSM data to about 04:00 UTC the same day,
 so a daily run means an edit near campus reaches the app about a day later. 07:00
 leaves the upstream build a few hours to publish.
 
-Rebuilding nightly is cheaper than it looks — a run is well under a minute, and
-the force-push keeps `gh-pages` at a single commit however often it happens, so
-nothing accumulates. **Campus data changes do not wait for either schedule**: the
-scrape's commit fires this workflow's push trigger.
+Rebuilding nightly is cheaper than it looks — the build is well under a minute,
+and each deployment replaces the last, so nothing accumulates. **Campus data
+changes do not wait for either schedule**: the scrape's commit fires this
+workflow's push trigger.
 
-The *building* is well under a minute. The run is not: after force-pushing
-`gh-pages` it waits for Pages to serve that exact archive, comparing a sha256
-rather than settling for a 200 — the previous deployment answers 200 for the
-whole window and would prove nothing. For a ~32 MB site of ~1,800 files, Pages
-has taken **between ten and fourteen minutes** to catch up, so the wait is
-budgeted at 35. The first three publishes here all reported "Pages never served
-this build" on a ten-minute budget while the deploy was working perfectly, which
-is a worse failure than having no check at all.
+### Why this deploys through Actions rather than a branch
+
+It used to force-push `dist/` to a `gh-pages` branch. That tells you the *push*
+worked and nothing whatever about the deployment, so the workflow polled the live
+URL waiting for a sha256 match and guessed at a timeout.
+
+It guessed wrong. A ~32 MB site of ~1,800 files took Pages ten to fourteen
+minutes on one measurement and over twenty-six on another, against a ten-minute
+budget — **three consecutive publishes reported "Pages never served this build"
+over deployments that were completely fine**. Raising the number once did not
+fix the shape of the problem: a publish job that blocks for half an hour to
+re-derive a fact GitHub already knows, and that cries wolf when it guesses low.
+A check that fails on healthy runs is worse than no check, because it trains you
+to ignore the one time it is right.
+
+`actions/deploy-pages` reports the deployment status directly, so there is
+nothing to poll and nothing to time out. The build job ends when `dist/` is
+uploaded; the deploy job ends when GitHub says the deployment succeeded.
+
+What survives from the old check is a short confirmation *after* that: a fetch of
+each published entry point, with no `curl -L`, because a redirect appearing there
+means the site is served differently than the styles were built for. That is the
+check that caught the `stodevx.github.io` redirect, and it is worth keeping — it
+just should not have been carrying the deployment wait on its back.
 
 ## Routing
 
