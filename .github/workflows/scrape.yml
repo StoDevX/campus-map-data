@@ -74,6 +74,11 @@ jobs:
       - name: Build map.json and map.geojson
         run: uv run scripts/build.py
 
+      - name: Build the routing graph
+        # The georeferencing fit is anchored on the scraped walkways and the
+        # building label anchors, so a change to either moves the graph.
+        run: uv run scripts/build_routing.py
+
       - name: Verify
         run: uv run scripts/verify.py
 
@@ -117,7 +122,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data map.json map.geojson
+          git add data map.json map.geojson routing.json
           git commit -m "Update campus data ($(date -u +%Y-%m-%d))" \
             -m "Scraped from the college's ArcGIS services by ${GITHUB_WORKFLOW} (run ${GITHUB_RUN_ID})."
 

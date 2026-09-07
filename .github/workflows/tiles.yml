@@ -71,6 +71,8 @@ jobs:
       # cache them across runs.
       - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
 
+      - run: uv sync --locked
+
       - name: Install tippecanoe
         # Tiles the campus layers and joins them into the basemap. build-tiles.sh
         # fetches the rest of its toolchain itself, but tippecanoe is a C++ build
@@ -80,6 +82,11 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq tippecanoe
           tippecanoe --version
+
+      - name: Build the routing graph
+        # Reads the scraped walkways, so it has to run after the data exists and
+        # before build-tiles.sh copies the publishable files into dist/.
+        run: uv run scripts/build_routing.py
 
       - name: Build
         run: ./build-tiles.sh
@@ -108,6 +115,7 @@ jobs:
           diff -q map.json dist/map.json
           diff -q map.geojson dist/map.geojson
           diff -r -q data dist/data
+          [ ! -f routing.json ] || diff -q routing.json dist/routing.json
           echo "OK: published data is byte-identical to the committed data"
 
       - name: Summarise the build
@@ -128,6 +136,9 @@ jobs:
               echo "Dry run — nothing published."
             fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify the routing graph
+        run: uv run scripts/verify.py
 
       - name: Publish to gh-pages
         if: github.event_name != 'pull_request'
@@ -180,7 +191,7 @@ jobs:
             exit 1
           fi
 
-          for path in style.json style-pmtiles.json map.json map.geojson index.html; do
+          for path in style.json style-pmtiles.json map.json map.geojson routing.json index.html; do
             code=$(curl -sS -o /dev/null -w '%{http_code}' "$base/$path")
             echo "$path -> $code"
             [ "$code" = "200" ] || exit 1

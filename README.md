@@ -14,6 +14,8 @@ Two things, for two different readers.
 | --- | --- | --- |
 | `data/*.geojson` | One file per source layer, the college's field names untouched | You want St. Olaf's data as St. Olaf publishes it |
 | `map.json`, `map.geojson` | 128 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
+| `routing.json` | A pedestrian routing graph | You want to walk someone from one door to another |
+| `vendor/ole-compass/` | The 2016 survey `routing.json` is built from | You are changing how the graph is georeferenced |
 
 Both are committed, and **the commit history is the change log for campus
 data**: when a building is renamed, a lot is restriped, or a footprint is
@@ -424,6 +426,7 @@ force-pushes on every build. It carries the tileset **and the campus data**:
 | `…/style.json` | the map style |
 | `…/campus.pmtiles`, `…/tiles/{z}/{x}/{y}.pbf` | the tileset, twice |
 | `…/map.json`, `…/map.geojson`, `…/data/` | the campus data |
+| `…/routing.json` | the pedestrian routing graph |
 | `…/` | a preview map you can pan around to check a build |
 
 all under `https://stolaf.dev/campus-map-data`.
@@ -459,3 +462,100 @@ Rebuilding nightly is cheaper than it looks — a run is well under a minute, an
 the force-push keeps `gh-pages` at a single commit however often it happens, so
 nothing accumulates. **Campus data changes do not wait for either schedule**: the
 scrape's commit fires this workflow's push trigger.
+
+## Routing
+
+`map.geojson` says where places are. `routing.json` says how to walk between
+them — a different question, and one the ArcGIS layers cannot answer. Their
+walkway linework has no connectivity model: two lines that cross on screen may
+or may not join, and nothing records where a building's door is.
+
+[`StoDevX/ole-compass`][oc] can answer it. Its `data/` holds a hand-built graph
+of 228 nodes tracing real sidewalks, indoor hallways and stairs, plus the node
+id of each building's entrance. **Nothing in ArcGIS or OpenStreetMap carries the
+indoor links, the stairs or the doors** — and on a campus built down a hillside,
+knowing which connection is stairs is an accessibility feature, not a detail.
+
+| Edge type | Length | |
+| --- | ---: | --- |
+| `sidewalk` | 9.80 km | |
+| `indoor` | 1.19 km | |
+| `stairs` | 0.70 km | |
+| `scraped walkway` | 0.68 km | connectors, see below |
+| `path` | 0.09 km | |
+
+**263 nodes, 371 edges, 32 of 38 buildings with a door.**
+
+### It is vendored, not fetched
+
+ole-compass is a **2016 C++/OpenGL course project whose last commit is dated
+2016-09-19** — an archive, not an upstream. There is no release, no tag and no
+maintainer to track, so fetching it at build time would mean a scheduled job
+depending on a dormant repository staying reachable, in exchange for updates
+that are never coming. Its three data files are copied into
+`vendor/ole-compass/` instead, with provenance and a commit sha in [its
+README](vendor/ole-compass/README.md). That makes this repo the owner, which is
+the honest position: nobody else is maintaining it.
+
+### The coordinates are pixels
+
+```
+228
+0	535 369	0
+```
+
+Each row is `id  x  y  indoor`, where `x`/`y` are **pixels on the original
+program's campus bitmap**, not longitude and latitude.
+`scripts/build_routing.py` fits them into WGS84 in two stages: an affine fit
+from each entrance button to its building's label anchor, then ICP refinement
+snapping outdoor nodes onto this repo's scraped walkways, iterated, with the
+building anchors kept in the fit so it cannot drift. That lands **61 outdoor
+nodes a median 4.0 m from the scraped paths**.
+
+Buildings ole-compass never surveyed are reached by tracing the scraped walkways
+out to them, marked as a distinct edge type so a router can prefer the surveyed
+network over a traced connector. Six buildings still have no door and are routed
+to at their nearest node — `aca`, `mfb`, `pumphouse`, `townhouses`, `tph`,
+`watertank` — and `verify.py` lists them on every run.
+
+### What `verify.py` asserts about it
+
+Beyond the bounds and reproducibility checks the rest of the data gets:
+
+- Every entrance resolves to a real place id, and points at a node that exists.
+- Every edge references two distinct nodes that exist, with a declared type.
+- **The graph is a single connected component.** A router fails quietly in a way
+  a map does not: a detached piece does not draw wrong, it just never returns a
+  path, and the caller cannot tell that from "no route exists".
+
+That last check earned its place immediately — it found two self-loops in the
+2016 data (`121  3  119 0  121 0  123 0`, node 121 listing itself as a
+neighbour). They are dropped during conversion and reported, because the defect
+is the source's rather than the conversion's.
+
+[oc]: https://github.com/StoDevX/ole-compass
+
+## Related work
+
+[`StoDevX/course-data-visualization`][cdv] independently reached the same ArcGIS
+layer and, like this repo, keys buildings by their `ABB` abbreviation — useful
+corroboration of both the source and the id scheme. Its
+`scripts/build_path_graph.py` is also where the ole-compass georeferencing was
+worked out, and `scripts/build_routing.py` here is adapted from it. Three things
+changed, all of which are why the numbers above beat its own:
+
+- **It reads this repo's layers** rather than copies of them.
+- **All 38 buildings, not 32.** Its building table is a dict keyed by `ABB`, and
+  the seven buildings with no abbreviation collide on the blank key `" "` — six
+  overwrite each other, leaving only the President's House, and the script
+  carries a `- {" "}` to work around the wreckage. Keying by this repo's ids
+  makes New Hall, the Townhouses and Tostrud Center routable destinations.
+- **Anchors, not vertex means.** Its centroid is the mean of a polygon's outer
+  ring, which lands outside anything L-shaped.
+
+It also dropped the `GranskouTunnel` button as unmappable. It is not a lost
+building: Alumni Hall's own prose calls it part of the "Clemens V. Granskou
+Compex [sic], named in the honor of the fifth president", so that button is
+Alumni Hall's way in — which is why `ahl` has a door here and not there.
+
+[cdv]: https://github.com/StoDevX/course-data-visualization
