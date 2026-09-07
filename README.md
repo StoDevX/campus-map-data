@@ -409,7 +409,7 @@ Two constraints inherited from map-tiles, both of which bite silently:
 ### Using it from AAO
 
 ```ts
-export const MAP_STYLE_URL = 'https://stodevx.github.io/campus-map-data/style.json'
+export const MAP_STYLE_URL = 'https://stolaf.dev/campus-map-data/style.json'
 ```
 
 [map-tiles]: https://github.com/carls-app/map-tiles
@@ -426,7 +426,15 @@ force-pushes on every build. It carries the tileset **and the campus data**:
 | `…/map.json`, `…/map.geojson`, `…/data/` | the campus data |
 | `…/` | a preview map you can pan around to check a build |
 
-all under `https://stodevx.github.io/campus-map-data`.
+all under `https://stolaf.dev/campus-map-data`.
+
+**Not `stodevx.github.io`.** The StoDevX Pages site has a custom domain, so
+GitHub 301s every project page to `stolaf.dev/<repo>/`. That redirect is
+harmless for ccc-server, which fetches one JSON file an hour and whose existing
+`GH_PAGES` helper already relies on it — but the style bakes absolute URLs for
+the glyphs, the sprites and every tile, and a redirect in front of ~985 tile
+requests is not something to ship to MapLibre Native. The styles point at the
+canonical host.
 
 The data files are published because Pages serves one branch and ccc-server
 needs a URL — `carls-app/map-data` serves Carleton's the same way. They are

@@ -153,7 +153,11 @@ jobs:
         # the app fetches is not" — including ccc-server's map.geojson, which is
         # the reason the data files are published here at all.
         run: |
-          base="https://stodevx.github.io/campus-map-data"
+          # The canonical host — see SITE_URL in build-tiles.sh. Checked without
+          # curl -L on purpose: if this ever starts redirecting, that is a real
+          # change in how the site is served and should fail here rather than be
+          # silently followed.
+          base="https://stolaf.dev/campus-map-data"
           want=$(sha256sum dist/campus.pmtiles | cut -d' ' -f1)
 
           # Wait until Pages is serving *this* build. Waiting for a 200 is not
@@ -169,8 +173,10 @@ jobs:
           done
           if [ "$got" != "$want" ]; then
             echo "Pages never served this build — wanted $want, still getting $got" >&2
-            echo "If this is the first ever run, Pages may not be enabled: set it to" >&2
-            echo "deploy from the gh-pages branch in the repository settings." >&2
+            echo "If this is the first ever run, Pages may not be enabled, or may not" >&2
+            echo "be set to deploy from the gh-pages branch. Check the repository's" >&2
+            echo "Pages settings. If it answers a redirect rather than the file, the" >&2
+            echo "custom domain may have changed — see SITE_URL in build-tiles.sh." >&2
             exit 1
           fi
 

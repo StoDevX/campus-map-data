@@ -87,7 +87,15 @@ TIERS=(
 
 # Where the built site is served from. Written into the styles as absolute URLs,
 # since MapLibre Native resolves style-relative URLs inconsistently.
-SITE_URL="${SITE_URL:-https://stodevx.github.io/campus-map-data}"
+#
+# stolaf.dev, not stodevx.github.io. The StoDevX Pages site has a custom domain,
+# so GitHub 301s every project page to `stolaf.dev/<repo>/` — and these URLs are
+# baked into style.json for the glyphs, the sprites and every tile. Pointing them
+# at the redirecting host would put an extra round trip in front of each of the
+# ~985 tile requests, on a client (MapLibre Native) whose redirect handling is
+# not something this repo can test. The canonical host serves the same files
+# with no hop.
+SITE_URL="${SITE_URL:-https://stolaf.dev/campus-map-data}"
 
 # Credited on every published form: the styles' source `attribution`, and the
 # archive's own metadata. St. Olaf's campus data is the college's, not
