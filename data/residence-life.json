@@ -1,0 +1,200 @@
+{
+  "https://wp.stolaf.edu/residencelife/ellingson/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2020/05/Res-Life-Ellingson-Floor-Plan.pdf",
+        "label": "View Ellingson Hall Floor Plan"
+      }
+    ],
+    "name": "Ellingson Hall",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2025/08/Ellingson-Hall_Room-Photos.pdf"
+    ]
+  },
+  "https://wp.stolaf.edu/residencelife/hillkitt/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2025/03/Hill-Kitt_Room-Number-Plans.pdf",
+        "label": "Hilleboe and Kittelsby Floor Plans"
+      }
+    ],
+    "name": "Hilleboe and Kittelsby Halls",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2025/08/HillKitt-Hall_Room-Photos-2.pdf"
+    ]
+  },
+  "https://wp.stolaf.edu/residencelife/hoyme/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2020/05/Res-Life-Hoyme.Memorial-Hall-Floor-Plans-09182015pdf.pdf",
+        "label": "Hoyme Hall Floor Plans"
+      }
+    ],
+    "name": "Hoyme Hall",
+    "photos": []
+  },
+  "https://wp.stolaf.edu/residencelife/kildahl/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2025/06/kildhal-floor.pdf",
+        "label": "Kildahl Floor Plans"
+      }
+    ],
+    "name": "Kildahl Hall",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2025/08/Kildahl-Hall_Room-Photos.pdf"
+    ]
+  },
+  "https://wp.stolaf.edu/residencelife/larson/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/wp-content/blogs.dir/100/files/2013/03/Larson-Hall-Typical-Floors-Plan-.pdf",
+        "label": "Larson Hall Floor Plan"
+      }
+    ],
+    "name": "Larson Hall",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2025/12/Larson-Hall_Room-Photos-2.pdf"
+    ]
+  },
+  "https://wp.stolaf.edu/residencelife/mellby/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Bsmt-Floor-Mellby-plans.pdf",
+        "label": "Basement Floor Mellby plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/First-Floor-Mellby-plans.pdf",
+        "label": "First Floor Mellby plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Mellby-plans.pdf",
+        "label": "Second Floor Mellby plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Mellby-plans.pdf",
+        "label": "Third Floor Mellby plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Fourth-Floor-Mellby-plans.pdf",
+        "label": "Fourth Floor Mellby plans"
+      }
+    ],
+    "name": "Mellby Hall",
+    "photos": []
+  },
+  "https://wp.stolaf.edu/residencelife/mohn/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2020/05/Res-Life-Mohn-Hall-Floor-Plans-09182015.pdf",
+        "label": "Mohn Hall Floor Plans"
+      }
+    ],
+    "name": "Mohn Hall",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2025/08/Mohn-Hall_Room-Photos-1.pdf"
+    ]
+  },
+  "https://wp.stolaf.edu/residencelife/new-hall/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2022/04/New-Hall-Floor-Plans-1.pdf",
+        "label": "Visit the New Hall Floor Plan"
+      }
+    ],
+    "name": "New Hall",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2026/02/New-Hall_Room-Photos.pdf"
+    ]
+  },
+  "https://wp.stolaf.edu/residencelife/rand/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/First-Floor-Rand-plans.pdf",
+        "label": "First Floor Rand plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Rand-plans.pdf",
+        "label": "Second Floor Rand plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Rand-plans.pdf",
+        "label": "Third Floor Rand plans"
+      }
+    ],
+    "name": "Rand Hall",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2025/12/RAND-Hall_Room-Photos-2.pdf"
+    ]
+  },
+  "https://wp.stolaf.edu/residencelife/thorson/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Basement-Level-Floor-Thorson.pdf",
+        "label": "Basement Level Floor Thorson"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/First-Floor-Thorson.pdf",
+        "label": "First Floor Thorson"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Thorson.pdf",
+        "label": "Second Floor Thorson"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Thorson.pdf",
+        "label": "Third Floor Thorson"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Fourth-Floor-Thorson.pdf",
+        "label": "Fourth Floor Thorson"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Fifth-Floor-Thorson.pdf",
+        "label": "Fifth Floor Thorson"
+      }
+    ],
+    "name": "Thorson Hall",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2025/08/Thorson-Hall_Room-Photos-1-1.pdf"
+    ]
+  },
+  "https://wp.stolaf.edu/residencelife/townhouses/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2022/04/Olaf-Townhome-Level-1.pdf",
+        "label": "Townhouse Level 1"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2022/04/Olaf-Townhome-Level-2.pdf",
+        "label": "Townhouse Level 2"
+      }
+    ],
+    "name": "Townhouses",
+    "photos": []
+  },
+  "https://wp.stolaf.edu/residencelife/ytterboe/": {
+    "floors": [
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Zero-Grnd-Floor-Ytterboe-Hall-plans.pdf",
+        "label": "Zero Ground Floor Ytterboe Hall plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2022/05/Ytterboe-1st-floor-map.pdf",
+        "label": "Floor Ytterboe Hall plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Ytterboe-Hall-plans.pdf",
+        "label": "Second Floor Ytterboe Hall plans"
+      },
+      {
+        "href": "https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Ytterboe-Hall-plans.pdf",
+        "label": "Third Floor Ytterboe Hall plans"
+      }
+    ],
+    "name": "Ytterboe Hall",
+    "photos": [
+      "https://wp.stolaf.edu/residencelife/files/2025/12/Ytterboe_Room-Photos-2.pdf"
+    ]
+  }
+}

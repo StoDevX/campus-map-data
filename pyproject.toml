@@ -1,0 +1,23 @@
+[project]
+name = "stolaf-campus-map-data"
+version = "1.0.0"
+description = "St. Olaf College campus map data, scraped from the college's ArcGIS services"
+requires-python = ">=3.13"
+
+# Two dependencies, and no more. PyYAML reads overrides.yaml; pmtiles reads the
+# built archive in explode.py and verify-tiles.py. Everything else — the ArcGIS
+# client, the HTML extraction, the geometry, the tiling — is stdlib or an
+# external binary, which keeps a job that runs unattended for months off a
+# supply chain it does not need.
+dependencies = ["pyyaml==6.0.3", "pmtiles==3.7.0"]
+
+[dependency-groups]
+dev = ["ruff==0.16.2"]
+
+[tool.ruff.lint]
+extend-select = [
+  "I",    # import sorting
+  "UP",   # pyupgrade
+  "B",    # bugbear
+  "SIM",  # simplify
+]

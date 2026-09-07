@@ -1,0 +1,11 @@
+.DS_Store
+
+# Build output
+dist/
+.work/
+
+# Dependencies and caches
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]

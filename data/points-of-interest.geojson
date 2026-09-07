@@ -1,0 +1,171 @@
+{
+  "type": "FeatureCollection",
+  "name": "points-of-interest",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "_layer": "Windmill"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1925058772085,
+          44.4624005961479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Admissions Office",
+        "Details": "Visit the website for current office hours and to connect with the Admissions office.",
+        "Contact": "Phone: 800-800-3025\r\nEmail: admissions@stolaf.edu",
+        "Website": "https://wp.stolaf.edu/admissions/",
+        "_layer": "Admissions Office"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1843335419461,
+          44.4603372383909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Buntrock Commons Parking Lot - Electric Vehicle Charger",
+        "Details": null,
+        "Contact": null,
+        "Website": null,
+        "_layer": "Electric Vehicle Charger"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1835471369834,
+          44.46311044635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Memorial Chime Tower",
+        "Details": "Built by members of the St. Olaf community over the summer of 2003, this Scandinavian-style wooden tower commemorates the lives of students who have died while enrolled at St. Olaf. The chimes, tuned to the key of F. Melius Christiansen’s iconic hymn “Beautiful Savior,” are engraved with the names of those students. On windy days, the sound of the chimes can be heard almost everywhere on campus. It serves as a precious and beautiful reminder of those we have lost both past and present here on the Hill.",
+        "Website": "https://150th.stolaf.edu/then-and-now/stop-10/",
+        "_layer": "Wind Chime Memorial"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1839371800899,
+          44.4611170645712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "St. Olaf College Bookstore",
+        "Details": "Hours: Monday - Thursday: 9am - 5pm, Friday: 9am - 4pm, Saturday: 10am - 3pm, Sunday: Closed",
+        "Contact": "https://stolaf.bncollege.com/customer-service",
+        "Website": "https://stolaf.bncollege.com/",
+        "_layer": "St. Olaf College Bookstore"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1831615037067,
+          44.4620845892068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Stav Hall",
+        "Details": "Located on the second floor of Buntrock Commons, Stav Hall is the central dining room on campus. It offers students and guests all-you-can-eat dining for breakfast, lunch, and dinner. Stations throughout the cafeteria offer a wide variety of food, from chef-carved meats with home-style casseroles to creative vegan entrees to pan-Asian cuisine. Stav Hall also features two soups made in house daily, an extensive fruit and salad bar, and a selection of outstanding desserts.",
+        "Contact": null,
+        "Website": "https://stolaf.cafebonappetit.com/",
+        "_layer": "Buntrock Commons - Dining"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1827291256958,
+          44.461770434743
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "The Cage",
+        "Details": "Located on the first floor of Buntrock Commons, The Cage offers various made-to-order menu options along with a variety of healthy, freshly-made grab and go items. Enjoy fair trade organic Peace coffee, house-made bakery items, multiple flavors of ice cream, and a vast array of bottled beverages.",
+        "Contact": null,
+        "Website": "https://stolaf.cafebonappetit.com/",
+        "_layer": "Buntrock Commons - Dining"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1827252306007,
+          44.4619428027804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "The Kings' Dining Room",
+        "Details": "Located on the second floor of Buntrock Commons on the beautiful St. Olaf campus. This room is open to reserve 7 days a week, and weekly dining offerings are served Monday - Friday, 11:00 a.m. - 1:30 p.m.\r\n\r\nThe Kings' Dining Room is the perfect spot to have a delicious, made from scratch meal, whether it is for a business meeting or a gathering of friends and family!",
+        "Contact": null,
+        "Website": "https://stolaf.cafebonappetit.com/",
+        "_layer": "Buntrock Commons - Dining"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1831264460544,
+          44.4619428027804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "The Lion's Pause",
+        "Details": "On-campus Pizza Delivery, weekends only",
+        "Contact": "507-786-3869",
+        "Website": null,
+        "_layer": "Buntrock Commons - Dining"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1825499423393,
+          44.4620957097842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Visitor Information Desk",
+        "Details": "Building Hours: Sunday - Thursday 7am - 12am, Friday & Saturday 7am - 1am; Buntrock OFFICE (BC 007) Hours: Monday – Friday: 8am-12pm/ 1pm-5pm, Saturday & Sunday: Closed",
+        "Contact": null,
+        "Website": "https://wp.stolaf.edu/buntrock/",
+        "_layer": "Buntrock Commons - Visitor Desk"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1828707585751,
+          44.46205956806
+        ]
+      }
+    }
+  ]
+}

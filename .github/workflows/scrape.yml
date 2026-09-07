@@ -1,0 +1,133 @@
+name: Scrape campus data
+
+on:
+  # Monthly, on the 1st at 06:00 UTC. Campus data changes a handful of times a
+  # year — a building renamed, a lot restriped — so a daily poll was almost all
+  # no-op runs. Anything that needs to land sooner can be dispatched by hand,
+  # and a push that changes how the data is derived still rebuilds immediately.
+  #
+  # Deliberately not the tile workflow's cadence. That one tracks OpenStreetMap,
+  # which changes daily, and runs daily to match carls-app/map-tiles; this one
+  # tracks the college's ArcGIS services, which do not.
+  schedule:
+    - cron: "0 6 1 * *"
+
+  workflow_dispatch:
+
+  # Anything that changes how the data is derived should regenerate it, not wait
+  # for the cron. Note this deliberately does not include `data/**`, `map.json`
+  # or `map.geojson` — those are what this workflow commits, and triggering on
+  # them would make it re-trigger itself forever.
+  push:
+    branches: [main]
+    paths:
+      - scripts/**
+      - overrides.yaml
+      - pyproject.toml
+      - uv.lock
+      - .github/workflows/scrape.yml
+
+  # Dry run on every PR: scrape, build, check, commit nothing. Without this the
+  # workflow could only be exercised by merging it.
+  pull_request:
+
+# To push the regenerated data back to main.
+permissions:
+  contents: write
+
+concurrency:
+  # PRs get their own group so a dry run can never queue behind, or cancel, a
+  # scheduled scrape.
+  group: >-
+    ${{ github.event_name == 'pull_request'
+        && format('scrape-dryrun-{0}', github.ref)
+        || 'scrape' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
+
+      # The interpreter comes from mise.toml/mise.lock and the packages from
+      # uv.lock, so CI runs exactly what a local `mise install` gives you.
+      - run: uv sync --locked
+
+      - name: Scrape the ArcGIS layers
+        run: uv run scripts/scrape.py
+
+      - name: Scrape floor plans from wp.stolaf.edu
+        # Deliberately non-fatal. The college's WordPress being down is not a
+        # reason to throw away a good ArcGIS scrape: build.py falls back to the
+        # committed data/residence-life.json, so the floor plans stay at their
+        # last known good values and everything else still updates. The step
+        # shows as failed in the run, and the summary below says so.
+        id: enrich
+        continue-on-error: true
+        run: uv run scripts/enrich.py
+
+      - name: Build map.json and map.geojson
+        run: uv run scripts/build.py
+
+      - name: Verify
+        run: uv run scripts/verify.py
+
+      - name: Summarise
+        run: |
+          {
+            echo "## Campus data"
+            echo
+            echo "| | |"
+            echo "| --- | ---: |"
+            echo "| places | $(python3 -c 'import json;print(len(json.load(open("map.json"))))') |"
+            echo "| with a footprint | $(python3 -c 'import json;print(sum(1 for r in json.load(open("map.json")) if r["outline"]))') |"
+            echo "| raw features | $(python3 -c 'import json,glob;print(sum(len(json.load(open(f))["features"]) for f in glob.glob("data/*.geojson")))') |"
+            echo
+            if [ "${{ steps.enrich.outcome }}" != "success" ]; then
+              echo "> [!WARNING]"
+              echo "> The wp.stolaf.edu scrape failed; floor plans are unchanged from the last good run."
+              echo
+            fi
+            echo '### Changes'
+            echo
+            if git diff --quiet; then
+              echo "None — the published data already matches the source."
+            else
+              echo '```'
+              git diff --stat
+              echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit
+        if: github.event_name != 'pull_request'
+        # Only when something actually moved. A no-op commit on every run would
+        # destroy the thing that makes committing this data worth doing: the
+        # history being a readable log of what changed on campus and when.
+        run: |
+          if git diff --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data map.json map.geojson
+          git commit -m "Update campus data ($(date -u +%Y-%m-%d))" \
+            -m "Scraped from the college's ArcGIS services by ${GITHUB_WORKFLOW} (run ${GITHUB_RUN_ID})."
+
+          # The scheduled run races nothing but itself, and concurrency already
+          # prevents that. A rebase covers a human push landing mid-run.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "push failed, rebasing and retrying ($attempt/3)"
+            git pull --rebase origin main
+          done
+          exit 1
