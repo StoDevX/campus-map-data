@@ -18,6 +18,13 @@ every anchor carries a `kind` the style can gate on zoom.
 | `campus_buildings` | MultiPolygon | The 38 building footprints — what the app hit-tests |
 | `campus_grounds` | MultiPolygon | Parking lots and athletic fields |
 | `campus_labels` | Point | Every anchor, with `kind` and `hasFootprint` |
+| `campus_paths` | MultiLineString | The college's walkways and Natural Lands trails |
+
+`campus_paths` comes from `data/` rather than `map.geojson`, because walkways
+are not *places* — they have no name, no id and no label — so `build.py` leaves
+them out of the published dataset. They matter here anyway: this is a map people
+walk around a campus with, and 23 km of the college's own path data was being
+scraped and then dropped on the floor.
 
 `buildingId` is on all three and is the source feature's `id` — the same
 property name `map-tiles` uses, so AAO's selection code keys off it unchanged.
@@ -87,7 +94,56 @@ def polygons_of(geometry: dict) -> list:
     return []
 
 
-def main(src: str, outdir: str) -> None:
+# Paths come from these scraped layers, with the `kind` each contributes. The
+# college's walkway layer is 138 lines and about as complete as the pedestrian
+# graph in StoDevX/ole-compass (9.7 km of sidewalk); the trails are the Natural
+# Lands, which are most of the campus by area.
+PATH_SOURCES = (
+    ("walkways.geojson", "walkway"),
+    ("natural-lands-trails.geojson", "trail"),
+)
+
+
+def linestrings_of(geometry: dict) -> list:
+    """Every line in a geometry, as a list of MultiLineString-shaped parts."""
+    kind = geometry.get("type")
+    if kind == "LineString":
+        return [geometry["coordinates"]]
+    if kind == "MultiLineString":
+        return list(geometry["coordinates"])
+    return []
+
+
+def paths(datadir: str) -> list[dict]:
+    features = []
+    for filename, kind in PATH_SOURCES:
+        path = os.path.join(datadir, filename)
+        if not os.path.exists(path):
+            print(f"  note: {path} missing, no {kind} paths", file=sys.stderr)
+            continue
+        with open(path) as f:
+            collection = json.load(f)
+        lines = [
+            line
+            for feature in collection.get("features") or []
+            for line in linestrings_of(feature.get("geometry") or {})
+        ]
+        # One feature per kind rather than per source line. Nothing here is
+        # individually addressable — no name, no id — and merging lets the
+        # renderer treat the whole network as one thing.
+        if lines:
+            features.append(
+                {
+                    "type": "Feature",
+                    "geometry": {"type": "MultiLineString", "coordinates": lines},
+                    "properties": {"kind": kind},
+                }
+            )
+        print(f"  {kind:<8} {len(lines)} lines from {filename}")
+    return features
+
+
+def main(src: str, datadir: str, outdir: str) -> None:
     with open(src) as f:
         data = json.load(f)
     features = data.get("features") or []
@@ -98,6 +154,7 @@ def main(src: str, outdir: str) -> None:
         "campus_buildings": [],
         "campus_grounds": [],
         "campus_labels": [],
+        "campus_paths": [],
     }
     problems = []
 
@@ -156,15 +213,21 @@ def main(src: str, outdir: str) -> None:
         else:
             problems.append(f"{feature['id']}: no label anchor, will not be labelled")
 
+    collections["campus_paths"] = paths(datadir)
+
     os.makedirs(outdir, exist_ok=True)
     for name, collection in collections.items():
         # Sorted so a rebuild of unchanged data produces an identical file.
-        collection.sort(key=lambda f: f["properties"]["buildingId"])
+        collection.sort(
+            key=lambda f: f["properties"].get("buildingId") or f["properties"]["kind"]
+        )
         with open(os.path.join(outdir, f"{name}.geojson"), "w") as out:
             json.dump({"type": "FeatureCollection", "features": collection}, out)
 
     print(f"  {len(features)} source features")
     for name, collection in collections.items():
+        if name == "campus_paths":
+            continue  # already reported above, per source
         extra = ""
         if name == "campus_labels":
             without = sum(1 for f in collection if not f["properties"]["hasFootprint"])
@@ -182,6 +245,7 @@ def main(src: str, outdir: str) -> None:
         f["properties"]["buildingId"]
         for collection in collections.values()
         for f in collection
+        if "buildingId" in f["properties"]
     }
     missing = {f["id"] for f in features if f.get("id")} - covered
     if missing:
@@ -200,6 +264,7 @@ def main(src: str, outdir: str) -> None:
             ("campus_buildings", env_floor("MIN_CAMPUS_BUILDINGS")),
             ("campus_grounds", env_floor("MIN_CAMPUS_GROUNDS")),
             ("campus_labels", env_floor("MIN_CAMPUS_LABELS")),
+            ("campus_paths", env_floor("MIN_CAMPUS_PATHS")),
         )
         if len(collections[name]) < floor
     ]
@@ -213,6 +278,6 @@ def main(src: str, outdir: str) -> None:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        raise SystemExit("usage: campus-layers.py <map.geojson> <outdir>")
-    main(sys.argv[1], sys.argv[2])
+    if len(sys.argv) != 4:
+        raise SystemExit("usage: campus-layers.py <map.geojson> <data-dir> <outdir>")
+    main(sys.argv[1], sys.argv[2], sys.argv[3])

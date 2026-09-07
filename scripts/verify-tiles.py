@@ -49,7 +49,9 @@ def fontstacks(value, found: set[str]) -> None:
 # The three layers scripts/campus-layers.py produces. A style that stopped
 # referencing one of them would render a campus with no parking, or no labels,
 # and report nothing — the same silent class as a missing source-layer.
-CAMPUS_LAYERS = frozenset({"campus_buildings", "campus_grounds", "campus_labels"})
+CAMPUS_LAYERS = frozenset(
+    {"campus_buildings", "campus_grounds", "campus_paths", "campus_labels"}
+)
 
 
 def main(dist: str) -> None:

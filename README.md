@@ -242,8 +242,10 @@ had moved to Nebraska.
 
 ## Scheduled scraping
 
-`.github/workflows/scrape.yml` runs daily at 06:00 UTC, and on any push that
-changes how the data is derived (`scripts/`, `overrides.yaml`, the lockfiles).
+`.github/workflows/scrape.yml` runs monthly, on the 1st at 06:00 UTC, and on any
+push that changes how the data is derived (`scripts/`, `overrides.yaml`, the
+lockfiles). Campus data changes a handful of times a year, so a daily poll was
+almost all no-op runs; anything urgent can be dispatched by hand.
 It scrapes, builds, verifies, and commits to `main` **only if something
 changed** — a no-op commit on every run would destroy the history's value. Every
 PR gets a dry run: same pipeline, nothing committed.
@@ -297,7 +299,7 @@ one app over two colleges and students move between them, so matching bboxes
 means the two tilesets are interchangeable rather than each being wrong outside
 its own campus.
 
-### Three campus layers, not two
+### Four campus layers, not two
 
 map-tiles tiles Carleton's data as footprints and label anchors. St. Olaf's does
 not fit that shape:
@@ -313,6 +315,7 @@ buries the campus. So:
 | --- | --- | ---: | --- |
 | `campus_buildings` | MultiPolygon | 38 | z14+ |
 | `campus_grounds` | MultiPolygon | 54 | z14+ |
+| `campus_paths` | MultiLineString | 168 lines | z15+ |
 | `campus_labels` | Point | 128 | z15+ |
 
 Every anchor carries a `kind`, which is what lets the style bring each sort of
@@ -324,6 +327,24 @@ AAO's selection code keys off it unchanged.
 The 26 accessible-parking points get their own `kind` for one reason: they all
 share the name "Accessible Parking", and without it the style stamps that label
 26 times across campus.
+
+`campus_paths` comes from `data/` rather than `map.geojson`, because walkways
+are not *places* — no name, no id, nothing to label — so `build.py` leaves them
+out of the published dataset. They belong on the map regardless: this is
+something people walk around a campus with, and the college's 10.8 km of
+walkways plus 12 km of Natural Lands trails were being scraped and then dropped.
+
+### Why the campus looked like it had no sidewalks
+
+It has them; they were invisible. Protomaps draws footways at `#ebebeb`, which
+is tuned to read as a pale line on stock's cooler `#e2dfda` earth. Against the
+warmer, lighter earth this theme uses, it vanishes into the background — so the
+paths were being drawn the whole time and could not be seen. They are darkened
+here to read as a path on light ground, the way a trail map draws one.
+
+That is a good example of why the cartography gets checked by rendering it: no
+amount of reading the style would have shown it, because nothing was wrong with
+the style — the two colours were simply chosen against different backgrounds.
 
 ### The theme
 
@@ -392,6 +413,15 @@ export const MAP_STYLE_URL = 'https://stodevx.github.io/campus-map-data/style.js
 ```
 
 [map-tiles]: https://github.com/carls-app/map-tiles
+
+### Tile publishing
+
+`.github/workflows/tiles.yml` runs monthly an hour after the scrape, and on any
+push that changes the data or the pipeline. The monthly cadence tracks
+OpenStreetMap, not the college — an OSM edit around campus takes up to a month
+to reach the app, which is the trade for not rebuilding a 6 MB tileset nightly
+to publish nothing new. **Campus data changes do not wait for it**: the scrape's
+commit lands on the push trigger.
 
 ## Publishing
 

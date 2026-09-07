@@ -54,6 +54,9 @@ CAMPUS_GEOJSON="map.geojson"
 # fill at the zoom its neighbours have one looks like missing data.
 CAMPUS_BUILDINGS_MINZOOM=14
 CAMPUS_GROUNDS_MINZOOM=14
+# Paths a zoom later than the fills: at z14 the campus is ~120 px across and the
+# walkway network is an unreadable smudge at any line width.
+CAMPUS_PATHS_MINZOOM=15
 CAMPUS_LABELS_MINZOOM=15
 
 # How finely campus geometry is stored, as a power of two: 14 means 16384 units
@@ -126,6 +129,7 @@ PAGES_FILE_LIMIT=100000000
 MIN_CAMPUS_BUILDINGS=34   # currently 38
 MIN_CAMPUS_GROUNDS=48     # currently 54
 MIN_CAMPUS_LABELS=115     # currently 128
+MIN_CAMPUS_PATHS=2        # walkways and trails, one merged feature each
 MIN_TILES=900             # currently ~985
 MIN_ARCHIVE_BYTES=5000000 # currently ~6.4 MB
 
@@ -275,7 +279,8 @@ log "Building the campus layers"
 MIN_CAMPUS_BUILDINGS="$MIN_CAMPUS_BUILDINGS" \
 MIN_CAMPUS_GROUNDS="$MIN_CAMPUS_GROUNDS" \
 MIN_CAMPUS_LABELS="$MIN_CAMPUS_LABELS" \
-  py "$ROOT/scripts/campus-layers.py" "$ROOT/$CAMPUS_GEOJSON" "$WORK"
+MIN_CAMPUS_PATHS="$MIN_CAMPUS_PATHS" \
+  py "$ROOT/scripts/campus-layers.py" "$ROOT/$CAMPUS_GEOJSON" "$ROOT/data" "$WORK"
 
 # Nothing may be dropped: there are barely a hundred features and every one is a
 # place someone might be trying to find. Hence --no-feature-limit and
@@ -289,6 +294,13 @@ for layer in campus_buildings campus_grounds; do
     --no-feature-limit --no-tile-size-limit --no-tiny-polygon-reduction \
     "$WORK/$layer.geojson"
 done
+
+tippecanoe -q -f -o "$WORK/campus_paths.pmtiles" \
+  --layer=campus_paths \
+  --minimum-zoom="$CAMPUS_PATHS_MINZOOM" --maximum-zoom="$MAXZOOM" \
+  --full-detail="$CAMPUS_DETAIL" \
+  --no-feature-limit --no-tile-size-limit --no-line-simplification \
+  "$WORK/campus_paths.geojson"
 
 tippecanoe -q -f -o "$WORK/campus_labels.pmtiles" \
   --layer=campus_labels \
@@ -308,6 +320,7 @@ tile-join -f -pk -A "$ATTRIBUTION" -o "$DIST/campus.pmtiles" \
   "$WORK/basemap.pmtiles" \
   "$WORK/campus_buildings.pmtiles" \
   "$WORK/campus_grounds.pmtiles" \
+  "$WORK/campus_paths.pmtiles" \
   "$WORK/campus_labels.pmtiles" >/dev/null
 
 $PMTILES verify "$DIST/campus.pmtiles"
@@ -368,6 +381,7 @@ CENTER_LON="$CENTER_LON" CENTER_LAT="$CENTER_LAT" CENTER_ZOOM="$CENTER_ZOOM" \
 ATTRIBUTION="$ATTRIBUTION" \
 CAMPUS_BUILDINGS_MINZOOM="$CAMPUS_BUILDINGS_MINZOOM" \
 CAMPUS_GROUNDS_MINZOOM="$CAMPUS_GROUNDS_MINZOOM" \
+CAMPUS_PATHS_MINZOOM="$CAMPUS_PATHS_MINZOOM" \
 CAMPUS_LABELS_MINZOOM="$CAMPUS_LABELS_MINZOOM" \
 OSM_BUILDINGS="$OSM_BUILDINGS" \
   node "$ROOT/scripts/make-style.mjs" "$DIST"

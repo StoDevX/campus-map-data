@@ -61,6 +61,11 @@ const CENTER_ZOOM = Number(env("CENTER_ZOOM"));
 //   parks      Stock's saturated park green covers most of the frame — St.
 //              Olaf's Natural Lands are 350 acres of the campus. Desaturated so
 //              they read as ground rather than as highlighted areas.
+//   paths      Stock draws footways at #ebebeb, which is designed to read as a
+//              pale line on stock's cooler #e2dfda earth. Against the warmer,
+//              lighter earth here it disappears completely — the campus looked
+//              like it had no sidewalks at all. Darkened so a path reads as a
+//              path on light ground, the way a trail map draws one.
 //   buildings  Warmed into the same family as the campus gold, and pulled down
 //              in chroma. This one is not a taste call — see "Why the OSM
 //              buildings are warm" below.
@@ -82,6 +87,11 @@ const flavor = {
 
   earth: "#efece4",
   background: "#efece4",
+
+  // Footways and unclassified ways. See "paths" above — this is the single
+  // most consequential value in the file for a map people walk around with.
+  other: "#e2ddd0",
+  bridges_other: "#e2ddd0",
 
   buildings: "#ded2b4",
 
@@ -117,6 +127,7 @@ const styleLayers = layers("basemap", flavor, { lang: "en" });
 
 const CAMPUS_BUILDINGS_MINZOOM = Number(env("CAMPUS_BUILDINGS_MINZOOM"));
 const CAMPUS_GROUNDS_MINZOOM = Number(env("CAMPUS_GROUNDS_MINZOOM"));
+const CAMPUS_PATHS_MINZOOM = Number(env("CAMPUS_PATHS_MINZOOM"));
 const CAMPUS_LABELS_MINZOOM = Number(env("CAMPUS_LABELS_MINZOOM"));
 const OSM_BUILDINGS = env("OSM_BUILDINGS");
 
@@ -208,6 +219,28 @@ const campusLayers = [
       "line-color": ["match", ["get", "kind"], "athletics", "#b6c7a8", "#cdcbc2"],
       "line-width": ["interpolate", ["linear"], ["zoom"], 15, 0.4, 18, 1],
       "line-opacity": 0.9,
+    },
+  },
+  // The college's own walkways and Natural Lands trails.
+  //
+  // OSM has good footway coverage over the campus core, but the college's
+  // walkway layer is 138 lines and 10.8 km — comparable to the pedestrian graph
+  // in StoDevX/ole-compass — and its Natural Lands trails add another 12 km
+  // that OSM largely does not have. All of it was being scraped into data/ and
+  // then dropped, which is a strange thing for a campus wayfinding map to do.
+  //
+  // Drawn over `campus_grounds` so a walk through a parking lot still reads,
+  // and under `campus_buildings` so nothing crosses a building.
+  {
+    id: "campus_paths",
+    type: "line",
+    source: "basemap",
+    "source-layer": "campus_paths",
+    minzoom: CAMPUS_PATHS_MINZOOM,
+    paint: {
+      "line-color": ["match", ["get", "kind"], "trail", "#c8cdb6", "#d6cfbd"],
+      "line-width": ["interpolate", ["exponential", 1.6], ["zoom"], 15, 0.5, 20, 6],
+      "line-opacity": 0.95,
     },
   },
   {
@@ -348,7 +381,7 @@ const base = {
     "stolaf:generated-by": "StoDevX/campus-map-data",
     "stolaf:schema": "protomaps basemap v4",
     "stolaf:style-package": `@protomaps/basemaps@${basemapsVersion}`,
-    "stolaf:campus-layers": "campus_buildings, campus_grounds, campus_labels",
+    "stolaf:campus-layers": "campus_buildings, campus_grounds, campus_paths, campus_labels",
     "stolaf:osm-buildings": OSM_BUILDINGS,
     "stolaf:note":
       "OSM basemap plus St. Olaf's own footprints and label anchors, from this " +
@@ -409,7 +442,7 @@ writeFileSync(
 );
 
 console.log(
-  `  campus layers       campus_buildings (z${CAMPUS_BUILDINGS_MINZOOM}+), campus_grounds (z${CAMPUS_GROUNDS_MINZOOM}+), campus_labels (z${CAMPUS_LABELS_MINZOOM}+), OSM buildings: ${OSM_BUILDINGS}`,
+  `  campus layers       campus_buildings (z${CAMPUS_BUILDINGS_MINZOOM}+), campus_grounds (z${CAMPUS_GROUNDS_MINZOOM}+), campus_paths (z${CAMPUS_PATHS_MINZOOM}+), campus_labels (z${CAMPUS_LABELS_MINZOOM}+), OSM buildings: ${OSM_BUILDINGS}`,
 );
 console.log(
   `  style.json          ${styleLayers.length} layers, tiles/{z}/{x}/{y}.pbf, z${MINZOOM}-z${MAXZOOM}`,

@@ -1,12 +1,12 @@
 name: Scrape campus data
 
 on:
-  # Daily. Campus data changes a handful of times a year, but a run that finds
-  # nothing commits nothing, so the cost of checking often is a minute of CI and
-  # the benefit is that an ArcGIS edit reaches the app the next morning instead
-  # of whenever someone remembers to look.
+  # Monthly, on the 1st at 06:00 UTC. Campus data changes a handful of times a
+  # year — a building renamed, a lot restriped — so a daily poll was almost all
+  # no-op runs. Anything that needs to land sooner can be dispatched by hand,
+  # and a push that changes how the data is derived still rebuilds immediately.
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0 6 1 * *"
 
   workflow_dispatch:
 
