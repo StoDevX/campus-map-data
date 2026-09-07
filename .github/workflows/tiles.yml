@@ -44,10 +44,9 @@ on:
   # this the workflow could only be exercised by merging it.
   pull_request:
 
-# Deploying through the Pages Actions integration rather than by force-pushing a
-# branch, so this needs `pages: write` and the OIDC token `deploy-pages` uses to
-# prove the deployment came from this workflow — and no longer needs write access
-# to the repository's contents at all.
+# `pages: write` to deploy, and the OIDC token `deploy-pages` uses to prove the
+# deployment came from this workflow. Nothing here writes to the repository, so
+# `contents` stays read-only.
 permissions:
   contents: read
   pages: write
@@ -67,6 +66,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
+    outputs:
+      # The host the styles were built for, read back out of the artifact rather
+      # than restated. See "Check the styles point where Pages serves" below.
+      site_url: ${{ steps.site.outputs.url }}
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -145,11 +149,24 @@ jobs:
       - name: Verify the routing graph
         run: uv run scripts/verify.py
 
+      - name: Record the host the styles were built for
+        id: site
+        # Read from the built style.json rather than from SITE_URL, so this is
+        # the host the app will genuinely fetch — whatever make-style.mjs
+        # actually wrote — and not a restatement of it that could disagree.
+        run: |
+          url=$(python3 -c "import json;print(json.load(open('dist/style.json'))['sources']['basemap']['tiles'][0])")
+          case "$url" in
+            *"/tiles/"*) ;;
+            *) echo "::error::style.json tile URL has no /tiles/ segment: $url"; exit 1 ;;
+          esac
+          base="${url%%/tiles/*}"
+          echo "url=$base" >> "$GITHUB_OUTPUT"
+          echo "styles were built for $base"
+
       - name: Upload the site
-        # Everything after this is the deploy job. Splitting them is what lets
-        # the build stop waiting: this job's work is done once dist/ is correct
-        # and uploaded, and whether Pages has finished serving it is a separate
-        # question with its own answer.
+        # This job's work ends here: dist/ is built, checked and handed off.
+        # Deploying it is the next job's problem.
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
@@ -170,28 +187,42 @@ jobs:
 
     steps:
       - name: Deploy to Pages
-        # This is the whole reason for the rewrite. Force-pushing a gh-pages
-        # branch tells you the push worked and nothing about the deployment, so
-        # the old workflow polled the live URL for a sha256 match and guessed at
-        # a timeout — a guess it got wrong twice, reporting three false failures
-        # over deployments that were fine. This action returns when GitHub says
-        # the deployment succeeded, which is the fact we actually wanted.
+        # Returns when GitHub reports the deployment succeeded. That status is
+        # the fact worth having and the only reliable source of it: pushing a
+        # branch tells you the push worked, and polling the live URL measures a
+        # deployment time that ranges from seconds to tens of minutes.
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
 
-      - name: Check the deployed site
-        # A short confirmation, not a wait. `deploy-pages` has already reported
-        # success, so this is not polling for the deployment to happen — it is
-        # checking that what Pages serves is what the app will actually fetch,
-        # which is a different property and the one that caught the
-        # stodevx.github.io redirect. Deliberately no `curl -L`: a redirect
-        # appearing here means the site is being served differently than the
-        # styles were built for, and should fail loudly.
+      - name: Check the styles point where Pages serves
+        # Whether the deployment worked is GitHub's problem, and the step above
+        # answers it. This checks the part that is ours.
+        #
+        # The styles carry absolute URLs, because MapLibre Native resolves
+        # relative ones inconsistently. So if the host baked into them is not the
+        # host Pages serves from, every one of ~985 tile requests takes a
+        # redirect while the deployment reports success throughout — a failure no
+        # deployment status can see.
+        #
+        # Scheme and trailing slash are normalised because GitHub reports
+        # "http://host/path/" where the styles carry "https://host/path".
         run: |
-          base="https://stolaf.dev/campus-map-data"
-          for path in style.json style-pmtiles.json map.json map.geojson routing.json index.html; do
-            code=$(curl -sS -m 30 -o /dev/null -w '%{http_code}' "$base/$path" || echo 000)
-            echo "$path -> $code"
-            [ "$code" = "200" ] || { echo "::error::$base/$path returned $code"; exit 1; }
-          done
+          norm() { printf '%s' "$1" | sed -E 's#^https?://##; s#/+$##'; }
+          baked=$(norm "${{ needs.build.outputs.site_url }}")
+          served=$(norm "${{ steps.deployment.outputs.page_url }}")
+
+          echo "styles built for : $baked"
+          echo "Pages serves from: $served"
+
+          if [ -z "$baked" ] || [ -z "$served" ]; then
+            echo "::error::could not determine one of the two URLs — refusing to pass blind"
+            exit 1
+          fi
+          if [ "$baked" != "$served" ]; then
+            echo "::error::the styles point at $baked but Pages serves from $served"
+            echo "Every tile, glyph and sprite URL in style.json is absolute, so this" >&2
+            echo "means the app takes a redirect on each of them. Fix SITE_URL in" >&2
+            echo "build-tiles.sh to match, then rebuild." >&2
+            exit 1
+          fi
           echo "Deployed to ${{ steps.deployment.outputs.page_url }}"
