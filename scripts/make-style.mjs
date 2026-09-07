@@ -158,29 +158,27 @@ const OSM_BUILDING_FILL = flatten(
 
 // Why the OSM buildings are warm
 //
-// carls-app/map-tiles has to paint both of its building layers one colour:
-// Carleton's hand-drawn footprints disagree with OSM's badly enough that any
-// colour difference shows up as a doubled, misregistered outline.
+// Two building layers overlap on campus, and where two datasets disagree about
+// an outline the difference has to read as one building rather than as a
+// registration error. carls-app/map-tiles solves that for Carleton by painting
+// both layers a single colour, because Carleton's hand-drawn footprints and
+// OSM's disagree substantially.
 //
-// St. Olaf does not have that problem, and it is worth saying how that was
-// established rather than assumed — the layer being named `buildings_openstreet`
-// is suggestive but proves nothing. Rendering the tileset with the OSM buildings
-// layer forced to pure red shows the overhang directly: across the campus core
-// it is a handful of narrow strips, the widest being two slivers along the west
-// edge of Rolvaag Memorial Library. Almost every OSM footprint on campus sits
-// entirely under a college polygon.
+// St. Olaf's disagree very little. Rendering the tileset with this layer forced
+// to pure red shows the overhang directly: across the campus core it is a
+// handful of narrow strips, the widest being two slivers along the west edge of
+// Rolvaag Memorial Library. Almost every OSM footprint on campus sits entirely
+// under a college polygon, which is what lets the campus layer take a colour of
+// its own.
 //
-// (That same diagnostic corrected a wrong guess. The pale shapes that look like
-// duplicate buildings next to New Hall and Rolvaag are not buildings at all —
-// they are OSM's `school` landuse, which blankets the whole campus, plus this
-// repo's own `campus_grounds`. Neither has anything to do with the building
-// layers.)
+// This layer still shares that colour's hue family rather than taking a neutral
+// grey, so a visible sliver reads as part of the same building, and so downtown
+// Northfield — which has no campus data at all — sits in the same palette.
 //
-// So the campus can safely have its own colour. The OSM layer is nonetheless
-// kept in the same warm hue family rather than a neutral grey, so that where a
-// sliver does show it reads as part of the same building instead of a different
-// kind of object — and so that downtown Northfield, which has no campus data at
-// all, sits in the same palette instead of turning grey.
+// Worth knowing when reading the map: the pale shapes beside New Hall and
+// Rolvaag that look like duplicate buildings are OSM's `school` landuse, which
+// blankets the campus, plus this repo's own `campus_grounds`. Neither is a
+// building layer.
 const campusLayers = [
   {
     id: "campus_grounds",
@@ -226,8 +224,8 @@ const campusLayers = [
   // OSM has good footway coverage over the campus core, but the college's
   // walkway layer is 138 lines and 10.8 km — comparable to the pedestrian graph
   // in StoDevX/ole-compass — and its Natural Lands trails add another 12 km
-  // that OSM largely does not have. All of it was being scraped into data/ and
-  // then dropped, which is a strange thing for a campus wayfinding map to do.
+  // that OSM largely does not have. On a map people walk a campus with, that is
+  // worth drawing.
   //
   // Drawn over `campus_grounds` so a walk through a parking lot still reads,
   // and under `campus_buildings` so nothing crosses a building.

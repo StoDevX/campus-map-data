@@ -44,10 +44,9 @@ on:
   # this the workflow could only be exercised by merging it.
   pull_request:
 
-# Deploying through the Pages Actions integration rather than by force-pushing a
-# branch, so this needs `pages: write` and the OIDC token `deploy-pages` uses to
-# prove the deployment came from this workflow — and no longer needs write access
-# to the repository's contents at all.
+# `pages: write` to deploy, and the OIDC token `deploy-pages` uses to prove the
+# deployment came from this workflow. Nothing here writes to the repository, so
+# `contents` stays read-only.
 permissions:
   contents: read
   pages: write
@@ -152,10 +151,9 @@ jobs:
 
       - name: Record the host the styles were built for
         id: site
-        # Read from the built style.json, not from SITE_URL, so this is the value
-        # the app will genuinely fetch — through make-style.mjs and whatever
-        # build-tiles.sh passed it — rather than a second copy of a constant that
-        # could drift from it.
+        # Read from the built style.json rather than from SITE_URL, so this is
+        # the host the app will genuinely fetch — whatever make-style.mjs
+        # actually wrote — and not a restatement of it that could disagree.
         run: |
           url=$(python3 -c "import json;print(json.load(open('dist/style.json'))['sources']['basemap']['tiles'][0])")
           case "$url" in
@@ -167,10 +165,8 @@ jobs:
           echo "styles were built for $base"
 
       - name: Upload the site
-        # Everything after this is the deploy job. Splitting them is what lets
-        # the build stop waiting: this job's work is done once dist/ is correct
-        # and uploaded, and whether Pages has finished serving it is a separate
-        # question with its own answer.
+        # This job's work ends here: dist/ is built, checked and handed off.
+        # Deploying it is the next job's problem.
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
@@ -191,32 +187,25 @@ jobs:
 
     steps:
       - name: Deploy to Pages
-        # This is the whole reason for the rewrite. Force-pushing a gh-pages
-        # branch tells you the push worked and nothing about the deployment, so
-        # the old workflow polled the live URL for a sha256 match and guessed at
-        # a timeout — a guess it got wrong twice, reporting three false failures
-        # over deployments that were fine. This action returns when GitHub says
-        # the deployment succeeded, which is the fact we actually wanted.
+        # Returns when GitHub reports the deployment succeeded. That status is
+        # the fact worth having and the only reliable source of it: pushing a
+        # branch tells you the push worked, and polling the live URL measures a
+        # deployment time that ranges from seconds to tens of minutes.
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
 
       - name: Check the styles point where Pages serves
-        # Whether the deployment worked is GitHub's problem and GitHub has just
-        # answered it, above. This checks the one thing that is *ours*: the
-        # styles carry absolute URLs (MapLibre Native resolves relative ones
-        # inconsistently), so if the host baked into them is not the host Pages
-        # serves from, every one of ~985 tile requests takes a redirect — and
-        # the deployment is perfectly successful the whole time.
+        # Whether the deployment worked is GitHub's problem, and the step above
+        # answers it. This checks the part that is ours.
         #
-        # That is not hypothetical. The first publish here shipped
-        # stodevx.github.io in the styles while the org's Pages site redirects to
-        # stolaf.dev, and no deployment status would ever have shown it.
+        # The styles carry absolute URLs, because MapLibre Native resolves
+        # relative ones inconsistently. So if the host baked into them is not the
+        # host Pages serves from, every one of ~985 tile requests takes a
+        # redirect while the deployment reports success throughout — a failure no
+        # deployment status can see.
         #
-        # This used to be a fetch of every published URL, which raced CDN
-        # propagation and failed on a healthy deploy. Comparing the two strings
-        # catches the same bug at its source, in no time and with nothing to
-        # race. Scheme and trailing slash are normalised away because GitHub
-        # reports "http://host/path/" where the styles carry "https://host/path".
+        # Scheme and trailing slash are normalised because GitHub reports
+        # "http://host/path/" where the styles carry "https://host/path".
         run: |
           norm() { printf '%s' "$1" | sed -E 's#^https?://##; s#/+$##'; }
           baked=$(norm "${{ needs.build.outputs.site_url }}")

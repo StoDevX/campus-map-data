@@ -28,22 +28,20 @@ whatever lies between.
 ## Adapted from course-data-visualization
 
 The two-stage fit is [`StoDevX/course-data-visualization`][cdv]'s
-`scripts/build_path_graph.py`, which did this first. Three things changed:
+`scripts/build_path_graph.py`, which worked it out first. This differs from it
+in three ways, each of which shows in the output:
 
-- **It reads this repo's own data.** That script took building centroids and
-  walkway lines from files in its own repo; this one reads `data/buildings.
-  geojson`, `data/walkways.geojson`, `data/campus-roads.geojson` and `map.json`,
-  which are the same ArcGIS layers one step closer to the source.
-- **All 38 buildings, not 32.** Its building table was a dict keyed by the
-  college's `ABB`, and the seven buildings with no abbreviation collided on the
-  blank key `" "` — six of them overwrote each other, and the script carried a
-  `- {" "}` to work around the wreckage. Keying by this repo's ids instead
-  (which are the abbreviations where they exist and slugified names where they
-  do not) makes New Hall, the Townhouses and Tostrud Center routable
-  destinations rather than casualties.
-- **Anchors, not vertex means.** Its centroid was the mean of a polygon's outer
-  ring, which lands outside anything L-shaped. This uses `map.json`'s label
-  anchors, which `geometry.py` guarantees are inside the building.
+- **It reads this repo's own data** — `data/buildings.geojson`,
+  `data/walkways.geojson`, `data/campus-roads.geojson` and `map.json` — rather
+  than copies of those layers kept elsewhere.
+- **It covers all 38 buildings.** Keying buildings by this repo's ids (the
+  college's abbreviations where they exist, slugified names where they do not)
+  keeps New Hall, the Townhouses and Tostrud Center as routable destinations. A
+  table keyed on the `ABB` field alone collapses the seven buildings with no
+  abbreviation onto one blank key and reaches only 32.
+- **It anchors on label anchors, not vertex means.** `geometry.py` guarantees
+  those sit inside the building; the mean of a polygon's outer ring does not,
+  for anything L-shaped.
 
 [oc]: https://github.com/StoDevX/ole-compass
 [cdv]: https://github.com/StoDevX/course-data-visualization
