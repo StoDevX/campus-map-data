@@ -5,6 +5,10 @@ on:
   # year — a building renamed, a lot restriped — so a daily poll was almost all
   # no-op runs. Anything that needs to land sooner can be dispatched by hand,
   # and a push that changes how the data is derived still rebuilds immediately.
+  #
+  # Deliberately not the tile workflow's cadence. That one tracks OpenStreetMap,
+  # which changes daily, and runs daily to match carls-app/map-tiles; this one
+  # tracks the college's ArcGIS services, which do not.
   schedule:
     - cron: "0 6 1 * *"
 

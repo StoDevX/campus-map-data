@@ -25,14 +25,20 @@ on:
 
   workflow_dispatch:
 
-  # Monthly, on the 1st at 07:00 UTC, an hour after the scrape. This tracks
-  # OpenStreetMap rather than the college — Protomaps rebuilds the planet daily,
-  # so a monthly run means an OSM edit around campus takes up to a month to
-  # reach the app. That is the deliberate trade for not rebuilding a 6 MB
-  # tileset every night to publish nothing new. Campus data changes do *not*
-  # wait for this: the scrape's commit lands on the push trigger above.
+  # Daily at 07:00 UTC, matching carls-app/map-tiles.
+  #
+  # This tracks OpenStreetMap, not the college, and the two move at completely
+  # different speeds — which is why this schedule is not the scrape's. Protomaps
+  # rebuilds the planet every day from OSM minutely replication, and the build
+  # this pulls from carries OSM data to about 04:00 UTC the same day, so a daily
+  # run means an OSM edit reaches the app roughly a day later. 07:00 leaves the
+  # upstream build a few hours to publish.
+  #
+  # Rebuilding nightly is not the waste it looks like: a run costs well under a
+  # minute, and the force-push keeps gh-pages at a single commit however often it
+  # happens, so nothing accumulates.
   schedule:
-    - cron: "0 7 1 * *"
+    - cron: "0 7 * * *"
 
   # Dry run on every PR: build and check the output, publish nothing. Without
   # this the workflow could only be exercised by merging it.

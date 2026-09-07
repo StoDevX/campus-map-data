@@ -242,8 +242,8 @@ had moved to Nebraska.
 
 ## Scheduled scraping
 
-`.github/workflows/scrape.yml` runs monthly, on the 1st at 06:00 UTC, and on any
-push that changes how the data is derived (`scripts/`, `overrides.yaml`, the
+`.github/workflows/scrape.yml` runs **monthly**, on the 1st at 06:00 UTC, and on
+any push that changes how the data is derived (`scripts/`, `overrides.yaml`, the
 lockfiles). Campus data changes a handful of times a year, so a daily poll was
 almost all no-op runs; anything urgent can be dispatched by hand.
 It scrapes, builds, verifies, and commits to `main` **only if something
@@ -414,15 +414,6 @@ export const MAP_STYLE_URL = 'https://stodevx.github.io/campus-map-data/style.js
 
 [map-tiles]: https://github.com/carls-app/map-tiles
 
-### Tile publishing
-
-`.github/workflows/tiles.yml` runs monthly an hour after the scrape, and on any
-push that changes the data or the pipeline. The monthly cadence tracks
-OpenStreetMap, not the college — an OSM edit around campus takes up to a month
-to reach the app, which is the trade for not rebuilding a 6 MB tileset nightly
-to publish nothing new. **Campus data changes do not wait for it**: the scrape's
-commit lands on the push trigger.
-
 ## Publishing
 
 GitHub Pages serves the `gh-pages` branch, which `.github/workflows/tiles.yml`
@@ -441,3 +432,22 @@ The data files are published because Pages serves one branch and ccc-server
 needs a URL — `carls-app/map-data` serves Carleton's the same way. They are
 *copied* into `dist/` rather than rebuilt, and CI diffs the copy against the
 committed files, so the tiles and the data are provably the same revision.
+
+### Schedule
+
+`.github/workflows/tiles.yml` runs **daily** at 07:00 UTC, matching
+[`carls-app/map-tiles`][map-tiles], and on any push that changes the data or the
+pipeline.
+
+The two schedules are deliberately different, because they track different
+things at different speeds. The scrape follows the college's ArcGIS services,
+which change a few times a year. The tiles follow OpenStreetMap, which changes
+constantly: Protomaps rebuilds the planet daily from OSM minutely replication,
+and the build this pulls from carries OSM data to about 04:00 UTC the same day,
+so a daily run means an edit near campus reaches the app about a day later. 07:00
+leaves the upstream build a few hours to publish.
+
+Rebuilding nightly is cheaper than it looks — a run is well under a minute, and
+the force-push keeps `gh-pages` at a single commit however often it happens, so
+nothing accumulates. **Campus data changes do not wait for either schedule**: the
+scrape's commit fires this workflow's push trigger.
