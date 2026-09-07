@@ -483,11 +483,22 @@ to ignore the one time it is right.
 nothing to poll and nothing to time out. The build job ends when `dist/` is
 uploaded; the deploy job ends when GitHub says the deployment succeeded.
 
-What survives from the old check is a short confirmation *after* that: a fetch of
-each published entry point, with no `curl -L`, because a redirect appearing there
-means the site is served differently than the styles were built for. That is the
-check that caught the `stodevx.github.io` redirect, and it is worth keeping — it
-just should not have been carrying the deployment wait on its back.
+Nothing verifies the deployment afterwards, because GitHub has already said it
+worked and re-deriving that over HTTP is how all of the above went wrong.
+
+One thing *is* checked, and it is not GitHub's job — it is ours. The styles carry
+absolute URLs, since MapLibre Native resolves relative ones inconsistently. So if
+the host baked into them is not the host Pages serves from, every one of ~985
+tile requests takes a redirect, and the deployment is perfectly successful
+throughout. That is not hypothetical: the first publish shipped
+`stodevx.github.io` in the styles while the org's Pages site redirects to
+`stolaf.dev`, and no deployment status would ever have shown it.
+
+The check is a string comparison — the host read back out of the built
+`style.json` against `deploy-pages`' own `page_url` — normalised for scheme and
+trailing slash, because GitHub reports `http://host/path/` where the styles carry
+`https://host/path`. It catches that bug at its source, instantly, with nothing
+to race.
 
 ## Routing
 
