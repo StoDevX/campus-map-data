@@ -234,6 +234,90 @@ def verify_overrides(report: Report, records: list[dict]) -> None:
             )
 
 
+def verify_routing(report: Report, records: list[dict]) -> None:
+    """The routing graph, if one has been built.
+
+    A router fails quietly in a way a map does not: an unreachable component
+    does not draw wrong, it just never returns a path, and the caller cannot
+    tell that from "no route exists". So connectivity is asserted here rather
+    than discovered in the app.
+    """
+    path = ROOT / "routing.json"
+    if not path.exists():
+        report.note("routing.json not built — run scripts/build_routing.py")
+        return
+
+    graph = json.loads(path.read_text())
+    nodes = graph.get("nodes") or []
+    edges = graph.get("edges") or []
+    entrances = graph.get("entrances") or {}
+    declared = {int(k) for k in (graph.get("edgeTypes") or {})}
+
+    report.check(bool(nodes), "routing.json has no nodes")
+    report.check(bool(edges), "routing.json has no edges")
+
+    for index, point in enumerate(nodes):
+        if not in_campus(point[0], point[1]):
+            report.check(False, f"routing node {index} at {point} is off campus")
+            break
+
+    for a, b, kind in edges:
+        if not (0 <= a < len(nodes) and 0 <= b < len(nodes)):
+            report.check(
+                False,
+                f"routing edge {[a, b, kind]} references a node that does not exist",
+            )
+            break
+        if a == b:
+            report.check(False, f"routing edge {[a, b, kind]} is a self-loop")
+            break
+        if kind not in declared:
+            report.check(False, f"routing edge type {kind} is not in edgeTypes")
+            break
+
+    known = {record["id"] for record in records}
+    for place_id, indices in entrances.items():
+        report.check(
+            place_id in known,
+            f"routing entrance {place_id!r} matches no place in map.json",
+        )
+        report.check(
+            all(0 <= i < len(nodes) for i in indices),
+            f"routing entrance {place_id!r} points at a node that does not exist",
+        )
+
+    # One component, or a destination in a detached piece is unroutable — and
+    # looks exactly like "there is no path", which is the failure that would
+    # reach a user.
+    neighbours: dict[int, set[int]] = {}
+    for a, b, _ in edges:
+        neighbours.setdefault(a, set()).add(b)
+        neighbours.setdefault(b, set()).add(a)
+    reached: set[int] = set()
+    if nodes:
+        stack = [0]
+        while stack:
+            current = stack.pop()
+            if current in reached:
+                continue
+            reached.add(current)
+            stack.extend(neighbours.get(current, set()) - reached)
+    report.check(
+        len(reached) == len(nodes),
+        f"routing graph is not connected: {len(nodes) - len(reached)} of "
+        f"{len(nodes)} nodes cannot be reached from node 0",
+    )
+
+    buildings = [r for r in records if "building" in r["categories"]]
+    without = sorted(r["id"] for r in buildings if r["id"] not in entrances)
+    if without:
+        report.note(
+            f"{len(without)} of {len(buildings)} buildings have no surveyed "
+            f"entrance and will be routed to at their nearest node: "
+            f"{', '.join(without)}"
+        )
+
+
 def verify_reproducible(report: Report) -> None:
     """The build must be a pure function of data/ and overrides.yaml.
 
@@ -254,7 +338,7 @@ def verify_reproducible(report: Report) -> None:
     for name, text in before.items():
         report.check(
             (ROOT / name).read_text() == text,
-            f"{name} changed when build.py was run again — the build is not deterministic",
+            f"{name} changed when its build script was run again — the build is not deterministic",
         )
 
 
@@ -265,6 +349,7 @@ def main() -> int:
     records = verify_map_json(report)
     verify_map_geojson(report, records)
     verify_overrides(report, records)
+    verify_routing(report, records)
     verify_reproducible(report)
 
     places = len(records)

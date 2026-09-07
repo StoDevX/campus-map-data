@@ -413,7 +413,14 @@ log "Publishing the campus data alongside the tiles"
 
 cp "$ROOT/map.json" "$ROOT/map.geojson" "$DIST/"
 cp -R "$ROOT/data" "$DIST/data"
-echo "  map.json, map.geojson, data/ ($(find "$DIST/data" -type f | wc -l | tr -d ' ') files)"
+published="map.json, map.geojson, data/"
+# The routing graph, when one has been built. Optional so a checkout that has
+# not run build_routing.py still publishes a valid site.
+if [ -f "$ROOT/routing.json" ]; then
+  cp "$ROOT/routing.json" "$DIST/"
+  published="$published, routing.json"
+fi
+echo "  $published ($(find "$DIST/data" -type f | wc -l | tr -d ' ') data files)"
 
 # --- 10. report ------------------------------------------------------------
 
