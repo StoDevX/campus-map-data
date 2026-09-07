@@ -1,0 +1,370 @@
+{
+  "type": "FeatureCollection",
+  "name": "accessible-parking",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1860518106755,
+          44.4627169097636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1782785968938,
+          44.4610858103786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1825629589278,
+          44.4594021061973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1780743685072,
+          44.4597465505524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1813982338731,
+          44.4599145069443
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1839881774486,
+          44.4600008505307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1887500353786,
+          44.4642640536876
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1819999820443,
+          44.461829391728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1772628098183,
+          44.4616029228748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1886347905108,
+          44.4630486664824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1868021240249,
+          44.4613519144775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1813497598821,
+          44.4636806682173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1807624709937,
+          44.4634031114042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.183254124504,
+          44.4625043871326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1889400173831,
+          44.4618726368143
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1843274944876,
+          44.4599787611724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1803871899023,
+          44.4590643684086
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1886421342382,
+          44.4632347322869
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1854424133496,
+          44.4611452085255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1806477273859,
+          44.4621574233407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1848160001357,
+          44.4638427188257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1852283825467,
+          44.4601220892336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1863009224869,
+          44.4591823416429
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1865664752647,
+          44.4660673707716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1877664663808,
+          44.4639535775159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Id": 0,
+        "_layer": "Accessible Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1824659759114,
+          44.4635596914302
+        ]
+      }
+    }
+  ]
+}

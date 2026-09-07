@@ -1,0 +1,125 @@
+{
+  "dashboard": "https://stolaf.maps.arcgis.com/apps/dashboards/039528a0ee874da7b5ef749c2393498d",
+  "webmap": "https://www.arcgis.com/home/item.html?id=48f433ddf4674d53b1754e307ffce1f4",
+  "layers": [
+    {
+      "slug": "buildings",
+      "title": "St. Olaf Campus Buildings",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St_Olaf_Campus_Data/FeatureServer/10",
+      "role": "place",
+      "features": 38
+    },
+    {
+      "slug": "parking-lots",
+      "title": "St. Olaf - Parking Lots",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Parking_Lots_WFL1/FeatureServer/0",
+      "role": "place",
+      "features": 52
+    },
+    {
+      "slug": "athletic-fields",
+      "title": "Athletic Fields",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/outdoorfields/FeatureServer/0",
+      "role": "place",
+      "features": 16
+    },
+    {
+      "slug": "accessible-parking",
+      "title": "Accessible Parking",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/Accessible_Parking/FeatureServer/0",
+      "role": "place",
+      "features": 26
+    },
+    {
+      "slug": "points-of-interest",
+      "title": "St. Olaf College Bookstore",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus___Points_of_Interest_v3_WFL1/FeatureServer/0",
+      "role": "place",
+      "features": 1
+    },
+    {
+      "slug": "points-of-interest",
+      "title": "Wind Chime Memorial",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus___Points_of_Interest_v3_WFL1/FeatureServer/1",
+      "role": "place",
+      "features": 1
+    },
+    {
+      "slug": "points-of-interest",
+      "title": "Electric Vehicle Charger",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus___Points_of_Interest_v3_WFL1/FeatureServer/2",
+      "role": "place",
+      "features": 1
+    },
+    {
+      "slug": "points-of-interest",
+      "title": "Buntrock Commons - Dining",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus___Points_of_Interest_v3_WFL1/FeatureServer/3",
+      "role": "place",
+      "features": 4
+    },
+    {
+      "slug": "points-of-interest",
+      "title": "Buntrock Commons - Visitor Desk",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus___Points_of_Interest_v3_WFL1/FeatureServer/4",
+      "role": "place",
+      "features": 1
+    },
+    {
+      "slug": "points-of-interest",
+      "title": "Admissions Office",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus___Points_of_Interest_v3_WFL1/FeatureServer/5",
+      "role": "place",
+      "features": 1
+    },
+    {
+      "slug": "points-of-interest",
+      "title": "Windmill",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus___Points_of_Interest_v3_WFL1/FeatureServer/7",
+      "role": "place",
+      "features": 1
+    },
+    {
+      "slug": "campus-boundary",
+      "title": "Campus Boundary",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St_Olaf_Campus_Data/FeatureServer/14",
+      "role": "context",
+      "features": 1
+    },
+    {
+      "slug": "water",
+      "title": "Lakes",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St_Olaf_Campus_Data/FeatureServer/11",
+      "role": "context",
+      "features": 27
+    },
+    {
+      "slug": "walkways",
+      "title": "Walkways",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/StOlaf_Roads_2_WFL1/FeatureServer/4",
+      "role": "context",
+      "features": 138
+    },
+    {
+      "slug": "natural-lands-trails",
+      "title": "Natural Lands Trails",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/StOlaf_Roads_2_WFL1/FeatureServer/3",
+      "role": "context",
+      "features": 23
+    },
+    {
+      "slug": "campus-roads",
+      "title": "Campus Roads",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/StOlaf_Roads_2_WFL1/FeatureServer/2",
+      "role": "context",
+      "features": 38
+    },
+    {
+      "slug": "main-campus-roads",
+      "title": "Main Campus Roads",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/StOlaf_Roads_2_WFL1/FeatureServer/7",
+      "role": "context",
+      "features": 1
+    }
+  ]
+}

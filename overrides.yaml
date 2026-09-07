@@ -1,0 +1,53 @@
+# Hand-maintained corrections layered over the scraped data.
+#
+# The scrape must stay a faithful copy of what St. Olaf publishes — that is what
+# makes its diff a usable change log. Anything we know better than the source
+# goes here instead, where it is reviewable and survives the next scrape. Same
+# job as `carls-app/map-data`'s overrides.yaml.
+#
+# Four sections, applied in this order:
+#
+#   ids        Source name -> id. The default id is the name with its spaces and
+#              punctuation removed ("Old Main" -> oldmain); this is for the ones
+#              that produces something unusable.
+#   removals   Ids to drop from map.json / map.geojson entirely.
+#   changes    Fields merged onto a place, keyed by id. Any field of a record
+#              can be set; `centerpoint` sets the label anchor.
+#   additions  Whole records to append, in map.json's shape.
+#
+# COORDINATE ORDER: `centerpoint` is [longitude, latitude] — GeoJSON order, and
+# the same order carls-app/map-data uses. Note that map.json's own `center` and
+# `outline` are latitude-first; that inconsistency is Carleton's and is
+# reproduced deliberately so consumers do not have to change. See build.py.
+
+ids:
+  # The full name is a mouthful nobody uses; on campus this is Skoglund.
+  Skoglund Athletic Center and Auditorium: skoglund
+  # Two names for adjacent facilities, joined with an ampersand.
+  Klein Field at Manitou & Manitou Track: field-kleinfield
+  # 47 characters of id for one charging point.
+  Buntrock Commons Parking Lot - Electric Vehicle Charger: evcharger
+
+removals: []
+
+changes:
+  # Spelling corrections. The ArcGIS layer disagrees with the college's own
+  # Residence Life pages, which title this page "Hilleboe and Kittelsby Halls",
+  # and with the building signage.
+  - id: hillboehall
+    name: (Gertrude) Hilleboe Hall
+  - id: kittlesbyhall
+    name: (Agnes) Kittelsby Hall
+
+  # The layer says "Course"; its own description says "the courts", and there
+  # are several of them.
+  - id: field-carlsontenniscourse
+    name: Carlson Tennis Courts
+
+  # Label anchors are computed (see geometry.py) and every one of the 92
+  # polygonal places currently lands inside its own footprint. Add a
+  # `centerpoint: [lon, lat]` here for any that reads badly on the map —
+  # a centroid that is technically inside an L-shaped building can still sit in
+  # a corner nobody thinks of as the building's middle.
+
+additions: []

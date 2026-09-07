@@ -1,0 +1,21 @@
+[project]
+name = "stolaf-campus-map-data"
+version = "1.0.0"
+description = "St. Olaf College campus map data, scraped from the college's ArcGIS services"
+requires-python = ">=3.13"
+
+# One dependency, for overrides.yaml. Everything else — the ArcGIS client, the
+# HTML extraction, the geometry — is stdlib, which keeps a scheduled job that
+# runs unattended for months from depending on a supply chain it does not need.
+dependencies = ["pyyaml==6.0.3"]
+
+[dependency-groups]
+dev = ["ruff==0.16.2"]
+
+[tool.ruff.lint]
+extend-select = [
+  "I",    # import sorting
+  "UP",   # pyupgrade
+  "B",    # bugbear
+  "SIM",  # simplify
+]

@@ -1,0 +1,16 @@
+# Tool versions for this repo, with mise.lock recording the exact URL and
+# sha256 per platform. CI installs from it with jdx/mise-action; locally
+# `mise install` gets you the same versions.
+
+[settings]
+lockfile = true
+
+[tools]
+python = "3.14"
+
+# Resolves the interpreter and the locked packages for the scripts.
+uv = "0.12.3"
+
+# Linting for the workflows. Every workflow bug so far has only shown up when a
+# run actually happened, which needs a merge; this catches the static half.
+actionlint = "1.7.12"
