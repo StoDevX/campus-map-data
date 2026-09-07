@@ -61,7 +61,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -175,19 +175,33 @@ jobs:
           # enough: the previous deployment answers 200 for the whole window, so
           # every check below would pass against stale content and prove nothing
           # about what was just pushed.
+          #
+          # Thirty-five minutes, which sounds absurd until you measure it. This
+          # site is ~32 MB across ~1,800 files — 985 tiles, 768 glyph ranges —
+          # and GitHub Pages takes its time with that. The first three publishes
+          # here all reported "Pages never served this build" on a ten-minute
+          # budget while the deploy was working perfectly: the run that pushed
+          # gh-pages at 18:39:25 was failed at 18:49:31, and the content it
+          # wanted was live by 18:53. A check that cries wolf on every green
+          # publish is worse than no check, so the window is now roughly triple
+          # the longest deploy observed rather than a little over it.
           got=""
-          for i in $(seq 1 20); do
+          for i in $(seq 1 70); do
             got=$(curl -sS "$base/campus.pmtiles" | sha256sum | cut -d' ' -f1)
             [ "$got" = "$want" ] && break
-            echo "waiting for Pages to serve this build ($i/20)"
+            echo "waiting for Pages to serve this build ($i/70)"
             sleep 30
           done
           if [ "$got" != "$want" ]; then
-            echo "Pages never served this build — wanted $want, still getting $got" >&2
-            echo "If this is the first ever run, Pages may not be enabled, or may not" >&2
-            echo "be set to deploy from the gh-pages branch. Check the repository's" >&2
-            echo "Pages settings. If it answers a redirect rather than the file, the" >&2
-            echo "custom domain may have changed — see SITE_URL in build-tiles.sh." >&2
+            echo "Pages never served this build in 35 minutes — wanted $want," >&2
+            echo "still getting $got" >&2
+            echo "The push to gh-pages itself succeeded — that step is above and is" >&2
+            echo "green — so this is about serving, not building. Check, in order:" >&2
+            echo "  * Pages enabled and deploying from the gh-pages branch?" >&2
+            echo "  * A redirect rather than the file? The custom domain may have" >&2
+            echo "    changed; see SITE_URL in build-tiles.sh." >&2
+            echo "  * Simply slower than 35 minutes? Compare the sha by hand before" >&2
+            echo "    concluding anything is broken." >&2
             exit 1
           fi
 
