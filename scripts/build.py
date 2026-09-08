@@ -8,8 +8,8 @@ shape means a St. Olaf endpoint is a configuration change rather than a second
 code path. Every key Carleton emits is emitted here, even where St. Olaf has
 nothing to put in it, so a consumer never has to test for a missing key.
 
-Three properties are added beyond Carleton's set — `abbreviation`, `type` and
-`links`. Extra keys are additive and safe for existing consumers, and dropping
+Four properties are added beyond Carleton's set — `abbreviation`, `type`,
+`links` and `parent`. Extra keys are additive and safe for existing consumers, and dropping
 St. Olaf's building abbreviations (`RNS`, `BMC`, `TOH`) to preserve an exact
 field list would be throwing away the identifiers people on campus actually use.
 
@@ -365,6 +365,7 @@ def record(place: dict) -> dict:
         "abbreviation": place.get("abbreviation"),
         "type": place.get("type"),
         "links": place.get("links") or [],
+        "parent": place.get("parent"),
     }
 
 
@@ -402,6 +403,12 @@ def feature(place: dict) -> dict:
             "abbreviation": place.get("abbreviation"),
             "type": place.get("type"),
             "links": place.get("links") or [],
+            # The building this place sits inside, for the rooms and counters
+            # that have a point and no footprint. Set in overrides.yaml; null
+            # for everything that is a building, or is in none. Emitted on
+            # every feature rather than only where it applies, so a consumer
+            # reads one key rather than testing for its absence.
+            "parent": place.get("parent"),
         },
     }
 

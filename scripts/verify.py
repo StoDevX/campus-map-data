@@ -217,6 +217,31 @@ def verify_overrides(report: Report, records: list[dict]) -> None:
             f"overrides.yaml: changes entry for unknown id {change['id']!r}",
         )
 
+    # A `parent` is only useful if it names a place that exists and has a
+    # footprint to fall back to: the key exists so a consumer holding a
+    # point-only place has an area to draw. A parent that is itself a point
+    # leaves it exactly where it started, and one naming a dropped or renamed
+    # id leaves it worse -- following a link to nothing.
+    areas = {record["id"] for record in records if record.get("outline")}
+    for change in overrides.get("changes") or []:
+        parent = change.get("parent")
+        if parent is None:
+            continue
+        if not report.check(
+            parent in known,
+            f"overrides.yaml: {change['id']} has parent {parent!r}, which is not a place",
+        ):
+            continue
+        report.check(
+            parent != change["id"],
+            f"overrides.yaml: {change['id']} is its own parent",
+        )
+        report.check(
+            parent in areas,
+            f"overrides.yaml: {change['id']} has parent {parent!r}, which has no "
+            f"footprint of its own -- it cannot stand in for one",
+        )
+
     # An `ids` entry that stopped applying is invisible in the output — the
     # place just quietly reverts to its default id — so the requested id must
     # actually exist. That also catches the entry mapping two places to one id:

@@ -93,10 +93,19 @@ configuration change rather than a second code path. Every key Carleton emits is
 emitted here, including the ones St. Olaf has nothing to put in, so a consumer
 never has to test for a missing key.
 
-Three properties are **added**: `abbreviation`, `type` and `links`. Extra keys
-are additive and safe, and dropping St. Olaf's building abbreviations — `RNS`,
-`BMC`, `TOH`, the identifiers people on campus actually use — to preserve an
-exact field list would be throwing away good data for a bad reason.
+Four properties are **added**: `abbreviation`, `type`, `links` and `parent`.
+Extra keys are additive and safe, and dropping St. Olaf's building
+abbreviations — `RNS`, `BMC`, `TOH`, the identifiers people on campus actually
+use — to preserve an exact field list would be throwing away good data for a bad
+reason.
+
+`parent` names the building a place sits inside, and is null for everything that
+is a building or is in none. St. Olaf publishes its dining rooms, its bookstore
+and its admissions office as points within a footprint rather than as footprints
+themselves, so a consumer asked to frame or highlight one has no area to draw
+until it follows this key. It is set by hand in `overrides.yaml`; verify.py
+rejects a parent that names no place, names the place itself, or names a place
+with no footprint of its own.
 
 ### Watch the coordinate order
 

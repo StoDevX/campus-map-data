@@ -64,7 +64,8 @@
         "offices": [],
         "abbreviation": "AB",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -326,7 +327,8 @@
             "href": "https://athletics.stolaf.edu/sports/womens-ice-hockey",
             "label": "women's"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -359,7 +361,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -392,7 +395,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -425,7 +429,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -458,7 +463,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -491,7 +497,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -524,7 +531,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -557,7 +565,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -590,7 +599,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -623,7 +633,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -656,7 +667,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -689,7 +701,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -722,7 +735,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -755,7 +769,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -788,7 +803,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -821,7 +837,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -854,7 +871,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -887,7 +905,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -920,7 +939,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -953,7 +973,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -986,7 +1007,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1019,7 +1041,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1052,7 +1075,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1085,7 +1109,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1118,7 +1143,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1151,7 +1177,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1184,7 +1211,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1222,7 +1250,8 @@
             "href": "https://wp.stolaf.edu/admissions/",
             "label": "Website"
           }
-        ]
+        ],
+        "parent": "toh"
       }
     },
     {
@@ -1315,7 +1344,8 @@
         "offices": [],
         "abbreviation": "AHL",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1438,7 +1468,8 @@
         "offices": [],
         "abbreviation": "AKH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1653,7 +1684,8 @@
         "offices": [],
         "abbreviation": "ALH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1772,7 +1804,8 @@
         "offices": [],
         "abbreviation": "AMH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -1980,7 +2013,8 @@
             "href": "https://stolaf.bncollege.com/",
             "label": "Bookstore"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -2097,7 +2131,8 @@
         "offices": [],
         "abbreviation": "BMC",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -2259,7 +2294,8 @@
         "offices": [],
         "abbreviation": "CAD",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -2414,7 +2450,8 @@
             "href": "https://christmas.stolaf.edu/",
             "label": "Christmas Festival"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -2541,7 +2578,8 @@
         "offices": [],
         "abbreviation": "EH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -2574,7 +2612,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -2633,7 +2672,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -2693,7 +2733,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Athletics Field",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -2753,7 +2794,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Athletics Field",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -3438,7 +3480,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -3518,7 +3561,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Athletics Field",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -3613,7 +3657,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -3673,7 +3718,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Athletics Field",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -3732,7 +3778,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -3819,7 +3866,8 @@
         "offices": [],
         "abbreviation": "GHH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -3933,7 +3981,8 @@
             "href": "https://wp.stolaf.edu/news/holland-hall-renovations-combine-classic-architecture-modern-technology",
             "label": "St. Olaf College News - November 1, 2017: The new Holland Hall"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -4140,7 +4189,8 @@
         "offices": [],
         "abbreviation": "HMH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4218,7 +4268,8 @@
         "offices": [],
         "abbreviation": "HOM",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4337,7 +4388,8 @@
         "offices": [],
         "abbreviation": "KH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4405,7 +4457,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Admissions Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4501,7 +4554,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Admissions Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4577,7 +4631,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4697,7 +4752,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4785,7 +4841,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4885,7 +4942,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "General Vistor Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -4945,7 +5003,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5009,7 +5068,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5089,7 +5149,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5153,7 +5214,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5217,7 +5279,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5285,7 +5348,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5353,7 +5417,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5425,7 +5490,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5541,7 +5607,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5649,7 +5716,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5721,7 +5789,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5789,7 +5858,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5865,7 +5935,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -5957,7 +6028,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6025,7 +6097,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6113,7 +6186,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6193,7 +6267,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6265,7 +6340,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6325,7 +6401,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6385,7 +6462,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6457,7 +6535,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6521,7 +6600,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6589,7 +6669,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6661,7 +6742,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6721,7 +6803,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6853,7 +6936,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6913,7 +6997,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -6973,7 +7058,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7073,7 +7159,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7141,7 +7228,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7217,7 +7305,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7277,7 +7366,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7353,7 +7443,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7413,7 +7504,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7493,7 +7585,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7625,7 +7718,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7697,7 +7791,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -7757,7 +7852,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -8081,7 +8177,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -8153,7 +8250,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Campus Parking",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -8191,7 +8289,8 @@
             "href": "https://150th.stolaf.edu/then-and-now/stop-10/",
             "label": "Website"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -8298,7 +8397,8 @@
         "offices": [],
         "abbreviation": "MFB",
         "type": "Administrative",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -8469,7 +8569,8 @@
         "offices": [],
         "abbreviation": "MH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -8660,7 +8761,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -8774,7 +8876,8 @@
         "offices": [],
         "abbreviation": "OM",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -8858,7 +8961,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Administrative",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -8918,7 +9022,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Administrative",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -9159,7 +9264,8 @@
         "offices": [],
         "abbreviation": "RH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -9410,7 +9516,8 @@
             "href": "https://norwegianamericanhistory.org/",
             "label": "Norwegian American Historical Association (NAHA)"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -9488,7 +9595,8 @@
         "offices": [],
         "abbreviation": "RMS",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -9734,7 +9842,8 @@
         "offices": [],
         "abbreviation": "RNS",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -9816,7 +9925,8 @@
             "href": "https://christmas.stolaf.edu/",
             "label": "Christmas Festival"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -9893,7 +10003,8 @@
         "offices": [],
         "abbreviation": "SH",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -9991,7 +10102,8 @@
         "offices": [],
         "abbreviation": "SKH",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -10029,7 +10141,8 @@
             "href": "https://stolaf.cafebonappetit.com/",
             "label": "Website"
           }
-        ]
+        ],
+        "parent": "bc"
       }
     },
     {
@@ -10102,7 +10215,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Administrative",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -10140,7 +10254,8 @@
             "href": "https://stolaf.bncollege.com/",
             "label": "Website"
           }
-        ]
+        ],
+        "parent": "bc"
       }
     },
     {
@@ -10238,7 +10353,8 @@
         "offices": [],
         "abbreviation": "TB",
         "type": "Administrative & Academic",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -10354,7 +10470,8 @@
         "offices": [],
         "abbreviation": "TH",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -10392,7 +10509,8 @@
             "href": "https://stolaf.cafebonappetit.com/",
             "label": "Website"
           }
-        ]
+        ],
+        "parent": "bc"
       }
     },
     {
@@ -10430,7 +10548,8 @@
             "href": "https://stolaf.cafebonappetit.com/",
             "label": "Website"
           }
-        ]
+        ],
+        "parent": "bc"
       }
     },
     {
@@ -10463,7 +10582,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": "bc"
       }
     },
     {
@@ -10822,7 +10942,8 @@
             "href": "https://www.stolaf.edu/news/index.cfm?fuseaction=NewsDetails&id=4482",
             "label": "A Serious Man"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -10971,7 +11092,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Athletics",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -11245,7 +11367,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -11339,7 +11462,8 @@
             "href": "https://athletics.stolaf.edu/sports/womens-ice-hockey",
             "label": "Women's Hockey"
           }
-        ]
+        ],
+        "parent": null
       }
     },
     {
@@ -11377,7 +11501,8 @@
             "href": "https://wp.stolaf.edu/buntrock/",
             "label": "Website"
           }
-        ]
+        ],
+        "parent": "bc"
       }
     },
     {
@@ -11677,7 +11802,8 @@
         "offices": [],
         "abbreviation": null,
         "type": "Administrative",
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -11710,7 +11836,8 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": []
+        "links": [],
+        "parent": null
       }
     },
     {
@@ -11960,7 +12087,8 @@
         "offices": [],
         "abbreviation": "YTT",
         "type": "Residence Hall",
-        "links": []
+        "links": [],
+        "parent": null
       }
     }
   ]

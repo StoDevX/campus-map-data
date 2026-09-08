@@ -47,7 +47,8 @@
     "photo": null,
     "abbreviation": "AB",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -293,7 +294,8 @@
         "href": "https://athletics.stolaf.edu/sports/womens-ice-hockey",
         "label": "women's"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -316,7 +318,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -339,7 +342,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -362,7 +366,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -385,7 +390,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -408,7 +414,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -431,7 +438,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -454,7 +462,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -477,7 +486,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -500,7 +510,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -523,7 +534,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -546,7 +558,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -569,7 +582,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -592,7 +606,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -615,7 +630,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -638,7 +654,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -661,7 +678,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -684,7 +702,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -707,7 +726,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -730,7 +750,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -753,7 +774,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -776,7 +798,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -799,7 +822,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -822,7 +846,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -845,7 +870,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -868,7 +894,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -891,7 +918,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -919,7 +947,8 @@
         "href": "https://wp.stolaf.edu/admissions/",
         "label": "Website"
       }
-    ]
+    ],
+    "parent": "toh"
   },
   {
     "accessibility": "unknown",
@@ -996,7 +1025,8 @@
     "photo": null,
     "abbreviation": "AHL",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -1106,7 +1136,8 @@
     "photo": null,
     "abbreviation": "AKH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -1308,7 +1339,8 @@
     "photo": null,
     "abbreviation": "ALH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -1426,7 +1458,8 @@
     "photo": null,
     "abbreviation": "AMH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -1618,7 +1651,8 @@
         "href": "https://stolaf.bncollege.com/",
         "label": "Bookstore"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -1719,7 +1753,8 @@
     "photo": null,
     "abbreviation": "BMC",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -1865,7 +1900,8 @@
     "photo": null,
     "abbreviation": "CAD",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2004,7 +2040,8 @@
         "href": "https://christmas.stolaf.edu/",
         "label": "Christmas Festival"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2118,7 +2155,8 @@
     "photo": null,
     "abbreviation": "EH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2141,7 +2179,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2184,7 +2223,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2228,7 +2268,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Athletics Field",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2272,7 +2313,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Athletics Field",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2495,7 +2537,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2559,7 +2602,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Athletics Field",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2638,7 +2682,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2682,7 +2727,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Athletics Field",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2725,7 +2771,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2799,7 +2846,8 @@
     "photo": null,
     "abbreviation": "GHH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -2897,7 +2945,8 @@
         "href": "https://wp.stolaf.edu/news/holland-hall-renovations-combine-classic-architecture-modern-technology",
         "label": "St. Olaf College News - November 1, 2017: The new Holland Hall"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3091,7 +3140,8 @@
     "photo": null,
     "abbreviation": "HMH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3153,7 +3203,8 @@
     "photo": null,
     "abbreviation": "HOM",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3259,7 +3310,8 @@
     "photo": null,
     "abbreviation": "KH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3311,7 +3363,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Admissions Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3391,7 +3444,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Admissions Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3451,7 +3505,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3555,7 +3610,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3627,7 +3683,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3711,7 +3768,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "General Vistor Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3755,7 +3813,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3803,7 +3862,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3867,7 +3927,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3915,7 +3976,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -3963,7 +4025,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4015,7 +4078,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4067,7 +4131,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4123,7 +4188,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4223,7 +4289,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4315,7 +4382,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4371,7 +4439,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4423,7 +4492,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4483,7 +4553,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4559,7 +4630,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4611,7 +4683,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4683,7 +4756,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4747,7 +4821,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4803,7 +4878,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4847,7 +4923,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4891,7 +4968,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4947,7 +5025,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -4995,7 +5074,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5047,7 +5127,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5103,7 +5184,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5147,7 +5229,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5263,7 +5346,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5307,7 +5391,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5351,7 +5436,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5435,7 +5521,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5487,7 +5574,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5547,7 +5635,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5591,7 +5680,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5651,7 +5741,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5695,7 +5786,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5759,7 +5851,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5875,7 +5968,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5931,7 +6025,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -5975,7 +6070,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6283,7 +6379,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6339,7 +6436,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Campus Parking",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6367,7 +6465,8 @@
         "href": "https://150th.stolaf.edu/then-and-now/stop-10/",
         "label": "Website"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6432,7 +6531,8 @@
     "photo": null,
     "abbreviation": "MFB",
     "type": "Administrative",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6590,7 +6690,8 @@
     "photo": null,
     "abbreviation": "MH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6768,7 +6869,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6866,7 +6968,8 @@
     "photo": null,
     "abbreviation": "OM",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6934,7 +7037,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Administrative",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -6978,7 +7082,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Administrative",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -7212,7 +7317,8 @@
     "photo": null,
     "abbreviation": "RH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -7447,7 +7553,8 @@
         "href": "https://norwegianamericanhistory.org/",
         "label": "Norwegian American Historical Association (NAHA)"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -7509,7 +7616,8 @@
     "photo": null,
     "abbreviation": "RMS",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -7739,7 +7847,8 @@
     "photo": null,
     "abbreviation": "RNS",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -7805,7 +7914,8 @@
         "href": "https://christmas.stolaf.edu/",
         "label": "Christmas Festival"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -7866,7 +7976,8 @@
     "photo": null,
     "abbreviation": "SH",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -7948,7 +8059,8 @@
     "photo": null,
     "abbreviation": "SKH",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -7976,7 +8088,8 @@
         "href": "https://stolaf.cafebonappetit.com/",
         "label": "Website"
       }
-    ]
+    ],
+    "parent": "bc"
   },
   {
     "accessibility": "unknown",
@@ -8033,7 +8146,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Administrative",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -8061,7 +8175,8 @@
         "href": "https://stolaf.bncollege.com/",
         "label": "Website"
       }
-    ]
+    ],
+    "parent": "bc"
   },
   {
     "accessibility": "unknown",
@@ -8143,7 +8258,8 @@
     "photo": null,
     "abbreviation": "TB",
     "type": "Administrative & Academic",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -8261,7 +8377,8 @@
     "photo": null,
     "abbreviation": "TH",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -8289,7 +8406,8 @@
         "href": "https://stolaf.cafebonappetit.com/",
         "label": "Website"
       }
-    ]
+    ],
+    "parent": "bc"
   },
   {
     "accessibility": "unknown",
@@ -8317,7 +8435,8 @@
         "href": "https://stolaf.cafebonappetit.com/",
         "label": "Website"
       }
-    ]
+    ],
+    "parent": "bc"
   },
   {
     "accessibility": "unknown",
@@ -8340,7 +8459,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": "bc"
   },
   {
     "accessibility": "unknown",
@@ -8683,7 +8803,8 @@
         "href": "https://www.stolaf.edu/news/index.cfm?fuseaction=NewsDetails&id=4482",
         "label": "A Serious Man"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -8816,7 +8937,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Athletics",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -8974,7 +9096,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -9052,7 +9175,8 @@
         "href": "https://athletics.stolaf.edu/sports/womens-ice-hockey",
         "label": "Women's Hockey"
       }
-    ]
+    ],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -9080,7 +9204,8 @@
         "href": "https://wp.stolaf.edu/buntrock/",
         "label": "Website"
       }
-    ]
+    ],
+    "parent": "bc"
   },
   {
     "accessibility": "unknown",
@@ -9364,7 +9489,8 @@
     "photo": null,
     "abbreviation": null,
     "type": "Administrative",
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -9387,7 +9513,8 @@
     "photo": null,
     "abbreviation": null,
     "type": null,
-    "links": []
+    "links": [],
+    "parent": null
   },
   {
     "accessibility": "unknown",
@@ -9633,6 +9760,7 @@
     "photo": null,
     "abbreviation": "YTT",
     "type": "Residence Hall",
-    "links": []
+    "links": [],
+    "parent": null
   }
 ]
