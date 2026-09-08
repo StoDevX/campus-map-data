@@ -12,7 +12,8 @@
 #              is for the ones that produces something unusable.
 #   removals   Ids to drop from map.json / map.geojson entirely.
 #   changes    Fields merged onto a place, keyed by id. Any field of a record
-#              can be set; `centerpoint` sets the label anchor.
+#              can be set; `centerpoint` sets the label anchor, and `parent`
+#              names the building a place sits inside.
 #   additions  Whole records to append, in map.json's shape.
 #
 # COORDINATE ORDER: `centerpoint` is [longitude, latitude] — GeoJSON order, and
@@ -110,5 +111,35 @@ changes:
   # `centerpoint: [lon, lat]` here for any that reads badly on the map —
   # a centroid that is technically inside an L-shaped building can still sit in
   # a corner nobody thinks of as the building's middle.
+
+  # The building each of these sits inside. Seven of the ten places in the
+  # points-of-interest layer are rooms or counters within a building, and carry
+  # a bare point rather than a footprint of their own — so a consumer asked to
+  # frame or highlight one has no area to draw, and falls back to the parent's.
+  #
+  # Hand-written rather than derived, for the same reason the ids above are. The
+  # source layer names the building in its own label for five of these, but
+  # turning "Buntrock Commons - Dining" into `bc` is string matching against a
+  # mutable field. Point-in-polygon agrees with every one it can resolve and
+  # contradicts none — but it cannot see the Admissions Office, whose point
+  # falls inside no footprint at all, and it would pick arbitrarily between two
+  # buildings if footprints ever overlapped.
+  - id: thecage
+    parent: bc
+  - id: thelionspause
+    parent: bc
+  - id: stavhall
+    parent: bc
+  - id: thekingsdiningroom
+    parent: bc
+  - id: visitorinformationdesk
+    parent: bc
+  - id: stolafcollegebookstore
+    parent: bc
+  - id: admissionsoffice
+    parent: toh
+
+  # The Windmill, the Wind Chime Memorial and the Electric Vehicle Charger are
+  # the other three points, and are in no building. They get no parent.
 
 additions: []
