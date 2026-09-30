@@ -342,7 +342,18 @@ def name_accessible_spots(places: list[dict]) -> None:
 # records before the build refuses it: further means the college re-cut its
 # segments, and the FIDs no longer mean what the mapping says.
 TRAIL_MILES_TOLERANCE = 0.05
+# How near a cut must be to a vertex, and a trail's parts to each other.
+TRAIL_REACH_M = 5
 METRES_PER_MILE = 1609.344
+
+
+def touches(a: list, b: list, reach: float) -> bool:
+    """Whether a vertex of either line lies within `reach` metres of the other."""
+    line_a = {"type": "LineString", "coordinates": a}
+    line_b = {"type": "LineString", "coordinates": b}
+    return any(geometry.distance_m(v, line_b) <= reach for v in a) or any(
+        geometry.distance_m(v, line_a) <= reach for v in b
+    )
 
 
 def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
@@ -354,17 +365,32 @@ def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
     connector the map draws as part of one trail runs in a segment of another.
     Both parts keep that vertex, so the two trails meet.
     """
-    by_fid = {feature["properties"]["FID"]: feature for feature in segments}
+    by_fid: dict[int, dict] = {}
+    held_twice = set()
+    for feature in segments:
+        fid = feature["properties"]["FID"]
+        if fid in by_fid:
+            held_twice.add(fid)
+        by_fid[fid] = feature
     trails = []
     for entry in spec.get("trails") or []:
+
+        def stale(fid, why, entry=entry):
+            return SystemExit(
+                f"  {entry['name']}: FID {fid} {why}; "
+                "the college may have republished the layer -- redo `trails:`"
+            )
+
         lines = []
+        fids = []
         for part in entry["segments"]:
             fid = part if isinstance(part, int) else part["fid"]
             if fid not in by_fid:
-                raise SystemExit(
-                    f"  {entry['name']}: FID {fid} is not in the segments layer; "
-                    "the college may have republished it -- redo `trails:`"
-                )
+                raise stale(fid, "is not in the segments layer")
+            if fid in held_twice:
+                raise stale(fid, "is in the segments layer twice")
+            if by_fid[fid]["geometry"]["type"] != "LineString":
+                raise stale(fid, "is drawn in pieces, not as one line")
             line = by_fid[fid]["geometry"]["coordinates"]
             if isinstance(part, dict) and ("until" in part or "from" in part):
                 point = part.get("until") or part.get("from")
@@ -374,8 +400,27 @@ def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
                         point, {"type": "Point", "coordinates": line[i]}
                     ),
                 )
+                if (
+                    geometry.distance_m(
+                        point, {"type": "Point", "coordinates": line[cut]}
+                    )
+                    > TRAIL_REACH_M
+                ):
+                    raise stale(
+                        fid, f"has no vertex within {TRAIL_REACH_M} m of its cut"
+                    )
                 line = line[: cut + 1] if "until" in part else line[cut:]
             lines.append(line)
+            fids.append(fid)
+        # A wrong FID can match the trail's length by chance; it cannot also
+        # meet the rest of the trail. Parts meet end to end or at a T, where
+        # one's end lies partway along the other.
+        for index, line in enumerate(lines):
+            others = lines[:index] + lines[index + 1 :]
+            if others and not any(
+                touches(line, other, TRAIL_REACH_M) for other in others
+            ):
+                raise stale(fids[index], "touches no other part of the trail")
         shape = {"type": "MultiLineString", "coordinates": lines}
         miles = geometry.length_m(shape) / METRES_PER_MILE
         if abs(miles - entry["miles"]) > TRAIL_MILES_TOLERANCE:

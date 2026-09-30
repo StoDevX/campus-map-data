@@ -78,3 +78,68 @@ def test_a_trail_whose_length_moved_fails_the_build():
 
 def test_no_trails_listed_builds_none():
     assert assemble_trails([NORTH], {}) == []
+
+
+def test_a_segment_drawn_in_pieces_fails_the_build():
+    pieces = {
+        **NORTH,
+        "geometry": {
+            "type": "MultiLineString",
+            "coordinates": [NORTH["geometry"]["coordinates"]],
+        },
+    }
+    with pytest.raises(SystemExit, match="FID 1 is drawn in pieces"):
+        assemble_trails(
+            [pieces],
+            {"trails": [{"name": "Robin Trail", "segments": [1], "miles": 0.07}]},
+        )
+
+
+def test_a_segment_the_layer_holds_twice_fails_the_build():
+    with pytest.raises(SystemExit, match="FID 1 is in the segments layer twice"):
+        assemble_trails(
+            [NORTH, NORTH],
+            {"trails": [{"name": "Robin Trail", "segments": [1], "miles": 0.07}]},
+        )
+
+
+def test_a_cut_away_from_every_vertex_fails_the_build():
+    # 0.0005 degrees of latitude short of 44.462: about 55 m from any vertex.
+    with pytest.raises(SystemExit, match="no vertex within 5 m"):
+        assemble_trails(
+            [LONG],
+            {
+                "trails": [
+                    {
+                        "name": "Robin Trail",
+                        "segments": [{"fid": 2, "until": [-93.18, 44.4615]}],
+                        "miles": 0.07,
+                    }
+                ]
+            },
+        )
+
+
+# A wrong FID whose length happens to match: the length guard misses it, but
+# the segment lies nowhere near the rest of the trail.
+FAR = segment(3, [[-93.17, 44.460], [-93.17, 44.461]])
+
+
+def test_a_segment_that_touches_nothing_else_in_its_trail_fails_the_build():
+    with pytest.raises(SystemExit, match="FID 3 touches no other part"):
+        assemble_trails(
+            [NORTH, LONG, FAR],
+            {"trails": [{"name": "Robin Trail", "segments": [1, 2, 3], "miles": 0.28}]},
+        )
+
+
+# Ends partway along LONG, between its vertices, as trails meet at a T.
+TEE = segment(4, [[-93.179, 44.4615], [-93.18, 44.4615]])
+
+
+def test_a_segment_meeting_another_partway_along_it_touches_it():
+    [trail] = assemble_trails(
+        [LONG, TEE],
+        {"trails": [{"name": "Robin Trail", "segments": [2, 4], "miles": 0.19}]},
+    )
+    assert len(trail["geometry"]["coordinates"]) == 2
