@@ -13,7 +13,7 @@ Two things, for two different readers.
 | | What it is | Read it if |
 | --- | --- | --- |
 | `data/*.geojson` | One file per source layer, the college's field names untouched | You want St. Olaf's data as St. Olaf publishes it |
-| `map.json`, `map.geojson` | 146 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
+| `map.json`, `map.geojson` | 148 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
 | `routing.json` | A pedestrian routing graph | You want to walk someone from one door to another |
 | `vendor/ole-compass/` | The 2016 survey `routing.json` is built from | You are changing how the graph is georeferenced |
 
@@ -71,7 +71,7 @@ admissions, the windmill) that are one concept split across seven layer ids.
 
 ## The published dataset
 
-`map.json` and `map.geojson` hold **146 places, 96 with a footprint** — against
+`map.json` and `map.geojson` hold **148 places, 96 with a footprint** — against
 Carleton's 124 and 96, which is a fair indication the two datasets are of
 comparable use.
 
@@ -79,7 +79,7 @@ comparable use.
 | --- | ---: |
 | Parking (lots, accessible stalls) | 65 |
 | Buildings | 38 |
-| Trails | 14 |
+| Trails | 16 |
 | Ponds | 11 |
 | Points of interest | 10 |
 | Athletic fields | 8 |
@@ -106,11 +106,13 @@ configuration change rather than a second code path. Every key Carleton emits is
 emitted here, including the ones St. Olaf has nothing to put in, so a consumer
 never has to test for a missing key.
 
-Six properties are **added**: `abbreviation`, `type`, `links`, `parent`,
+Seven properties are **added**: `abbreviation`, `type`, `links`, `parent`,
 `length` (a trail's length in metres, from its geometry; null for anything
-that is not a line) and `rules` (the Natural Lands rules on every pond and
+that is not a line), `rules` (the Natural Lands rules on every pond and
 trail, in our own words from the college's visitor pages, with a link to them
-among `links`; empty elsewhere).
+among `links`; empty elsewhere) and `walk` (a Wellness Walk's time range in
+minutes and its accessibility, on the six places a walk follows; null
+elsewhere — see [Wellness Walks](#wellness-walks)).
 Extra keys are additive and safe, and dropping St. Olaf's building
 abbreviations — `RNS`, `BMC`, `TOH`, the identifiers people on campus actually
 use — to preserve an exact field list would be throwing away good data for a bad
@@ -280,6 +282,26 @@ had moved to Nebraska.
 - **The build is reproducible** — it re-runs `build.py` and fails if the output
   moves.
 
+## Wellness Walks
+
+The Natural Lands publishes short timed walks, each with a PDF guide, at
+`wp.stolaf.edu/naturallands/wellness-walks/`. `overrides.yaml`'s `walks:` lists
+them by hand. A walk along a whole trail tags that trail: the category
+`wellness-walk`, a `walk` field, and a "Wellness Walk guide" link. A walk along
+part of one — East and West Prairie Loop, the two halves of Prairie Loop — is a
+place of its own, drawn along that part. The `accessibility` sentences restate
+the guides' facts in our own words; the guides, © St. Olaf, are linked.
+
+The page is watched rather than scraped. `watches.yaml` names a page and the CSS
+selectors that matter; `scripts/watch.py` runs them with `htmlq` (pinned in
+`mise.toml`) and writes the matches to `data/watches/<name>.txt`.
+`.github/workflows/watch.yml` runs it every Monday and opens a pull request on
+the `bot/watch` branch when a snapshot changes. Merging it acknowledges the
+change — and `verify.py` then fails until `walks:` has as many walks as the
+page has guides, so a new walk cannot be acknowledged and forgotten.
+
+The watch is generic: another page is another entry in `watches.yaml`.
+
 ## Scheduled scraping
 
 `.github/workflows/scrape.yml` runs **monthly**, on the 1st at 06:00 UTC, and on
@@ -356,7 +378,7 @@ buries the campus. So:
 | `campus_buildings` | MultiPolygon | 38 | z14+ |
 | `campus_grounds` | MultiPolygon | 47 | z14+ |
 | `campus_paths` | MultiLineString | 187 lines in 16 features | z15+ |
-| `campus_labels` | Point | 146 | z15+ |
+| `campus_labels` | Point | 148 | z15+ |
 
 Every anchor carries a `kind`, which is what lets the style bring each sort of
 place in at the zoom where it stops being clutter — buildings at z15, points of
@@ -375,9 +397,11 @@ nothing to label, and Campus Drive, the one named access trail, is a road that
 dataset. They belong
 on the map regardless: this is something people walk around a campus with, and
 the college's 10.8 km of walkways plus 12 km of Natural Lands trails were being
-scraped and then dropped. The 14 named trails are places, and each is its own
-feature carrying its `buildingId`, so a tap on the line opens the trail; the
-style labels them along the line.
+scraped and then dropped. The 16 named trails are places. Fourteen are each
+their own feature carrying its `buildingId`, so a tap on the line opens the
+trail; the style labels them along the line. The other two are the Wellness
+Walks along each half of Prairie Loop, which the tiles leave out: drawn over
+the loop, they would double its line and label.
 
 ### The Heath Creek trails
 
