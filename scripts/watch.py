@@ -9,11 +9,14 @@ when a snapshot changes, and the watch's `why` says what to do about it.
 Selectors are run by `htmlq`, pinned in mise.toml, rather than a Python HTML
 library: the scripts keep to two runtime dependencies.
 
-`--check` writes nothing and exits 1 when any snapshot would change.
+`--check` writes nothing and exits 1 when any snapshot would change. With
+WATCH_REPORT set, a run writes a Markdown list of the changed watches and
+their `why` there, for the workflow's pull request.
 """
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 import urllib.request
@@ -66,14 +69,21 @@ def main() -> int:
     changed = []
     for watch in watches:
         path = SNAPSHOTS / f"{watch['name']}.txt"
-        text = snapshot(fetch(watch["url"]), watch["select"])
+        text = snapshot(fetch(watch["url"]), watch["select"], run_htmlq)
         if path.exists() and path.read_text() == text:
             print(f"  {watch['name']}: unchanged")
             continue
-        changed.append(watch["name"])
+        changed.append(watch)
         print(f"  {watch['name']}: changed -- {watch.get('why', '')}")
         if not check:
             path.write_text(text)
+    report = os.environ.get("WATCH_REPORT")
+    if report and changed:
+        Path(report).write_text(
+            "".join(
+                f"- **{w['name']}** ({w['url']}): {w.get('why', '')}\n" for w in changed
+            )
+        )
     return 1 if check and changed else 0
 
 
