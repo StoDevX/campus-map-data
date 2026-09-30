@@ -83,8 +83,14 @@ ids:
     "Klein Field at Manitou & Manitou Track": field-kleinfield
   points-of-interest:
     "Buntrock Commons Parking Lot - Electric Vehicle Charger": evcharger
+  # Pinned so the id survives the college correcting the spelling upstream.
+  natural-lands-trails:
+    "Windmilll Trail": trail-windmilltrail
 
-removals: []
+removals:
+  # An access road the trails layer carries as a trail. Its row is typed
+  # "Access Trail"; it is the only named one.
+  - id: trail-campusdrive
 
 changes:
   # Spelling corrections. The ArcGIS layer disagrees with the college's own
@@ -105,6 +111,10 @@ changes:
   # are several of them.
   - id: field-carlsontenniscourse
     name: Carlson Tennis Courts
+
+  # The layer spells it with three l's.
+  - id: trail-windmilltrail
+    name: Windmill Trail
 
   # Label anchors are computed (see geometry.py) and every one of the 92
   # polygonal places currently lands inside its own footprint. Add a
