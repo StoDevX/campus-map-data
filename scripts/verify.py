@@ -363,12 +363,30 @@ def verify_rules(report: Report, spec: dict, records: list[dict]) -> None:
             )
 
 
+# The guides' section of the walks page's snapshot, by its header: every walk
+# has a guide, and Windmill Trail's has no heading.
+GUIDES_SECTION = "# a.wp-block-file__button @href"
+
+
+def snapshot_section(snapshot: str, header: str) -> set[str]:
+    """The lines of one selector's section of a watch snapshot."""
+    section: set[str] = set()
+    inside = False
+    for line in snapshot.splitlines():
+        if line.startswith("# "):
+            inside = line == header
+        elif inside:
+            section.add(line)
+    return section
+
+
 def verify_walks(
     report: Report, spec: dict, records: list[dict], snapshot: str | None
 ) -> None:
-    """Every walk is whole on its place, and there is one per guide the page
-    links. The snapshot is data/watches/wellness-walks.txt: once the watch's
-    pull request records a new walk, this fails until overrides.yaml has it."""
+    """Every walk is whole on its place, and `walks:` links exactly the guides
+    the page does. The snapshot is data/watches/wellness-walks.txt: once the
+    watch's pull request records a changed walk, this fails until
+    overrides.yaml matches it."""
     for record in records:
         walking = "wellness-walk" in record["categories"]
         has_walk = record.get("walk") is not None
@@ -385,15 +403,20 @@ def verify_walks(
         )
     if snapshot is None:
         return
-    lines = snapshot.splitlines()
-    marker = next((i for i, line in enumerate(lines) if line.endswith("@href")), None)
-    page = len(lines[marker + 1 :]) if marker is not None else 0
-    walks = len(spec.get("walks") or [])
-    report.check(
-        page == walks,
-        f"overrides.yaml: {walks} walks, but the walks page links {page} guides "
-        f"-- update `walks:` to match data/watches/wellness-walks.txt",
-    )
+    page = snapshot_section(snapshot, GUIDES_SECTION)
+    listed = {entry["pdf"] for entry in spec.get("walks") or [] if "pdf" in entry}
+    for missing in sorted(page - listed):
+        report.check(
+            False,
+            f"overrides.yaml: the walks page links {missing}, which no walk in "
+            f"`walks:` has -- update it to match data/watches/wellness-walks.txt",
+        )
+    for gone in sorted(listed - page):
+        report.check(
+            False,
+            f"overrides.yaml: `walks:` has {gone}, which the walks page no longer "
+            f"links -- update it to match data/watches/wellness-walks.txt",
+        )
 
 
 def verify_overrides(report: Report, records: list[dict]) -> None:
