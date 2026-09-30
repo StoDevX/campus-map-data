@@ -23,6 +23,10 @@ on:
     paths:
       - scripts/**
       - overrides.yaml
+      # A watch's snapshot, merged from its pull request: verify.py checks the
+      # data against it, and should fail then rather than at the next monthly
+      # run. The scrape never writes data/watches, so this cannot loop.
+      - data/watches/**
       - pyproject.toml
       - uv.lock
       - .github/workflows/scrape.yml

@@ -36,12 +36,22 @@ jobs:
 
       - name: Snapshot
         if: github.event_name != 'pull_request'
-        run: uv run scripts/watch.py
+        run: WATCH_REPORT="$RUNNER_TEMP/watch.md" uv run scripts/watch.py
+
+      # A snapshot that changed can leave the data behind the page -- verify.py
+      # checks the walks against theirs. Its result goes in the pull request,
+      # which GITHUB_TOKEN's own checks never run on.
+      - name: Verify against the new snapshots
+        id: verify
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        run: uv run scripts/verify.py
 
       - name: Open or update the pull request
         if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
+          VERIFIED: ${{ steps.verify.outcome }}
         run: |
           if git diff --quiet -- data/watches; then
             echo "Nothing changed."
@@ -49,23 +59,48 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B bot/watch
-          git add data/watches
-          git commit -m "Update the watched pages' snapshots"
-          git push --force origin bot/watch
+
           open=$(gh pr list --head bot/watch --state open --json number --jq '.[].number')
           if [ -n "$open" ]; then
-            echo "Updated existing pull request #${open}."
+            # Build on the open pull request, keeping anything a person pushed
+            # to it -- the matching overrides.yaml change, say. Add a commit
+            # only if the page moved again since.
+            git fetch -q origin bot/watch
+            if git diff --quiet origin/bot/watch -- data/watches; then
+              echo "Pull request #${open} already has this change."
+              exit 0
+            fi
+            cp -R data/watches "$RUNNER_TEMP/watches"
+            git checkout -q -- data/watches
+            git checkout -q -B bot/watch origin/bot/watch
+            rm -rf data/watches
+            cp -R "$RUNNER_TEMP/watches" data/watches
+            git add data/watches
+            git commit -q -m "Update the watched pages' snapshots"
+            git push origin bot/watch
+            echo "Updated pull request #${open}."
             exit 0
           fi
+
+          # No pull request is open, so nothing on the branch is anyone's work.
+          git checkout -q -B bot/watch
+          git add data/watches
+          git commit -q -m "Update the watched pages' snapshots"
+          git push --force origin bot/watch
+
+          {
+            echo "A watched page changed:"
+            echo
+            cat "$RUNNER_TEMP/watch.md"
+            echo
+            if [ "$VERIFIED" = success ]; then
+              echo "verify.py passes against the new snapshots."
+            else
+              echo "verify.py **fails** against the new snapshots: update the data on this branch before merging. The run's log has the failures."
+            fi
+            echo
+            echo "Merging acknowledges the change."
+          } > "$RUNNER_TEMP/body.md"
           gh pr create --base main --head bot/watch \
             --title "A watched page changed" \
-            --body "$(cat <<'BODY'
-          A page in watches.yaml changed. Read the diff: each watch's `why` in
-          watches.yaml says what the change asks of us.
-
-          Merging acknowledges the change. verify.py may then fail until the
-          data is updated to match -- for the Wellness Walks, `walks:` in
-          overrides.yaml.
-          BODY
-          )"
+            --body-file "$RUNNER_TEMP/body.md"
