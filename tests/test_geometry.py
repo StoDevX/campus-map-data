@@ -73,3 +73,11 @@ def test_a_multiline_sums_every_part():
 def test_an_area_or_a_point_has_no_length():
     assert length_m({"type": "Point", "coordinates": [-93.18, 44.46]}) == 0
     assert length_m(None) == 0
+
+
+def test_a_line_is_measured_to_its_nearest_stretch_not_its_vertices():
+    # 0.001 degrees of latitude either side: the vertices are 111 m away, the
+    # line itself about 10 m.
+    line = {"type": "LineString", "coordinates": [[-93.18, 44.459], [-93.18, 44.461]]}
+    beside = [-93.18 + 10 / (math.cos(math.radians(44.46)) * 111_320), 44.46]
+    assert distance_m(beside, line) == pytest.approx(10, abs=0.1)

@@ -58,6 +58,22 @@ def polygons(geometry: dict | None) -> list[list[Ring]]:
     return []
 
 
+def lines(geometry: dict | None) -> list[list[Position]]:
+    """Every line in a geometry, as its list of positions."""
+    if not geometry:
+        return []
+    kind = geometry.get("type")
+    if kind == "LineString":
+        return [geometry["coordinates"]]
+    if kind == "MultiLineString":
+        return list(geometry["coordinates"])
+    if kind == "GeometryCollection":
+        return [
+            line for member in geometry.get("geometries", []) for line in lines(member)
+        ]
+    return []
+
+
 def positions(geometry: dict | None) -> list[Position]:
     """Every coordinate pair in a geometry, flattened."""
     if not geometry:
@@ -223,7 +239,8 @@ def label_anchor(geometry: dict | None) -> Position | None:
 
 
 def distance_m(point: Position, geometry: dict | None) -> float:
-    """Metres from a point to a geometry: 0 inside an area, else to its edge.
+    """Metres from a point to a geometry: 0 inside an area, else to its edge or
+    the nearest stretch of its lines.
 
     Measured on a flat projection centred on the point, which across a campus
     is off by far less than the width of a parking space.
@@ -250,6 +267,8 @@ def distance_m(point: Position, geometry: dict | None) -> float:
         for rings in shapes
         for ring in rings
         for i in range(len(ring) - 1)
+    ] + [
+        (line[i], line[i + 1]) for line in lines(geometry) for i in range(len(line) - 1)
     ]
     if edges:
         return min(to_segment(a, b) for a, b in edges)
@@ -264,17 +283,6 @@ EARTH_RADIUS_M = 6_371_008.8
 
 def length_m(geometry: dict | None) -> float:
     """Geodesic metres along every line in a geometry; 0 for anything else."""
-    if not geometry:
-        return 0.0
-    kind = geometry.get("type")
-    if kind == "GeometryCollection":
-        return sum(length_m(member) for member in geometry.get("geometries", []))
-    if kind == "LineString":
-        lines = [geometry["coordinates"]]
-    elif kind == "MultiLineString":
-        lines = geometry["coordinates"]
-    else:
-        return 0.0
 
     def haversine(a: Position, b: Position) -> float:
         lat1, lat2 = math.radians(a[1]), math.radians(b[1])
@@ -286,5 +294,7 @@ def length_m(geometry: dict | None) -> float:
         return 2 * EARTH_RADIUS_M * math.asin(math.sqrt(h))
 
     return sum(
-        haversine(line[i], line[i + 1]) for line in lines for i in range(len(line) - 1)
+        haversine(line[i], line[i + 1])
+        for line in lines(geometry)
+        for i in range(len(line) - 1)
     )
