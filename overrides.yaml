@@ -216,7 +216,7 @@ walks:
     - trail: trail-windmilltrail
       minutes: [13, 16]
       pdf: https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-Windmill-Trail.pdf
-      accessibility: Mowed, 10 feet wide, one bench; ruts in the low wetland stretch; downhill into the conifers at the northwest end.
+      accessibility: A mowed path, 10 feet wide, with one bench; ruts in the low wetland stretch; downhill into the conifers at the northwest end.
     - trail: trail-lowerheathcreektrail
       minutes: [20, 20]
       pdf: https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Lower-Heath-Creek-Trail.pdf
@@ -225,9 +225,9 @@ walks:
       part: {trail: Prairie Loop, index: 0}
       minutes: [12, 15]
       pdf: https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-East-Prairie-Loop-2.pdf
-      accessibility: Mowed dirt, 10 feet wide, gently up and down; one bench.
+      accessibility: A mowed dirt path, 10 feet wide, gently up and down; one bench.
     - name: West Prairie Loop
       part: {trail: Prairie Loop, index: 1}
       minutes: [15, 18]
       pdf: https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-West-Prairie-Loop.pdf
-      accessibility: Mowed, 10 feet wide, one bench; flat but for small dips near the Coyote Ponds.
+      accessibility: A mowed path, 10 feet wide, with one bench; flat but for small dips near the Coyote Ponds.
