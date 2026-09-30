@@ -61,7 +61,7 @@ def main(dist: str) -> None:
     for missing in sorted(CAMPUS_LAYERS - available):
         problems.append(f"tileset is missing campus layer {missing!r}")
 
-    for name in ("style.json", "style-pmtiles.json"):
+    for name in ("style.json", "style-pmtiles.json", "style-dark.json"):
         path = os.path.join(dist, name)
         with open(path) as f:
             style = json.load(f)

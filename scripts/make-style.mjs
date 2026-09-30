@@ -1,10 +1,12 @@
-// Generate the two MapLibre styles this site publishes.
+// Generate the MapLibre styles this site publishes.
 //
 //   style.json          plain {z}/{x}/{y}.pbf source — works everywhere
 //   style-pmtiles.json  pmtiles:// source — only if the binary was built with
 //                       MLN_WITH_PMTILES (see README)
+//   style-dark.json     style.json in the dark theme, for a device in dark mode
 //
-// Both are the same cartography over the same tiles; only the source differs.
+// All three draw the same layers over the same tiles; the first two differ only
+// in source, and the dark style only in colour.
 
 import { writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -70,50 +72,149 @@ const CENTER_ZOOM = Number(env("CENTER_ZOOM"));
 //              in chroma. This one is not a taste call — see "Why the OSM
 //              buildings are warm" below.
 
-const OLE_GOLD = {
-  // The fill for St. Olaf's own building footprints. Gold pulled well down in
-  // chroma: at full brand saturation a 38-polygon layer at z17 is a wall of
-  // yellow, and the app still has to draw a selection highlight on top of it
-  // that must read as brighter than the resting state.
-  fill: "#e6d3a3",
-  // A deeper gold edge. The outline is what makes a building read as a discrete
-  // object rather than a blob, and it is doing the work the fill deliberately
-  // is not.
-  line: "#b3903c",
+const light = {
+  flavor: {
+    ...namedFlavor("light"),
+
+    earth: "#efece4",
+    background: "#efece4",
+
+    // Footways and unclassified ways. See "paths" above — this is the single
+    // most consequential value in the file for a map people walk around with.
+    other: "#e2ddd0",
+    bridges_other: "#e2ddd0",
+
+    buildings: "#ded2b4",
+
+    water: "#c2d3dd",
+    zoo: "#d6dedd",
+
+    park_a: "#dfe4d9",
+    park_b: "#ccd8c6",
+    wood_a: "#dce1d5",
+    wood_b: "#ccd6c3",
+    scrub_a: "#dfe3d8",
+    scrub_b: "#ced8c7",
+
+    // Institutional land — the campus is tagged this way. Barely above the
+    // earth tone: enough that the campus edge is legible, not enough to compete
+    // with the buildings drawn on top of it.
+    school: "#eeeade",
+    hospital: "#eee7e2",
+    industrial: "#e7e8e5",
+  },
+
+  campus: {
+    // The fill for St. Olaf's own building footprints. Gold pulled well down in
+    // chroma: at full brand saturation a 38-polygon layer at z17 is a wall of
+    // yellow, and the app still has to draw a selection highlight on top of it
+    // that must read as brighter than the resting state.
+    buildingFill: "#e6d3a3",
+    // A deeper gold edge. The outline is what makes a building read as a
+    // discrete object rather than a blob, and it is doing the work the fill
+    // deliberately is not.
+    buildingLine: "#b3903c",
+
+    // The athletic fields are grass and should read as part of the green.
+    athleticsFill: "#d9e2cf",
+    athleticsLine: "#b6c7a8",
+    // Parking is a neutral hard surface, deliberately close to the earth and
+    // *cooler* than it. A lot is a big shape — Buntrock's fills a quarter of
+    // the frame at z17 — so it has to be quiet, and it is the outline, not the
+    // fill, that makes it read as a lot. The first version of this was a warm
+    // grey two values off the OSM building fill, which made every lot look like
+    // a building.
+    parkingFill: "#e9e8e2",
+    parkingLine: "#cdcbc2",
+
+    trail: "#c8cdb6",
+    walkway: "#d6cfbd",
+
+    // Warm halo matching the earth, so labels sit on the ground rather than on
+    // a grey card.
+    labelHalo: "#f4f1e9",
+    buildingLabel: "#2f2a24",
+    placeLabel: "#4a443b",
+    parkingLabel: "#6b645a",
+  },
+
+  sprite: "sprite",
 };
 
-const flavor = {
-  ...namedFlavor("light"),
+// The dark theme
+//
+// The same argument as the light one, run in the other direction: the ground
+// recedes and the gold is spent only on the campus buildings.
+//
+// Departures from the stock Protomaps "dark" flavor:
+//
+//   earth      Stock is a neutral #1f1f1f with a cooler #34373d background.
+//              Warmed to a charcoal in the same family as the light theme's
+//              paper, and the background matched to it, so the gold does not
+//              sit on a blue-grey.
+//   water      Kept a muted blue-grey, a step above the earth: legible as the
+//              river, never brighter than the app's markers.
+//   parks      Dark desaturated greens, for the same reason as the light
+//              theme — the Natural Lands are most of the frame.
+//   paths      The light theme's paths problem inverted. Stock footways are
+//              #333333, which vanishes against a warmer charcoal; lifted to a
+//              warm tone that reads as a path on dark ground.
+//   buildings  Lifted *above* the earth, where stock sinks them below it, and
+//              warmed toward the gold for the same reason as the light theme's.
+//
+// The campus buildings flip the light theme's relationship between fill and
+// edge. A pale gold fill on dark ground glows, and would leave the app's
+// selection highlight nothing to be brighter than; so the fill is a dim,
+// low-chroma gold and the outline carries the brand.
+const dark = {
+  flavor: {
+    ...namedFlavor("dark"),
 
-  earth: "#efece4",
-  background: "#efece4",
+    earth: "#1e1c19",
+    background: "#1e1c19",
 
-  // Footways and unclassified ways. See "paths" above — this is the single
-  // most consequential value in the file for a map people walk around with.
-  other: "#e2ddd0",
-  bridges_other: "#e2ddd0",
+    other: "#3b372f",
+    bridges_other: "#3b372f",
 
-  buildings: "#ded2b4",
+    buildings: "#4a4234",
 
-  water: "#c2d3dd",
-  zoo: "#d6dedd",
+    water: "#27313a",
+    zoo: "#222622",
 
-  park_a: "#dfe4d9",
-  park_b: "#ccd8c6",
-  wood_a: "#dce1d5",
-  wood_b: "#ccd6c3",
-  scrub_a: "#dfe3d8",
-  scrub_b: "#ced8c7",
+    park_a: "#212620",
+    park_b: "#222a21",
+    wood_a: "#20251f",
+    wood_b: "#212920",
+    scrub_a: "#22251f",
+    scrub_b: "#232921",
 
-  // Institutional land — the campus is tagged this way. Barely above the earth
-  // tone: enough that the campus edge is legible, not enough to compete with
-  // the buildings drawn on top of it.
-  school: "#eeeade",
-  hospital: "#eee7e2",
-  industrial: "#e7e8e5",
+    school: "#23201c",
+    hospital: "#241f1e",
+    industrial: "#222120",
+  },
+
+  campus: {
+    buildingFill: "#524428",
+    buildingLine: "#b8943f",
+
+    athleticsFill: "#253021",
+    athleticsLine: "#3e4d35",
+    // Cooler than the earth, as in the light theme, so a lot does not read as
+    // a building.
+    parkingFill: "#27272a",
+    parkingLine: "#3c3b38",
+
+    trail: "#454a38",
+    walkway: "#4c4638",
+
+    labelHalo: "#1e1c19",
+    buildingLabel: "#ece5d8",
+    placeLabel: "#c9c1b3",
+    parkingLabel: "#9a9285",
+  },
+
+  sprite: "sprite-dark",
 };
-
-const styleLayers = layers("basemap", flavor, { lang: "en" });
 
 // ---------------------------------------------------------------------------
 // St. Olaf's campus layers
@@ -130,9 +231,9 @@ const CAMPUS_GROUNDS_MINZOOM = Number(env("CAMPUS_GROUNDS_MINZOOM"));
 const CAMPUS_PATHS_MINZOOM = Number(env("CAMPUS_PATHS_MINZOOM"));
 const CAMPUS_LABELS_MINZOOM = Number(env("CAMPUS_LABELS_MINZOOM"));
 const OSM_BUILDINGS = env("OSM_BUILDINGS");
-
-const stockBuildings = styleLayers.find((l) => l.id === "buildings");
-if (!stockBuildings) throw new Error("expected a basemap layer called buildings");
+if (!["full", "ghost", "off"].includes(OSM_BUILDINGS)) {
+  throw new Error(`OSM_BUILDINGS must be one of full, ghost, off — got "${OSM_BUILDINGS}"`);
+}
 
 const parseHex = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
 
@@ -146,15 +247,6 @@ const flatten = (fg, bg, alpha) => {
     [mix(fr, br), mix(fg_, bg_), mix(fb, bb)].map((v) => v.toString(16).padStart(2, "0")).join("")
   );
 };
-
-// The stock buildings layer is half-transparent. Flattened against the earth
-// beneath it and painted opaque, so that the campus layer drawn on top composes
-// against a known colour rather than against whatever happens to be underneath.
-const OSM_BUILDING_FILL = flatten(
-  stockBuildings.paint["fill-color"],
-  flavor.earth,
-  stockBuildings.paint["fill-opacity"],
-);
 
 // Why the OSM buildings are warm
 //
@@ -179,7 +271,7 @@ const OSM_BUILDING_FILL = flatten(
 // Rolvaag that look like duplicate buildings are OSM's `school` landuse, which
 // blankets the campus, plus this repo's own `campus_grounds`. Neither is a
 // building layer.
-const campusLayers = [
+const campusLayers = (campus) => [
   {
     id: "campus_grounds",
     type: "fill",
@@ -187,22 +279,14 @@ const campusLayers = [
     "source-layer": "campus_grounds",
     minzoom: CAMPUS_GROUNDS_MINZOOM,
     paint: {
-      // One layer, two materials. Parking is a neutral hard surface; the
-      // athletic fields are grass and should read as part of the green.
-      //
-      // The parking tone is deliberately close to the earth and *cooler* than
-      // it. A lot is a big shape — Buntrock's fills a quarter of the frame at
-      // z17 — so it has to be quiet, and it is the outline below, not this
-      // fill, that makes it read as a lot. The first version of this was a warm
-      // grey two values off the OSM building fill, which made every lot look
-      // like a building.
+      // One layer, two materials: athletic fields, and parking.
       "fill-color": [
         "match",
         ["get", "kind"],
         "athletics",
-        "#d9e2cf",
+        campus.athleticsFill,
         // parking, and anything new that lands in this layer
-        "#e9e8e2",
+        campus.parkingFill,
       ],
       "fill-opacity": 1,
     },
@@ -214,7 +298,13 @@ const campusLayers = [
     "source-layer": "campus_grounds",
     minzoom: CAMPUS_GROUNDS_MINZOOM + 1,
     paint: {
-      "line-color": ["match", ["get", "kind"], "athletics", "#b6c7a8", "#cdcbc2"],
+      "line-color": [
+        "match",
+        ["get", "kind"],
+        "athletics",
+        campus.athleticsLine,
+        campus.parkingLine,
+      ],
       "line-width": ["interpolate", ["linear"], ["zoom"], 15, 0.4, 18, 1],
       "line-opacity": 0.9,
     },
@@ -236,7 +326,7 @@ const campusLayers = [
     "source-layer": "campus_paths",
     minzoom: CAMPUS_PATHS_MINZOOM,
     paint: {
-      "line-color": ["match", ["get", "kind"], "trail", "#c8cdb6", "#d6cfbd"],
+      "line-color": ["match", ["get", "kind"], "trail", campus.trail, campus.walkway],
       "line-width": ["interpolate", ["exponential", 1.6], ["zoom"], 15, 0.5, 20, 6],
       "line-opacity": 0.95,
     },
@@ -247,7 +337,7 @@ const campusLayers = [
     source: "basemap",
     "source-layer": "campus_buildings",
     minzoom: CAMPUS_BUILDINGS_MINZOOM,
-    paint: { "fill-color": OLE_GOLD.fill, "fill-opacity": 1 },
+    paint: { "fill-color": campus.buildingFill, "fill-opacity": 1 },
   },
   {
     id: "campus_buildings_outline",
@@ -258,7 +348,7 @@ const campusLayers = [
     // an outline on it is just noise that darkens the campus.
     minzoom: CAMPUS_BUILDINGS_MINZOOM + 1,
     paint: {
-      "line-color": OLE_GOLD.line,
+      "line-color": campus.buildingLine,
       "line-width": ["interpolate", ["linear"], ["zoom"], 15, 0.4, 18, 1.2],
       "line-opacity": 0.9,
     },
@@ -269,7 +359,7 @@ const campusLayers = [
 // it stops being clutter. This is the whole reason `kind` is tiled onto the
 // points: 72 of the 128 places are parking, and showing them at the zoom where
 // you want building names buries the campus in lot names.
-const labelLayer = (id, kinds, minzoom, { size, color, weight }) => ({
+const labelLayer = (id, kinds, minzoom, { size, color, halo, weight }) => ({
   id,
   type: "symbol",
   source: "basemap",
@@ -288,20 +378,19 @@ const labelLayer = (id, kinds, minzoom, { size, color, weight }) => ({
   },
   paint: {
     "text-color": color,
-    // Warm halo matching the earth, so labels sit on the ground rather than on
-    // a grey card.
-    "text-halo-color": "#f4f1e9",
+    "text-halo-color": halo,
     "text-halo-width": 1.2,
   },
 });
 
-const campusLabelLayers = [
+const campusLabelLayers = (campus) => [
   // Parking last in the array so it ends up lowest in the label stack: when
   // MapLibre has to drop a colliding label, the lot name goes before the
   // building name.
   labelLayer("campus_labels_buildings", ["building"], CAMPUS_LABELS_MINZOOM, {
     size: ["interpolate", ["linear"], ["zoom"], 15, 10.5, 18, 13.5],
-    color: "#2f2a24",
+    color: campus.buildingLabel,
+    halo: campus.labelHalo,
     weight: "Noto Sans Medium",
   }),
   labelLayer(
@@ -310,69 +399,90 @@ const campusLabelLayers = [
     CAMPUS_LABELS_MINZOOM + 1,
     {
       size: ["interpolate", ["linear"], ["zoom"], 16, 10, 18, 12],
-      color: "#4a443b",
+      color: campus.placeLabel,
+      halo: campus.labelHalo,
       weight: "Noto Sans Regular",
     },
   ),
   labelLayer("campus_labels_parking", ["parking"], CAMPUS_LABELS_MINZOOM + 2, {
     size: ["interpolate", ["linear"], ["zoom"], 17, 9.5, 19, 11],
-    color: "#6b645a",
+    color: campus.parkingLabel,
+    halo: campus.labelHalo,
     weight: "Noto Sans Italic",
   }),
 ];
 
-// Where they go: fills above the basemap's own buildings, labels below its
-// address labels. Found by layer id rather than index, so an upstream reshuffle
-// of the Protomaps layer list cannot silently put them somewhere else.
-const indexOf = (id) => {
-  const i = styleLayers.findIndex((l) => l.id === id);
-  if (i < 0) throw new Error(`expected a basemap layer called ${id}`);
-  return i;
-};
+// The whole layer list for one theme: the Protomaps basemap in the theme's
+// flavor, with St. Olaf's campus layers spliced into it.
+const styleLayersFor = ({ flavor, campus }) => {
+  const styleLayers = layers("basemap", flavor, { lang: "en" });
 
-// Labels go in first, at the higher index, so inserting the fills below them
-// does not shift the position that was just computed.
-styleLayers.splice(indexOf("address_label"), 0, ...campusLabelLayers);
-styleLayers.splice(indexOf("buildings") + 1, 0, ...campusLayers);
-
-// How much of the basemap's own OSM building layer to draw.
-//
-//   full   draw it normally — the default
-//   ghost  fade it from CAMPUS_BUILDINGS_MINZOOM so only St. Olaf's read
-//   off    omit it entirely
-//
-// `full` is the default because downtown Northfield has no campus data at all
-// and would otherwise lose its buildings. The other two exist because these are
-// the densest polygons on the map: at z17 over campus the renderer draws every
-// OSM footprint plus every campus one, and dropping the OSM layer roughly
-// halves that without touching `campus_buildings`, which the app hit-tests
-// taps against and therefore cannot hide.
-stockBuildings.paint = { "fill-color": OSM_BUILDING_FILL, "fill-opacity": 1 };
-if (OSM_BUILDINGS === "off") {
-  styleLayers.splice(indexOf("buildings"), 1);
-} else if (OSM_BUILDINGS === "ghost") {
-  stockBuildings.paint = {
-    ...stockBuildings.paint,
-    "fill-opacity": [
-      "interpolate",
-      ["linear"],
-      ["zoom"],
-      CAMPUS_BUILDINGS_MINZOOM - 1,
-      1,
-      CAMPUS_BUILDINGS_MINZOOM + 1,
-      0.35,
-    ],
+  // Where they go: fills above the basemap's own buildings, labels below its
+  // address labels. Found by layer id rather than index, so an upstream
+  // reshuffle of the Protomaps layer list cannot silently put them somewhere
+  // else.
+  const indexOf = (id) => {
+    const i = styleLayers.findIndex((l) => l.id === id);
+    if (i < 0) throw new Error(`expected a basemap layer called ${id}`);
+    return i;
   };
-} else if (OSM_BUILDINGS !== "full") {
-  throw new Error(`OSM_BUILDINGS must be one of full, ghost, off — got "${OSM_BUILDINGS}"`);
-}
+
+  const stockBuildings = styleLayers[indexOf("buildings")];
+
+  // The stock buildings layer is half-transparent. Flattened against the earth
+  // beneath it and painted opaque, so that the campus layer drawn on top
+  // composes against a known colour rather than against whatever happens to be
+  // underneath.
+  const osmBuildingFill = flatten(
+    stockBuildings.paint["fill-color"],
+    flavor.earth,
+    stockBuildings.paint["fill-opacity"],
+  );
+
+  // Labels go in first, at the higher index, so inserting the fills below them
+  // does not shift the position that was just computed.
+  styleLayers.splice(indexOf("address_label"), 0, ...campusLabelLayers(campus));
+  styleLayers.splice(indexOf("buildings") + 1, 0, ...campusLayers(campus));
+
+  // How much of the basemap's own OSM building layer to draw.
+  //
+  //   full   draw it normally — the default
+  //   ghost  fade it from CAMPUS_BUILDINGS_MINZOOM so only St. Olaf's read
+  //   off    omit it entirely
+  //
+  // `full` is the default because downtown Northfield has no campus data at all
+  // and would otherwise lose its buildings. The other two exist because these
+  // are the densest polygons on the map: at z17 over campus the renderer draws
+  // every OSM footprint plus every campus one, and dropping the OSM layer
+  // roughly halves that without touching `campus_buildings`, which the app
+  // hit-tests taps against and therefore cannot hide.
+  stockBuildings.paint = { "fill-color": osmBuildingFill, "fill-opacity": 1 };
+  if (OSM_BUILDINGS === "off") {
+    styleLayers.splice(indexOf("buildings"), 1);
+  } else if (OSM_BUILDINGS === "ghost") {
+    stockBuildings.paint = {
+      ...stockBuildings.paint,
+      "fill-opacity": [
+        "interpolate",
+        ["linear"],
+        ["zoom"],
+        CAMPUS_BUILDINGS_MINZOOM - 1,
+        1,
+        CAMPUS_BUILDINGS_MINZOOM + 1,
+        0.35,
+      ],
+    };
+  }
+
+  return styleLayers;
+};
 
 // Defined once in build-tiles.sh, so the styles and the archive's own metadata
 // cannot drift apart. St. Olaf's building data is the college's, not
 // OpenStreetMap's, and is credited separately for that reason.
 const ATTRIBUTION = env("ATTRIBUTION");
 
-const base = {
+const styleFor = (theme) => ({
   version: 8,
   name: "St. Olaf Campus Basemap",
   metadata: {
@@ -391,9 +501,10 @@ const base = {
   bearing: 0,
   pitch: 0,
   glyphs: `${SITE_URL}/fonts/{fontstack}/{range}.pbf`,
-  sprite: `${SITE_URL}/sprites/sprite`,
-  layers: styleLayers,
-};
+  // Each Protomaps flavor has its own sprite sheet, drawn for its ground.
+  sprite: `${SITE_URL}/sprites/${theme.sprite}`,
+  layers: styleLayersFor(theme),
+});
 
 // The tileset stops at MAXZOOM; MapLibre scales those tiles beyond it rather
 // than requesting tiles that do not exist. Nothing here caps how far the user
@@ -405,49 +516,42 @@ const sourceCommon = {
   bounds: [west, south, east, north],
 };
 
-writeFileSync(
-  join(out, "style.json"),
-  JSON.stringify(
-    {
-      ...base,
-      sources: {
-        basemap: {
-          ...sourceCommon,
-          tiles: [`${SITE_URL}/tiles/{z}/{x}/{y}.pbf`],
-          minzoom: MINZOOM,
-          maxzoom: MAXZOOM,
-        },
-      },
-    },
-    null,
-    2,
-  ) + "\n",
-);
+const tileSource = {
+  basemap: {
+    ...sourceCommon,
+    tiles: [`${SITE_URL}/tiles/{z}/{x}/{y}.pbf`],
+    minzoom: MINZOOM,
+    maxzoom: MAXZOOM,
+  },
+};
 
-writeFileSync(
-  join(out, "style-pmtiles.json"),
-  JSON.stringify(
-    {
-      ...base,
-      name: `${base.name} (PMTiles)`,
-      sources: {
-        basemap: { ...sourceCommon, url: `pmtiles://${SITE_URL}/campus.pmtiles` },
-      },
-    },
-    null,
-    2,
-  ) + "\n",
-);
+const pmtilesSource = {
+  basemap: { ...sourceCommon, url: `pmtiles://${SITE_URL}/campus.pmtiles` },
+};
+
+const lightStyle = styleFor(light);
+const darkStyle = styleFor(dark);
+
+// The dark style is z/x/y only: it is for the app, and the app fetches z/x/y.
+const styles = {
+  "style.json": { ...lightStyle, sources: tileSource },
+  "style-pmtiles.json": {
+    ...lightStyle,
+    name: `${lightStyle.name} (PMTiles)`,
+    sources: pmtilesSource,
+  },
+  "style-dark.json": { ...darkStyle, name: `${darkStyle.name} (Dark)`, sources: tileSource },
+};
 
 console.log(
   `  campus layers       campus_buildings (z${CAMPUS_BUILDINGS_MINZOOM}+), campus_grounds (z${CAMPUS_GROUNDS_MINZOOM}+), campus_paths (z${CAMPUS_PATHS_MINZOOM}+), campus_labels (z${CAMPUS_LABELS_MINZOOM}+), OSM buildings: ${OSM_BUILDINGS}`,
 );
-console.log(
-  `  style.json          ${styleLayers.length} layers, tiles/{z}/{x}/{y}.pbf, z${MINZOOM}-z${MAXZOOM}`,
-);
-console.log(
-  `  style-pmtiles.json  ${styleLayers.length} layers, pmtiles://${SITE_URL}/campus.pmtiles`,
-);
+for (const [file, style] of Object.entries(styles)) {
+  writeFileSync(join(out, file), JSON.stringify(style, null, 2) + "\n");
+  const source = style.sources.basemap;
+  const from = source.url ?? `tiles/{z}/{x}/{y}.pbf, z${MINZOOM}-z${MAXZOOM}`;
+  console.log(`  ${file.padEnd(19)} ${style.layers.length} layers, ${from}`);
+}
 
 // Guard against the failure the README warns about: a style naming a fontstack
 // the site does not host renders with no labels and no error.
@@ -457,7 +561,9 @@ const walk = (v) => {
   else if (v && typeof v === "object") Object.values(v).forEach(walk);
   else if (typeof v === "string") fonts.add(v);
 };
-for (const l of styleLayers) if (l.layout?.["text-font"]) walk(l.layout["text-font"]);
+for (const style of Object.values(styles)) {
+  for (const l of style.layers) if (l.layout?.["text-font"]) walk(l.layout["text-font"]);
+}
 const expected = new Set(["Noto Sans Regular", "Noto Sans Medium", "Noto Sans Italic"]);
 const named = [...fonts].filter((f) => f.startsWith("Noto Sans"));
 const missing = named.filter((f) => !expected.has(f));
