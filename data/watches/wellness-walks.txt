@@ -1,0 +1,13 @@
+# h2.wp-block-heading
+East Prairie Loop: 0.3 miles, 12-15 minutes
+Norway Valley: 0.4 miles, 15 minutes
+Big Pond Loop: 0.8 miles, 14-17 minutes
+West Prairie Loop: 0.9 miles, 15-18 minutes
+Lower Heath Creek Trail: 0.7 miles, 20 minutes
+# a.wp-block-file__button @href
+https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-East-Prairie-Loop-2.pdf
+https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-Norway-Valley-2.pdf
+https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Big-Pond-Loop.pdf
+https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-Windmill-Trail.pdf
+https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-West-Prairie-Loop.pdf
+https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Lower-Heath-Creek-Trail.pdf

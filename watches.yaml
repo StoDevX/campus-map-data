@@ -1,0 +1,11 @@
+# Pages whose selected contents are watched: scripts/watch.py snapshots each
+# selector's matches to data/watches/<name>.txt, and the watch workflow opens a
+# pull request when a snapshot changes. `why` is what the change asks of us.
+- name: wellness-walks
+  url: https://wp.stolaf.edu/naturallands/wellness-walks/
+  # Each walk's heading, and the guide behind it: Windmill Trail's walk has
+  # no heading, so the guides are the complete list.
+  select:
+    - {css: h2.wp-block-heading, text: true}
+    - {css: a.wp-block-file__button, attribute: href}
+  why: A changed walk means updating overrides.yaml `walks:`.
