@@ -67,7 +67,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -332,7 +333,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -368,7 +370,8 @@
         "links": [],
         "parent": "lot-alumnihallroad",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -404,7 +407,8 @@
         "links": [],
         "parent": "lot-skoglunds2",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -440,7 +444,8 @@
         "links": [],
         "parent": "lot-chmroad",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -476,7 +481,8 @@
         "links": [],
         "parent": "lot-ellingson",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -512,7 +518,8 @@
         "links": [],
         "parent": "lot-thorson",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -548,7 +555,8 @@
         "links": [],
         "parent": "lot-buntrockcommonsparking",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -584,7 +592,8 @@
         "links": [],
         "parent": "lot-ytterboelot",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -620,7 +629,8 @@
         "links": [],
         "parent": "lot-uppertomson",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -656,7 +666,8 @@
         "links": [],
         "parent": "lot-oldmain",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -692,7 +703,8 @@
         "links": [],
         "parent": "lot-skoglund",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -728,7 +740,8 @@
         "links": [],
         "parent": "lot-mellbylot",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -764,7 +777,8 @@
         "links": [],
         "parent": "lot-upperlincoln",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -800,7 +814,8 @@
         "links": [],
         "parent": "lot-porterhallparking",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -836,7 +851,8 @@
         "links": [],
         "parent": "lot-rand",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -872,7 +888,8 @@
         "links": [],
         "parent": "lot-admissionsvisitorparking",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -908,7 +925,8 @@
         "links": [],
         "parent": "lot-hillkitroadlot",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -944,7 +962,8 @@
         "links": [],
         "parent": "lotj",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -980,7 +999,8 @@
         "links": [],
         "parent": "lot-skoglunds7betweenskoglundtenniscourts",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1016,7 +1036,8 @@
         "links": [],
         "parent": "lot-mohnkildahl",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1052,7 +1073,8 @@
         "links": [],
         "parent": "lot-upperregents",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1088,7 +1110,8 @@
         "links": [],
         "parent": "newhall",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1124,7 +1147,8 @@
         "links": [],
         "parent": "lot-hollandlot",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1160,7 +1184,8 @@
         "links": [],
         "parent": "lot-lowertomson",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1196,7 +1221,8 @@
         "links": [],
         "parent": "lot-skoglunds7behindskoglund",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1232,7 +1258,8 @@
         "links": [],
         "parent": "lot-buntrolvaag",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1268,7 +1295,8 @@
         "links": [],
         "parent": "lot-lowerlincoln",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1309,7 +1337,8 @@
         ],
         "parent": "toh",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1405,7 +1434,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1531,7 +1561,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1749,7 +1780,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -1871,7 +1903,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2082,7 +2115,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2202,7 +2236,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2367,7 +2402,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2525,7 +2561,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2655,7 +2692,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2691,7 +2729,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2754,7 +2793,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2818,7 +2858,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -2882,7 +2923,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -3571,7 +3613,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -3655,7 +3698,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -3754,7 +3798,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -3818,7 +3863,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -3881,7 +3927,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -3971,7 +4018,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -4088,7 +4136,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -4298,7 +4347,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -4379,7 +4429,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -4501,7 +4552,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -4634,7 +4686,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -4713,7 +4766,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -4890,7 +4944,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -4993,7 +5048,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5056,7 +5112,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5123,7 +5180,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5236,7 +5294,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5303,7 +5362,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5374,7 +5434,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5445,7 +5506,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5520,7 +5582,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5639,7 +5702,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5788,7 +5852,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5901,7 +5966,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -5996,7 +6062,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6067,7 +6134,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6158,7 +6226,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6241,7 +6310,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6316,7 +6386,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6379,7 +6450,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6442,7 +6514,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6517,7 +6590,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6654,7 +6728,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6717,7 +6792,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6852,7 +6928,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6915,7 +6992,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -6978,7 +7056,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7081,7 +7160,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7152,7 +7232,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7231,7 +7312,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7294,7 +7376,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7373,7 +7456,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7436,7 +7520,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7519,7 +7604,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7654,7 +7740,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7729,7 +7816,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -7792,7 +7880,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -8119,7 +8208,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -8194,7 +8284,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -8235,7 +8326,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -8345,7 +8437,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -8519,7 +8612,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -8713,7 +8807,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -8830,7 +8925,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -9015,7 +9111,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -9312,7 +9409,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -9437,7 +9535,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -9562,7 +9661,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -9707,7 +9807,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -10408,7 +10509,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -10541,7 +10643,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -10690,7 +10793,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -10839,7 +10943,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -11004,7 +11109,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -11197,7 +11303,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -11284,7 +11391,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -11347,7 +11455,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -11591,7 +11700,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -11845,7 +11955,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -11926,7 +12037,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12175,7 +12287,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12260,7 +12373,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12340,7 +12454,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12441,7 +12556,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12482,7 +12598,8 @@
         ],
         "parent": "bc",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12558,7 +12675,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12599,7 +12717,8 @@
         ],
         "parent": "bc",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12700,7 +12819,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12819,7 +12939,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12860,7 +12981,8 @@
         ],
         "parent": "bc",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12901,7 +13023,8 @@
         ],
         "parent": "bc",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -12937,7 +13060,8 @@
         "links": [],
         "parent": "bc",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -13299,7 +13423,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -13451,7 +13576,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -13728,7 +13854,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -13825,7 +13952,8 @@
         ],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -14072,7 +14200,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -14492,7 +14621,8 @@
         "address": null,
         "categories": [
           "outdoors",
-          "trail"
+          "trail",
+          "wellness-walk"
         ],
         "departments": [],
         "description": "",
@@ -14506,6 +14636,10 @@
           {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          },
+          {
+            "label": "Wellness Walk guide",
+            "href": "https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Big-Pond-Loop.pdf"
           }
         ],
         "parent": null,
@@ -14515,7 +14649,14 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": {
+          "minutes": [
+            14,
+            17
+          ],
+          "accessibility": "Wide mowed grass and a stretch of gravel road; flat but for a small rise onto Campus Drive; two benches."
+        }
       }
     },
     {
@@ -15094,7 +15235,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -15791,7 +15933,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -15894,7 +16037,507 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
+        ],
+        "walk": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trail-eastprairieloop",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -93.1857722958164,
+                44.468935333523
+              ],
+              [
+                -93.1857830496436,
+                44.4689755971171
+              ],
+              [
+                -93.1858231818107,
+                44.4690461630492
+              ],
+              [
+                -93.1858420167714,
+                44.4691611796756
+              ],
+              [
+                -93.185879504589,
+                44.4691974952575
+              ],
+              [
+                -93.1859250684614,
+                44.4692186109121
+              ],
+              [
+                -93.1859843282395,
+                44.4692185981594
+              ],
+              [
+                -93.186037886976,
+                44.4692262704217
+              ],
+              [
+                -93.1861164342535,
+                44.4692263306158
+              ],
+              [
+                -93.1861746313705,
+                44.4692238491366
+              ],
+              [
+                -93.1862088327257,
+                44.4692225068884
+              ],
+              [
+                -93.1863011971722,
+                44.46921470932
+              ],
+              [
+                -93.186448191021,
+                44.4692128417646
+              ],
+              [
+                -93.1864599492488,
+                44.4692130170299
+              ],
+              [
+                -93.1865269808264,
+                44.469214054535
+              ],
+              [
+                -93.1865742426417,
+                44.4692147821909
+              ],
+              [
+                -93.1866412613275,
+                44.4692224249807
+              ],
+              [
+                -93.1867055088545,
+                44.4692319682438
+              ],
+              [
+                -93.1867900882085,
+                44.4692520852833
+              ],
+              [
+                -93.1868292544421,
+                44.4692613994082
+              ],
+              [
+                -93.1868662552076,
+                44.4692701570904
+              ],
+              [
+                -93.1869069096601,
+                44.4692836874508
+              ],
+              [
+                -93.1869551969486,
+                44.4692913499033
+              ],
+              [
+                -93.1870033665798,
+                44.4692912971563
+              ],
+              [
+                -93.1870741929289,
+                44.4693007034019
+              ],
+              [
+                -93.1871509610942,
+                44.4693085630954
+              ],
+              [
+                -93.1872233042008,
+                44.4693181207105
+              ],
+              [
+                -93.1873090674935,
+                44.469335272614
+              ],
+              [
+                -93.1873823557755,
+                44.4693624109832
+              ],
+              [
+                -93.1874646929403,
+                44.4693889078612
+              ],
+              [
+                -93.1875077117873,
+                44.4694092897341
+              ],
+              [
+                -93.1876045430562,
+                44.4694445809264
+              ],
+              [
+                -93.1876969037003,
+                44.4694912516787
+              ],
+              [
+                -93.1877813964154,
+                44.4695421575892
+              ],
+              [
+                -93.1878454939918,
+                44.4695898424805
+              ],
+              [
+                -93.1878989684168,
+                44.4696204296514
+              ],
+              [
+                -93.1879364703402,
+                44.4696547747264
+              ],
+              [
+                -93.1879984442826,
+                44.4696894117139
+              ],
+              [
+                -93.1880381933383,
+                44.4697160277821
+              ],
+              [
+                -93.1880914320973,
+                44.4697369777884
+              ],
+              [
+                -93.1881941833723,
+                44.4697679617091
+              ],
+              [
+                -93.1882531466968,
+                44.4697698118405
+              ],
+              [
+                -93.1883316216129,
+                44.4697948407043
+              ],
+              [
+                -93.1883845930687,
+                44.4698080711418
+              ],
+              [
+                -93.1884410136153,
+                44.4698386288911
+              ],
+              [
+                -93.1885062247587,
+                44.4698914035366
+              ],
+              [
+                -93.1885412636087,
+                44.4699196891132
+              ],
+              [
+                -93.1885538541475,
+                44.4699288034364
+              ],
+              [
+                -93.1885867088899,
+                44.4699523085342
+              ],
+              [
+                -93.188633428058,
+                44.4699924188358
+              ],
+              [
+                -93.1886932174496,
+                44.4700511828646
+              ],
+              [
+                -93.1887407542429,
+                44.4700863015374
+              ],
+              [
+                -93.1887844273763,
+                44.4701182467992
+              ],
+              [
+                -93.188824439252,
+                44.4701372692244
+              ],
+              [
+                -93.1888799462021,
+                44.4701728581108
+              ],
+              [
+                -93.1889538001246,
+                44.470207590166
+              ],
+              [
+                -93.1890941701163,
+                44.4702670858142
+              ],
+              [
+                -93.1891542487467,
+                44.4702925532906
+              ],
+              [
+                -93.1891899243311,
+                44.4703068302082
+              ],
+              [
+                -93.189300236939,
+                44.4703502136195
+              ],
+              [
+                -93.1893830312602,
+                44.4703863593172
+              ],
+              [
+                -93.1894575069372,
+                44.4704129605169
+              ],
+              [
+                -93.1894982532756,
+                44.4704245389003
+              ],
+              [
+                -93.1895565485239,
+                44.4704283574716
+              ],
+              [
+                -93.1896693051884,
+                44.470418770498
+              ],
+              [
+                -93.1897071852743,
+                44.4704129629239
+              ],
+              [
+                -93.1897470813282,
+                44.4704034554527
+              ],
+              [
+                -93.1898195342909,
+                44.470393991996
+              ],
+              [
+                -93.1899225301639,
+                44.4703764769528
+              ],
+              [
+                -93.1900140582745,
+                44.4703635416962
+              ],
+              [
+                -93.1900935146259,
+                44.4703461106705
+              ],
+              [
+                -93.1901579187207,
+                44.4703421412784
+              ],
+              [
+                -93.1902004848094,
+                44.4703364238692
+              ],
+              [
+                -93.1903289791779,
+                44.4703363880788
+              ],
+              [
+                -93.1904580513877,
+                44.4703497301907
+              ],
+              [
+                -93.1905065577785,
+                44.4703632677805
+              ],
+              [
+                -93.1905460733375,
+                44.4703728852401
+              ],
+              [
+                -93.190616038795,
+                44.4703899286702
+              ],
+              [
+                -93.1907716685092,
+                44.4704511883377
+              ],
+              [
+                -93.1908523077181,
+                44.470478088028
+              ],
+              [
+                -93.190954254598,
+                44.4705260401184
+              ],
+              [
+                -93.1910141536301,
+                44.4705454543562
+              ],
+              [
+                -93.1910528004569,
+                44.4705677381835
+              ],
+              [
+                -93.191109043418,
+                44.4705859908282
+              ],
+              [
+                -93.1911446626817,
+                44.4706024567012
+              ],
+              [
+                -93.1911903152496,
+                44.4706140082644
+              ],
+              [
+                -93.1912276950353,
+                44.4706197875828
+              ],
+              [
+                -93.1912789271929,
+                44.4706197333068
+              ],
+              [
+                -93.1913056466275,
+                44.4706158893904
+              ],
+              [
+                -93.1913351948779,
+                44.4706158849098
+              ],
+              [
+                -93.1913858900418,
+                44.4706042467269
+              ],
+              [
+                -93.1914102916698,
+                44.4705986646345
+              ],
+              [
+                -93.191458407588,
+                44.4705795467428
+              ],
+              [
+                -93.1915500458283,
+                44.4705507021845
+              ],
+              [
+                -93.1916329330443,
+                44.4705029151118
+              ],
+              [
+                -93.1916840733711,
+                44.4704798290329
+              ],
+              [
+                -93.1917581986929,
+                44.4704328632205
+              ],
+              [
+                -93.1918674746362,
+                44.4703299401452
+              ],
+              [
+                -93.1919359904731,
+                44.4702621008231
+              ],
+              [
+                -93.1919654299118,
+                44.47022358433
+              ],
+              [
+                -93.1919789473788,
+                44.4702027004012
+              ],
+              [
+                -93.1920027908374,
+                44.4701661397016
+              ],
+              [
+                -93.1920916212254,
+                44.4700301232953
+              ],
+              [
+                -93.1921210689813,
+                44.4699919092395
+              ],
+              [
+                -93.1921667360933,
+                44.4699765601233
+              ],
+              [
+                -93.1921986016837,
+                44.4699613980641
+              ],
+              [
+                -93.1922256687927,
+                44.4699517402607
+              ],
+              [
+                -93.1923024194293,
+                44.4699357950064
+              ],
+              [
+                -93.1923729031162,
+                44.4699211467511
+              ]
+            ]
+          },
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1888799,
+              44.4701729
+            ]
+          }
         ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "outdoors",
+          "trail",
+          "wellness-walk"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "East Prairie Loop",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          },
+          {
+            "label": "Wellness Walk guide",
+            "href": "https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-East-Prairie-Loop-2.pdf"
+          }
+        ],
+        "parent": null,
+        "length": 635,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ],
+        "walk": {
+          "minutes": [
+            12,
+            15
+          ],
+          "accessibility": "Mowed dirt, 10 feet wide, gently up and down; one bench."
+        }
       }
     },
     {
@@ -16069,7 +16712,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -16280,7 +16924,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -16523,7 +17168,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -16758,7 +17404,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -17788,7 +18435,8 @@
         "address": null,
         "categories": [
           "outdoors",
-          "trail"
+          "trail",
+          "wellness-walk"
         ],
         "departments": [],
         "description": "",
@@ -17802,6 +18450,10 @@
           {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          },
+          {
+            "label": "Wellness Walk guide",
+            "href": "https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Lower-Heath-Creek-Trail.pdf"
           }
         ],
         "parent": null,
@@ -17811,7 +18463,14 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": {
+          "minutes": [
+            20,
+            20
+          ],
+          "accessibility": "A footpath along Heath Creek, with roots, ruts and steep stretches; not an easy walk."
+        }
       }
     },
     {
@@ -17919,7 +18578,8 @@
         "address": null,
         "categories": [
           "outdoors",
-          "trail"
+          "trail",
+          "wellness-walk"
         ],
         "departments": [],
         "description": "",
@@ -17933,6 +18593,10 @@
           {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          },
+          {
+            "label": "Wellness Walk guide",
+            "href": "https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-Norway-Valley-2.pdf"
           }
         ],
         "parent": null,
@@ -17942,7 +18606,14 @@
           "Dogs on a 6-foot leash.",
           "No bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": {
+          "minutes": [
+            15,
+            15
+          ],
+          "accessibility": "Narrow gravel and dirt, 4 feet wide at most, up a steep hill with short steps."
+        }
       }
     },
     {
@@ -19065,7 +19736,8 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": null
       }
     },
     {
@@ -19642,7 +20314,703 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
+        ],
+        "walk": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trail-westprairieloop",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -93.1923731417413,
+                44.4699210698257
+              ],
+              [
+                -93.1924272181637,
+                44.469903710528
+              ],
+              [
+                -93.1924727235356,
+                44.4698923677928
+              ],
+              [
+                -93.1926227144918,
+                44.4698445002087
+              ],
+              [
+                -93.192692258155,
+                44.4698273559739
+              ],
+              [
+                -93.1927487021285,
+                44.4698253782578
+              ],
+              [
+                -93.1928213256745,
+                44.4698310498601
+              ],
+              [
+                -93.192912328263,
+                44.4698483417566
+              ],
+              [
+                -93.1929661575651,
+                44.4698647997131
+              ],
+              [
+                -93.193024945459,
+                44.469882773433
+              ],
+              [
+                -93.1930892403035,
+                44.4699171921693
+              ],
+              [
+                -93.1931055602087,
+                44.4699223879841
+              ],
+              [
+                -93.1931617777362,
+                44.4699401661175
+              ],
+              [
+                -93.193212653073,
+                44.4699708524238
+              ],
+              [
+                -93.193288017123,
+                44.4700015053712
+              ],
+              [
+                -93.1933787344418,
+                44.4700320404474
+              ],
+              [
+                -93.1934670769048,
+                44.4700435467259
+              ],
+              [
+                -93.1935373010236,
+                44.4700493182665
+              ],
+              [
+                -93.1935909782684,
+                44.4700493335334
+              ],
+              [
+                -93.1936740474191,
+                44.4700454943716
+              ],
+              [
+                -93.1937789254554,
+                44.470035749248
+              ],
+              [
+                -93.1938429074976,
+                44.4700320746849
+              ],
+              [
+                -93.1938993130549,
+                44.470035914053
+              ],
+              [
+                -93.1939708784006,
+                44.4700453921899
+              ],
+              [
+                -93.1941118974622,
+                44.4700671508778
+              ],
+              [
+                -93.1942398343237,
+                44.4700913911954
+              ],
+              [
+                -93.1942801460889,
+                44.4701009889043
+              ],
+              [
+                -93.1944331269905,
+                44.4701144353006
+              ],
+              [
+                -93.19451355578,
+                44.4701086545251
+              ],
+              [
+                -93.1946163812716,
+                44.4700847066633
+              ],
+              [
+                -93.1946367056812,
+                44.4700800563127
+              ],
+              [
+                -93.1946985904656,
+                44.4700570487028
+              ],
+              [
+                -93.1948411258912,
+                44.4699706707791
+              ],
+              [
+                -93.1948943484221,
+                44.4699326729282
+              ],
+              [
+                -93.1949560529587,
+                44.469898273385
+              ],
+              [
+                -93.1950152653464,
+                44.4698751387239
+              ],
+              [
+                -93.1951062768103,
+                44.4698541211851
+              ],
+              [
+                -93.1952006001295,
+                44.4698445179231
+              ],
+              [
+                -93.1952509600324,
+                44.469836831711
+              ],
+              [
+                -93.1954121651709,
+                44.4698445594848
+              ],
+              [
+                -93.1954869920099,
+                44.4698578572678
+              ],
+              [
+                -93.1956539580804,
+                44.4699013743412
+              ],
+              [
+                -93.1956560794741,
+                44.4699018739619
+              ],
+              [
+                -93.1957636395025,
+                44.4699521915801
+              ],
+              [
+                -93.1957901672874,
+                44.4699637821856
+              ],
+              [
+                -93.1958891565403,
+                44.4700185176294
+              ],
+              [
+                -93.1959732824583,
+                44.4700495048852
+              ],
+              [
+                -93.1960318356915,
+                44.4700665294681
+              ],
+              [
+                -93.1960772521756,
+                44.4700761240833
+              ],
+              [
+                -93.1961469428297,
+                44.4700760602425
+              ],
+              [
+                -93.1961709042861,
+                44.4700743931915
+              ],
+              [
+                -93.1962272917647,
+                44.4700532667703
+              ],
+              [
+                -93.1962896703522,
+                44.4700187366099
+              ],
+              [
+                -93.1963235654217,
+                44.4700009672126
+              ],
+              [
+                -93.1963482398525,
+                44.4699880940559
+              ],
+              [
+                -93.1964152328975,
+                44.4699192193428
+              ],
+              [
+                -93.1964579452528,
+                44.4698580576128
+              ],
+              [
+                -93.1965494688678,
+                44.4697676564214
+              ],
+              [
+                -93.1966128678322,
+                44.4697166438621
+              ],
+              [
+                -93.1966785906281,
+                44.4696759039241
+              ],
+              [
+                -93.1968064659738,
+                44.4696301458624
+              ],
+              [
+                -93.1968585522099,
+                44.4696132668424
+              ],
+              [
+                -93.1969587093731,
+                44.4695807544358
+              ],
+              [
+                -93.1970759861945,
+                44.4695534403105
+              ],
+              [
+                -93.1972068637819,
+                44.4695324810433
+              ],
+              [
+                -93.197300311467,
+                44.4695229576834
+              ],
+              [
+                -93.1973725158773,
+                44.4695191427011
+              ],
+              [
+                -93.197446726352,
+                44.4695278632593
+              ],
+              [
+                -93.1975170369105,
+                44.4695362195994
+              ],
+              [
+                -93.1975638545505,
+                44.4695497652168
+              ],
+              [
+                -93.1976171101272,
+                44.4695613208683
+              ],
+              [
+                -93.1976840324629,
+                44.4695841990291
+              ],
+              [
+                -93.1977297562762,
+                44.469588032486
+              ],
+              [
+                -93.1977513014418,
+                44.4695879663772
+              ],
+              [
+                -93.1977750422622,
+                44.4695880504097
+              ],
+              [
+                -93.1978093194162,
+                44.4695786425789
+              ],
+              [
+                -93.1978470397913,
+                44.4695709897147
+              ],
+              [
+                -93.1979522622337,
+                44.4695326644789
+              ],
+              [
+                -93.1980167049483,
+                44.4695152539582
+              ],
+              [
+                -93.1980447370102,
+                44.4695094786965
+              ],
+              [
+                -93.1980810243181,
+                44.469501903863
+              ],
+              [
+                -93.1981424946557,
+                44.4695019043759
+              ],
+              [
+                -93.1982150181764,
+                44.4695095614338
+              ],
+              [
+                -93.1982984767808,
+                44.4695267459956
+              ],
+              [
+                -93.1985313262476,
+                44.469557334427
+              ],
+              [
+                -93.1985805355001,
+                44.4695612641165
+              ],
+              [
+                -93.1986684508147,
+                44.4695631350551
+              ],
+              [
+                -93.1987218471695,
+                44.4695612740232
+              ],
+              [
+                -93.1987808763964,
+                44.4695536116833
+              ],
+              [
+                -93.1988718784185,
+                44.4695173998902
+              ],
+              [
+                -93.1990088914346,
+                44.469446359886
+              ],
+              [
+                -93.1990805503297,
+                44.4694182319013
+              ],
+              [
+                -93.1991489387283,
+                44.469377060963
+              ],
+              [
+                -93.1992316650247,
+                44.469312367752
+              ],
+              [
+                -93.1992638547076,
+                44.4692604466559
+              ],
+              [
+                -93.1993013434587,
+                44.469188169149
+              ],
+              [
+                -93.1993117567728,
+                44.4691440986357
+              ],
+              [
+                -93.1993439900336,
+                44.4690876679531
+              ],
+              [
+                -93.1994113472817,
+                44.4689812420922
+              ],
+              [
+                -93.1994115927907,
+                44.4689806060682
+              ],
+              [
+                -93.1994435439499,
+                44.4689085821539
+              ],
+              [
+                -93.1994488461371,
+                44.4688459532418
+              ],
+              [
+                -93.1994520090349,
+                44.4687735096454
+              ],
+              [
+                -93.1994463428783,
+                44.4686561549504
+              ],
+              [
+                -93.1994625463252,
+                44.4685997747263
+              ],
+              [
+                -93.1995748755842,
+                44.4683994865729
+              ],
+              [
+                -93.1996207520216,
+                44.4683280837677
+              ],
+              [
+                -93.1996366691298,
+                44.4682807211895
+              ],
+              [
+                -93.1996446933701,
+                44.468246253567
+              ],
+              [
+                -93.1996366344512,
+                44.4682155898171
+              ],
+              [
+                -93.1995937329921,
+                44.4681716079427
+              ],
+              [
+                -93.1995458311845,
+                44.4681411389418
+              ],
+              [
+                -93.1994007023875,
+                44.4680702615167
+              ],
+              [
+                -93.1993471029718,
+                44.4680356962153
+              ],
+              [
+                -93.1992826243139,
+                44.468001303818
+              ],
+              [
+                -93.1992428980177,
+                44.4679747762415
+              ],
+              [
+                -93.1991924198233,
+                44.4679270937886
+              ],
+              [
+                -93.1991481065664,
+                44.4678744607446
+              ],
+              [
+                -93.1991396683316,
+                44.4678600809285
+              ],
+              [
+                -93.1990948522042,
+                44.4677848616908
+              ],
+              [
+                -93.1990251986426,
+                44.4675763808002
+              ],
+              [
+                -93.198979428285,
+                44.4674977187163
+              ],
+              [
+                -93.1989096490418,
+                44.4674285900473
+              ],
+              [
+                -93.1987908432324,
+                44.467386544181
+              ],
+              [
+                -93.198699814195,
+                44.4673675095689
+              ],
+              [
+                -93.1985001408066,
+                44.4673161835527
+              ],
+              [
+                -93.1984214887436,
+                44.4672918614875
+              ],
+              [
+                -93.1983517476725,
+                44.4672738312347
+              ],
+              [
+                -93.1982520568757,
+                44.4672391933005
+              ],
+              [
+                -93.1980504457638,
+                44.4671391720725
+              ],
+              [
+                -93.1979735690618,
+                44.4671036273666
+              ],
+              [
+                -93.1978945270387,
+                44.4670638316508
+              ],
+              [
+                -93.1977994223775,
+                44.4669947317694
+              ],
+              [
+                -93.1977615029032,
+                44.466955959476
+              ],
+              [
+                -93.1977377745372,
+                44.4669257332408
+              ],
+              [
+                -93.197697070728,
+                44.4668907586134
+              ],
+              [
+                -93.1975526134736,
+                44.4668183588942
+              ],
+              [
+                -93.1974905971584,
+                44.4668010106672
+              ],
+              [
+                -93.1973938666283,
+                44.4667953341798
+              ],
+              [
+                -93.1972788703017,
+                44.4667914672078
+              ],
+              [
+                -93.1971881438211,
+                44.4667782340528
+              ],
+              [
+                -93.1970507245514,
+                44.4667359169116
+              ],
+              [
+                -93.1969892369113,
+                44.4667119657677
+              ],
+              [
+                -93.1968574521883,
+                44.4666650292566
+              ],
+              [
+                -93.1967787288586,
+                44.4666238953046
+              ],
+              [
+                -93.1967129335092,
+                44.4665772338387
+              ],
+              [
+                -93.1966669764241,
+                44.4665208034806
+              ],
+              [
+                -93.1965928400163,
+                44.4663827799715
+              ],
+              [
+                -93.1965467205341,
+                44.4663033495603
+              ],
+              [
+                -93.1964984552379,
+                44.4662497922872
+              ],
+              [
+                -93.1964885482141,
+                44.4662410217245
+              ],
+              [
+                -93.196452409199,
+                44.4662090574259
+              ],
+              [
+                -93.1964073670266,
+                44.4661808679834
+              ],
+              [
+                -93.1963079250796,
+                44.4661408091488
+              ],
+              [
+                -93.1961769529627,
+                44.4661133614534
+              ],
+              [
+                -93.1959576280171,
+                44.4660948159178
+              ],
+              [
+                -93.1958470994133,
+                44.4660945688563
+              ],
+              [
+                -93.1958119063909,
+                44.466117933772
+              ]
+            ]
+          },
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1980447,
+              44.4695095
+            ]
+          }
         ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "outdoors",
+          "trail",
+          "wellness-walk"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "West Prairie Loop",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          },
+          {
+            "label": "Wellness Walk guide",
+            "href": "https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-West-Prairie-Loop.pdf"
+          }
+        ],
+        "parent": null,
+        "length": 1147,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ],
+        "walk": {
+          "minutes": [
+            15,
+            18
+          ],
+          "accessibility": "Mowed, 10 feet wide, one bench; flat but for small dips near the Coyote Ponds."
+        }
       }
     },
     {
@@ -19890,7 +21258,8 @@
         "address": null,
         "categories": [
           "outdoors",
-          "trail"
+          "trail",
+          "wellness-walk"
         ],
         "departments": [],
         "description": "",
@@ -19904,6 +21273,10 @@
           {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          },
+          {
+            "label": "Wellness Walk guide",
+            "href": "https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-Windmill-Trail.pdf"
           }
         ],
         "parent": null,
@@ -19913,7 +21286,14 @@
           "Dogs on a 6-foot leash.",
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
-        ]
+        ],
+        "walk": {
+          "minutes": [
+            13,
+            16
+          ],
+          "accessibility": "Mowed, 10 feet wide, one bench; ruts in the low wetland stretch; downhill into the conifers at the northwest end."
+        }
       }
     },
     {
@@ -19954,7 +21334,8 @@
         ],
         "parent": "bc",
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -20257,7 +21638,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -20293,7 +21675,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     },
     {
@@ -20546,7 +21929,8 @@
         "links": [],
         "parent": null,
         "length": null,
-        "rules": []
+        "rules": [],
+        "walk": null
       }
     }
   ]

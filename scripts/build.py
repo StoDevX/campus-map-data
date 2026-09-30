@@ -8,8 +8,8 @@ shape means a St. Olaf endpoint is a configuration change rather than a second
 code path. Every key Carleton emits is emitted here, even where St. Olaf has
 nothing to put in it, so a consumer never has to test for a missing key.
 
-Six properties are added beyond Carleton's set — `abbreviation`, `type`,
-`links`, `parent`, `length` and `rules`. Extra keys are additive and safe for existing consumers, and dropping
+Seven properties are added beyond Carleton's set — `abbreviation`, `type`,
+`links`, `parent`, `length`, `rules` and `walk`. Extra keys are additive and safe for existing consumers, and dropping
 St. Olaf's building abbreviations (`RNS`, `BMC`, `TOH`) to preserve an exact
 field list would be throwing away the identifiers people on campus actually use.
 
@@ -421,6 +421,88 @@ def apply_rules(places: list[dict], spec: dict) -> None:
             links.append(link)
 
 
+WALK_LINK_LABEL = "Wellness Walk guide"
+
+
+def walk_places(places: list[dict], spec: dict) -> list[dict]:
+    """The walks along part of a trail, as places of their own.
+
+    Named by trail name, not id: these are made before ids are given. The
+    part is one line of the trail's MultiLineString, in the order the college
+    drew them.
+    """
+    by_name = {
+        place["name"]: place
+        for place in places
+        if place["slug"] == "natural-lands-trails"
+    }
+    walks = []
+    for entry in spec.get("walks") or []:
+        part = entry.get("part")
+        if not part:
+            continue
+        trail = by_name.get(part["trail"])
+        lines = (trail or {}).get("geometry", {}).get("coordinates") or []
+        if (
+            trail is None
+            or trail["geometry"]["type"] != "MultiLineString"
+            or part["index"] >= len(lines)
+        ):
+            raise SystemExit(
+                f"  {entry['name']}: no part {part['index']} of {part['trail']!r} "
+                "-- did the college redraw the trail? See overrides.yaml `walks:`"
+            )
+        walks.append(
+            {
+                "slug": "natural-lands-trails",
+                "name": entry["name"],
+                "abbreviation": None,
+                "type": None,
+                "categories": ["outdoors", "trail", "wellness-walk"],
+                "description": None,
+                "departments": [],
+                "links": [],
+                "contact": None,
+                "geometry": {"type": "LineString", "coordinates": lines[part["index"]]},
+                "information": "",
+            }
+        )
+    return walks
+
+
+def apply_walks(places: list[dict], spec: dict) -> None:
+    """Every walk's time, accessibility and guide, on the place it follows.
+
+    Every other place gets `walk: None`, so a consumer reads one key rather
+    than testing for its absence.
+    """
+    by_id = {place["id"]: place for place in places}
+    by_name = {place["name"]: place for place in places}
+    for place in places:
+        place["walk"] = None
+    for entry in spec.get("walks") or []:
+        place = (
+            by_id.get(entry["trail"])
+            if "trail" in entry
+            else by_name.get(entry["name"])
+        )
+        if place is None:
+            raise SystemExit(
+                f"  walks: no place {entry.get('trail') or entry.get('name')!r} "
+                "-- was it renamed? See overrides.yaml `walks:`"
+            )
+        place["walk"] = {
+            "minutes": entry["minutes"],
+            "accessibility": entry["accessibility"],
+        }
+        if "wellness-walk" not in place["categories"]:
+            place["categories"].append("wellness-walk")
+        link = {"label": WALK_LINK_LABEL, "href": entry["pdf"]}
+        links = place.setdefault("links", [])
+        if link not in links:
+            links.append(link)
+
+
 def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     """The places as scraped, merged and given ids -- before overrides touch
     them. What an `overrides.yaml` id has to match. Plus what was dropped."""
@@ -436,6 +518,11 @@ def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     places += assemble_trails(segments["features"], trails)
     places = merge_split_lots(places)
     assign_ids(places, overrides)
+    # The walks along part of a trail, made from that trail and given ids of
+    # their own: their names are unique, so the others' ids do not move.
+    walks = walk_places(places, overrides.get("walks") or {})
+    assign_ids(walks, overrides)
+    places += walks
     return places, dropped
 
 
@@ -577,6 +664,7 @@ def record(place: dict) -> dict:
         "parent": place.get("parent"),
         "length": length_of(place),
         "rules": place.get("rules") or [],
+        "walk": place.get("walk"),
     }
 
 
@@ -624,6 +712,8 @@ def feature(place: dict) -> dict:
             "length": length_of(place),
             # The Natural Lands rules, one sentence each; empty elsewhere.
             "rules": place.get("rules") or [],
+            # The Wellness Walk along this place: its time and accessibility.
+            "walk": place.get("walk"),
         },
     }
 
@@ -634,6 +724,7 @@ def main() -> int:
     places = apply_overrides(places, overrides)
     name_accessible_spots(places)
     apply_rules(places, overrides.get("rules") or {})
+    apply_walks(places, overrides.get("walks") or {})
     attach_floors(places)
     places.sort(key=lambda place: place["id"])
 
