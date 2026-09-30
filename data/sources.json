@@ -108,6 +108,13 @@
       "features": 23
     },
     {
+      "slug": "natural-lands-segments",
+      "title": "Natural Lands Segments",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/stolaf_trails20220308/FeatureServer/0",
+      "role": "context",
+      "features": 48
+    },
+    {
       "slug": "campus-roads",
       "title": "Campus Roads",
       "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/StOlaf_Roads_2_WFL1/FeatureServer/2",
