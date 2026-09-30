@@ -30,7 +30,7 @@ from pathlib import Path
 
 import geometry
 import yaml
-from build import RULES_LINK_LABEL, scraped_places
+from build import RULES_LINK_LABEL, WALK_LINK_LABEL, scraped_places
 from scrape import VOLATILE_FIELDS
 from sources import SOURCES, slugs
 
@@ -363,6 +363,39 @@ def verify_rules(report: Report, spec: dict, records: list[dict]) -> None:
             )
 
 
+def verify_walks(
+    report: Report, spec: dict, records: list[dict], snapshot: str | None
+) -> None:
+    """Every walk is whole on its place, and there is one per guide the page
+    links. The snapshot is data/watches/wellness-walks.txt: once the watch's
+    pull request records a new walk, this fails until overrides.yaml has it."""
+    for record in records:
+        walking = "wellness-walk" in record["categories"]
+        has_walk = record.get("walk") is not None
+        guides = [
+            l for l in record.get("links") or [] if l.get("label") == WALK_LINK_LABEL
+        ]
+        report.check(
+            walking == has_walk,
+            f"{record['id']}: `walk` and the wellness-walk category disagree",
+        )
+        report.check(
+            len(guides) == (1 if has_walk else 0),
+            f"{record['id']}: has {len(guides)} Wellness Walk guide links",
+        )
+    if snapshot is None:
+        return
+    lines = snapshot.splitlines()
+    marker = next((i for i, line in enumerate(lines) if line.endswith("@href")), None)
+    page = len(lines[marker + 1 :]) if marker is not None else 0
+    walks = len(spec.get("walks") or [])
+    report.check(
+        page == walks,
+        f"overrides.yaml: {walks} walks, but the walks page links {page} guides "
+        f"-- update `walks:` to match data/watches/wellness-walks.txt",
+    )
+
+
 def verify_overrides(report: Report, records: list[dict]) -> None:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
     known = {record["id"] for record in records}
@@ -371,6 +404,13 @@ def verify_overrides(report: Report, records: list[dict]) -> None:
     trail_rows = json.loads((DATA / "natural-lands-trails.geojson").read_text())
     verify_trails(report, overrides.get("trails") or {}, trail_rows["features"])
     verify_rules(report, overrides.get("rules") or {}, records)
+    walks_snapshot = DATA / "watches" / "wellness-walks.txt"
+    verify_walks(
+        report,
+        overrides.get("walks") or {},
+        records,
+        walks_snapshot.read_text() if walks_snapshot.exists() else None,
+    )
 
     # A removal names a place by the id the build gives it, which the removed
     # place no longer has in map.json -- so rebuild the ids before removals to
