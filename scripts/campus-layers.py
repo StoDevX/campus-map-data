@@ -226,6 +226,24 @@ def paths(
     return named + merged
 
 
+def untappable(
+    features: list[dict], campus_paths: list[dict], part_walks: set[str]
+) -> set[str]:
+    """The trails the tiles draw that have no line of their own to tap.
+
+    A named trail is tapped by its line, not only its label: the app opens
+    whatever carries a buildingId under the touch. A walk along half of a
+    trail is left out on purpose -- the trail's own line is what is tapped.
+    """
+    trails = {
+        f["id"]
+        for f in features
+        if "trail" in ((f.get("properties") or {}).get("categories") or [])
+    } - part_walks
+    tappable = {f["properties"].get("buildingId") for f in campus_paths}
+    return trails - tappable
+
+
 def main(src: str, datadir: str, outdir: str) -> None:
     with open(src) as f:
         data = json.load(f)
@@ -363,18 +381,10 @@ def main(src: str, datadir: str, outdir: str) -> None:
             f"  {len(missing)} source features reached no layer: {sorted(missing)[:10]}"
         )
 
-    # A named trail is tapped by its line, not only its label: the app opens
-    # whatever carries a buildingId under the touch.
-    trails = {
-        f["id"]
-        for f in features
-        if "trail" in ((f.get("properties") or {}).get("categories") or [])
-    }
-    tappable = {f["properties"].get("buildingId") for f in collections["campus_paths"]}
-    if trails - tappable:
+    lost = untappable(features, collections["campus_paths"], part_walks)
+    if lost:
         raise SystemExit(
-            f"  {len(trails - tappable)} trails have no line to tap: "
-            f"{sorted(trails - tappable)[:10]}"
+            f"  {len(lost)} trails have no line to tap: {sorted(lost)[:10]}"
         )
 
     # The check above catches features lost *between* the source and a layer.

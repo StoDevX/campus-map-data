@@ -104,3 +104,19 @@ def test_a_part_walk_is_not_drawn(tmp_path):
     )
     ids = [f["properties"].get("buildingId") for f in paths]
     assert "trail-eastprairieloop" not in ids
+
+
+def test_every_drawn_trail_is_tappable_but_a_part_walk_need_not_be(tmp_path):
+    features = [
+        trail("trail-knollloop", KNOLL),
+        trail("trail-eastprairieloop", KNOLL),
+    ]
+    write(tmp_path, [("Knoll Loop", KNOLL)])
+    paths = campus_layers.paths(
+        str(tmp_path), features, set(), set(), {"trail-eastprairieloop"}
+    )
+    assert campus_layers.untappable(features, paths, {"trail-eastprairieloop"}) == set()
+    # A trail that lost its line is still caught.
+    assert campus_layers.untappable(features, [], {"trail-eastprairieloop"}) == {
+        "trail-knollloop"
+    }
