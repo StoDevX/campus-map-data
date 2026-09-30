@@ -14,7 +14,8 @@ to protect it:
   identity, not campus data, and they renumber wholesale when a layer is
   republished. `Shape__Area` and friends are recomputed server-side. Keeping any
   of them would mean a rewrite of the whole file on a republish that changed
-  nothing anyone can see.
+  nothing anyone can see. A layer that names its `fields` keeps exactly those
+  instead, volatile or not: the trail segments are addressed by `FID`.
 
 - **Feature order is imposed.** ArcGIS returns features in whatever order it
   likes. They are sorted by name, then by a hash of their geometry, so a stable
@@ -69,7 +70,11 @@ def clean_properties(
     properties: dict | None, fields: tuple[str, ...] | None = None
 ) -> dict:
     if fields is not None:
-        return {key: (properties or {}).get(key) for key in fields}
+        properties = properties or {}
+        missing = [key for key in fields if key not in properties]
+        if missing:
+            raise ValueError(f"no field {', '.join(missing)}")
+        return {key: properties[key] for key in fields}
     return {
         key: value
         for key, value in (properties or {}).items()
@@ -99,7 +104,13 @@ def sort_key(feature: dict) -> tuple[str, str]:
 def fetch(source: Source) -> list[dict]:
     features = []
     for feature in arcgis.query_features(source.url):
-        properties = clean_properties(feature.get("properties"), source.fields)
+        try:
+            properties = clean_properties(feature.get("properties"), source.fields)
+        except ValueError as error:
+            raise SystemExit(
+                f"{source.title}: {error}; the college may have renamed it -- "
+                "update `fields` in sources.py"
+            ) from error
         properties[LAYER_PROPERTY] = source.title
         features.append(
             {
