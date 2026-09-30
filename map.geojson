@@ -1460,9 +1460,7 @@
         ],
         "departments": [],
         "description": "Hilleboe and Kittelsby, which are connected by a common entrance, offer the largest triple rooms on campus, and house around 360 first-year and upper class students.",
-        "floors": [
-          "Hilleboe and Kittelsby Floor Plans <https://wp.stolaf.edu/residencelife/files/2025/03/Hill-Kitt_Room-Number-Plans.pdf>"
-        ],
+        "floors": [],
         "name": "(Agnes) Kittelsby Hall",
         "nickname": "AKH",
         "offices": [],
@@ -1676,9 +1674,7 @@
         ],
         "departments": [],
         "description": "Larson Hall houses 307 students, including the college's international students. The circular arrangement of each floor in Larson creates a strong community atmosphere.",
-        "floors": [
-          "Larson Hall Floor Plan <https://wp.stolaf.edu/residencelife/wp-content/blogs.dir/100/files/2013/03/Larson-Hall-Typical-Floors-Plan-.pdf>"
-        ],
+        "floors": [],
         "name": "(Agnes) Larson Hall",
         "nickname": "ALH",
         "offices": [],
@@ -1792,13 +1788,7 @@
         ],
         "departments": [],
         "description": "Mellby Hall houses 190 students in a warm and comfortable atmosphere. Mellby is the oldest hall on campus and its historic appeal truly stands out. It features a kitchen, TV lounge, computer facilities, and a comfortable main lounge and fireplace.",
-        "floors": [
-          "Basement Floor Mellby plans <https://wp.stolaf.edu/residencelife/files/2018/06/Bsmt-Floor-Mellby-plans.pdf>",
-          "First Floor Mellby plans <https://wp.stolaf.edu/residencelife/files/2018/06/First-Floor-Mellby-plans.pdf>",
-          "Second Floor Mellby plans <https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Mellby-plans.pdf>",
-          "Third Floor Mellby plans <https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Mellby-plans.pdf>",
-          "Fourth Floor Mellby plans <https://wp.stolaf.edu/residencelife/files/2018/06/Fourth-Floor-Mellby-plans.pdf>"
-        ],
+        "floors": [],
         "name": "(Agnes) Mellby Hall",
         "nickname": "AMH",
         "offices": [],
@@ -2570,9 +2560,7 @@
         ],
         "departments": [],
         "description": "Ellingson Hall is located on the Northeast side of campus near Mohn and Thorson Halls. Ellingson Hall is a four story building housing 185 first-year students. With centralized lounge spaces on every floor, Ellingson Hall offers an intellectual atmosphere for students to easily meet, study and hangout outside of their rooms.",
-        "floors": [
-          "View Ellingson Hall Floor Plan <https://wp.stolaf.edu/residencelife/files/2020/05/Res-Life-Ellingson-Floor-Plan.pdf>"
-        ],
+        "floors": [],
         "name": "Ellingson Hall",
         "nickname": "EH",
         "offices": [],
@@ -3866,9 +3854,7 @@
         ],
         "departments": [],
         "description": "Hilleboe and Kittelsby, which are connected by a common entrance, offer the largest triple rooms on campus, and house around 360 first-year and upper class students.",
-        "floors": [
-          "Hilleboe and Kittelsby Floor Plans <https://wp.stolaf.edu/residencelife/files/2025/03/Hill-Kitt_Room-Number-Plans.pdf>"
-        ],
+        "floors": [],
         "name": "(Gertrude) Hilleboe Hall",
         "nickname": "GHH",
         "offices": [],
@@ -4189,9 +4175,7 @@
         ],
         "departments": [],
         "description": "Hoyme Hall is a four-story hall housing 210 first-year students. The main lounge provides a striking view of the surrounding countryside as well as a wonderful space for studying and socializing. Students in the Great Conversation program live in Hoyme.",
-        "floors": [
-          "Hoyme Hall Floor Plans <https://wp.stolaf.edu/residencelife/files/2020/05/Res-Life-Hoyme.Memorial-Hall-Floor-Plans-09182015pdf.pdf>"
-        ],
+        "floors": [],
         "name": "Hoyme Hall",
         "nickname": "HMH",
         "offices": [],
@@ -4388,9 +4372,7 @@
         ],
         "departments": [],
         "description": "Kildahl Hall offers a friendly, comfortable atmosphere for 168 students. The main lounge serves as the center of community, offering many activities and late night conversations around the fireplace. Kildahl is equipped with lofted beds, computer facilities, and a strong community that is ideal for studying and socializing.",
-        "floors": [
-          "Kildahl Floor Plans <https://wp.stolaf.edu/residencelife/files/2025/06/kildhal-floor.pdf>"
-        ],
+        "floors": [],
         "name": "Kildahl Hall",
         "nickname": "KH",
         "offices": [],
@@ -8322,9 +8304,7 @@
         ],
         "departments": [],
         "description": "One of the two towers on campus, Mohn Hall is a ten-story residence hall housing 307 students. The hall, which traditionally houses first-year and upperclass students by floor, offers a main lounge, a recreational room, and a piano room. The circular arrangement of each corridor creates a strong community atmosphere.",
-        "floors": [
-          "Mohn Hall Floor Plans <https://wp.stolaf.edu/residencelife/files/2020/05/Res-Life-Mohn-Hall-Floor-Plans-09182015.pdf>"
-        ],
+        "floors": [],
         "name": "Mohn Hall",
         "nickname": "MH",
         "offices": [],
@@ -8514,9 +8494,7 @@
         ],
         "departments": [],
         "description": "New Hall offers 300 student beds with 30 single rooms (three accessible rooms) along with 135 double rooms. Learn more about the amenities and accommodations available",
-        "floors": [
-          "Visit the New Hall Floor Plan <https://wp.stolaf.edu/residencelife/files/2022/04/New-Hall-Floor-Plans-1.pdf>"
-        ],
+        "floors": [],
         "name": "New Hall",
         "nickname": "",
         "offices": [],
@@ -11250,11 +11228,7 @@
         ],
         "departments": [],
         "description": "Rand Hall, nestled into the north face of Manitou Heights, houses 243 upper-class men and women. A variety of living options are available in Rand including single, double, and quad occupancy rooms. Suites share their own bathrooms. The hillside location offers a beautiful view of the woods and fields surrounding the college.",
-        "floors": [
-          "First Floor Rand plans <https://wp.stolaf.edu/residencelife/files/2018/06/First-Floor-Rand-plans.pdf>",
-          "Second Floor Rand plans <https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Rand-plans.pdf>",
-          "Third Floor Rand plans <https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Rand-plans.pdf>"
-        ],
+        "floors": [],
         "name": "Rand Hall",
         "nickname": "RH",
         "offices": [],
@@ -12453,14 +12427,7 @@
         ],
         "departments": [],
         "description": "Thorson Halll houses 235 students and offers a spacious back yard with a patio and provides a striking view of the Northfield community. It has several features, most notably its spacious lounge that is a favorite study and conversation spot.",
-        "floors": [
-          "Basement Level Floor Thorson <https://wp.stolaf.edu/residencelife/files/2018/06/Basement-Level-Floor-Thorson.pdf>",
-          "First Floor Thorson <https://wp.stolaf.edu/residencelife/files/2018/06/First-Floor-Thorson.pdf>",
-          "Second Floor Thorson <https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Thorson.pdf>",
-          "Third Floor Thorson <https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Thorson.pdf>",
-          "Fourth Floor Thorson <https://wp.stolaf.edu/residencelife/files/2018/06/Fourth-Floor-Thorson.pdf>",
-          "Fifth Floor Thorson <https://wp.stolaf.edu/residencelife/files/2018/06/Fifth-Floor-Thorson.pdf>"
-        ],
+        "floors": [],
         "name": "Thorson Hall",
         "nickname": "TH",
         "offices": [],
@@ -13354,10 +13321,7 @@
         ],
         "departments": [],
         "description": "The Townhouses are located along St. Olaf Ave on lower campus. 14 townhouses allow 140 St. Olaf Students the opportunity to enjoy apartment style living on a college campus. With centralized living room and kitchen spaces, students can easily foster a close-knit community.",
-        "floors": [
-          "Townhouse Level 1 <https://wp.stolaf.edu/residencelife/files/2022/04/Olaf-Townhome-Level-1.pdf>",
-          "Townhouse Level 2 <https://wp.stolaf.edu/residencelife/files/2022/04/Olaf-Townhome-Level-2.pdf>"
-        ],
+        "floors": [],
         "name": "Townhouses",
         "nickname": "",
         "offices": [],
@@ -17424,12 +17388,7 @@
         ],
         "departments": [],
         "description": "Ytterboe Hall houses 402 students in suites of four to ten residents. Each suite (or pod) consists of single and double rooms arranged around a common living area. This hall features a beautiful main lounge, study lounges, computer facilities, sinks in the rooms, and music practice rooms.",
-        "floors": [
-          "Zero Ground Floor Ytterboe Hall plans <https://wp.stolaf.edu/residencelife/files/2018/06/Zero-Grnd-Floor-Ytterboe-Hall-plans.pdf>",
-          "Floor Ytterboe Hall plans <https://wp.stolaf.edu/residencelife/files/2022/05/Ytterboe-1st-floor-map.pdf>",
-          "Second Floor Ytterboe Hall plans <https://wp.stolaf.edu/residencelife/files/2018/06/Second-Floor-Ytterboe-Hall-plans.pdf>",
-          "Third Floor Ytterboe Hall plans <https://wp.stolaf.edu/residencelife/files/2018/06/Third-Floor-Ytterboe-Hall-plans.pdf>"
-        ],
+        "floors": [],
         "name": "Ytterboe Hall",
         "nickname": "YTT",
         "offices": [],
