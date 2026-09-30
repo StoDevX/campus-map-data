@@ -111,3 +111,20 @@ def test_a_line_under_half_a_metre_has_no_length():
         },
     }
     assert record(stub)["length"] is None
+
+
+HISTORY = {
+    "label": "History of the Natural Lands",
+    "href": "https://example.com/history/",
+}
+
+
+def test_a_place_carries_its_citations():
+    cited = lot("Porter", -93.180, citations=[HISTORY])
+    assert record(cited)["citations"] == [HISTORY]
+    assert feature(cited)["properties"]["citations"] == [HISTORY]
+
+
+def test_a_place_with_no_citations_has_an_empty_list():
+    assert record(lot("Porter", -93.180))["citations"] == []
+    assert feature(lot("Porter", -93.180))["properties"]["citations"] == []

@@ -106,13 +106,14 @@ configuration change rather than a second code path. Every key Carleton emits is
 emitted here, including the ones St. Olaf has nothing to put in, so a consumer
 never has to test for a missing key.
 
-Seven properties are **added**: `abbreviation`, `type`, `links`, `parent`,
+Eight properties are **added**: `abbreviation`, `type`, `links`, `parent`,
 `length` (a trail's length in metres, from its geometry; null for anything
 that is not a line), `rules` (the Natural Lands rules on every pond and
 trail, in our own words from the college's visitor pages, with a link to them
-among `links`; empty elsewhere) and `walk` (a Wellness Walk's time range in
+among `links`; empty elsewhere), `walk` (a Wellness Walk's time range in
 minutes and its accessibility, on the six places a walk follows; null
-elsewhere — see [Wellness Walks](#wellness-walks)).
+elsewhere — see [Wellness Walks](#wellness-walks)) and `citations` (the pages a
+place's About text is drawn from, each a `{label, href}`; empty elsewhere).
 Extra keys are additive and safe, and dropping St. Olaf's building
 abbreviations — `RNS`, `BMC`, `TOH`, the identifiers people on campus actually
 use — to preserve an exact field list would be throwing away good data for a bad
