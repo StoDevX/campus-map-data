@@ -340,16 +340,18 @@ buries the campus. So:
 Every anchor carries a `kind`, which is what lets the style bring each sort of
 place in at the zoom where it stops being clutter — buildings at z15, points of
 interest, fields, ponds and trails at z16, parking at z17. `buildingId` is on
-every place's feature in every layer and is the source feature's `id`, the same property name map-tiles uses, so
-AAO's selection code keys off it unchanged.
+every place's feature in every layer and is the source feature's `id`, the same
+property name map-tiles uses, so AAO's selection code keys off it unchanged.
 
 The 26 accessible-parking points get their own `kind` for one reason: they all
 share the name "Accessible Parking", and without it the style stamps that label
 26 times across campus.
 
 Most of `campus_paths` comes from `data/` rather than `map.geojson`, because
-walkways and unnamed trail segments are not *places* — no name, no id, nothing
-to label — so `build.py` leaves them out of the published dataset. They belong
+walkways and the other trail segments are not *places* — the unnamed ones have
+nothing to label, and Campus Drive, the one named access trail, is a road that
+`overrides.yaml` removes — so `build.py` leaves them out of the published
+dataset. They belong
 on the map regardless: this is something people walk around a campus with, and
 the college's 10.8 km of walkways plus 12 km of Natural Lands trails were being
 scraped and then dropped. The 12 named trails are places, and each is its own
