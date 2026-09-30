@@ -5,11 +5,11 @@
 label anchors. St. Olaf's dataset does not fit that shape, and forcing it to
 would produce a bad map:
 
-    buildings  38          parking  72          athletics  8    poi  10
+    buildings  38          parking  65          athletics  8    poi  10
 
-**More than half of the places are parking.** Putting 46 parking polygons into
+**Nearly half of the places are parking.** Putting 39 parking polygons into
 a layer called `campus_buildings` would be a lie the style then has to work
-around, and drawing 72 parking labels at the same zoom as the 38 building
+around, and drawing 65 parking labels at the same zoom as the 38 building
 labels makes the campus unreadable. So the polygons split by what they are, and
 every anchor carries a `kind` the style can gate on zoom.
 
