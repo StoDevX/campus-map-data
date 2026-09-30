@@ -152,6 +152,114 @@ changes:
   # The Windmill, the Wind Chime Memorial and the Electric Vehicle Charger are
   # the other three points, and are in no building. They get no parent.
 
+  # About text for the Natural Lands' ponds and trails, in our own words, from
+  # the college's History of the Natural Lands and Habitats pages, its 2024
+  # restoration map (which planting a place sits in, where the text does not
+  # name it), and a 2020 student bird survey:
+  #   https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/
+  #   https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/
+  #   https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/
+  # Places those sources say nothing specific about get no text.
+  - id: pond-bigpond
+    description: >-
+      The largest of the Natural Lands' wetlands, with up to 9 acres of open
+      water. It drained dry until a weir gate went in with the 1993
+      restorations; now as many as 500 waterfowl rest here at once during spring
+      and fall migration.
+  - id: pond-baseballpond
+    description: >-
+      North of the pond stand the first forests the Natural Lands planted, in
+      1988 and 1989, on farmland the college took out of production.
+  - id: pond-southeavespond
+    description: >-
+      Borders the James Farm prairie, the newest in the Natural Lands: 9 acres
+      of farmland sown with more than 125 native species in 2023. Drain tiles
+      pulled from the field then should make the pond wetter.
+  - id: pond-woodlandpond
+    description: >-
+      Sits in forest planted from 1998 to 2004 on farmland west of the Windmill
+      Trail.
+  - id: pond-eastcoyotepond
+    description: >-
+      In the Natural Lands' oak savanna: bur and red oaks left standing when a
+      small oak planting was thinned to keep the prairie open. In a 2020 student
+      bird survey, the edge where its prairie meets the savanna drew more kinds
+      of birds than open prairie.
+  - id: pond-westcoyotepond
+    description: >-
+      In the Natural Lands' oak savanna: bur and red oaks left standing when a
+      small oak planting was thinned to keep the prairie open.
+  - id: pond-dragonflypond
+    description: >-
+      Sits in open prairie sown in 2004. A 2020 student bird survey used it as a
+      pure-prairie site, and found the Natural Lands' prairies home to the birds
+      of tallgrass prairie, such as American goldfinches and yellow-rumped
+      warblers.
+  - id: trail-bigpondloop
+    description: >-
+      Circles Big Pond and the prairie planted around it in 1993. In 2001,
+      fireworks at a presidential inauguration ball set the prairie north of the
+      loop alight; the fire burned out against the trail and Campus Drive.
+  - id: trail-baseballpondloop
+    description: >-
+      Runs through the 1988 and 1989 plantings, the Natural Lands' first
+      forests: 20 to 30 native tree species set out at about 500 trees an acre.
+  - id: trail-knollloop
+    description: >-
+      Winds through a forest planted in 1989, one of the Natural Lands' first.
+  - id: trail-prairieloop
+    description: &prairie >-
+      Crosses prairie sown from 2002 to 2004 on about 100 acres of former
+      farmland, restored under a federal wildlife easement. It is burned every
+      four to six years to keep it prairie.
+  - id: trail-eastprairieloop
+    description: *prairie
+  - id: trail-westprairieloop
+    description: *prairie
+  - id: trail-conifertrail
+    description: >-
+      Runs along conifers planted in 1993 and 1999 to stand in for the forests
+      of northern Minnesota: mostly white, jack and red pine, with fir, spruce,
+      cedar and tamarack.
+  - id: trail-windmilltrail
+    description: >-
+      Follows a natural gas pipeline laid through the Natural Lands in 2007,
+      past Big Ole, the college's wind turbine. The young trees on either side
+      were seeded in 2002.
+  - id: trail-forestrestorationloop1
+    description: &forest-1990 >-
+      One of two forests planted in 1990 at about 500 trees an acre, on farmland
+      the college enrolled in a federal conservation program. Some seedlings
+      grew in plastic tubes, an early test of how to help them survive.
+  - id: trail-forestrestorationloop2
+    description: *forest-1990
+  - id: trail-norwayvalleytrail
+    description: >-
+      Norway Valley is the oldest forest on campus, 15 acres of maple and
+      basswood. Its big trees were logged before the college bought the land in
+      the 1800s, and spring wildflowers cover the ground before the leaves come
+      out.
+  - id: trail-ellingsonwoodstrail
+    description: >-
+      The woods below Ellingson Hall were one of only three natural areas on
+      campus in 1980, when the Natural Lands began. North of the trail is a 1992
+      planting of hand-set seedlings on what had been mown lawn.
+  - id: trail-robintrail
+    description: &heath-2009 >-
+      In Heath Creek's forest, by the 2009 planting: the first restoration
+      there, where a corn field was seeded straight to trees.
+  - id: trail-bigwoodstrail
+    description: *heath-2009
+  - id: trail-lowerheathcreektrail
+    description: >-
+      Follows Heath Creek, which flows on to the Cannon River, past a 2017
+      planting, the first to include trees suited to a warmer climate, such as
+      Kentucky coffee tree and swamp white oak.
+  - id: trail-burroaktrail
+    description: >-
+      Crosses the Heath Creek forest, about 75 acres around a stretch of the
+      creek.
+
 additions: []
 
 # The Heath Creek trails, as the college's Natural Lands distance map (Jan
