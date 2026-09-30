@@ -1,9 +1,10 @@
-"""`distance_m`, which decides which lot or building names an accessible spot."""
+"""`distance_m`, which decides which lot or building names an accessible spot;
+`length_m`; and `round_coords`, which the scrape runs on every geometry."""
 
 import math
 
 import pytest
-from geometry import distance_m, length_m
+from geometry import distance_m, length_m, round_coords
 
 # A square about 111 m a side near campus, with a square hole in the middle.
 LAT = 44.46
@@ -81,3 +82,23 @@ def test_a_line_is_measured_to_its_nearest_stretch_not_its_vertices():
     line = {"type": "LineString", "coordinates": [[-93.18, 44.459], [-93.18, 44.461]]}
     beside = [-93.18 + 10 / (math.cos(math.radians(44.46)) * 111_320), 44.46]
     assert distance_m(beside, line) == pytest.approx(10, abs=0.1)
+
+
+def test_a_geometry_is_rounded_to_seven_decimals():
+    line = {
+        "type": "LineString",
+        "coordinates": [[-93.1843653583051, 44.4612345678912], [-93.18, 44.46]],
+    }
+    assert round_coords(line) == {
+        "type": "LineString",
+        "coordinates": [[-93.1843654, 44.4612346], [-93.18, 44.46]],
+    }
+
+
+def test_a_collection_rounds_every_member():
+    point = {"type": "Point", "coordinates": [-93.1843653583051, 44.4612345678912]}
+    collection = {"type": "GeometryCollection", "geometries": [point]}
+    assert round_coords(collection)["geometries"][0]["coordinates"] == [
+        -93.1843654,
+        44.4612346,
+    ]
