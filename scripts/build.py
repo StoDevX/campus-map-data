@@ -342,7 +342,9 @@ def name_accessible_spots(places: list[dict]) -> None:
 # records before the build refuses it: further means the college re-cut its
 # segments, and the FIDs no longer mean what the mapping says.
 TRAIL_MILES_TOLERANCE = 0.05
-# How near a cut must be to a vertex, and a trail's parts to each other.
+# How near a cut must be to a vertex, and a trail's parts to each other. The
+# widest gap between joined parts is 3.85 m, FID 22 to 21 on Lower Heath Creek
+# Trail; the rest are under 3 m.
 TRAIL_REACH_M = 5
 METRES_PER_MILE = 1609.344
 
@@ -354,6 +356,24 @@ def touches(a: list, b: list, reach: float) -> bool:
     return any(geometry.distance_m(v, line_b) <= reach for v in a) or any(
         geometry.distance_m(v, line_a) <= reach for v in b
     )
+
+
+def trail_pieces(lines: list[list]) -> list[list[int]]:
+    """The indexes of `lines`, grouped into the pieces they join into."""
+    pieces = []
+    unseen = list(range(len(lines)))
+    while unseen:
+        piece = [unseen.pop(0)]
+        for index in piece:
+            joined = [
+                other
+                for other in unseen
+                if touches(lines[index], lines[other], TRAIL_REACH_M)
+            ]
+            unseen = [other for other in unseen if other not in joined]
+            piece += joined
+        pieces.append(sorted(piece))
+    return pieces
 
 
 def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
@@ -412,15 +432,18 @@ def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
                 line = line[: cut + 1] if "until" in part else line[cut:]
             lines.append(line)
             fids.append(fid)
-        # A wrong FID can match the trail's length by chance; it cannot also
-        # meet the rest of the trail. Parts meet end to end or at a T, where
-        # one's end lies partway along the other.
-        for index, line in enumerate(lines):
-            others = lines[:index] + lines[index + 1 :]
-            if others and not any(
-                touches(line, other, TRAIL_REACH_M) for other in others
-            ):
-                raise stale(fids[index], "touches no other part of the trail")
+        # A wrong FID can match the trail's length by chance; it seldom also
+        # joins the rest of the trail into one piece. Parts join end to end or
+        # at a T, where one's end lies partway along the other.
+        pieces = trail_pieces(lines)
+        if len(pieces) > 1:
+            named = " | ".join(
+                ", ".join(str(fids[index]) for index in piece) for piece in pieces
+            )
+            raise SystemExit(
+                f"  {entry['name']}: falls in {len(pieces)} pieces: FIDs {named}; "
+                "the college may have republished the layer -- redo `trails:`"
+            )
         shape = {"type": "MultiLineString", "coordinates": lines}
         miles = geometry.length_m(shape) / METRES_PER_MILE
         if abs(miles - entry["miles"]) > TRAIL_MILES_TOLERANCE:

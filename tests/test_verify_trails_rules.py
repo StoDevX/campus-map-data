@@ -92,4 +92,11 @@ def test_a_place_in_a_rules_category_without_rules_fails():
 # The categories come from overrides.yaml: a trail with rules is a failure once
 # the spec no longer gives trails the rules.
 def test_rules_outside_the_specs_categories_fail():
-    assert rule_failures({**RULES, "categories": ["water"]}, GOOD)
+    assert rule_failures({**RULES, "categories": ["water"]}, GOOD) == [
+        "trail-norwayvalleytrail: rules on a place outside the Natural Lands"
+    ]
+
+
+def test_rules_with_no_categories_fail():
+    spec = {**RULES, "categories": []}
+    assert "overrides.yaml: rules has no categories" in rule_failures(spec, GOOD)

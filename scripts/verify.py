@@ -348,6 +348,7 @@ def verify_rules(report: Report, spec: dict, records: list[dict]) -> None:
                 f"which is not a shared rule",
             )
     categories = set(spec.get("categories") or [])
+    report.check(bool(categories), "overrides.yaml: rules has no categories")
     for record in records:
         natural = categories & set(record["categories"])
         report.check(

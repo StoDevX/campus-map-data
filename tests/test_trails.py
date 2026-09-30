@@ -126,7 +126,7 @@ FAR = segment(3, [[-93.17, 44.460], [-93.17, 44.461]])
 
 
 def test_a_segment_that_touches_nothing_else_in_its_trail_fails_the_build():
-    with pytest.raises(SystemExit, match="FID 3 touches no other part"):
+    with pytest.raises(SystemExit, match=r"in 2 pieces: FIDs 1, 2 \| 3"):
         assemble_trails(
             [NORTH, LONG, FAR],
             {"trails": [{"name": "Robin Trail", "segments": [1, 2, 3], "miles": 0.28}]},
@@ -135,6 +135,23 @@ def test_a_segment_that_touches_nothing_else_in_its_trail_fails_the_build():
 
 # Ends partway along LONG, between its vertices, as trails meet at a T.
 TEE = segment(4, [[-93.179, 44.4615], [-93.18, 44.4615]])
+
+
+# Each part touches another, but the trail is two pairs that never meet: a
+# wrong FID in the middle of a trail that lies against one of its halves.
+FAR_ON = segment(5, [[-93.17, 44.461], [-93.17, 44.462]])
+
+
+def test_a_trail_in_two_pieces_fails_the_build_though_every_part_touches_one():
+    with pytest.raises(SystemExit, match=r"in 2 pieces: FIDs 1, 2 \| 3, 5"):
+        assemble_trails(
+            [NORTH, LONG, FAR, FAR_ON],
+            {
+                "trails": [
+                    {"name": "Robin Trail", "segments": [1, 2, 3, 5], "miles": 0.35}
+                ]
+            },
+        )
 
 
 def test_a_segment_meeting_another_partway_along_it_touches_it():
