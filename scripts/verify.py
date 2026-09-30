@@ -96,11 +96,19 @@ def verify_raw(report: Report) -> None:
         )
         report.check(bool(features), f"data/{slug}.geojson has no features")
 
+        # A layer that names its fields keeps them, volatile or not: the
+        # segments layer is addressed by FID.
+        kept = {
+            field
+            for source in SOURCES
+            if source.slug == slug
+            for field in source.fields or ()
+        }
         leaked = {
             key
             for feature in features
             for key in (feature.get("properties") or {})
-            if key in VOLATILE_FIELDS
+            if key in VOLATILE_FIELDS and key not in kept
         }
         report.check(
             not leaked,
