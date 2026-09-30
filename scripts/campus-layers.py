@@ -18,16 +18,19 @@ every anchor carries a `kind` the style can gate on zoom.
 | `campus_buildings` | MultiPolygon | The 38 building footprints — what the app hit-tests |
 | `campus_grounds` | MultiPolygon | Parking lots and athletic fields |
 | `campus_labels` | Point | Every anchor, with `kind` and `hasFootprint` |
-| `campus_paths` | MultiLineString | The college's walkways and Natural Lands trails |
+| `campus_paths` | MultiLineString | The college's walkways and trails; each named trail its own feature |
 
-`campus_paths` comes from `data/` rather than `map.geojson`, because walkways
-are not *places* — they have no name, no id and no label — so `build.py` leaves
-them out of the published dataset. They matter here anyway: this is a map people
-walk around a campus with, and 23 km of the college's own path data was being
-scraped and then dropped on the floor.
+Most of `campus_paths` comes from `data/` rather than `map.geojson`, because
+walkways and the unnamed trail segments are not *places* — they have no name,
+no id and no label — so `build.py` leaves them out of the published dataset.
+They matter here anyway: this is a map people walk around a campus with, and
+23 km of the college's own path data was being scraped and then dropped on the
+floor. The named trails are places, and come from `map.geojson`, one feature
+each, so a tap on a trail's line resolves to it.
 
-`buildingId` is on all three and is the source feature's `id` — the same
-property name `map-tiles` uses, so AAO's selection code keys off it unchanged.
+`buildingId` is on every feature of the first three and on each named trail in
+`campus_paths`, and is the source feature's `id` — the same property name
+`map-tiles` uses, so AAO's selection code keys off it unchanged.
 
 Two things about the source shape drive this, both inherited from Carleton's
 schema (see `build.py`):
@@ -56,6 +59,10 @@ KINDS = (
     ("parking", "campus_grounds"),
     ("athletics", "campus_grounds"),
     ("point-of-interest", None),
+    # The Natural Lands. Their shapes are drawn already -- ponds by the
+    # basemap's water, trails by campus_paths -- so these kinds only label.
+    ("water", None),
+    ("trail", None),
 )
 
 
@@ -114,8 +121,38 @@ def linestrings_of(geometry: dict) -> list:
     return []
 
 
-def paths(datadir: str) -> list[dict]:
-    features = []
+def trail_lines(features: list[dict]) -> list[dict]:
+    """Each named trail's line, as its own feature, so a tap on it resolves."""
+    trails = []
+    for feature in features:
+        props = feature.get("properties") or {}
+        if "trail" not in (props.get("categories") or []):
+            continue
+        geometry = feature.get("geometry") or {}
+        lines = [
+            line
+            for part in geometry.get("geometries") or []
+            for line in linestrings_of(part)
+        ]
+        if lines:
+            trails.append(
+                {
+                    "type": "Feature",
+                    "geometry": {"type": "MultiLineString", "coordinates": lines},
+                    "properties": properties(feature, "trail"),
+                }
+            )
+    return trails
+
+
+def paths(datadir: str, features: list[dict]) -> list[dict]:
+    named = trail_lines(features)
+    # A named trail's lines are drawn by its own feature; leaving them in the
+    # merged one as well would draw them twice.
+    taken = {
+        json.dumps(line) for trail in named for line in trail["geometry"]["coordinates"]
+    }
+    merged = []
     for filename, kind in PATH_SOURCES:
         path = os.path.join(datadir, filename)
         if not os.path.exists(path):
@@ -127,12 +164,13 @@ def paths(datadir: str) -> list[dict]:
             line
             for feature in collection.get("features") or []
             for line in linestrings_of(feature.get("geometry") or {})
+            if json.dumps(line) not in taken
         ]
-        # One feature per kind rather than per source line. Nothing here is
-        # individually addressable — no name, no id — and merging lets the
-        # renderer treat the whole network as one thing.
+        # The rest merge into one feature per kind: nothing here is
+        # individually addressable -- no name, no id -- and merging lets the
+        # renderer treat the network as one thing.
         if lines:
-            features.append(
+            merged.append(
                 {
                     "type": "Feature",
                     "geometry": {"type": "MultiLineString", "coordinates": lines},
@@ -140,7 +178,8 @@ def paths(datadir: str) -> list[dict]:
                 }
             )
         print(f"  {kind:<8} {len(lines)} lines from {filename}")
-    return features
+    print(f"  {'trail':<8} {len(named)} named trails, each its own feature")
+    return named + merged
 
 
 def main(src: str, datadir: str, outdir: str) -> None:
@@ -186,9 +225,10 @@ def main(src: str, datadir: str, outdir: str) -> None:
 
         if rings:
             if layer is None:
-                problems.append(
-                    f"{feature['id']}: has a footprint but no polygon layer"
-                )
+                if kind != "water":
+                    problems.append(
+                        f"{feature['id']}: has a footprint but no polygon layer"
+                    )
             else:
                 collections[layer].append(
                     {
@@ -213,7 +253,7 @@ def main(src: str, datadir: str, outdir: str) -> None:
         else:
             problems.append(f"{feature['id']}: no label anchor, will not be labelled")
 
-    collections["campus_paths"] = paths(datadir)
+    collections["campus_paths"] = paths(datadir, features)
 
     os.makedirs(outdir, exist_ok=True)
     for name, collection in collections.items():
@@ -251,6 +291,20 @@ def main(src: str, datadir: str, outdir: str) -> None:
     if missing:
         raise SystemExit(
             f"  {len(missing)} source features reached no layer: {sorted(missing)[:10]}"
+        )
+
+    # A named trail is tapped by its line, not only its label: the app opens
+    # whatever carries a buildingId under the touch.
+    trails = {
+        f["id"]
+        for f in features
+        if "trail" in ((f.get("properties") or {}).get("categories") or [])
+    }
+    tappable = {f["properties"].get("buildingId") for f in collections["campus_paths"]}
+    if trails - tappable:
+        raise SystemExit(
+            f"  {len(trails - tappable)} trails have no line to tap: "
+            f"{sorted(trails - tappable)[:10]}"
         )
 
     # The check above catches features lost *between* the source and a layer.
