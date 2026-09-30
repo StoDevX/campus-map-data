@@ -239,6 +239,79 @@ def read_places(sources_by_title: dict) -> tuple[list[dict], list[str]]:
     return places, dropped
 
 
+def merge_split_lots(places: list[dict]) -> list[dict]:
+    """One place per parking lot, however many pieces the college draws it in.
+
+    Six lots come as two or three polygons under one name -- Porter is three --
+    with the same description on each piece. As separate places they list as
+    several lots of one name and number their ids, and nothing says which
+    piece is which, because nothing tells them apart. Merged, each is one
+    MultiPolygon, as the two buildings drawn in pieces already are.
+    """
+    kept: list[dict] = []
+    by_name: dict[str, dict] = {}
+    for place in places:
+        if place["slug"] != "parking-lots":
+            kept.append(place)
+            continue
+        first = by_name.get(place["name"])
+        if first is None:
+            by_name[place["name"]] = place
+            kept.append(place)
+            continue
+        if place["description"] != first["description"]:
+            print(
+                f"  ! {place['name']!r}: pieces describe themselves differently; "
+                "keeping the first description",
+                file=sys.stderr,
+            )
+        first["geometry"] = {
+            "type": "MultiPolygon",
+            "coordinates": geometry.polygons(first["geometry"])
+            + geometry.polygons(place["geometry"]),
+        }
+    return kept
+
+
+# How far from a lot or building an accessible spot may sit and still be named
+# for it. Twenty of the 26 sit inside a lot, five within 18 m of one, and one
+# 19 m from New Hall, which has no lot of its own.
+ACCESSIBLE_REACH_M = 25
+
+
+def name_accessible_spots(places: list[dict]) -> None:
+    """Name each accessible spot for the lot it is in, or failing that the lot
+    or building nearest it, and make that its parent.
+
+    The layer is 26 points with no name at all, so all 26 read "Accessible
+    Parking". Derived rather than hand-written, unlike the rooms' parents under
+    `changes`: a spot the college adds or moves is named on the next scrape,
+    and one out of reach of everything is left alone for verify.py to report.
+    """
+    lots = [place for place in places if place["slug"] == "parking-lots"]
+    buildings = [place for place in places if place["slug"] == "buildings"]
+    for spot in places:
+        if spot["slug"] != "accessible-parking":
+            continue
+        point = geometry.positions(spot["geometry"])[0]
+        for candidates in (lots, buildings):
+            # Ties go to the lower id, so a rebuild names a spot the same way.
+            nearest = min(
+                candidates,
+                key=lambda place: (
+                    geometry.distance_m(point, place["geometry"]),
+                    place["id"],
+                ),
+                default=None,
+            )
+            if nearest is None:
+                continue
+            if geometry.distance_m(point, nearest["geometry"]) <= ACCESSIBLE_REACH_M:
+                spot["parent"] = nearest["id"]
+                spot["name"] = f"Accessible Parking, {nearest['name']}"
+                break
+
+
 def assign_ids(places: list[dict], overrides: dict) -> None:
     """Give every place a stable, unique id.
 
@@ -418,9 +491,11 @@ def feature(place: dict) -> dict:
 def main() -> int:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
     places, dropped = read_places(source_index())
+    places = merge_split_lots(places)
 
     assign_ids(places, overrides)
     places = apply_overrides(places, overrides)
+    name_accessible_spots(places)
     attach_floors(places)
     places.sort(key=lambda place: place["id"])
 

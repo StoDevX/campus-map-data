@@ -135,8 +135,8 @@ PAGES_FILE_LIMIT=100000000
 # drift never trips them. A bbox or zoom change in TIERS moves the tile count
 # and archive size, and is expected to move these with it.
 MIN_CAMPUS_BUILDINGS=34   # currently 38
-MIN_CAMPUS_GROUNDS=48     # currently 54
-MIN_CAMPUS_LABELS=135     # currently 151
+MIN_CAMPUS_GROUNDS=42     # currently 47
+MIN_CAMPUS_LABELS=130     # currently 144
 MIN_CAMPUS_PATHS=12       # currently 14: the 12 named trails, then walkways
                           # and the other trail segments merged
 MIN_TILES=900             # currently ~985

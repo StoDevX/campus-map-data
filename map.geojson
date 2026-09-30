@@ -356,13 +356,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Alumni Hall Road",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-alumnihallroad"
       }
     },
     {
@@ -390,13 +390,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Skoglund S-2",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-skoglunds2"
       }
     },
     {
@@ -424,13 +424,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, CHM Road",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-chmroad"
       }
     },
     {
@@ -458,13 +458,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Ellingson",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-ellingson"
       }
     },
     {
@@ -492,13 +492,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Thorson",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-thorson"
       }
     },
     {
@@ -526,13 +526,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Buntrock Commons Parking",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-buntrockcommonsparking"
       }
     },
     {
@@ -560,13 +560,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Ytterboe Lot",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-ytterboelot"
       }
     },
     {
@@ -594,13 +594,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Upper Tomson",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-uppertomson"
       }
     },
     {
@@ -628,13 +628,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Old Main",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-oldmain"
       }
     },
     {
@@ -662,13 +662,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Skoglund",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-skoglund"
       }
     },
     {
@@ -696,13 +696,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Mellby Lot",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-mellbylot"
       }
     },
     {
@@ -730,13 +730,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Upper Lincoln",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-upperlincoln"
       }
     },
     {
@@ -764,13 +764,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Porter Hall Parking",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-porterhallparking"
       }
     },
     {
@@ -798,13 +798,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Rand",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-rand"
       }
     },
     {
@@ -832,13 +832,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Admissions Visitor Parking",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-admissionsvisitorparking"
       }
     },
     {
@@ -866,13 +866,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Hill-Kit Road Lot",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-hillkitroadlot"
       }
     },
     {
@@ -900,13 +900,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Lot J",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lotj"
       }
     },
     {
@@ -934,13 +934,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Skoglund S-7 (Between Skoglund + Tennis Courts)",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-skoglunds7betweenskoglundtenniscourts"
       }
     },
     {
@@ -968,13 +968,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Mohn + Kildahl",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-mohnkildahl"
       }
     },
     {
@@ -1002,13 +1002,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Upper Regents",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-upperregents"
       }
     },
     {
@@ -1036,13 +1036,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, New Hall",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "newhall"
       }
     },
     {
@@ -1070,13 +1070,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Holland Lot",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-hollandlot"
       }
     },
     {
@@ -1104,13 +1104,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Lower Tomson",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-lowertomson"
       }
     },
     {
@@ -1138,13 +1138,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Skoglund S-7 (Behind Skoglund)",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-skoglunds7behindskoglund"
       }
     },
     {
@@ -1172,13 +1172,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Bunt + Rolvaag",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-buntrolvaag"
       }
     },
     {
@@ -1206,13 +1206,13 @@
         "departments": [],
         "description": "",
         "floors": [],
-        "name": "Accessible Parking",
+        "name": "Accessible Parking, Lower Lincoln",
         "nickname": "",
         "offices": [],
         "abbreviation": null,
         "type": null,
         "links": [],
-        "parent": null
+        "parent": "lot-lowerlincoln"
       }
     },
     {
@@ -4402,138 +4402,103 @@
     },
     {
       "type": "Feature",
-      "id": "lot-admissionsvisitorparking-1",
+      "id": "lot-admissionsvisitorparking",
       "geometry": {
         "type": "GeometryCollection",
         "geometries": [
           {
-            "type": "Polygon",
+            "type": "MultiPolygon",
             "coordinates": [
               [
                 [
-                  -93.1853359782598,
-                  44.4601480389715
-                ],
-                [
-                  -93.1852995075576,
-                  44.4601468419229
-                ],
-                [
-                  -93.1851970223601,
-                  44.4601471182635
-                ],
-                [
-                  -93.185197959303,
-                  44.4600956413012
-                ],
-                [
-                  -93.1853753127912,
-                  44.4600965466221
-                ],
-                [
-                  -93.1853751627725,
-                  44.460147913945
-                ],
-                [
-                  -93.1853359782598,
-                  44.4601480389715
+                  [
+                    -93.1853359782598,
+                    44.4601480389715
+                  ],
+                  [
+                    -93.1852995075576,
+                    44.4601468419229
+                  ],
+                  [
+                    -93.1851970223601,
+                    44.4601471182635
+                  ],
+                  [
+                    -93.185197959303,
+                    44.4600956413012
+                  ],
+                  [
+                    -93.1853753127912,
+                    44.4600965466221
+                  ],
+                  [
+                    -93.1853751627725,
+                    44.460147913945
+                  ],
+                  [
+                    -93.1853359782598,
+                    44.4601480389715
+                  ]
                 ]
-              ]
-            ]
-          },
-          {
-            "type": "Point",
-            "coordinates": [
-              -93.1852866,
-              44.4600983
-            ]
-          }
-        ]
-      },
-      "properties": {
-        "accessibility": "unknown",
-        "address": null,
-        "categories": [
-          "parking",
-          "admissions-parking"
-        ],
-        "departments": [],
-        "description": "Admissions visitors should park in the admissions lot (Lot F), located just northeast of the roundabout. If you coordinated your visit with the admissions office, you should see a personalized reserved parking space just for you!",
-        "floors": [],
-        "name": "Admissions Visitor Parking",
-        "nickname": "",
-        "offices": [],
-        "abbreviation": null,
-        "type": "Admissions Parking",
-        "links": [],
-        "parent": null
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "lot-admissionsvisitorparking-2",
-      "geometry": {
-        "type": "GeometryCollection",
-        "geometries": [
-          {
-            "type": "Polygon",
-            "coordinates": [
+              ],
               [
                 [
-                  -93.1855451940929,
-                  44.4598618731157
-                ],
-                [
-                  -93.1855685475953,
-                  44.4598819749083
-                ],
-                [
-                  -93.1855831263541,
-                  44.4598914141311
-                ],
-                [
-                  -93.1857049540763,
-                  44.4599495869469
-                ],
-                [
-                  -93.1857358399524,
-                  44.4599803127879
-                ],
-                [
-                  -93.1855630382277,
-                  44.4600661503998
-                ],
-                [
-                  -93.1855308605742,
-                  44.4600350649116
-                ],
-                [
-                  -93.1855257806013,
-                  44.4600322418717
-                ],
-                [
-                  -93.185519790635,
-                  44.4600299644612
-                ],
-                [
-                  -93.1854440851144,
-                  44.4599775506559
-                ],
-                [
-                  -93.1854024517942,
-                  44.4599405311494
-                ],
-                [
-                  -93.1854530898268,
-                  44.4599125943516
-                ],
-                [
-                  -93.1854799485555,
-                  44.4598962215815
-                ],
-                [
-                  -93.1855451940929,
-                  44.4598618731157
+                  [
+                    -93.1855451940929,
+                    44.4598618731157
+                  ],
+                  [
+                    -93.1855685475953,
+                    44.4598819749083
+                  ],
+                  [
+                    -93.1855831263541,
+                    44.4598914141311
+                  ],
+                  [
+                    -93.1857049540763,
+                    44.4599495869469
+                  ],
+                  [
+                    -93.1857358399524,
+                    44.4599803127879
+                  ],
+                  [
+                    -93.1855630382277,
+                    44.4600661503998
+                  ],
+                  [
+                    -93.1855308605742,
+                    44.4600350649116
+                  ],
+                  [
+                    -93.1855257806013,
+                    44.4600322418717
+                  ],
+                  [
+                    -93.185519790635,
+                    44.4600299644612
+                  ],
+                  [
+                    -93.1854440851144,
+                    44.4599775506559
+                  ],
+                  [
+                    -93.1854024517942,
+                    44.4599405311494
+                  ],
+                  [
+                    -93.1854530898268,
+                    44.4599125943516
+                  ],
+                  [
+                    -93.1854799485555,
+                    44.4598962215815
+                  ],
+                  [
+                    -93.1855451940929,
+                    44.4598618731157
+                  ]
                 ]
               ]
             ]
@@ -4645,93 +4610,147 @@
     },
     {
       "type": "Feature",
-      "id": "lot-belowregentshall-1",
+      "id": "lot-belowregentshall",
       "geometry": {
         "type": "GeometryCollection",
         "geometries": [
           {
-            "type": "Polygon",
+            "type": "MultiPolygon",
             "coordinates": [
               [
                 [
-                  -93.1807643853036,
-                  44.4582679812891
-                ],
+                  [
+                    -93.1807643853036,
+                    44.4582679812891
+                  ],
+                  [
+                    -93.1809021868682,
+                    44.4582294808493
+                  ],
+                  [
+                    -93.1810758177379,
+                    44.45820671822
+                  ],
+                  [
+                    -93.1812872461215,
+                    44.458206437382
+                  ],
+                  [
+                    -93.1814707198317,
+                    44.4582314486387
+                  ],
+                  [
+                    -93.1816841173224,
+                    44.4582733204132
+                  ],
+                  [
+                    -93.1818920018522,
+                    44.4583545363355
+                  ],
+                  [
+                    -93.1820073617044,
+                    44.4584253534807
+                  ],
+                  [
+                    -93.1819738958668,
+                    44.4584705983641
+                  ],
+                  [
+                    -93.1819465179119,
+                    44.4584991276607
+                  ],
+                  [
+                    -93.181926587889,
+                    44.4584853474255
+                  ],
+                  [
+                    -93.1817878871108,
+                    44.4584101466011
+                  ],
+                  [
+                    -93.1816371839421,
+                    44.4583558873044
+                  ],
+                  [
+                    -93.1815070845328,
+                    44.4583175254177
+                  ],
+                  [
+                    -93.1813437797973,
+                    44.4582949654363
+                  ],
+                  [
+                    -93.1811547598884,
+                    44.4582911914395
+                  ],
+                  [
+                    -93.1810002101337,
+                    44.4583008296859
+                  ],
+                  [
+                    -93.1808596624193,
+                    44.4583330420121
+                  ],
+                  [
+                    -93.1808297422321,
+                    44.4583132256533
+                  ],
+                  [
+                    -93.1807643853036,
+                    44.4582679812891
+                  ]
+                ]
+              ],
+              [
                 [
-                  -93.1809021868682,
-                  44.4582294808493
-                ],
-                [
-                  -93.1810758177379,
-                  44.45820671822
-                ],
-                [
-                  -93.1812872461215,
-                  44.458206437382
-                ],
-                [
-                  -93.1814707198317,
-                  44.4582314486387
-                ],
-                [
-                  -93.1816841173224,
-                  44.4582733204132
-                ],
-                [
-                  -93.1818920018522,
-                  44.4583545363355
-                ],
-                [
-                  -93.1820073617044,
-                  44.4584253534807
-                ],
-                [
-                  -93.1819738958668,
-                  44.4584705983641
-                ],
-                [
-                  -93.1819465179119,
-                  44.4584991276607
-                ],
-                [
-                  -93.181926587889,
-                  44.4584853474255
-                ],
-                [
-                  -93.1817878871108,
-                  44.4584101466011
-                ],
-                [
-                  -93.1816371839421,
-                  44.4583558873044
-                ],
-                [
-                  -93.1815070845328,
-                  44.4583175254177
-                ],
-                [
-                  -93.1813437797973,
-                  44.4582949654363
-                ],
-                [
-                  -93.1811547598884,
-                  44.4582911914395
-                ],
-                [
-                  -93.1810002101337,
-                  44.4583008296859
-                ],
-                [
-                  -93.1808596624193,
-                  44.4583330420121
-                ],
-                [
-                  -93.1808297422321,
-                  44.4583132256533
-                ],
-                [
-                  -93.1807643853036,
-                  44.4582679812891
+                  [
+                    -93.1807312958601,
+                    44.4585306114978
+                  ],
+                  [
+                    -93.1809161089585,
+                    44.4585090749213
+                  ],
+                  [
+                    -93.1811544005623,
+                    44.4584996258573
+                  ],
+                  [
+                    -93.1813811218653,
+                    44.4585129527752
+                  ],
+                  [
+                    -93.1815923571111,
+                    44.4585445353465
+                  ],
+                  [
+                    -93.1816513647472,
+                    44.4585591850065
+                  ],
+                  [
+                    -93.1816422100161,
+                    44.4586525066141
+                  ],
+                  [
+                    -93.1813691832552,
+                    44.4585937099215
+                  ],
+                  [
+                    -93.181166611362,
+                    44.4585808882709
+                  ],
+                  [
+                    -93.1810141025796,
+                    44.4585857644353
+                  ],
+                  [
+                    -93.180809244474,
+                    44.4586072798246
+                  ],
+                  [
+                    -93.1807312958601,
+                    44.4585306114978
+                  ]
                 ]
               ]
             ]
@@ -4741,95 +4760,6 @@
             "coordinates": [
               -93.1811805,
               44.4582211
-            ]
-          }
-        ]
-      },
-      "properties": {
-        "accessibility": "unknown",
-        "address": null,
-        "categories": [
-          "parking",
-          "campus-parking"
-        ],
-        "departments": [],
-        "description": "Reserved for Faculty/Staff permits. Paid hourly parking available in spots designated by signage.",
-        "floors": [],
-        "name": "Below Regents Hall",
-        "nickname": "",
-        "offices": [],
-        "abbreviation": null,
-        "type": "Campus Parking",
-        "links": [],
-        "parent": null
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "lot-belowregentshall-2",
-      "geometry": {
-        "type": "GeometryCollection",
-        "geometries": [
-          {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -93.1807312958601,
-                  44.4585306114978
-                ],
-                [
-                  -93.1809161089585,
-                  44.4585090749213
-                ],
-                [
-                  -93.1811544005623,
-                  44.4584996258573
-                ],
-                [
-                  -93.1813811218653,
-                  44.4585129527752
-                ],
-                [
-                  -93.1815923571111,
-                  44.4585445353465
-                ],
-                [
-                  -93.1816513647472,
-                  44.4585591850065
-                ],
-                [
-                  -93.1816422100161,
-                  44.4586525066141
-                ],
-                [
-                  -93.1813691832552,
-                  44.4585937099215
-                ],
-                [
-                  -93.181166611362,
-                  44.4585808882709
-                ],
-                [
-                  -93.1810141025796,
-                  44.4585857644353
-                ],
-                [
-                  -93.180809244474,
-                  44.4586072798246
-                ],
-                [
-                  -93.1807312958601,
-                  44.4585306114978
-                ]
-              ]
-            ]
-          },
-          {
-            "type": "Point",
-            "coordinates": [
-              -93.1815559,
-              44.4586145
             ]
           }
         ]
@@ -5082,118 +5012,83 @@
     },
     {
       "type": "Feature",
-      "id": "lot-chmroad-1",
+      "id": "lot-chmroad",
       "geometry": {
         "type": "GeometryCollection",
         "geometries": [
           {
-            "type": "Polygon",
+            "type": "MultiPolygon",
             "coordinates": [
               [
                 [
-                  -93.1868733936646,
-                  44.4613257678008
-                ],
-                [
-                  -93.1869131117766,
-                  44.4613663101795
-                ],
-                [
-                  -93.1869762875956,
-                  44.4614380321777
-                ],
-                [
-                  -93.1869999824578,
-                  44.4614990289862
-                ],
-                [
-                  -93.1869506954915,
-                  44.4614959258359
-                ],
-                [
-                  -93.186913326474,
-                  44.4614994983056
-                ],
-                [
-                  -93.1868906386232,
-                  44.461510214431
-                ],
-                [
-                  -93.1868395891622,
-                  44.4614290105919
-                ],
-                [
-                  -93.1867808671904,
-                  44.4613597134054
-                ],
-                [
-                  -93.1868733936646,
-                  44.4613257678008
+                  [
+                    -93.1868733936646,
+                    44.4613257678008
+                  ],
+                  [
+                    -93.1869131117766,
+                    44.4613663101795
+                  ],
+                  [
+                    -93.1869762875956,
+                    44.4614380321777
+                  ],
+                  [
+                    -93.1869999824578,
+                    44.4614990289862
+                  ],
+                  [
+                    -93.1869506954915,
+                    44.4614959258359
+                  ],
+                  [
+                    -93.186913326474,
+                    44.4614994983056
+                  ],
+                  [
+                    -93.1868906386232,
+                    44.461510214431
+                  ],
+                  [
+                    -93.1868395891622,
+                    44.4614290105919
+                  ],
+                  [
+                    -93.1867808671904,
+                    44.4613597134054
+                  ],
+                  [
+                    -93.1868733936646,
+                    44.4613257678008
+                  ]
                 ]
-              ]
-            ]
-          },
-          {
-            "type": "Point",
-            "coordinates": [
-              -93.1868653,
-              44.461335
-            ]
-          }
-        ]
-      },
-      "properties": {
-        "accessibility": "unknown",
-        "address": null,
-        "categories": [
-          "parking",
-          "campus-parking"
-        ],
-        "departments": [],
-        "description": "Reserved for Faculty/Staff permits and disability parking.",
-        "floors": [],
-        "name": "CHM Road",
-        "nickname": "",
-        "offices": [],
-        "abbreviation": null,
-        "type": "Campus Parking",
-        "links": [],
-        "parent": null
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "lot-chmroad-2",
-      "geometry": {
-        "type": "GeometryCollection",
-        "geometries": [
-          {
-            "type": "Polygon",
-            "coordinates": [
+              ],
               [
                 [
-                  -93.1865248724872,
-                  44.4610540509418
-                ],
-                [
-                  -93.1867595816097,
-                  44.4612338199616
-                ],
-                [
-                  -93.1867178063557,
-                  44.4612506475728
-                ],
-                [
-                  -93.1866757669971,
-                  44.4612775566093
-                ],
-                [
-                  -93.1864418771381,
-                  44.4611018128709
-                ],
-                [
-                  -93.1865248724872,
-                  44.4610540509418
+                  [
+                    -93.1865248724872,
+                    44.4610540509418
+                  ],
+                  [
+                    -93.1867595816097,
+                    44.4612338199616
+                  ],
+                  [
+                    -93.1867178063557,
+                    44.4612506475728
+                  ],
+                  [
+                    -93.1866757669971,
+                    44.4612775566093
+                  ],
+                  [
+                    -93.1864418771381,
+                    44.4611018128709
+                  ],
+                  [
+                    -93.1865248724872,
+                    44.4610540509418
+                  ]
                 ]
               ]
             ]
@@ -5621,81 +5516,119 @@
     },
     {
       "type": "Feature",
-      "id": "lot-hoymecircle-1",
+      "id": "lot-hoymecircle",
       "geometry": {
         "type": "GeometryCollection",
         "geometries": [
           {
-            "type": "Polygon",
+            "type": "MultiPolygon",
             "coordinates": [
               [
                 [
-                  -93.1863029949002,
-                  44.4604745765156
-                ],
+                  [
+                    -93.1863029949002,
+                    44.4604745765156
+                  ],
+                  [
+                    -93.1863288978215,
+                    44.4604743841682
+                  ],
+                  [
+                    -93.186393656472,
+                    44.4604803539899
+                  ],
+                  [
+                    -93.1864934916394,
+                    44.4604922942726
+                  ],
+                  [
+                    -93.1866040329284,
+                    44.4605128747928
+                  ],
+                  [
+                    -93.1866632121427,
+                    44.4605337002278
+                  ],
+                  [
+                    -93.1866934332655,
+                    44.4605502619605
+                  ],
+                  [
+                    -93.1867063429544,
+                    44.4605706648599
+                  ],
+                  [
+                    -93.1866684987281,
+                    44.4605859147754
+                  ],
+                  [
+                    -93.1866003983447,
+                    44.4606139858938
+                  ],
+                  [
+                    -93.1865934238249,
+                    44.4605992873804
+                  ],
+                  [
+                    -93.1865771032328,
+                    44.4605676610396
+                  ],
+                  [
+                    -93.1865706757869,
+                    44.4605552059232
+                  ],
+                  [
+                    -93.1864684385244,
+                    44.4605287844744
+                  ],
+                  [
+                    -93.1863006583822,
+                    44.4605152958037
+                  ],
+                  [
+                    -93.1863015243581,
+                    44.4605042832808
+                  ],
+                  [
+                    -93.1863029949002,
+                    44.4604745765156
+                  ]
+                ]
+              ],
+              [
                 [
-                  -93.1863288978215,
-                  44.4604743841682
-                ],
-                [
-                  -93.186393656472,
-                  44.4604803539899
-                ],
-                [
-                  -93.1864934916394,
-                  44.4604922942726
-                ],
-                [
-                  -93.1866040329284,
-                  44.4605128747928
-                ],
-                [
-                  -93.1866632121427,
-                  44.4605337002278
-                ],
-                [
-                  -93.1866934332655,
-                  44.4605502619605
-                ],
-                [
-                  -93.1867063429544,
-                  44.4605706648599
-                ],
-                [
-                  -93.1866684987281,
-                  44.4605859147754
-                ],
-                [
-                  -93.1866003983447,
-                  44.4606139858938
-                ],
-                [
-                  -93.1865934238249,
-                  44.4605992873804
-                ],
-                [
-                  -93.1865771032328,
-                  44.4605676610396
-                ],
-                [
-                  -93.1865706757869,
-                  44.4605552059232
-                ],
-                [
-                  -93.1864684385244,
-                  44.4605287844744
-                ],
-                [
-                  -93.1863006583822,
-                  44.4605152958037
-                ],
-                [
-                  -93.1863015243581,
-                  44.4605042832808
-                ],
-                [
-                  -93.1863029949002,
-                  44.4604745765156
+                  [
+                    -93.1867049083449,
+                    44.460659618263
+                  ],
+                  [
+                    -93.1866569940043,
+                    44.4607103253415
+                  ],
+                  [
+                    -93.1865950030631,
+                    44.4607606399894
+                  ],
+                  [
+                    -93.1865577238772,
+                    44.4607420734245
+                  ],
+                  [
+                    -93.1865821221203,
+                    44.4607095078684
+                  ],
+                  [
+                    -93.1866062068514,
+                    44.4606415081692
+                  ],
+                  [
+                    -93.1866761640524,
+                    44.4606540645699
+                  ],
+                  [
+                    -93.1867049083449,
+                    44.460659618263
+                  ]
                 ]
               ]
             ]
@@ -5730,114 +5663,83 @@
     },
     {
       "type": "Feature",
-      "id": "lot-hoymecircle-2",
+      "id": "lot-hoymeroad",
       "geometry": {
         "type": "GeometryCollection",
         "geometries": [
           {
-            "type": "Polygon",
+            "type": "MultiPolygon",
             "coordinates": [
               [
                 [
-                  -93.1867049083449,
-                  44.460659618263
-                ],
-                [
-                  -93.1866569940043,
-                  44.4607103253415
-                ],
-                [
-                  -93.1865950030631,
-                  44.4607606399894
-                ],
-                [
-                  -93.1865577238772,
-                  44.4607420734245
-                ],
-                [
-                  -93.1865821221203,
-                  44.4607095078684
-                ],
-                [
-                  -93.1866062068514,
-                  44.4606415081692
-                ],
-                [
-                  -93.1866761640524,
-                  44.4606540645699
-                ],
-                [
-                  -93.1867049083449,
-                  44.460659618263
+                  [
+                    -93.1860902190437,
+                    44.4605065151506
+                  ],
+                  [
+                    -93.1860946055173,
+                    44.4605180354698
+                  ],
+                  [
+                    -93.1862837808346,
+                    44.460815947262
+                  ],
+                  [
+                    -93.1861841289235,
+                    44.4608437169276
+                  ],
+                  [
+                    -93.1861425162646,
+                    44.4608432052867
+                  ],
+                  [
+                    -93.1859797774678,
+                    44.4605299565101
+                  ],
+                  [
+                    -93.1860902190437,
+                    44.4605065151506
+                  ]
                 ]
-              ]
-            ]
-          },
-          {
-            "type": "Point",
-            "coordinates": [
-              -93.1866217,
-              44.4606475
-            ]
-          }
-        ]
-      },
-      "properties": {
-        "accessibility": "unknown",
-        "address": null,
-        "categories": [
-          "parking",
-          "campus-parking"
-        ],
-        "departments": [],
-        "description": "Reserved for Faculty/Staff permits. Paid hourly parking available in spots designated by signage.",
-        "floors": [],
-        "name": "Hoyme Circle",
-        "nickname": "",
-        "offices": [],
-        "abbreviation": null,
-        "type": "Campus Parking",
-        "links": [],
-        "parent": null
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "lot-hoymeroad-1",
-      "geometry": {
-        "type": "GeometryCollection",
-        "geometries": [
-          {
-            "type": "Polygon",
-            "coordinates": [
+              ],
               [
                 [
-                  -93.1860902190437,
-                  44.4605065151506
-                ],
-                [
-                  -93.1860946055173,
-                  44.4605180354698
-                ],
-                [
-                  -93.1862837808346,
-                  44.460815947262
-                ],
-                [
-                  -93.1861841289235,
-                  44.4608437169276
-                ],
-                [
-                  -93.1861425162646,
-                  44.4608432052867
-                ],
-                [
-                  -93.1859797774678,
-                  44.4605299565101
-                ],
-                [
-                  -93.1860902190437,
-                  44.4605065151506
+                  [
+                    -93.1861846220986,
+                    44.4602093256501
+                  ],
+                  [
+                    -93.1861882485974,
+                    44.4603144919712
+                  ],
+                  [
+                    -93.1862119910704,
+                    44.4603745410381
+                  ],
+                  [
+                    -93.186236681266,
+                    44.460437171347
+                  ],
+                  [
+                    -93.1861315523266,
+                    44.4604577050821
+                  ],
+                  [
+                    -93.18607190509,
+                    44.46029719412
+                  ],
+                  [
+                    -93.1860667218109,
+                    44.4602346431649
+                  ],
+                  [
+                    -93.1860734609721,
+                    44.4602135611588
+                  ],
+                  [
+                    -93.1861846220986,
+                    44.4602093256501
+                  ]
                 ]
               ]
             ]
@@ -5847,83 +5749,6 @@
             "coordinates": [
               -93.1860589,
               44.4606496
-            ]
-          }
-        ]
-      },
-      "properties": {
-        "accessibility": "unknown",
-        "address": null,
-        "categories": [
-          "parking",
-          "campus-parking"
-        ],
-        "departments": [],
-        "description": "Reserved for Faculty/Staff permits.",
-        "floors": [],
-        "name": "Hoyme Road",
-        "nickname": "",
-        "offices": [],
-        "abbreviation": null,
-        "type": "Campus Parking",
-        "links": [],
-        "parent": null
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "lot-hoymeroad-2",
-      "geometry": {
-        "type": "GeometryCollection",
-        "geometries": [
-          {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -93.1861846220986,
-                  44.4602093256501
-                ],
-                [
-                  -93.1861882485974,
-                  44.4603144919712
-                ],
-                [
-                  -93.1862119910704,
-                  44.4603745410381
-                ],
-                [
-                  -93.186236681266,
-                  44.460437171347
-                ],
-                [
-                  -93.1861315523266,
-                  44.4604577050821
-                ],
-                [
-                  -93.18607190509,
-                  44.46029719412
-                ],
-                [
-                  -93.1860667218109,
-                  44.4602346431649
-                ],
-                [
-                  -93.1860734609721,
-                  44.4602135611588
-                ],
-                [
-                  -93.1861846220986,
-                  44.4602093256501
-                ]
-              ]
-            ]
-          },
-          {
-            "type": "Point",
-            "coordinates": [
-              -93.1861279,
-              44.4602217
             ]
           }
         ]
@@ -6549,179 +6374,107 @@
     },
     {
       "type": "Feature",
-      "id": "lot-porter-1",
+      "id": "lot-porter",
       "geometry": {
         "type": "GeometryCollection",
         "geometries": [
           {
-            "type": "Polygon",
+            "type": "MultiPolygon",
             "coordinates": [
               [
                 [
-                  -93.1801945794273,
-                  44.4614055131724
-                ],
-                [
-                  -93.1801761388112,
-                  44.4614227247815
-                ],
-                [
-                  -93.1799931483945,
-                  44.4614217124094
-                ],
-                [
-                  -93.1798463241512,
-                  44.4612847554317
-                ],
-                [
-                  -93.180061955752,
-                  44.4612877508802
-                ],
-                [
-                  -93.1801945794273,
-                  44.4614055131724
+                  [
+                    -93.1801945794273,
+                    44.4614055131724
+                  ],
+                  [
+                    -93.1801761388112,
+                    44.4614227247815
+                  ],
+                  [
+                    -93.1799931483945,
+                    44.4614217124094
+                  ],
+                  [
+                    -93.1798463241512,
+                    44.4612847554317
+                  ],
+                  [
+                    -93.180061955752,
+                    44.4612877508802
+                  ],
+                  [
+                    -93.1801945794273,
+                    44.4614055131724
+                  ]
                 ]
-              ]
-            ]
-          },
-          {
-            "type": "Point",
-            "coordinates": [
-              -93.17996,
-              44.4612917
-            ]
-          }
-        ]
-      },
-      "properties": {
-        "accessibility": "unknown",
-        "address": null,
-        "categories": [
-          "parking",
-          "campus-parking"
-        ],
-        "departments": [],
-        "description": "Reserved for Faculty/Staff permits and disability parking. Paid hourly parking available in spots designated by signage.",
-        "floors": [],
-        "name": "Porter",
-        "nickname": "",
-        "offices": [],
-        "abbreviation": null,
-        "type": "Campus Parking",
-        "links": [],
-        "parent": null
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "lot-porter-2",
-      "geometry": {
-        "type": "GeometryCollection",
-        "geometries": [
-          {
-            "type": "Polygon",
-            "coordinates": [
+              ],
               [
                 [
-                  -93.1797466848165,
-                  44.4610617492488
-                ],
-                [
-                  -93.179836732839,
-                  44.4610936984621
-                ],
-                [
-                  -93.1799693969384,
-                  44.4611048929607
-                ],
-                [
-                  -93.1802994253974,
-                  44.4611048929607
-                ],
-                [
-                  -93.1802960037145,
-                  44.4611709084011
-                ],
-                [
-                  -93.1797496869862,
-                  44.4611646430798
-                ],
-                [
-                  -93.1797466848165,
-                  44.4610617492488
+                  [
+                    -93.1797466848165,
+                    44.4610617492488
+                  ],
+                  [
+                    -93.179836732839,
+                    44.4610936984621
+                  ],
+                  [
+                    -93.1799693969384,
+                    44.4611048929607
+                  ],
+                  [
+                    -93.1802994253974,
+                    44.4611048929607
+                  ],
+                  [
+                    -93.1802960037145,
+                    44.4611709084011
+                  ],
+                  [
+                    -93.1797496869862,
+                    44.4611646430798
+                  ],
+                  [
+                    -93.1797466848165,
+                    44.4610617492488
+                  ]
                 ]
-              ]
-            ]
-          },
-          {
-            "type": "Point",
-            "coordinates": [
-              -93.1797545,
-              44.4610672
-            ]
-          }
-        ]
-      },
-      "properties": {
-        "accessibility": "unknown",
-        "address": null,
-        "categories": [
-          "parking",
-          "campus-parking"
-        ],
-        "departments": [],
-        "description": "Reserved for Faculty/Staff permits and disability parking. Paid hourly parking available in spots designated by signage.",
-        "floors": [],
-        "name": "Porter",
-        "nickname": "",
-        "offices": [],
-        "abbreviation": null,
-        "type": "Campus Parking",
-        "links": [],
-        "parent": null
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "lot-porter-3",
-      "geometry": {
-        "type": "GeometryCollection",
-        "geometries": [
-          {
-            "type": "Polygon",
-            "coordinates": [
+              ],
               [
                 [
-                  -93.1802268675736,
-                  44.4612149887524
-                ],
-                [
-                  -93.1802292786518,
-                  44.4612638783315
-                ],
-                [
-                  -93.1802245912426,
-                  44.4612900109305
-                ],
-                [
-                  -93.179949545069,
-                  44.4612861896822
-                ],
-                [
-                  -93.1798086416217,
-                  44.4612842316129
-                ],
-                [
-                  -93.179718361834,
-                  44.4612833205401
-                ],
-                [
-                  -93.1797189664001,
-                  44.4612095402607
-                ],
-                [
-                  -93.1802268675736,
-                  44.4612149887524
+                  [
+                    -93.1802268675736,
+                    44.4612149887524
+                  ],
+                  [
+                    -93.1802292786518,
+                    44.4612638783315
+                  ],
+                  [
+                    -93.1802245912426,
+                    44.4612900109305
+                  ],
+                  [
+                    -93.179949545069,
+                    44.4612861896822
+                  ],
+                  [
+                    -93.1798086416217,
+                    44.4612842316129
+                  ],
+                  [
+                    -93.179718361834,
+                    44.4612833205401
+                  ],
+                  [
+                    -93.1797189664001,
+                    44.4612095402607
+                  ],
+                  [
+                    -93.1802268675736,
+                    44.4612149887524
+                  ]
                 ]
               ]
             ]
