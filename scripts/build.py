@@ -687,9 +687,9 @@ def attach_floors(places: list[dict]) -> None:
 
 
 def length_of(place: dict) -> int | None:
-    """A trail's length in metres; None for a place with no line."""
-    metres = geometry.length_m(place.get("geometry"))
-    return round(metres) if metres else None
+    """A trail's length in metres; None for a place with no line, or one that
+    rounds to no metres at all."""
+    return round(geometry.length_m(place.get("geometry"))) or None
 
 
 def record(place: dict) -> dict:

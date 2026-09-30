@@ -97,3 +97,17 @@ def test_a_trail_carries_its_length_in_metres():
 
 def test_a_place_with_no_line_has_no_length():
     assert record(lot("Porter", -93.180))["length"] is None
+
+
+# Verify reads a length that rounds to 0 m as none at all; the build must too.
+def test_a_line_under_half_a_metre_has_no_length():
+    stub = {
+        "id": "trail-stub",
+        "name": "Stub",
+        "categories": ["outdoors", "trail"],
+        "geometry": {
+            "type": "LineString",
+            "coordinates": [[-93.18, 44.46], [-93.18, 44.460001]],
+        },
+    }
+    assert record(stub)["length"] is None
