@@ -90,7 +90,7 @@
       "slug": "water",
       "title": "Lakes",
       "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St_Olaf_Campus_Data/FeatureServer/11",
-      "role": "context",
+      "role": "place",
       "features": 27
     },
     {
@@ -104,7 +104,7 @@
       "slug": "natural-lands-trails",
       "title": "Natural Lands Trails",
       "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/StOlaf_Roads_2_WFL1/FeatureServer/3",
-      "role": "context",
+      "role": "place",
       "features": 23
     },
     {
