@@ -368,12 +368,15 @@ for stack in "Noto Sans Regular" "Noto Sans Medium" "Noto Sans Italic"; do
 done
 cp "$ASSETS/fonts/OFL.txt" "$DIST/fonts/OFL.txt"
 
-# The style is derived from the Protomaps "light" flavor, so the light sprite
-# sheet is the matching one. Both densities: iOS is a 2x/3x device.
-cp "$ASSETS/sprites/v4/light.json"     "$DIST/sprites/sprite.json"
-cp "$ASSETS/sprites/v4/light.png"      "$DIST/sprites/sprite.png"
-cp "$ASSETS/sprites/v4/light@2x.json"  "$DIST/sprites/sprite@2x.json"
-cp "$ASSETS/sprites/v4/light@2x.png"   "$DIST/sprites/sprite@2x.png"
+# Each style is derived from a Protomaps flavor, so each takes that flavor's
+# sprite sheet: "light" for style.json, "dark" for style-dark.json. Both
+# densities: iOS is a 2x/3x device.
+for density in "" "@2x"; do
+  for ext in json png; do
+    cp "$ASSETS/sprites/v4/light$density.$ext" "$DIST/sprites/sprite$density.$ext"
+    cp "$ASSETS/sprites/v4/dark$density.$ext"  "$DIST/sprites/sprite-dark$density.$ext"
+  done
+done
 
 # --- 8. styles -------------------------------------------------------------
 

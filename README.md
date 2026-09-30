@@ -391,14 +391,44 @@ look like duplicate buildings beside New Hall and Rolvaag are not buildings.
 They are OSM's `school` landuse, which blankets the campus, plus this repo's own
 `campus_grounds`.
 
-### Two styles
+### The dark theme
 
-The same tileset is published twice, with a style for each:
+`style-dark.json` is the same map for a device in dark mode. A style cannot
+switch on `prefers-color-scheme` — the spec has nothing like it — so the app
+picks the URL by the system appearance.
+
+It runs the same argument in the other direction. The ground is a warm charcoal
+rather than stock Protomaps dark's cool grey, so the gold does not sit on
+blue-grey; water and parks are muted a step above it; and the campus buildings
+invert the light theme's fill and edge. A pale gold fill glows on dark ground
+and would leave the app's selection highlight nothing to be brighter than, so
+the fill is a dim, low-chroma gold and the outline carries the brand.
+
+The paths needed the sidewalks fix again, inverted: stock dark draws footways
+at `#333333`, which disappears against the warmer earth, so they are lifted to
+read as a path on dark ground. That in turn put them level with stock's roads,
+and Saint Olaf Drive read as one more sidewalk — so the roads are warmed and
+brightened well clear of the paths, which the light theme gets for free from
+stock's white roads. The rest of stock's cool greys (labels, boundaries,
+low-zoom landcover) are warmed to match; the POI colours are not, because the
+sprite icons are coloured to match them.
+
+Both themes are generated from one layer list in `scripts/make-style.mjs`, so
+they cannot differ in anything but colour and sprite sheet.
+
+### Three styles
+
+The same tileset is published twice, with a style for each, plus a dark
+counterpart to the one the app uses:
 
 | Style | Source | Works when |
 | --- | --- | --- |
 | `style.json` | `tiles/{z}/{x}/{y}.pbf` | always |
 | `style-pmtiles.json` | `pmtiles://…/campus.pmtiles` | only if the MapLibre binary was compiled with PMTiles support |
+| `style-dark.json` | `tiles/{z}/{x}/{y}.pbf` | always |
+
+There is no dark PMTiles style: the app fetches z/x/y, and one that nothing
+fetches would be one more file to keep verified.
 
 In MapLibre GL JS you register the `pmtiles://` protocol at runtime with
 `addProtocol`. **In MapLibre Native you cannot** — it is the compile-time CMake
@@ -421,6 +451,7 @@ Two constraints inherited from map-tiles, both of which bite silently:
 
 ```ts
 export const MAP_STYLE_URL = 'https://stolaf.dev/campus-map-data/style.json'
+export const MAP_STYLE_URL_DARK = 'https://stolaf.dev/campus-map-data/style-dark.json'
 ```
 
 [map-tiles]: https://github.com/carls-app/map-tiles
@@ -433,7 +464,7 @@ tileset **and the campus data**:
 
 | URL | |
 | --- | --- |
-| `…/style.json` | the map style |
+| `…/style.json`, `…/style-dark.json` | the map style, light and dark |
 | `…/campus.pmtiles`, `…/tiles/{z}/{x}/{y}.pbf` | the tileset, twice |
 | `…/map.json`, `…/map.geojson`, `…/data/` | the campus data |
 | `…/routing.json` | the pedestrian routing graph |
