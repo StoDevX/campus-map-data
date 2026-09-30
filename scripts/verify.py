@@ -421,6 +421,27 @@ def verify_walks(
         )
 
 
+def verify_citations(report: Report, records: list[dict]) -> None:
+    """Every citation names its source and links it over https, and cites
+    About text: a place with citations has a description."""
+    for record in records:
+        citations = record.get("citations") or []
+        for citation in citations:
+            report.check(
+                bool((citation.get("label") or "").strip()),
+                f"{record['id']}: a citation has no label",
+            )
+            report.check(
+                str(citation.get("href") or "").startswith("https://"),
+                f"{record['id']}: citation {citation.get('label')!r} does not "
+                f"link over https",
+            )
+        report.check(
+            not citations or bool((record.get("description") or "").strip()),
+            f"{record['id']}: has citations but no description",
+        )
+
+
 def verify_overrides(report: Report, records: list[dict]) -> None:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
     known = {record["id"] for record in records}
@@ -613,6 +634,7 @@ def main() -> int:
 
     verify_raw(report)
     records = verify_map_json(report)
+    verify_citations(report, records)
     verify_map_geojson(report, records)
     verify_overrides(report, records)
     verify_routing(report, records)

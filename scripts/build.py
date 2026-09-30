@@ -757,6 +757,7 @@ def record(place: dict) -> dict:
         "length": length_of(place),
         "rules": place.get("rules") or [],
         "walk": place.get("walk"),
+        "citations": place.get("citations") or [],
     }
 
 
@@ -806,6 +807,9 @@ def feature(place: dict) -> dict:
             "rules": place.get("rules") or [],
             # The Wellness Walk along this place: its time and accessibility.
             "walk": place.get("walk"),
+            # Where the About text came from: a label and href per source,
+            # for the card's Sources line. Empty for a place with no sources.
+            "citations": place.get("citations") or [],
         },
     }
 

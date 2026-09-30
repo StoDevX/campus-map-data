@@ -68,7 +68,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -334,7 +335,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -371,7 +373,8 @@
         "parent": "lot-buntrockcommonsparking",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -408,7 +411,8 @@
         "parent": "lotj",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -445,7 +449,8 @@
         "parent": "lot-ellingson",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -482,7 +487,8 @@
         "parent": "lot-hillkitroadlot",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -519,7 +525,8 @@
         "parent": "lot-skoglund",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -556,7 +563,8 @@
         "parent": "lot-upperregents",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -593,7 +601,8 @@
         "parent": "lot-lowertomson",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -630,7 +639,8 @@
         "parent": "lot-chmroad",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -667,7 +677,8 @@
         "parent": "lot-oldmain",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -704,7 +715,8 @@
         "parent": "lot-ytterboelot",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -741,7 +753,8 @@
         "parent": "lot-thorson",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -778,7 +791,8 @@
         "parent": "lot-rand",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -815,7 +829,8 @@
         "parent": "lot-skoglunds7betweenskoglundtenniscourts",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -852,7 +867,8 @@
         "parent": "lot-buntrolvaag",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -889,7 +905,8 @@
         "parent": "lot-mohnkildahl",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -926,7 +943,8 @@
         "parent": "lot-hollandlot",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -963,7 +981,8 @@
         "parent": "lot-admissionsvisitorparking",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1000,7 +1019,8 @@
         "parent": "lot-uppertomson",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1037,7 +1057,8 @@
         "parent": "lot-lowerlincoln",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1074,7 +1095,8 @@
         "parent": "newhall",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1111,7 +1133,8 @@
         "parent": "lot-skoglunds7behindskoglund",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1148,7 +1171,8 @@
         "parent": "lot-mellbylot",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1185,7 +1209,8 @@
         "parent": "lot-porterhallparking",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1222,7 +1247,8 @@
         "parent": "lot-upperlincoln",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1259,7 +1285,8 @@
         "parent": "lot-alumnihallroad",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1296,7 +1323,8 @@
         "parent": "lot-skoglunds2",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1338,7 +1366,8 @@
         "parent": "toh",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1435,7 +1464,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1562,7 +1592,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1781,7 +1812,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -1904,7 +1936,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2116,7 +2149,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2237,7 +2271,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2403,7 +2438,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2562,7 +2598,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2693,7 +2730,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2730,7 +2768,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2794,7 +2833,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2859,7 +2899,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -2924,7 +2965,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -3614,7 +3656,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -3699,7 +3742,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -3799,7 +3843,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -3864,7 +3909,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -3928,7 +3974,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -4019,7 +4066,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -4137,7 +4185,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -4348,7 +4397,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -4430,7 +4480,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -4553,7 +4604,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -4687,7 +4739,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -4767,7 +4820,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -4945,7 +4999,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5049,7 +5104,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5113,7 +5169,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5181,7 +5238,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5295,7 +5353,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5363,7 +5422,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5435,7 +5495,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5507,7 +5568,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5583,7 +5645,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5703,7 +5766,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5853,7 +5917,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -5967,7 +6032,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6063,7 +6129,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6135,7 +6202,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6227,7 +6295,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6311,7 +6380,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6387,7 +6457,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6451,7 +6522,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6515,7 +6587,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6591,7 +6664,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6729,7 +6803,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6793,7 +6868,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6929,7 +7005,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -6993,7 +7070,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7057,7 +7135,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7161,7 +7240,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7233,7 +7313,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7313,7 +7394,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7377,7 +7459,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7457,7 +7540,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7521,7 +7605,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7605,7 +7690,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7741,7 +7827,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7817,7 +7904,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -7881,7 +7969,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -8209,7 +8298,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -8285,7 +8375,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -8327,7 +8418,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -8438,7 +8530,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -8613,7 +8706,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -8808,7 +8902,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -8926,7 +9021,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -9112,7 +9208,13 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -9410,7 +9512,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -9524,10 +9636,6 @@
         "type": null,
         "links": [
           {
-            "label": "2020 bird survey",
-            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
-          },
-          {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
           }
@@ -9540,7 +9648,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "Bird Diversity and Prairie Restoration",
+            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -9666,7 +9784,8 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -9800,10 +9919,6 @@
         "type": null,
         "links": [
           {
-            "label": "2020 bird survey",
-            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
-          },
-          {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
           }
@@ -9816,7 +9931,21 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Bird Diversity and Prairie Restoration",
+            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -10518,7 +10647,8 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -10652,7 +10782,8 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -10802,7 +10933,8 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -10952,7 +11084,13 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -11118,7 +11256,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -11312,7 +11460,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -11400,7 +11558,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -11464,7 +11623,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -11709,7 +11869,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -11964,7 +12125,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12046,7 +12208,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12296,7 +12459,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12382,7 +12546,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12463,7 +12628,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12565,7 +12731,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12607,7 +12774,8 @@
         "parent": "bc",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12684,7 +12852,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12726,7 +12895,8 @@
         "parent": "bc",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12828,7 +12998,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12948,7 +13119,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -12990,7 +13162,8 @@
         "parent": "bc",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -13032,7 +13205,8 @@
         "parent": "bc",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -13069,7 +13243,8 @@
         "parent": "bc",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -13432,7 +13607,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -13585,7 +13761,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -13863,7 +14040,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -13961,7 +14139,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -14209,7 +14388,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -14664,7 +14853,13 @@
             17
           ],
           "accessibility": "Wide mowed grass and a stretch of gravel road; flat but for a small rise onto Campus Drive; two benches."
-        }
+        },
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -15244,7 +15439,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -15942,7 +16147,13 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -16046,7 +16257,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -16545,7 +16766,21 @@
             15
           ],
           "accessibility": "A mowed dirt path, 10 feet wide, gently up and down; one bench."
-        }
+        },
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -16721,7 +16956,13 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -16933,7 +17174,13 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -17177,7 +17424,13 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -17413,7 +17666,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -18478,7 +18741,21 @@
             20
           ],
           "accessibility": "A footpath along Heath Creek, with roots, ruts and steep stretches; not an easy walk."
-        }
+        },
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -18621,7 +18898,13 @@
             15
           ],
           "accessibility": "Narrow gravel and dirt, 4 feet wide at most, up a steep hill with short steps."
-        }
+        },
+        "citations": [
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -19745,7 +20028,21 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -20323,7 +20620,17 @@
           "Bikes allowed, except where signs say no bikes.",
           "No camping or fires."
         ],
-        "walk": null
+        "walk": null,
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -21018,7 +21325,21 @@
             18
           ],
           "accessibility": "A mowed path, 10 feet wide, with one bench; flat but for small dips near the Coyote Ponds."
-        }
+        },
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -21301,7 +21622,13 @@
             16
           ],
           "accessibility": "A mowed path, 10 feet wide, with one bench; ruts in the low wetland stretch; downhill into the conifers at the northwest end."
-        }
+        },
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -21343,7 +21670,8 @@
         "parent": "bc",
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -21647,7 +21975,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -21684,7 +22013,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     },
     {
@@ -21938,7 +22268,8 @@
         "parent": null,
         "length": null,
         "rules": [],
-        "walk": null
+        "walk": null,
+        "citations": []
       }
     }
   ]
