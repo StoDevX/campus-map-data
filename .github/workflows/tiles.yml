@@ -11,6 +11,7 @@ on:
       - map.geojson
       - map.json
       - data/**
+      - overrides.yaml
       - build-tiles.sh
       - site/**
       - scripts/campus-layers.py

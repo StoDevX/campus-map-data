@@ -140,14 +140,6 @@ def verify_map_json(report: Report) -> list[dict]:
         report.check(not missing, f"{record['id']}: missing keys {sorted(missing)}")
         report.check(bool(record.get("name")), f"{record['id']}: has no name")
 
-        # The Natural Lands' ponds and trails carry the rules; nothing else does.
-        natural = {"water", "trail"} & set(record["categories"])
-        report.check(
-            bool(record.get("rules")) == bool(natural),
-            f"{record['id']}: rules "
-            f"{'missing' if natural else 'on a place outside the Natural Lands'}",
-        )
-
         center = record.get("center")
         if report.check(bool(center), f"{record['id']}: has no center"):
             lat, lon = center
@@ -337,7 +329,8 @@ def verify_trails(report: Report, spec: dict, rows: list[dict]) -> None:
 
 
 def verify_rules(report: Report, spec: dict, records: list[dict]) -> None:
-    """Every rule swap still applies, and every place with rules links them.
+    """Every rule swap still applies, the places in the rules' categories and
+    no others carry them, and every place with rules links them.
 
     A swap keyed to a renamed id, or to a shared sentence since reworded, does
     nothing -- and Norway Valley's card would say bikes are allowed.
@@ -354,6 +347,15 @@ def verify_rules(report: Report, spec: dict, records: list[dict]) -> None:
                 f"overrides.yaml: rules replace for {place} swaps {sentence!r}, "
                 f"which is not a shared rule",
             )
+    categories = set(spec.get("categories") or [])
+    report.check(bool(categories), "overrides.yaml: rules has no categories")
+    for record in records:
+        natural = categories & set(record["categories"])
+        report.check(
+            bool(record.get("rules")) == bool(natural),
+            f"{record['id']}: rules "
+            f"{'missing' if natural else 'on a place outside the Natural Lands'}",
+        )
     link = {"label": RULES_LINK_LABEL, "href": spec.get("href")}
     for record in records:
         if record.get("rules"):

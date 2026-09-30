@@ -45,14 +45,14 @@ RULES = {
 }
 
 
-def record(id, rules, links):
-    return {"id": id, "rules": rules, "links": links}
+def record(id, rules, links, categories=("outdoors", "trail")):
+    return {"id": id, "rules": rules, "links": links, "categories": list(categories)}
 
 
 LINK = {"label": RULES_LINK_LABEL, "href": HREF}
 GOOD = [
     record("trail-norwayvalleytrail", ["Dogs on a leash.", "No bikes."], [LINK]),
-    record("lot-porter", [], []),
+    record("lot-porter", [], [], categories=["parking"]),
 ]
 
 
@@ -82,3 +82,21 @@ def test_a_place_with_rules_needs_the_link_once():
     assert rule_failures(RULES, records)
     records = [record("trail-norwayvalleytrail", ["No bikes."], [LINK, LINK])]
     assert rule_failures(RULES, records)
+
+
+def test_a_place_in_a_rules_category_without_rules_fails():
+    pond = record("pond-bigpond", [], [], categories=["outdoors", "water"])
+    assert rule_failures(RULES, [*GOOD, pond]) == ["pond-bigpond: rules missing"]
+
+
+# The categories come from overrides.yaml: a trail with rules is a failure once
+# the spec no longer gives trails the rules.
+def test_rules_outside_the_specs_categories_fail():
+    assert rule_failures({**RULES, "categories": ["water"]}, GOOD) == [
+        "trail-norwayvalleytrail: rules on a place outside the Natural Lands"
+    ]
+
+
+def test_rules_with_no_categories_fail():
+    spec = {**RULES, "categories": []}
+    assert "overrides.yaml: rules has no categories" in rule_failures(spec, GOOD)
