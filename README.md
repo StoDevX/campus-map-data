@@ -105,13 +105,15 @@ abbreviations — `RNS`, `BMC`, `TOH`, the identifiers people on campus actually
 use — to preserve an exact field list would be throwing away good data for a bad
 reason.
 
-`parent` names the building a place sits inside, and is null for everything that
-is a building or is in none. St. Olaf publishes its dining rooms, its bookstore
-and its admissions office as points within a footprint rather than as footprints
+`parent` names the area a point-only place belongs to, and is null for
+everything else. St. Olaf publishes its dining rooms, its bookstore and its
+admissions office as points within a footprint rather than as footprints
 themselves, so a consumer asked to frame or highlight one has no area to draw
-until it follows this key. It is set by hand in `overrides.yaml`; verify.py
-rejects a parent that names no place, names the place itself, or names a place
-with no footprint of its own.
+until it follows this key. For those it is the building they sit inside, set by
+hand in `overrides.yaml`; verify.py rejects a parent that names no place, names
+the place itself, or names a place with no footprint of its own. For the
+accessible-parking spots `build.py` sets it: the lot a spot sits in, or the lot
+or building within 25 m of it -- one spot is beside New Hall rather than in it.
 
 ### Watch the coordinate order
 
