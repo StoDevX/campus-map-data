@@ -26,10 +26,14 @@ Deliberately absent: any timestamp. A "scraped at" field would make every
 scheduled run a commit, which is precisely the noise this is trying to avoid.
 When the data last changed is the commit date; when it was last *checked* is the
 workflow run history.
+
+`--check` scrapes the same way but writes nothing, and exits 1 when any file in
+`data/` would change.
 """
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import sys
@@ -111,7 +115,7 @@ def fetch(source: Source) -> list[dict]:
     return features
 
 
-def write_geojson(path: Path, features: list[dict], name: str) -> None:
+def geojson_text(features: list[dict], name: str) -> str:
     collection = {
         "type": "FeatureCollection",
         # A GeoJSON foreign member (RFC 7946 §6.1) and the convention GDAL and
@@ -120,11 +124,17 @@ def write_geojson(path: Path, features: list[dict], name: str) -> None:
         "name": name,
         "features": features,
     }
-    path.write_text(json.dumps(collection, indent=2, ensure_ascii=False) + "\n")
+    return json.dumps(collection, indent=2, ensure_ascii=False) + "\n"
 
 
-def main() -> int:
-    DATA.mkdir(exist_ok=True)
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Pull the ArcGIS layers into data/.")
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="write nothing; exit 1 if any file in data/ would change",
+    )
+    check = parser.parse_args(argv).check
 
     by_slug: dict[str, list[dict]] = {}
     manifest: list[dict] = []
@@ -143,11 +153,11 @@ def main() -> int:
         )
         print(f"{source.title}: {len(features)} features", file=sys.stderr)
 
+    files: dict[Path, str] = {}
     for slug, features in by_slug.items():
         features.sort(key=sort_key)
-        write_geojson(DATA / f"{slug}.geojson", features, slug)
-
-    (DATA / "sources.json").write_text(
+        files[DATA / f"{slug}.geojson"] = geojson_text(features, slug)
+    files[DATA / "sources.json"] = (
         json.dumps(
             {
                 "dashboard": f"https://stolaf.maps.arcgis.com/apps/dashboards/{DASHBOARD_ITEM}",
@@ -159,6 +169,19 @@ def main() -> int:
         + "\n"
     )
 
+    if check:
+        stale = [
+            path.name
+            for path, text in files.items()
+            if not path.exists() or path.read_text() != text
+        ]
+        if stale:
+            print(f"\nOut of date: {', '.join(stale)}", file=sys.stderr)
+    else:
+        DATA.mkdir(exist_ok=True)
+        for path, text in files.items():
+            path.write_text(text)
+
     total = sum(len(features) for features in by_slug.values())
     print(f"\n{total} features across {len(by_slug)} files", file=sys.stderr)
 
@@ -169,7 +192,7 @@ def main() -> int:
     if empty:
         print(f"\nERROR: no features returned by: {', '.join(empty)}", file=sys.stderr)
         return 1
-    return 0
+    return 1 if check and stale else 0
 
 
 if __name__ == "__main__":
