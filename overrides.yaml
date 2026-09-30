@@ -116,7 +116,7 @@ changes:
   - id: trail-windmilltrail
     name: Windmill Trail
 
-  # Label anchors are computed (see geometry.py) and every one of the 92
+  # Label anchors are computed (see geometry.py) and every one of the 103
   # polygonal places currently lands inside its own footprint. Add a
   # `centerpoint: [lon, lat]` here for any that reads badly on the map —
   # a centroid that is technically inside an L-shaped building can still sit in

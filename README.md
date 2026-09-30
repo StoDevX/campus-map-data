@@ -139,8 +139,10 @@ horseshoe-shaped, which on this campus means Old Main, the Ade Christenson
 Complex and most of the lots that wrap a building. A label anchored outside its
 own building points at the wrong thing. So `scripts/geometry.py` uses the
 centroid when it lands inside the polygon and computes a guaranteed-interior
-point otherwise. All 92 polygonal places currently anchor inside their own
-footprint, and `verify.py` fails the build if that ever stops being true.
+point otherwise. All 103 polygonal places currently anchor inside their own
+footprint, and `verify.py` fails the build if that ever stops being true. A
+trail's anchor is the middle vertex of its line, and `verify.py` fails the
+build if one ever leaves it.
 
 A technically-interior anchor can still read badly. Set a `centerpoint` in
 `overrides.yaml` for any that does.
