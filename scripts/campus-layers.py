@@ -52,9 +52,9 @@ import sys
 # Tostrud — is a building, which is how someone looking for it thinks of it.
 KINDS = (
     ("building", "campus_buildings"),
-    # Before `parking`, which these also are. They are 26 points that all share
-    # the name "Accessible Parking", so the style needs to tell them apart from
-    # named lots in order not to stamp the same label 26 times across campus.
+    # Before `parking`, which these also are. They are 26 points whose names
+    # all begin "Accessible Parking", so the style needs to tell them apart from
+    # named lots in order not to stamp that label 26 times across campus.
     ("accessible-parking", None),
     ("parking", "campus_grounds"),
     ("athletics", "campus_grounds"),
