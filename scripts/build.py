@@ -338,10 +338,82 @@ def name_accessible_spots(places: list[dict]) -> None:
                 break
 
 
+# How far an assembled trail's length may move from the `miles` overrides.yaml
+# records before the build refuses it: further means the college re-cut its
+# segments, and the FIDs no longer mean what the mapping says.
+TRAIL_MILES_TOLERANCE = 0.05
+METRES_PER_MILE = 1609.344
+
+
+def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
+    """The trails `overrides.yaml` builds from the college's segments.
+
+    Each segment is named by FID, whole, or as the part of it before (`until`)
+    or after (`from`) the vertex nearest a point, in the direction the college
+    drew the segment -- the one cut, where a
+    connector the map draws as part of one trail runs in a segment of another.
+    Both parts keep that vertex, so the two trails meet.
+    """
+    by_fid = {feature["properties"]["FID"]: feature for feature in segments}
+    trails = []
+    for entry in spec.get("trails") or []:
+        lines = []
+        for part in entry["segments"]:
+            fid = part if isinstance(part, int) else part["fid"]
+            if fid not in by_fid:
+                raise SystemExit(
+                    f"  {entry['name']}: FID {fid} is not in the segments layer; "
+                    "the college may have republished it -- redo `trails:`"
+                )
+            line = by_fid[fid]["geometry"]["coordinates"]
+            if isinstance(part, dict) and ("until" in part or "from" in part):
+                point = part.get("until") or part.get("from")
+                cut = min(
+                    range(len(line)),
+                    key=lambda i, line=line, point=point: geometry.distance_m(
+                        point, {"type": "Point", "coordinates": line[i]}
+                    ),
+                )
+                line = line[: cut + 1] if "until" in part else line[cut:]
+            lines.append(line)
+        shape = {"type": "MultiLineString", "coordinates": lines}
+        miles = geometry.length_m(shape) / METRES_PER_MILE
+        if abs(miles - entry["miles"]) > TRAIL_MILES_TOLERANCE:
+            raise SystemExit(
+                f"  {entry['name']}: assembles to {miles:.2f} mi, not "
+                f"{entry['miles']} -- the college may have re-cut its segments"
+            )
+        trails.append(
+            {
+                "slug": "natural-lands-trails",
+                "name": entry["name"],
+                "abbreviation": None,
+                "type": None,
+                "categories": ["outdoors", "trail"],
+                "description": None,
+                "departments": [],
+                "links": [],
+                "contact": None,
+                "geometry": shape,
+                "information": "",
+            }
+        )
+    return trails
+
+
 def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     """The places as scraped, merged and given ids -- before overrides touch
     them. What an `overrides.yaml` id has to match. Plus what was dropped."""
     places, dropped = read_places(source_index())
+    trails = overrides.get("trails") or {}
+    superseded = set(trails.get("supersedes") or [])
+    places = [
+        place
+        for place in places
+        if not (place["slug"] == "natural-lands-trails" and place["name"] in superseded)
+    ]
+    segments = json.loads((DATA / "natural-lands-segments.geojson").read_text())
+    places += assemble_trails(segments["features"], trails)
     places = merge_split_lots(places)
     assign_ids(places, overrides)
     return places, dropped

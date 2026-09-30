@@ -3,7 +3,7 @@
 import math
 
 import pytest
-from geometry import distance_m
+from geometry import distance_m, length_m
 
 # A square about 111 m a side near campus, with a square hole in the middle.
 LAT = 44.46
@@ -53,3 +53,23 @@ def test_a_point_geometry_is_measured_to_the_point():
 
 def test_nothing_is_infinitely_far():
     assert distance_m([-93.18, LAT], None) == math.inf
+
+
+def test_a_line_is_as_long_as_its_parts():
+    # 0.001 degrees of latitude twice: about 222 m.
+    line = {
+        "type": "LineString",
+        "coordinates": [[-93.18, 44.46], [-93.18, 44.461], [-93.18, 44.462]],
+    }
+    assert length_m(line) == pytest.approx(222.4, abs=0.5)
+
+
+def test_a_multiline_sums_every_part():
+    part = [[-93.18, 44.46], [-93.18, 44.461]]
+    multi = {"type": "MultiLineString", "coordinates": [part, part]}
+    assert length_m(multi) == pytest.approx(222.4, abs=0.5)
+
+
+def test_an_area_or_a_point_has_no_length():
+    assert length_m({"type": "Point", "coordinates": [-93.18, 44.46]}) == 0
+    assert length_m(None) == 0

@@ -257,3 +257,34 @@ def distance_m(point: Position, geometry: dict | None) -> float:
         (math.hypot(*local(position)) for position in positions(geometry)),
         default=math.inf,
     )
+
+
+EARTH_RADIUS_M = 6_371_008.8
+
+
+def length_m(geometry: dict | None) -> float:
+    """Geodesic metres along every line in a geometry; 0 for anything else."""
+    if not geometry:
+        return 0.0
+    kind = geometry.get("type")
+    if kind == "GeometryCollection":
+        return sum(length_m(member) for member in geometry.get("geometries", []))
+    if kind == "LineString":
+        lines = [geometry["coordinates"]]
+    elif kind == "MultiLineString":
+        lines = geometry["coordinates"]
+    else:
+        return 0.0
+
+    def haversine(a: Position, b: Position) -> float:
+        lat1, lat2 = math.radians(a[1]), math.radians(b[1])
+        dlat, dlon = lat2 - lat1, math.radians(b[0] - a[0])
+        h = (
+            math.sin(dlat / 2) ** 2
+            + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+        )
+        return 2 * EARTH_RADIUS_M * math.asin(math.sqrt(h))
+
+    return sum(
+        haversine(line[i], line[i + 1]) for line in lines for i in range(len(line) - 1)
+    )

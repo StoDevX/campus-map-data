@@ -10782,14 +10782,38 @@
       "trail": true
     },
     "center": [
-      44.4548210209593,
-      -93.189266544204
+      44.4547494216886,
+      -93.1892611582892
     ],
     "departments": [],
     "description": null,
     "floors": [],
     "id": "trail-bigwoodstrail",
     "name": "Big Woods Trail",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "outdoors": true,
+      "trail": true
+    },
+    "center": [
+      44.4511635881177,
+      -93.1878166570523
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "trail-burroaktrail",
+    "name": "Burr Oak Trail",
     "offices": [],
     "outline": null,
     "photo": null,
@@ -10902,14 +10926,14 @@
       "trail": true
     },
     "center": [
-      44.4484970244048,
-      -93.1900419052017
+      44.4682381636503,
+      -93.1861085116737
     ],
     "departments": [],
     "description": null,
     "floors": [],
-    "id": "trail-heathcreektrail",
-    "name": "Heath Creek Trail",
+    "id": "trail-knollloop",
+    "name": "Knoll Loop",
     "offices": [],
     "outline": null,
     "photo": null,
@@ -10926,14 +10950,14 @@
       "trail": true
     },
     "center": [
-      44.4682381636503,
-      -93.1861085116737
+      44.4488934212502,
+      -93.1893471572261
     ],
     "departments": [],
     "description": null,
     "floors": [],
-    "id": "trail-knollloop",
-    "name": "Knoll Loop",
+    "id": "trail-lowerheathcreektrail",
+    "name": "Lower Heath Creek Trail",
     "offices": [],
     "outline": null,
     "photo": null,
@@ -10982,6 +11006,30 @@
     "floors": [],
     "id": "trail-prairieloop",
     "name": "Prairie Loop",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "outdoors": true,
+      "trail": true
+    },
+    "center": [
+      44.4559548501205,
+      -93.1904741000382
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "trail-robintrail",
+    "name": "Robin Trail",
     "offices": [],
     "outline": null,
     "photo": null,
