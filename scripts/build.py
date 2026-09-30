@@ -8,8 +8,8 @@ shape means a St. Olaf endpoint is a configuration change rather than a second
 code path. Every key Carleton emits is emitted here, even where St. Olaf has
 nothing to put in it, so a consumer never has to test for a missing key.
 
-Five properties are added beyond Carleton's set — `abbreviation`, `type`,
-`links`, `parent` and `length`. Extra keys are additive and safe for existing consumers, and dropping
+Six properties are added beyond Carleton's set — `abbreviation`, `type`,
+`links`, `parent`, `length` and `rules`. Extra keys are additive and safe for existing consumers, and dropping
 St. Olaf's building abbreviations (`RNS`, `BMC`, `TOH`) to preserve an exact
 field list would be throwing away the identifiers people on campus actually use.
 
@@ -401,6 +401,26 @@ def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
     return trails
 
 
+RULES_LINK_LABEL = "Natural Lands rules"
+
+
+def apply_rules(places: list[dict], spec: dict) -> None:
+    """The rules `overrides.yaml` gives the Natural Lands' ponds and trails,
+    in its own words, and a link to the college's page. Every other place gets
+    none, so a consumer reads one key rather than testing for its absence."""
+    categories = set(spec.get("categories") or [])
+    link = {"label": RULES_LINK_LABEL, "href": spec.get("href")}
+    for place in places:
+        if not categories & set(place.get("categories") or []):
+            place["rules"] = []
+            continue
+        swaps = (spec.get("replace") or {}).get(place["id"]) or {}
+        place["rules"] = [swaps.get(rule, rule) for rule in spec.get("shared") or []]
+        links = place.setdefault("links", [])
+        if link not in links:
+            links.append(link)
+
+
 def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     """The places as scraped, merged and given ids -- before overrides touch
     them. What an `overrides.yaml` id has to match. Plus what was dropped."""
@@ -556,6 +576,7 @@ def record(place: dict) -> dict:
         "links": place.get("links") or [],
         "parent": place.get("parent"),
         "length": length_of(place),
+        "rules": place.get("rules") or [],
     }
 
 
@@ -601,6 +622,8 @@ def feature(place: dict) -> dict:
             "parent": place.get("parent"),
             # A trail's length in metres, from its geometry; null otherwise.
             "length": length_of(place),
+            # The Natural Lands rules, one sentence each; empty elsewhere.
+            "rules": place.get("rules") or [],
         },
     }
 
@@ -610,6 +633,7 @@ def main() -> int:
     places, dropped = scraped_places(overrides)
     places = apply_overrides(places, overrides)
     name_accessible_spots(places)
+    apply_rules(places, overrides.get("rules") or {})
     attach_floors(places)
     places.sort(key=lambda place: place["id"])
 

@@ -140,6 +140,14 @@ def verify_map_json(report: Report) -> list[dict]:
         report.check(not missing, f"{record['id']}: missing keys {sorted(missing)}")
         report.check(bool(record.get("name")), f"{record['id']}: has no name")
 
+        # The Natural Lands' ponds and trails carry the rules; nothing else does.
+        natural = {"water", "trail"} & set(record["categories"])
+        report.check(
+            bool(record.get("rules")) == bool(natural),
+            f"{record['id']}: rules "
+            f"{'missing' if natural else 'on a place outside the Natural Lands'}",
+        )
+
         center = record.get("center")
         if report.check(bool(center), f"{record['id']}: has no center"):
             lat, lon = center

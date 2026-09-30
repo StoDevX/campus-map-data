@@ -66,7 +66,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -330,7 +331,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -365,7 +367,8 @@
         "type": null,
         "links": [],
         "parent": "lot-alumnihallroad",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -400,7 +403,8 @@
         "type": null,
         "links": [],
         "parent": "lot-skoglunds2",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -435,7 +439,8 @@
         "type": null,
         "links": [],
         "parent": "lot-chmroad",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -470,7 +475,8 @@
         "type": null,
         "links": [],
         "parent": "lot-ellingson",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -505,7 +511,8 @@
         "type": null,
         "links": [],
         "parent": "lot-thorson",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -540,7 +547,8 @@
         "type": null,
         "links": [],
         "parent": "lot-buntrockcommonsparking",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -575,7 +583,8 @@
         "type": null,
         "links": [],
         "parent": "lot-ytterboelot",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -610,7 +619,8 @@
         "type": null,
         "links": [],
         "parent": "lot-uppertomson",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -645,7 +655,8 @@
         "type": null,
         "links": [],
         "parent": "lot-oldmain",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -680,7 +691,8 @@
         "type": null,
         "links": [],
         "parent": "lot-skoglund",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -715,7 +727,8 @@
         "type": null,
         "links": [],
         "parent": "lot-mellbylot",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -750,7 +763,8 @@
         "type": null,
         "links": [],
         "parent": "lot-upperlincoln",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -785,7 +799,8 @@
         "type": null,
         "links": [],
         "parent": "lot-porterhallparking",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -820,7 +835,8 @@
         "type": null,
         "links": [],
         "parent": "lot-rand",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -855,7 +871,8 @@
         "type": null,
         "links": [],
         "parent": "lot-admissionsvisitorparking",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -890,7 +907,8 @@
         "type": null,
         "links": [],
         "parent": "lot-hillkitroadlot",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -925,7 +943,8 @@
         "type": null,
         "links": [],
         "parent": "lotj",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -960,7 +979,8 @@
         "type": null,
         "links": [],
         "parent": "lot-skoglunds7betweenskoglundtenniscourts",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -995,7 +1015,8 @@
         "type": null,
         "links": [],
         "parent": "lot-mohnkildahl",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1030,7 +1051,8 @@
         "type": null,
         "links": [],
         "parent": "lot-upperregents",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1065,7 +1087,8 @@
         "type": null,
         "links": [],
         "parent": "newhall",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1100,7 +1123,8 @@
         "type": null,
         "links": [],
         "parent": "lot-hollandlot",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1135,7 +1159,8 @@
         "type": null,
         "links": [],
         "parent": "lot-lowertomson",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1170,7 +1195,8 @@
         "type": null,
         "links": [],
         "parent": "lot-skoglunds7behindskoglund",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1205,7 +1231,8 @@
         "type": null,
         "links": [],
         "parent": "lot-buntrolvaag",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1240,7 +1267,8 @@
         "type": null,
         "links": [],
         "parent": "lot-lowerlincoln",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1280,7 +1308,8 @@
           }
         ],
         "parent": "toh",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1375,7 +1404,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1498,7 +1528,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1713,7 +1744,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -1828,7 +1860,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2038,7 +2071,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2157,7 +2191,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2321,7 +2356,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2478,7 +2514,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2605,7 +2642,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2640,7 +2678,8 @@
         "type": null,
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2702,7 +2741,8 @@
         "type": null,
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2765,7 +2805,8 @@
         "type": "Athletics Field",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -2828,7 +2869,8 @@
         "type": "Athletics Field",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -3516,7 +3558,8 @@
         "type": null,
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -3599,7 +3642,8 @@
         "type": "Athletics Field",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -3697,7 +3741,8 @@
         "type": null,
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -3760,7 +3805,8 @@
         "type": "Athletics Field",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -3822,7 +3868,8 @@
         "type": null,
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -3909,7 +3956,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4025,7 +4073,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4232,7 +4281,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4312,7 +4362,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4431,7 +4482,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4563,7 +4615,8 @@
         "type": "Admissions Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4641,7 +4694,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4817,7 +4871,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4919,7 +4974,8 @@
         "type": "General Vistor Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -4981,7 +5037,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5047,7 +5104,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5159,7 +5217,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5225,7 +5284,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5295,7 +5355,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5365,7 +5426,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5439,7 +5501,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5557,7 +5620,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5705,7 +5769,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5817,7 +5882,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5911,7 +5977,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -5981,7 +6048,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6071,7 +6139,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6153,7 +6222,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6227,7 +6297,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6289,7 +6360,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6351,7 +6423,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6425,7 +6498,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6561,7 +6635,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6623,7 +6698,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6757,7 +6833,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6819,7 +6896,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6881,7 +6959,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -6983,7 +7062,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7053,7 +7133,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7131,7 +7212,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7193,7 +7275,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7271,7 +7354,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7333,7 +7417,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7415,7 +7500,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7549,7 +7635,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7623,7 +7710,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -7685,7 +7773,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -8011,7 +8100,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -8085,7 +8175,8 @@
         "type": "Campus Parking",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -8125,7 +8216,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -8234,7 +8326,8 @@
         "type": "Administrative",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -8405,7 +8498,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -8596,7 +8690,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -8712,7 +8807,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -8884,9 +8980,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -9170,9 +9277,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -9284,9 +9402,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -9398,9 +9527,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -9532,9 +9672,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -10222,9 +10373,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -10344,9 +10506,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -10482,9 +10655,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -10620,9 +10804,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -10774,9 +10969,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -10956,9 +11162,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -11044,7 +11261,8 @@
         "type": "Administrative",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -11106,7 +11324,8 @@
         "type": "Administrative",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -11345,7 +11564,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -11598,7 +11818,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -11678,7 +11899,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -11926,7 +12148,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12010,7 +12233,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12089,7 +12313,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12189,7 +12414,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12229,7 +12455,8 @@
           }
         ],
         "parent": "bc",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12304,7 +12531,8 @@
         "type": "Administrative",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12344,7 +12572,8 @@
           }
         ],
         "parent": "bc",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12444,7 +12673,8 @@
         "type": "Administrative & Academic",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12555,7 +12785,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12595,7 +12826,8 @@
           }
         ],
         "parent": "bc",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12635,7 +12867,8 @@
           }
         ],
         "parent": "bc",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -12670,7 +12903,8 @@
         "type": null,
         "links": [],
         "parent": "bc",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -13031,7 +13265,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -13182,7 +13417,8 @@
         "type": "Athletics",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -13455,7 +13691,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -13551,7 +13788,8 @@
           }
         ],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -13785,9 +14023,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 1055
+        "length": 1055,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -14217,9 +14466,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 1317
+        "length": 1317,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -14785,9 +15045,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 540
+        "length": 540,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -15471,9 +15742,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 882
+        "length": 882,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -15563,9 +15845,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 356
+        "length": 356,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -15727,9 +16020,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 595
+        "length": 595,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -15927,9 +16231,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 949
+        "length": 949,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -16159,9 +16474,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 800
+        "length": 800,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -16383,9 +16709,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 464
+        "length": 464,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -17425,9 +17762,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 934
+        "length": 934,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -17545,9 +17893,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 660
+        "length": 660,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "No bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -18657,9 +19016,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 1782
+        "length": 1782,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -19223,9 +19593,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 496
+        "length": 496,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -19483,9 +19864,20 @@
         "offices": [],
         "abbreviation": null,
         "type": null,
-        "links": [],
+        "links": [
+          {
+            "label": "Natural Lands rules",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+          }
+        ],
         "parent": null,
-        "length": 781
+        "length": 781,
+        "rules": [
+          "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+          "Dogs on a 6-foot leash.",
+          "Bikes allowed, except where signs say no bikes.",
+          "No camping or fires."
+        ]
       }
     },
     {
@@ -19525,7 +19917,8 @@
           }
         ],
         "parent": "bc",
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -19827,7 +20220,8 @@
         "type": "Administrative",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -19862,7 +20256,8 @@
         "type": null,
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     },
     {
@@ -20109,7 +20504,8 @@
         "type": "Residence Hall",
         "links": [],
         "parent": null,
-        "length": null
+        "length": null,
+        "rules": []
       }
     }
   ]

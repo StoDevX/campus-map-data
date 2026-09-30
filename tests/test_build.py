@@ -97,4 +97,3 @@ def test_a_trail_carries_its_length_in_metres():
 
 def test_a_place_with_no_line_has_no_length():
     assert record(lot("Porter", -93.180))["length"] is None
-
