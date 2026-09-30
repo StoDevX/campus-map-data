@@ -148,13 +148,20 @@ def trail_lines(features: list[dict]) -> list[dict]:
 
 
 def paths(
-    datadir: str, features: list[dict], superseded: set[str], assembled: set[str]
+    datadir: str,
+    features: list[dict],
+    superseded: set[str],
+    assembled: set[str],
+    part_walks: set[str],
 ) -> list[dict]:
     """The paths to draw: each named trail on its own, then every other line
     from data/, merged by kind. Rows named in `superseded` -- the rough lines
     overrides.yaml's assembled trails replace -- are left out altogether.
-    `assembled` names, by id, the trails built from the segments layer."""
-    named = trail_lines(features)
+    `assembled` names, by id, the trails built from the segments layer.
+    `part_walks` names, by id, the walks along half of a trail: the trail is
+    drawn, and a walk drawn over it as well would double the line and its
+    label, and leave a tap on it to open whichever came first."""
+    named = trail_lines([f for f in features if f["id"] not in part_walks])
     # A named trail's lines are drawn by its own feature; leaving them in the
     # merged one as well would draw them twice.
     taken = {
@@ -294,7 +301,18 @@ def main(src: str, datadir: str, outdir: str) -> None:
         os.path.dirname(os.path.abspath(datadir)), "overrides.yaml"
     )
     with open(overrides_path) as f:
-        trails = (yaml.safe_load(f) or {}).get("trails") or {}
+        overrides = yaml.safe_load(f) or {}
+    trails = overrides.get("trails") or {}
+    walk_names = {
+        walk["name"]
+        for walk in (overrides.get("walks") or {}).get("walks") or []
+        if "part" in walk
+    }
+    part_walks = {
+        f["id"]
+        for f in features
+        if (f.get("properties") or {}).get("name") in walk_names
+    }
     superseded = set(trails.get("supersedes") or [])
     built = {entry["name"] for entry in trails.get("trails") or []}
     assembled = {
@@ -303,7 +321,9 @@ def main(src: str, datadir: str, outdir: str) -> None:
         if (f.get("properties") or {}).get("name") in built
         and "trail" in ((f.get("properties") or {}).get("categories") or [])
     }
-    collections["campus_paths"] = paths(datadir, features, superseded, assembled)
+    collections["campus_paths"] = paths(
+        datadir, features, superseded, assembled, part_walks
+    )
 
     os.makedirs(outdir, exist_ok=True)
     for name, collection in collections.items():

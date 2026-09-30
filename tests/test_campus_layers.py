@@ -45,7 +45,11 @@ def trail(id: str, line) -> dict:
 def test_a_superseded_line_is_not_drawn(tmp_path):
     write(tmp_path, [("Heath Creek Trail", ROUGH), ("Knoll Loop", KNOLL)])
     paths = campus_layers.paths(
-        str(tmp_path), [trail("trail-knollloop", KNOLL)], {"Heath Creek Trail"}, set()
+        str(tmp_path),
+        [trail("trail-knollloop", KNOLL)],
+        {"Heath Creek Trail"},
+        set(),
+        set(),
     )
     drawn = [line for f in paths for line in f["geometry"]["coordinates"]]
     assert ROUGH not in drawn
@@ -60,6 +64,7 @@ def test_an_assembled_trail_does_not_trip_the_guard(tmp_path):
         [trail("trail-knollloop", KNOLL), trail("trail-robintrail", ROUGH)],
         set(),
         {"trail-robintrail"},
+        set(),
     )
 
 
@@ -68,7 +73,7 @@ def test_rewritten_coordinates_still_fail(tmp_path):
     moved = [[x + 1e-8, y] for x, y in KNOLL]
     with pytest.raises(SystemExit):
         campus_layers.paths(
-            str(tmp_path), [trail("trail-knollloop", moved)], set(), set()
+            str(tmp_path), [trail("trail-knollloop", moved)], set(), set(), set()
         )
 
 
@@ -83,4 +88,19 @@ def test_one_rewritten_trail_among_matching_ones_fails(tmp_path):
             [trail("trail-knollloop", moved), trail("trail-conifertrail", other)],
             set(),
             set(),
+            set(),
         )
+
+
+# East Prairie Loop is half of Prairie Loop: the tiles draw the loop once.
+def test_a_part_walk_is_not_drawn(tmp_path):
+    write(tmp_path, [("Knoll Loop", KNOLL)])
+    paths = campus_layers.paths(
+        str(tmp_path),
+        [trail("trail-knollloop", KNOLL), trail("trail-eastprairieloop", KNOLL)],
+        set(),
+        set(),
+        {"trail-eastprairieloop"},
+    )
+    ids = [f["properties"].get("buildingId") for f in paths]
+    assert "trail-eastprairieloop" not in ids
