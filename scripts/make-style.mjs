@@ -152,8 +152,8 @@ const light = {
 //              Warmed to a charcoal in the same family as the light theme's
 //              paper, and the background matched to it, so the gold does not
 //              sit on a blue-grey.
-//   water      Kept a muted blue-grey, a step above the earth: legible as the
-//              river, never brighter than the app's markers.
+//   water      A muted blue-grey, but lifted clear of the earth: at a step
+//              above it the Cannon River vanished below z13, where it is thin.
 //   parks      Dark desaturated greens, for the same reason as the light
 //              theme — the Natural Lands are most of the frame.
 //   paths      The light theme's paths problem inverted. Stock footways are
@@ -161,6 +161,15 @@ const light = {
 //              warm tone that reads as a path on dark ground.
 //   buildings  Lifted *above* the earth, where stock sinks them below it, and
 //              warmed toward the gold for the same reason as the light theme's.
+//   roads      Warmed, and brightened well past the paths. Stock roads sit a
+//              few values from its footways, and the campus walkways are about
+//              as bright again, so Saint Olaf Drive read as another sidewalk.
+//              The light theme gets this for free from stock's white roads.
+//   the rest   Labels, boundaries, low-zoom landcover and the remaining greys
+//              warmed into the same charcoal family, so nothing on the map is
+//              the cool grey the gold was moved off. POI colours stay stock:
+//              the sprite icons are pre-coloured per flavor, and a retinted
+//              label would no longer match its icon.
 //
 // The campus buildings flip the light theme's relationship between fill and
 // edge. A pale gold fill on dark ground glows, and would leave the app's
@@ -178,7 +187,7 @@ const dark = {
 
     buildings: "#4a4234",
 
-    water: "#27313a",
+    water: "#2c3a46",
     zoo: "#222622",
 
     park_a: "#212620",
@@ -191,6 +200,73 @@ const dark = {
     school: "#23201c",
     hospital: "#241f1e",
     industrial: "#222120",
+    pedestrian: "#24211d",
+    aerodrome: "#211f1c",
+    military: "#24211e",
+    sand: "#25221d",
+    beach: "#2a2620",
+    runway: "#36322c",
+    pier: "#36322c",
+
+    // Roads, stepped up from footways to highways. See "roads" above.
+    minor_service: "#48433b",
+    minor_a: "#5b554c",
+    minor_b: "#524c44",
+    link: "#5b554c",
+    major: "#686156",
+    highway: "#756d61",
+    bridges_minor: "#524c44",
+    bridges_link: "#5b554c",
+    bridges_major: "#686156",
+    bridges_highway: "#756d61",
+    // Casings a step *below* the earth, so a road is edged by shadow rather
+    // than by a halo.
+    minor_service_casing: "#171512",
+    minor_casing: "#171512",
+    link_casing: "#171512",
+    major_casing_early: "#171512",
+    major_casing_late: "#171512",
+    highway_casing_early: "#171512",
+    highway_casing_late: "#171512",
+    bridges_other_casing: "#171512",
+    bridges_minor_casing: "#171512",
+    bridges_link_casing: "#171512",
+    bridges_major_casing: "#171512",
+    bridges_highway_casing: "#171512",
+    tunnel_other: "#2a2622",
+    tunnel_minor: "#2a2622",
+    tunnel_link: "#2a2622",
+    tunnel_major: "#2a2622",
+    tunnel_highway: "#2a2622",
+
+    boundaries: "#5a5248",
+
+    // Labels in the same warm greys, haloed in the earth tone.
+    roads_label_minor: "#7a7266",
+    roads_label_minor_halo: "#1e1c19",
+    roads_label_major: "#8c8376",
+    roads_label_major_halo: "#1e1c19",
+    subplace_label: "#6f685d",
+    subplace_label_halo: "#1e1c19",
+    city_label: "#a79e90",
+    city_label_halo: "#1e1c19",
+    state_label: "#4a453e",
+    state_label_halo: "#1e1c19",
+    country_label: "#6f685d",
+    address_label: "#6f685d",
+    address_label_halo: "#1e1c19",
+    ocean_label: "#6d7a86",
+
+    // What the map shows below z13, before landuse takes over.
+    landcover: {
+      ...namedFlavor("dark").landcover,
+      grassland: "rgba(33, 38, 30, 1)",
+      barren: "rgba(38, 36, 32, 1)",
+      urban_area: "rgba(34, 32, 28, 1)",
+      farmland: "rgba(32, 34, 28, 1)",
+      scrub: "rgba(34, 36, 29, 1)",
+      forest: "rgba(29, 37, 30, 1)",
+    },
   },
 
   campus: {

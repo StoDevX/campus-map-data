@@ -406,7 +406,12 @@ the fill is a dim, low-chroma gold and the outline carries the brand.
 
 The paths needed the sidewalks fix again, inverted: stock dark draws footways
 at `#333333`, which disappears against the warmer earth, so they are lifted to
-read as a path on dark ground.
+read as a path on dark ground. That in turn put them level with stock's roads,
+and Saint Olaf Drive read as one more sidewalk — so the roads are warmed and
+brightened well clear of the paths, which the light theme gets for free from
+stock's white roads. The rest of stock's cool greys (labels, boundaries,
+low-zoom landcover) are warmed to match; the POI colours are not, because the
+sprite icons are coloured to match them.
 
 Both themes are generated from one layer list in `scripts/make-style.mjs`, so
 they cannot differ in anything but colour and sprite sheet.
