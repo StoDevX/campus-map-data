@@ -9209,7 +9209,12 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -9508,7 +9513,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -9622,10 +9636,6 @@
         "type": null,
         "links": [
           {
-            "label": "2020 bird survey",
-            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
-          },
-          {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
           }
@@ -9639,7 +9649,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "Bird Diversity and Prairie Restoration",
+            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -9900,10 +9919,6 @@
         "type": null,
         "links": [
           {
-            "label": "2020 bird survey",
-            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
-          },
-          {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
           }
@@ -9917,7 +9932,20 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Bird Diversity and Prairie Restoration",
+            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -11057,7 +11085,12 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -11224,7 +11257,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -11419,7 +11461,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -14338,7 +14389,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -14794,7 +14854,12 @@
           ],
           "accessibility": "Wide mowed grass and a stretch of gravel road; flat but for a small rise onto Campus Drive; two benches."
         },
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -15375,7 +15440,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -16074,7 +16148,12 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -16179,7 +16258,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -16679,7 +16767,20 @@
           ],
           "accessibility": "A mowed dirt path, 10 feet wide, gently up and down; one bench."
         },
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -16856,7 +16957,12 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -17069,7 +17175,12 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -17314,7 +17425,12 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -17551,7 +17667,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -18617,7 +18742,20 @@
           ],
           "accessibility": "A footpath along Heath Creek, with roots, ruts and steep stretches; not an easy walk."
         },
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -18761,7 +18899,12 @@
           ],
           "accessibility": "Narrow gravel and dirt, 4 feet wide at most, up a steep hill with short steps."
         },
-        "citations": []
+        "citations": [
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
@@ -19886,7 +20029,20 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -20465,7 +20621,16 @@
           "No camping or fires."
         ],
         "walk": null,
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -21161,7 +21326,20 @@
           ],
           "accessibility": "A mowed path, 10 feet wide, with one bench; flat but for small dips near the Coyote Ponds."
         },
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          },
+          {
+            "label": "Habitats and Management of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/habitats-of-the-natural-lands/"
+          },
+          {
+            "label": "Natural Lands Restoration Map, 2024",
+            "href": "https://wp.stolaf.edu/naturallands/files/2024/04/RestorationMap_NaturalLands2024.pdf"
+          }
+        ]
       }
     },
     {
@@ -21445,7 +21623,12 @@
           ],
           "accessibility": "A mowed path, 10 feet wide, with one bench; ruts in the low wetland stretch; downhill into the conifers at the northwest end."
         },
-        "citations": []
+        "citations": [
+          {
+            "label": "History of the Natural Lands",
+            "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/history-of-the-natural-lands/"
+          }
+        ]
       }
     },
     {
