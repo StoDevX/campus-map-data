@@ -29,6 +29,7 @@ from pathlib import Path
 
 import geometry
 import yaml
+from build import assign_ids, read_places, source_index
 from scrape import VOLATILE_FIELDS
 from sources import SOURCES, slugs
 
@@ -205,11 +206,48 @@ def verify_map_geojson(report: Report, records: list[dict]) -> None:
                 f"— set a centerpoint for it in overrides.yaml",
             )
 
+        lines = [
+            member
+            for member in members
+            if member["type"] in ("LineString", "MultiLineString")
+        ]
+        if points and lines and not areas:
+            anchor = points[0]["coordinates"]
+            # `label_anchor` takes a line's middle vertex, so the anchor is one
+            # of the line's own positions, rounded as `build.py` rounds every
+            # anchor while the line keeps the source's precision. A
+            # `centerpoint` override is the only way it can leave the line.
+            report.check(
+                any(
+                    geometry.round_coords(position) == anchor
+                    for member in lines
+                    for position in geometry.positions(member)
+                ),
+                f"{feature['id']}: label anchor {anchor} is not on its own line "
+                f"— set a centerpoint for it in overrides.yaml",
+            )
+
 
 def verify_overrides(report: Report, records: list[dict]) -> None:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
     known = {record["id"] for record in records}
     layers = set(slugs())
+
+    # A removal names a place by the id the build gives it, which the removed
+    # place no longer has in map.json -- so rebuild the ids before removals to
+    # see it. One that matches nothing means the source renamed the place, and
+    # it is back in the dataset under its new id.
+    removals = [entry["id"] for entry in overrides.get("removals") or []]
+    if removals:
+        scraped, _ = read_places(source_index())
+        assign_ids(scraped, overrides)
+        scraped_ids = {place["id"] for place in scraped}
+        for removal in removals:
+            report.check(
+                removal in scraped_ids,
+                f"overrides.yaml: removal of {removal!r} matches no scraped place "
+                f"— did the source rename it?",
+            )
 
     for change in overrides.get("changes") or []:
         report.check(

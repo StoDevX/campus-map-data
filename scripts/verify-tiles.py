@@ -19,7 +19,7 @@ import sys
 from pmtiles.reader import MmapSource, Reader
 
 
-def tileset_layers(archive: str) -> set[str]:
+def vector_layers(archive: str) -> list[dict]:
     with open(archive, "rb") as f:
         metadata = Reader(MmapSource(f)).metadata()
     layers = metadata.get("vector_layers")
@@ -27,7 +27,29 @@ def tileset_layers(archive: str) -> set[str]:
         layers = json.loads(metadata["json"]).get("vector_layers")
     if not layers:
         raise SystemExit("archive declares no vector_layers")
-    return {layer["id"] for layer in layers}
+    return layers
+
+
+def tileset_layers(archive: str) -> set[str]:
+    return {layer["id"] for layer in vector_layers(archive)}
+
+
+# Properties the app reads off a campus layer. `campus_paths` carries each named
+# trail's id and name: the app opens the trail a tap lands on by `buildingId`,
+# and the style labels the trail along its line by `name`. A tiling flag that
+# drops attributes would strip them and nothing else would notice.
+REQUIRED_FIELDS = {"campus_paths": frozenset({"buildingId", "name"})}
+
+
+def field_problems(archive: str) -> list[str]:
+    fields = {
+        layer["id"]: set(layer.get("fields") or {}) for layer in vector_layers(archive)
+    }
+    return [
+        f"tileset layer {name!r} is missing properties {sorted(required - fields[name])}"
+        for name, required in REQUIRED_FIELDS.items()
+        if name in fields and required - fields[name]
+    ]
 
 
 def fontstacks(value, found: set[str]) -> None:
@@ -60,6 +82,7 @@ def main(dist: str) -> None:
 
     for missing in sorted(CAMPUS_LAYERS - available):
         problems.append(f"tileset is missing campus layer {missing!r}")
+    problems.extend(field_problems(os.path.join(dist, "campus.pmtiles")))
 
     for name in ("style.json", "style-pmtiles.json", "style-dark.json"):
         path = os.path.join(dist, name)

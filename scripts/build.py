@@ -94,6 +94,8 @@ ID_PREFIXES = {
     "parking-lots": "lot",
     "accessible-parking": "accessible-parking",
     "athletic-fields": "field",
+    "water": "pond",
+    "natural-lands-trails": "trail",
 }
 
 

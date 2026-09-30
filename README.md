@@ -13,7 +13,7 @@ Two things, for two different readers.
 | | What it is | Read it if |
 | --- | --- | --- |
 | `data/*.geojson` | One file per source layer, the college's field names untouched | You want St. Olaf's data as St. Olaf publishes it |
-| `map.json`, `map.geojson` | 128 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
+| `map.json`, `map.geojson` | 151 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
 | `routing.json` | A pedestrian routing graph | You want to walk someone from one door to another |
 | `vendor/ole-compass/` | The 2016 survey `routing.json` is built from | You are changing how the graph is georeferenced |
 
@@ -64,7 +64,7 @@ admissions, the windmill) that are one concept split across seven layer ids.
 
 ## The published dataset
 
-`map.json` and `map.geojson` hold **128 places, 92 with a footprint** — against
+`map.json` and `map.geojson` hold **151 places, 103 with a footprint** — against
 Carleton's 124 and 96, which is a fair indication the two datasets are of
 comparable use.
 
@@ -72,16 +72,22 @@ comparable use.
 | --- | ---: |
 | Parking (lots, accessible stalls) | 72 |
 | Buildings | 38 |
+| Trails | 12 |
+| Ponds | 11 |
 | Points of interest | 10 |
 | Athletic fields | 8 |
 | With a prose description | 87 |
 | With departments linked | 17 |
 | With floor plans | 13 |
 
-The 36 places without a footprint are points: the accessible-parking stalls and
-the points of interest. Fourteen more source features — unnamed parking polygons
-and blank rows in the athletic-fields layer — are **not** places, because an
-unnamed polygon cannot be labelled, searched for or linked to. Their geometry is
+The ponds, the trails and the athletic fields carry the `outdoors` category,
+which is what AAO's Outdoors group lists.
+
+The 48 places without a footprint are the accessible-parking stalls and the
+points of interest, which are points, and the trails, which are lines. Forty
+more source features — unnamed parking polygons, ponds and trail segments, and
+blank rows in the athletic-fields layer — are **not** places, because an
+unnamed feature cannot be labelled, searched for or linked to. Their geometry is
 still published in `data/`.
 
 ### The schema is Carleton's
@@ -133,8 +139,10 @@ horseshoe-shaped, which on this campus means Old Main, the Ade Christenson
 Complex and most of the lots that wrap a building. A label anchored outside its
 own building points at the wrong thing. So `scripts/geometry.py` uses the
 centroid when it lands inside the polygon and computes a guaranteed-interior
-point otherwise. All 92 polygonal places currently anchor inside their own
-footprint, and `verify.py` fails the build if that ever stops being true.
+point otherwise. All 103 polygonal places currently anchor inside their own
+footprint, and `verify.py` fails the build if that ever stops being true. A
+trail's anchor is the middle vertex of its line, and `verify.py` fails the
+build if one ever leaves it.
 
 A technically-interior anchor can still read badly. Set a `centerpoint` in
 `overrides.yaml` for any that does.
@@ -326,24 +334,29 @@ buries the campus. So:
 | --- | --- | ---: | --- |
 | `campus_buildings` | MultiPolygon | 38 | z14+ |
 | `campus_grounds` | MultiPolygon | 54 | z14+ |
-| `campus_paths` | MultiLineString | 168 lines | z15+ |
-| `campus_labels` | Point | 128 | z15+ |
+| `campus_paths` | MultiLineString | 168 lines in 14 features | z15+ |
+| `campus_labels` | Point | 151 | z15+ |
 
 Every anchor carries a `kind`, which is what lets the style bring each sort of
 place in at the zoom where it stops being clutter — buildings at z15, points of
-interest and fields at z16, parking at z17. `buildingId` is on all three layers
-and is the source feature's `id`, the same property name map-tiles uses, so
-AAO's selection code keys off it unchanged.
+interest, fields, ponds and trails at z16, parking at z17. `buildingId` is on
+every place's feature in every layer and is the source feature's `id`, the same
+property name map-tiles uses, so AAO's selection code keys off it unchanged.
 
 The 26 accessible-parking points get their own `kind` for one reason: they all
 share the name "Accessible Parking", and without it the style stamps that label
 26 times across campus.
 
-`campus_paths` comes from `data/` rather than `map.geojson`, because walkways
-are not *places* — no name, no id, nothing to label — so `build.py` leaves them
-out of the published dataset. They belong on the map regardless: this is
-something people walk around a campus with, and the college's 10.8 km of
-walkways plus 12 km of Natural Lands trails were being scraped and then dropped.
+Most of `campus_paths` comes from `data/` rather than `map.geojson`, because
+walkways and the other trail segments are not *places* — the unnamed ones have
+nothing to label, and Campus Drive, the one named access trail, is a road that
+`overrides.yaml` removes — so `build.py` leaves them out of the published
+dataset. They belong
+on the map regardless: this is something people walk around a campus with, and
+the college's 10.8 km of walkways plus 12 km of Natural Lands trails were being
+scraped and then dropped. The 12 named trails are places, and each is its own
+feature carrying its `buildingId`, so a tap on the line opens the trail; the
+style labels them along the line.
 
 ### Why the campus looked like it had no sidewalks
 

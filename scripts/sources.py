@@ -47,7 +47,7 @@ class Source:
     url: str
     # What `build.py` should do with these features: "place" turns them into
     # records in map.json, "context" means geometry we publish but do not treat
-    # as a named place (walkways, water, the campus boundary).
+    # as a named place (walkways, roads, the campus boundary).
     role: str
     # Categories every feature from this layer gets, before per-feature
     # categories derived from its own `Type` field.
@@ -89,7 +89,7 @@ SOURCES: tuple[Source, ...] = (
         title="Athletic Fields",
         url=f"{ORG}/outdoorfields/FeatureServer/0",
         role="place",
-        categories=("athletics",),
+        categories=("athletics", "outdoors"),
         notes="Several rows are unnamed; build.py drops those rather than emitting blanks.",
     ),
     Source(
@@ -134,7 +134,10 @@ SOURCES: tuple[Source, ...] = (
         slug="water",
         title="Lakes",
         url=f"{ORG}/St_Olaf_Campus_Data/FeatureServer/11",
-        role="context",
+        role="place",
+        # The named ponds of the Natural Lands. The unnamed polygons are still
+        # published in data/water.geojson; build.py drops them as places.
+        categories=("outdoors", "water"),
     ),
     Source(
         slug="walkways",
@@ -146,7 +149,10 @@ SOURCES: tuple[Source, ...] = (
         slug="natural-lands-trails",
         title="Natural Lands Trails",
         url=f"{ORG}/StOlaf_Roads_2_WFL1/FeatureServer/3",
-        role="context",
+        role="place",
+        # The named trails. The unnamed rows are access-trail segments joining
+        # them; they stay geometry only, drawn in the tiles' campus_paths.
+        categories=("outdoors", "trail"),
     ),
     Source(
         slug="campus-roads",
