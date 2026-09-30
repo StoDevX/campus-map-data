@@ -153,6 +153,7 @@ def paths(datadir: str, features: list[dict]) -> list[dict]:
         json.dumps(line) for trail in named for line in trail["geometry"]["coordinates"]
     }
     merged = []
+    seen: set[str] = set()
     for filename, kind in PATH_SOURCES:
         path = os.path.join(datadir, filename)
         if not os.path.exists(path):
@@ -160,6 +161,11 @@ def paths(datadir: str, features: list[dict]) -> list[dict]:
             continue
         with open(path) as f:
             collection = json.load(f)
+        seen.update(
+            json.dumps(line)
+            for feature in collection.get("features") or []
+            for line in linestrings_of(feature.get("geometry") or {})
+        )
         lines = [
             line
             for feature in collection.get("features") or []
@@ -179,6 +185,15 @@ def paths(datadir: str, features: list[dict]) -> list[dict]:
             )
         print(f"  {kind:<8} {len(lines)} lines from {filename}")
     print(f"  {'trail':<8} {len(named)} named trails, each its own feature")
+    # The exclusion above matches a trail's lines to data/ byte for byte, which
+    # holds because build.py copies geometry as scraped. A named line with no
+    # match means that stopped being true, and every trail is drawn twice.
+    unmatched = taken - seen
+    if unmatched:
+        raise SystemExit(
+            f"  {len(unmatched)} named trail lines match no line in data/, so "
+            "they would be drawn twice — does build.py change line coordinates?"
+        )
     return named + merged
 
 
