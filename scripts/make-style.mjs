@@ -433,7 +433,7 @@ const campusLayers = (campus) => [
 
 // Labels, split by what the place is so each kind can appear at the zoom where
 // it stops being clutter. This is the whole reason `kind` is tiled onto the
-// points: 65 of the 144 places are parking, and showing them at the zoom where
+// points: 65 of the 146 places are parking, and showing them at the zoom where
 // you want building names buries the campus in lot names.
 const labelLayer = (id, kinds, minzoom, { size, color, halo, weight }) => ({
   id,
