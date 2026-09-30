@@ -148,37 +148,7 @@ def verify_map_json(report: Report) -> list[dict]:
                 )
                 break
 
-    # A lot the college draws in pieces is still one lot: two places sharing a
-    # lot's name read as two lots in a list, and neither says which is which.
-    lots = [
-        record
-        for record in records
-        if "parking" in record["categories"]
-        and "accessible-parking" not in record["categories"]
-    ]
-    for name, count in Counter(record["name"] for record in lots).items():
-        report.check(
-            count == 1, f"{count} parking lots share the name {name!r} — merge them"
-        )
-
-    # Every accessible spot is named for the lot or building it serves, which
-    # is its parent: 26 places all called "Accessible Parking" cannot be told
-    # apart in a list or a search.
-    by_id = {record["id"]: record for record in records}
-    for record in records:
-        if "accessible-parking" not in record["categories"]:
-            continue
-        parent = by_id.get(record.get("parent") or "")
-        if not report.check(
-            parent is not None,
-            f"{record['id']}: no lot or building within reach to name it after",
-        ):
-            continue
-        report.check(
-            record["name"] == f"Accessible Parking, {parent['name']}",
-            f"{record['id']}: named {record['name']!r}, not after its parent "
-            f"{parent['name']!r}",
-        )
+    verify_parking(report, records)
 
     # Only where the names are shared too: the accessible spots keep numbered
     # ids but are named for their lots, so a list already tells them apart.
@@ -199,6 +169,54 @@ def verify_map_json(report: Report) -> list[dict]:
             f"overrides.yaml if the college has any."
         )
     return records
+
+
+def verify_parking(report: Report, records: list[dict]) -> None:
+    """Lots have one name each, and each accessible spot is named for its lot."""
+    # build.py merges the scraped pieces of a lot, so a repeated lot name can
+    # only come from a rename or an addition: two places sharing a lot's name
+    # read as two lots in a list, and neither says which is which.
+    lots = [
+        record
+        for record in records
+        if "parking" in record["categories"]
+        and "accessible-parking" not in record["categories"]
+    ]
+    for name, count in Counter(record["name"] for record in lots).items():
+        report.check(
+            count == 1,
+            f"{count} parking lots share the name {name!r} — an overrides.yaml "
+            f"rename or addition collides with it",
+        )
+
+    # Every accessible spot is named for the lot or building it serves, which
+    # is its parent and has an area to frame: 26 places all called "Accessible
+    # Parking" cannot be told apart in a list or a search. A name may add to
+    # the parent's, which is how two spots in one lot are told apart by hand.
+    by_id = {record["id"]: record for record in records}
+    spots = [r for r in records if "accessible-parking" in r["categories"]]
+    for record in spots:
+        parent = by_id.get(record.get("parent") or "")
+        if not report.check(
+            parent is not None,
+            f"{record['id']}: no lot or building within reach to name it after",
+        ):
+            continue
+        report.check(
+            bool(parent.get("outline")),
+            f"{record['id']}: its parent {parent['id']} has no footprint to frame",
+        )
+        report.check(
+            record["name"].startswith(f"Accessible Parking, {parent['name']}"),
+            f"{record['id']}: named {record['name']!r}, not after its parent "
+            f"{parent['name']!r}",
+        )
+    for name, count in Counter(record["name"] for record in spots).items():
+        report.check(
+            count == 1,
+            f"{count} accessible spots are named {name!r} — tell them apart with a "
+            f"name and parent under changes in overrides.yaml",
+        )
 
 
 def verify_map_geojson(report: Report, records: list[dict]) -> None:
