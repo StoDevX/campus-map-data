@@ -29,6 +29,7 @@ from pathlib import Path
 
 import geometry
 import yaml
+from build import assign_ids, read_places, source_index
 from scrape import VOLATILE_FIELDS
 from sources import SOURCES, slugs
 
@@ -231,6 +232,22 @@ def verify_overrides(report: Report, records: list[dict]) -> None:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
     known = {record["id"] for record in records}
     layers = set(slugs())
+
+    # A removal names a place by the id the build gives it, which the removed
+    # place no longer has in map.json -- so rebuild the ids before removals to
+    # see it. One that matches nothing means the source renamed the place, and
+    # it is back in the dataset under its new id.
+    removals = [entry["id"] for entry in overrides.get("removals") or []]
+    if removals:
+        scraped, _ = read_places(source_index())
+        assign_ids(scraped, overrides)
+        scraped_ids = {place["id"] for place in scraped}
+        for removal in removals:
+            report.check(
+                removal in scraped_ids,
+                f"overrides.yaml: removal of {removal!r} matches no scraped place "
+                f"— did the source rename it?",
+            )
 
     for change in overrides.get("changes") or []:
         report.check(
