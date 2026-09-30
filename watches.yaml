@@ -6,6 +6,6 @@
   # Each walk's heading, and the guide behind it: Windmill Trail's walk has
   # no heading, so the guides are the complete list.
   select:
-    - {css: h2.wp-block-heading, text: true}
+    - {css: h2.wp-block-heading}
     - {css: a.wp-block-file__button, attribute: href}
   why: A changed walk means updating overrides.yaml `walks:`.
