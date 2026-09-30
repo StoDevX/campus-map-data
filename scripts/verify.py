@@ -213,11 +213,12 @@ def verify_map_geojson(report: Report, records: list[dict]) -> None:
         if points and lines and not areas:
             anchor = points[0]["coordinates"]
             # `label_anchor` takes a line's middle vertex, so the anchor is one
-            # of the line's own positions. A `centerpoint` override is the only
-            # way it can leave the line.
+            # of the line's own positions, rounded as `build.py` rounds every
+            # anchor while the line keeps the source's precision. A
+            # `centerpoint` override is the only way it can leave the line.
             report.check(
                 any(
-                    position == anchor
+                    geometry.round_coords(position) == anchor
                     for member in lines
                     for position in geometry.positions(member)
                 ),
