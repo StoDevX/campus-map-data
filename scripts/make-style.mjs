@@ -480,6 +480,37 @@ const campusLabelLayers = (campus) => [
       weight: "Noto Sans Regular",
     },
   ),
+  // The named ponds, in the italic cartography keeps for water.
+  labelLayer("campus_labels_water", ["water"], CAMPUS_LABELS_MINZOOM + 1, {
+    size: ["interpolate", ["linear"], ["zoom"], 16, 10, 18, 12],
+    color: campus.placeLabel,
+    halo: campus.labelHalo,
+    weight: "Noto Sans Italic",
+  }),
+  // Trail names follow the trail, as a trail map draws them. Read from
+  // campus_paths rather than campus_labels: only the line knows its course.
+  // Carries buildingId, so a tap on the name opens the trail.
+  {
+    id: "campus_labels_trails",
+    type: "symbol",
+    source: "basemap",
+    "source-layer": "campus_paths",
+    minzoom: CAMPUS_LABELS_MINZOOM + 1,
+    filter: ["has", "buildingId"],
+    layout: {
+      "text-field": ["get", "name"],
+      "text-font": ["Noto Sans Regular"],
+      "text-size": ["interpolate", ["linear"], ["zoom"], 16, 10, 18, 12],
+      "symbol-placement": "line",
+      "symbol-spacing": 250,
+      "text-max-angle": 30,
+    },
+    paint: {
+      "text-color": campus.placeLabel,
+      "text-halo-color": campus.labelHalo,
+      "text-halo-width": 1.2,
+    },
+  },
   labelLayer("campus_labels_parking", ["parking"], CAMPUS_LABELS_MINZOOM + 2, {
     size: ["interpolate", ["linear"], ["zoom"], 17, 9.5, 19, 11],
     color: campus.parkingLabel,
