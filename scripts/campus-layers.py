@@ -147,10 +147,13 @@ def trail_lines(features: list[dict]) -> list[dict]:
     return trails
 
 
-def paths(datadir: str, features: list[dict], superseded: set[str]) -> list[dict]:
+def paths(
+    datadir: str, features: list[dict], superseded: set[str], assembled: set[str]
+) -> list[dict]:
     """The paths to draw: each named trail on its own, then every other line
     from data/, merged by kind. Rows named in `superseded` -- the rough lines
-    overrides.yaml's assembled trails replace -- are left out altogether."""
+    overrides.yaml's assembled trails replace -- are left out altogether.
+    `assembled` names, by id, the trails built from the segments layer."""
     named = trail_lines(features)
     # A named trail's lines are drawn by its own feature; leaving them in the
     # merged one as well would draw them twice.
@@ -197,14 +200,20 @@ def paths(datadir: str, features: list[dict], superseded: set[str]) -> list[dict
         print(f"  {kind:<8} {len(lines)} lines from {filename}")
     print(f"  {'trail':<8} {len(named)} named trails, each its own feature")
     # The exclusion above matches a trail's lines to data/ byte for byte, which
-    # holds because build.py copies geometry as scraped. The trails it
-    # assembles from the segments layer match nothing here, and need not: the
-    # tiles do not draw that layer. But if no named line matches at all,
-    # build.py has started changing coordinates, and every trail from the
-    # campus layer is drawn twice.
-    if taken and not taken & seen:
+    # holds because build.py copies geometry as scraped. A named line with no
+    # match means that stopped being true, and the trail is drawn twice. The
+    # assembled trails are exempt: they come from the segments layer, which the
+    # tiles do not draw, and one of them is cut.
+    checked = {
+        json.dumps(line)
+        for trail in named
+        if trail["properties"]["buildingId"] not in assembled
+        for line in trail["geometry"]["coordinates"]
+    }
+    unmatched = checked - seen
+    if unmatched:
         raise SystemExit(
-            f"  none of {len(taken)} named trail lines match a line in data/, so "
+            f"  {len(unmatched)} named trail lines match no line in data/, so "
             "they would be drawn twice — does build.py change line coordinates?"
         )
     return named + merged
@@ -287,7 +296,14 @@ def main(src: str, datadir: str, outdir: str) -> None:
     with open(overrides_path) as f:
         trails = (yaml.safe_load(f) or {}).get("trails") or {}
     superseded = set(trails.get("supersedes") or [])
-    collections["campus_paths"] = paths(datadir, features, superseded)
+    built = {entry["name"] for entry in trails.get("trails") or []}
+    assembled = {
+        f["id"]
+        for f in features
+        if (f.get("properties") or {}).get("name") in built
+        and "trail" in ((f.get("properties") or {}).get("categories") or [])
+    }
+    collections["campus_paths"] = paths(datadir, features, superseded, assembled)
 
     os.makedirs(outdir, exist_ok=True)
     for name, collection in collections.items():
