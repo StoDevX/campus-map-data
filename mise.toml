@@ -20,5 +20,10 @@ uv = "0.12.3"
 actionlint = "1.7.12"
 shellcheck = "0.11.0"
 
+# Reads CSS selectors out of a page for scripts/watch.py: a single static
+# binary, where a Python HTML-and-selector library would be a third runtime
+# dependency.
+htmlq = "0.4.0"
+
 # The PMTiles CLI: does the planet extract and the tier merge in build-tiles.sh.
 "github:protomaps/go-pmtiles" = { version = "v1.31.2", exe = "pmtiles" }
