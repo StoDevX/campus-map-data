@@ -9524,6 +9524,10 @@
         "type": null,
         "links": [
           {
+            "label": "2020 bird survey",
+            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
+          },
+          {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
           }
@@ -9795,6 +9799,10 @@
         "abbreviation": null,
         "type": null,
         "links": [
+          {
+            "label": "2020 bird survey",
+            "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
+          },
           {
             "label": "Natural Lands rules",
             "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
