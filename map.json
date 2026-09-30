@@ -50,7 +50,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -299,7 +300,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -325,7 +327,8 @@
     "links": [],
     "parent": "lot-alumnihallroad",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -351,7 +354,8 @@
     "links": [],
     "parent": "lot-skoglunds2",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -377,7 +381,8 @@
     "links": [],
     "parent": "lot-chmroad",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -403,7 +408,8 @@
     "links": [],
     "parent": "lot-ellingson",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -429,7 +435,8 @@
     "links": [],
     "parent": "lot-thorson",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -455,7 +462,8 @@
     "links": [],
     "parent": "lot-buntrockcommonsparking",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -481,7 +489,8 @@
     "links": [],
     "parent": "lot-ytterboelot",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -507,7 +516,8 @@
     "links": [],
     "parent": "lot-uppertomson",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -533,7 +543,8 @@
     "links": [],
     "parent": "lot-oldmain",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -559,7 +570,8 @@
     "links": [],
     "parent": "lot-skoglund",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -585,7 +597,8 @@
     "links": [],
     "parent": "lot-mellbylot",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -611,7 +624,8 @@
     "links": [],
     "parent": "lot-upperlincoln",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -637,7 +651,8 @@
     "links": [],
     "parent": "lot-porterhallparking",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -663,7 +678,8 @@
     "links": [],
     "parent": "lot-rand",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -689,7 +705,8 @@
     "links": [],
     "parent": "lot-admissionsvisitorparking",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -715,7 +732,8 @@
     "links": [],
     "parent": "lot-hillkitroadlot",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -741,7 +759,8 @@
     "links": [],
     "parent": "lotj",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -767,7 +786,8 @@
     "links": [],
     "parent": "lot-skoglunds7betweenskoglundtenniscourts",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -793,7 +813,8 @@
     "links": [],
     "parent": "lot-mohnkildahl",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -819,7 +840,8 @@
     "links": [],
     "parent": "lot-upperregents",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -845,7 +867,8 @@
     "links": [],
     "parent": "newhall",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -871,7 +894,8 @@
     "links": [],
     "parent": "lot-hollandlot",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -897,7 +921,8 @@
     "links": [],
     "parent": "lot-lowertomson",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -923,7 +948,8 @@
     "links": [],
     "parent": "lot-skoglunds7behindskoglund",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -949,7 +975,8 @@
     "links": [],
     "parent": "lot-buntrolvaag",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -975,7 +1002,8 @@
     "links": [],
     "parent": "lot-lowerlincoln",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -1006,7 +1034,8 @@
     ],
     "parent": "toh",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -1086,7 +1115,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -1199,7 +1229,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -1404,7 +1435,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -1525,7 +1557,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -1720,7 +1753,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -1824,7 +1858,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -1973,7 +2008,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2115,7 +2151,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2232,7 +2269,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2258,7 +2296,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2305,7 +2344,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2353,7 +2393,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2401,7 +2442,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2628,7 +2670,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2696,7 +2739,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2779,7 +2823,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2827,7 +2872,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2874,7 +2920,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -2951,7 +2998,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3052,7 +3100,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3249,7 +3298,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3314,7 +3364,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3423,7 +3474,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3506,7 +3558,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3569,7 +3622,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3676,7 +3730,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3763,7 +3818,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3810,7 +3866,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3861,7 +3918,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3912,7 +3970,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -3963,7 +4022,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4018,7 +4078,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4073,7 +4134,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4132,7 +4194,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4235,7 +4298,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4330,7 +4394,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4385,7 +4450,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4464,7 +4530,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4519,7 +4586,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4594,7 +4662,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4661,7 +4730,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4720,7 +4790,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4767,7 +4838,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4814,7 +4886,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4873,7 +4946,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4932,7 +5006,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -4979,7 +5054,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5098,7 +5174,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5145,7 +5222,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5192,7 +5270,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5279,7 +5358,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5334,7 +5414,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5397,7 +5478,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5444,7 +5526,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5507,7 +5590,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5554,7 +5638,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5621,7 +5706,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5740,7 +5826,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5799,7 +5886,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -5846,7 +5934,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -6157,7 +6246,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -6216,7 +6306,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -6247,7 +6338,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -6315,7 +6407,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -6476,7 +6569,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -6657,7 +6751,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -6758,7 +6853,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -6927,7 +7023,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -7208,7 +7305,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -7317,7 +7415,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -7426,7 +7525,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -7555,7 +7655,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -8240,7 +8341,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -8357,7 +8459,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -8490,7 +8593,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -8623,7 +8727,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -8772,7 +8877,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -8949,7 +9055,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -9020,7 +9127,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -9067,7 +9175,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -9304,7 +9413,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -9542,7 +9652,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -9607,7 +9718,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -9840,7 +9952,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -9909,7 +10022,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -9973,7 +10087,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10058,7 +10173,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10089,7 +10205,8 @@
     ],
     "parent": "bc",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10149,7 +10266,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10180,7 +10298,8 @@
     ],
     "parent": "bc",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10265,7 +10384,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10386,7 +10506,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10417,7 +10538,8 @@
     ],
     "parent": "bc",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10448,7 +10570,8 @@
     ],
     "parent": "bc",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10474,7 +10597,8 @@
     "links": [],
     "parent": "bc",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10820,7 +10944,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -10956,7 +11081,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11117,7 +11243,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11198,7 +11325,8 @@
     ],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11234,14 +11362,16 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
     "address": null,
     "categories": {
       "outdoors": true,
-      "trail": true
+      "trail": true,
+      "wellness-walk": true
     },
     "center": [
       44.4667398699063,
@@ -11261,6 +11391,10 @@
       {
         "label": "Natural Lands rules",
         "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+      },
+      {
+        "label": "Wellness Walk guide",
+        "href": "https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Big-Pond-Loop.pdf"
       }
     ],
     "parent": null,
@@ -11270,7 +11404,14 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": {
+      "minutes": [
+        14,
+        17
+      ],
+      "accessibility": "Wide mowed grass and a stretch of gravel road; flat but for a small rise onto Campus Drive; two benches."
+    }
   },
   {
     "accessibility": "unknown",
@@ -11306,7 +11447,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11342,7 +11484,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11378,7 +11521,56 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "outdoors": true,
+      "trail": true,
+      "wellness-walk": true
+    },
+    "center": [
+      44.4701728581108,
+      -93.1888799462021
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "trail-eastprairieloop",
+    "name": "East Prairie Loop",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [
+      {
+        "label": "Natural Lands rules",
+        "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+      },
+      {
+        "label": "Wellness Walk guide",
+        "href": "https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-East-Prairie-Loop-2.pdf"
+      }
+    ],
+    "parent": null,
+    "length": 635,
+    "rules": [
+      "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+      "Dogs on a 6-foot leash.",
+      "Bikes allowed, except where signs say no bikes.",
+      "No camping or fires."
+    ],
+    "walk": {
+      "minutes": [
+        12,
+        15
+      ],
+      "accessibility": "Mowed dirt, 10 feet wide, gently up and down; one bench."
+    }
   },
   {
     "accessibility": "unknown",
@@ -11414,7 +11606,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11450,7 +11643,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11486,7 +11680,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11522,14 +11717,16 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
     "address": null,
     "categories": {
       "outdoors": true,
-      "trail": true
+      "trail": true,
+      "wellness-walk": true
     },
     "center": [
       44.4488934212502,
@@ -11549,6 +11746,10 @@
       {
         "label": "Natural Lands rules",
         "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+      },
+      {
+        "label": "Wellness Walk guide",
+        "href": "https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Lower-Heath-Creek-Trail.pdf"
       }
     ],
     "parent": null,
@@ -11558,14 +11759,22 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": {
+      "minutes": [
+        20,
+        20
+      ],
+      "accessibility": "A footpath along Heath Creek, with roots, ruts and steep stretches; not an easy walk."
+    }
   },
   {
     "accessibility": "unknown",
     "address": null,
     "categories": {
       "outdoors": true,
-      "trail": true
+      "trail": true,
+      "wellness-walk": true
     },
     "center": [
       44.4573948894413,
@@ -11585,6 +11794,10 @@
       {
         "label": "Natural Lands rules",
         "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+      },
+      {
+        "label": "Wellness Walk guide",
+        "href": "https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-Norway-Valley-2.pdf"
       }
     ],
     "parent": null,
@@ -11594,7 +11807,14 @@
       "Dogs on a 6-foot leash.",
       "No bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": {
+      "minutes": [
+        15,
+        15
+      ],
+      "accessibility": "Narrow gravel and dirt, 4 feet wide at most, up a steep hill with short steps."
+    }
   },
   {
     "accessibility": "unknown",
@@ -11630,7 +11850,8 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -11666,14 +11887,64 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": null
   },
   {
     "accessibility": "unknown",
     "address": null,
     "categories": {
       "outdoors": true,
-      "trail": true
+      "trail": true,
+      "wellness-walk": true
+    },
+    "center": [
+      44.4695094786965,
+      -93.1980447370102
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "trail-westprairieloop",
+    "name": "West Prairie Loop",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [
+      {
+        "label": "Natural Lands rules",
+        "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+      },
+      {
+        "label": "Wellness Walk guide",
+        "href": "https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-West-Prairie-Loop.pdf"
+      }
+    ],
+    "parent": null,
+    "length": 1147,
+    "rules": [
+      "Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.",
+      "Dogs on a 6-foot leash.",
+      "Bikes allowed, except where signs say no bikes.",
+      "No camping or fires."
+    ],
+    "walk": {
+      "minutes": [
+        15,
+        18
+      ],
+      "accessibility": "Mowed, 10 feet wide, one bench; flat but for small dips near the Coyote Ponds."
+    }
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "outdoors": true,
+      "trail": true,
+      "wellness-walk": true
     },
     "center": [
       44.4618137085939,
@@ -11693,6 +11964,10 @@
       {
         "label": "Natural Lands rules",
         "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
+      },
+      {
+        "label": "Wellness Walk guide",
+        "href": "https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-Windmill-Trail.pdf"
       }
     ],
     "parent": null,
@@ -11702,7 +11977,14 @@
       "Dogs on a 6-foot leash.",
       "Bikes allowed, except where signs say no bikes.",
       "No camping or fires."
-    ]
+    ],
+    "walk": {
+      "minutes": [
+        13,
+        16
+      ],
+      "accessibility": "Mowed, 10 feet wide, one bench; ruts in the low wetland stretch; downhill into the conifers at the northwest end."
+    }
   },
   {
     "accessibility": "unknown",
@@ -11733,7 +12015,8 @@
     ],
     "parent": "bc",
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -12020,7 +12303,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -12046,7 +12330,8 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   },
   {
     "accessibility": "unknown",
@@ -12295,6 +12580,7 @@
     "links": [],
     "parent": null,
     "length": null,
-    "rules": []
+    "rules": [],
+    "walk": null
   }
 ]

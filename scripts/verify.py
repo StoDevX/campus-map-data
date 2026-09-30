@@ -30,7 +30,7 @@ from pathlib import Path
 
 import geometry
 import yaml
-from build import RULES_LINK_LABEL, scraped_places
+from build import RULES_LINK_LABEL, WALK_LINK_LABEL, scraped_places
 from scrape import VOLATILE_FIELDS
 from sources import SOURCES, slugs
 
@@ -363,6 +363,62 @@ def verify_rules(report: Report, spec: dict, records: list[dict]) -> None:
             )
 
 
+# The guides' section of the walks page's snapshot, by its header: every walk
+# has a guide, and Windmill Trail's has no heading.
+GUIDES_SECTION = "# a.wp-block-file__button @href"
+
+
+def snapshot_section(snapshot: str, header: str) -> set[str]:
+    """The lines of one selector's section of a watch snapshot."""
+    section: set[str] = set()
+    inside = False
+    for line in snapshot.splitlines():
+        if line.startswith("# "):
+            inside = line == header
+        elif inside:
+            section.add(line)
+    return section
+
+
+def verify_walks(
+    report: Report, spec: dict, records: list[dict], snapshot: str | None
+) -> None:
+    """Every walk is whole on its place, and `walks:` links exactly the guides
+    the page does. The snapshot is data/watches/wellness-walks.txt: once the
+    watch's pull request records a changed walk, this fails until
+    overrides.yaml matches it."""
+    for record in records:
+        walking = "wellness-walk" in record["categories"]
+        has_walk = record.get("walk") is not None
+        guides = [
+            l for l in record.get("links") or [] if l.get("label") == WALK_LINK_LABEL
+        ]
+        report.check(
+            walking == has_walk,
+            f"{record['id']}: `walk` and the wellness-walk category disagree",
+        )
+        report.check(
+            len(guides) == (1 if has_walk else 0),
+            f"{record['id']}: has {len(guides)} Wellness Walk guide links",
+        )
+    if snapshot is None:
+        return
+    page = snapshot_section(snapshot, GUIDES_SECTION)
+    listed = {entry["pdf"] for entry in spec.get("walks") or [] if "pdf" in entry}
+    for missing in sorted(page - listed):
+        report.check(
+            False,
+            f"overrides.yaml: the walks page links {missing}, which no walk in "
+            f"`walks:` has -- update it to match data/watches/wellness-walks.txt",
+        )
+    for gone in sorted(listed - page):
+        report.check(
+            False,
+            f"overrides.yaml: `walks:` has {gone}, which the walks page no longer "
+            f"links -- update it to match data/watches/wellness-walks.txt",
+        )
+
+
 def verify_overrides(report: Report, records: list[dict]) -> None:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
     known = {record["id"] for record in records}
@@ -371,6 +427,13 @@ def verify_overrides(report: Report, records: list[dict]) -> None:
     trail_rows = json.loads((DATA / "natural-lands-trails.geojson").read_text())
     verify_trails(report, overrides.get("trails") or {}, trail_rows["features"])
     verify_rules(report, overrides.get("rules") or {}, records)
+    walks_snapshot = DATA / "watches" / "wellness-walks.txt"
+    verify_walks(
+        report,
+        overrides.get("walks") or {},
+        records,
+        walks_snapshot.read_text() if walks_snapshot.exists() else None,
+    )
 
     # A removal names a place by the id the build gives it, which the removed
     # place no longer has in map.json -- so rebuild the ids before removals to

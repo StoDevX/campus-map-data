@@ -196,3 +196,38 @@ rules:
     trail-norwayvalleytrail:
       "Bikes allowed, except where signs say no bikes.": No bikes.
 
+# The Wellness Walks the Natural Lands publishes, by hand: the page changes
+# rarely, and scripts/watch.py raises a pull request when it does. A walk
+# along a whole trail tags that trail; one along part of a trail -- the two
+# halves of Prairie Loop the guides call East and West -- becomes a place of
+# its own, drawn along that part. `accessibility` restates each guide's facts
+# in our own words; the guides themselves are linked, not copied.
+walks:
+  href: https://wp.stolaf.edu/naturallands/wellness-walks/
+  walks:
+    - trail: trail-bigpondloop
+      minutes: [14, 17]
+      pdf: https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Big-Pond-Loop.pdf
+      accessibility: Wide mowed grass and a stretch of gravel road; flat but for a small rise onto Campus Drive; two benches.
+    - trail: trail-norwayvalleytrail
+      minutes: [15, 15]
+      pdf: https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-Norway-Valley-2.pdf
+      accessibility: Narrow gravel and dirt, 4 feet wide at most, up a steep hill with short steps.
+    - trail: trail-windmilltrail
+      minutes: [13, 16]
+      pdf: https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-Windmill-Trail.pdf
+      accessibility: Mowed, 10 feet wide, one bench; ruts in the low wetland stretch; downhill into the conifers at the northwest end.
+    - trail: trail-lowerheathcreektrail
+      minutes: [20, 20]
+      pdf: https://wp.stolaf.edu/naturallands/files/2025/10/Wellness-Walks_-Lower-Heath-Creek-Trail.pdf
+      accessibility: A footpath along Heath Creek, with roots, ruts and steep stretches; not an easy walk.
+    - name: East Prairie Loop
+      part: {trail: Prairie Loop, index: 0}
+      minutes: [12, 15]
+      pdf: https://wp.stolaf.edu/naturallands/files/2025/10/Suggested-Walks_-East-Prairie-Loop-2.pdf
+      accessibility: Mowed dirt, 10 feet wide, gently up and down; one bench.
+    - name: West Prairie Loop
+      part: {trail: Prairie Loop, index: 1}
+      minutes: [15, 18]
+      pdf: https://wp.stolaf.edu/naturallands/files/2025/09/Wellness-Walks_-West-Prairie-Loop.pdf
+      accessibility: Mowed, 10 feet wide, one bench; flat but for small dips near the Coyote Ponds.

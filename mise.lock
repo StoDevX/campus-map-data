@@ -89,6 +89,31 @@ checksum = "sha256:a658baa4d7e55020aef6ca17bd9ff9faa1582671266b36f58c52db0ac8e78
 url = "https://github.com/protomaps/go-pmtiles/releases/download/v1.31.2/go-pmtiles_1.31.2_Windows_x86_64.zip"
 url_api = "https://api.github.com/repos/protomaps/go-pmtiles/releases/assets/486313537"
 
+[[tools.htmlq]]
+version = "0.4.0"
+backend = "aqua:mgdm/htmlq"
+specifiers = ["0.4.0"]
+
+[tools.htmlq."platforms.linux-x64"]
+url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-linux.tar.gz"
+url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128274"
+
+[tools.htmlq."platforms.linux-x64-musl"]
+url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-linux.tar.gz"
+url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128274"
+
+[tools.htmlq."platforms.macos-arm64"]
+url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-darwin.tar.gz"
+url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128388"
+
+[tools.htmlq."platforms.macos-x64"]
+url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-darwin.tar.gz"
+url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128388"
+
+[tools.htmlq."platforms.windows-x64"]
+url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-windows.zip"
+url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128332"
+
 [[tools.node]]
 version = "26.7.0"
 backend = "core:node"
