@@ -30,7 +30,7 @@ from pathlib import Path
 
 import geometry
 import yaml
-from build import assign_ids, read_places, source_index
+from build import scraped_places
 from scrape import VOLATILE_FIELDS
 from sources import SOURCES, slugs
 
@@ -283,8 +283,7 @@ def verify_overrides(report: Report, records: list[dict]) -> None:
     # it is back in the dataset under its new id.
     removals = [entry["id"] for entry in overrides.get("removals") or []]
     if removals:
-        scraped, _ = read_places(source_index())
-        assign_ids(scraped, overrides)
+        scraped, _ = scraped_places(overrides)
         scraped_ids = {place["id"] for place in scraped}
         for removal in removals:
             report.check(

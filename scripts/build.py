@@ -274,8 +274,8 @@ def merge_split_lots(places: list[dict]) -> list[dict]:
 
 
 # How far from a lot or building an accessible spot may sit and still be named
-# for it. Twenty of the 26 sit inside a lot, five within 18 m of one, and one
-# 19 m from New Hall, which has no lot of its own.
+# for it. Twenty-three of the 26 sit inside a lot, two within 10 m of one, and
+# one 19 m from New Hall, which has no lot of its own.
 ACCESSIBLE_REACH_M = 25
 
 
@@ -310,6 +310,15 @@ def name_accessible_spots(places: list[dict]) -> None:
                 spot["parent"] = nearest["id"]
                 spot["name"] = f"Accessible Parking, {nearest['name']}"
                 break
+
+
+def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
+    """The places as scraped, merged and given ids -- before overrides touch
+    them. What an `overrides.yaml` id has to match. Plus what was dropped."""
+    places, dropped = read_places(source_index())
+    places = merge_split_lots(places)
+    assign_ids(places, overrides)
+    return places, dropped
 
 
 def assign_ids(places: list[dict], overrides: dict) -> None:
@@ -490,10 +499,7 @@ def feature(place: dict) -> dict:
 
 def main() -> int:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
-    places, dropped = read_places(source_index())
-    places = merge_split_lots(places)
-
-    assign_ids(places, overrides)
+    places, dropped = scraped_places(overrides)
     places = apply_overrides(places, overrides)
     name_accessible_spots(places)
     attach_floors(places)
