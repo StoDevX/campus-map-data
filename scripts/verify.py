@@ -205,6 +205,26 @@ def verify_map_geojson(report: Report, records: list[dict]) -> None:
                 f"— set a centerpoint for it in overrides.yaml",
             )
 
+        lines = [
+            member
+            for member in members
+            if member["type"] in ("LineString", "MultiLineString")
+        ]
+        if points and lines and not areas:
+            anchor = points[0]["coordinates"]
+            # `label_anchor` takes a line's middle vertex, so the anchor is one
+            # of the line's own positions. A `centerpoint` override is the only
+            # way it can leave the line.
+            report.check(
+                any(
+                    position == anchor
+                    for member in lines
+                    for position in geometry.positions(member)
+                ),
+                f"{feature['id']}: label anchor {anchor} is not on its own line "
+                f"— set a centerpoint for it in overrides.yaml",
+            )
+
 
 def verify_overrides(report: Report, records: list[dict]) -> None:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
