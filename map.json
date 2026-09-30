@@ -6868,7 +6868,7 @@
       -93.18265949637752
     ],
     "departments": [],
-    "description": null,
+    "description": "North of the pond stand the first forests the Natural Lands planted, in 1988 and 1989, on farmland the college took out of production.",
     "floors": [],
     "id": "pond-baseballpond",
     "name": "Baseball Pond",
@@ -7038,7 +7038,7 @@
       -93.19281416242276
     ],
     "departments": [],
-    "description": null,
+    "description": "The largest of the Natural Lands' wetlands, with up to 9 acres of open water. It drained dry until a weir gate went in with the 1993 restorations; now as many as 500 waterfowl rest here at once during spring and fall migration.",
     "floors": [],
     "id": "pond-bigpond",
     "name": "Big Pond",
@@ -7320,7 +7320,7 @@
       -93.19247755363409
     ],
     "departments": [],
-    "description": null,
+    "description": "Sits in open prairie sown in 2004. A 2020 student bird survey used it as a pure-prairie site, and found the Natural Lands' prairies home to the birds of tallgrass prairie, such as American goldfinches and yellow-rumped warblers.",
     "floors": [],
     "id": "pond-dragonflypond",
     "name": "Dragonfly Pond",
@@ -7403,6 +7403,10 @@
     "abbreviation": null,
     "type": null,
     "links": [
+      {
+        "label": "2020 bird survey",
+        "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
+      },
       {
         "label": "Natural Lands rules",
         "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
@@ -7540,7 +7544,7 @@
       -93.19622817194812
     ],
     "departments": [],
-    "description": null,
+    "description": "In the Natural Lands' oak savanna: bur and red oaks left standing when a small oak planting was thinned to keep the prairie open. In a 2020 student bird survey, the edge where its prairie meets the savanna drew more kinds of birds than open prairie.",
     "floors": [],
     "id": "pond-eastcoyotepond",
     "name": "East Coyote Pond",
@@ -7643,6 +7647,10 @@
     "abbreviation": null,
     "type": null,
     "links": [
+      {
+        "label": "2020 bird survey",
+        "href": "https://wp.stolaf.edu/naturallands/2024/03/18/bird-diversity-and-prairie-restoration/"
+      },
       {
         "label": "Natural Lands rules",
         "href": "https://wp.stolaf.edu/naturallands/visitor-information-and-rules/"
@@ -8608,7 +8616,7 @@
       -93.19998563421387
     ],
     "departments": [],
-    "description": null,
+    "description": "Borders the James Farm prairie, the newest in the Natural Lands: 9 acres of farmland sown with more than 125 native species in 2023. Drain tiles pulled from the field then should make the pond wetter.",
     "floors": [],
     "id": "pond-southeavespond",
     "name": "South Eaves Pond",
@@ -8742,7 +8750,7 @@
       -93.19715715593807
     ],
     "departments": [],
-    "description": null,
+    "description": "In the Natural Lands' oak savanna: bur and red oaks left standing when a small oak planting was thinned to keep the prairie open.",
     "floors": [],
     "id": "pond-westcoyotepond",
     "name": "West Coyote Pond",
@@ -8892,7 +8900,7 @@
       -93.19684018441694
     ],
     "departments": [],
-    "description": null,
+    "description": "Sits in forest planted from 1998 to 2004 on farmland west of the Windmill Trail.",
     "floors": [],
     "id": "pond-woodlandpond",
     "name": "Woodland Pond",
@@ -11340,7 +11348,7 @@
       -93.1835406
     ],
     "departments": [],
-    "description": null,
+    "description": "Runs through the 1988 and 1989 plantings, the Natural Lands' first forests: 20 to 30 native tree species set out at about 500 trees an acre.",
     "floors": [],
     "id": "trail-baseballpondloop",
     "name": "Baseball Pond Loop",
@@ -11378,7 +11386,7 @@
       -93.195082
     ],
     "departments": [],
-    "description": null,
+    "description": "Circles Big Pond and the prairie planted around it in 1993. In 2001, fireworks at a presidential inauguration ball set the prairie north of the loop alight; the fire burned out against the trail and Campus Drive.",
     "floors": [],
     "id": "trail-bigpondloop",
     "name": "Big Pond Loop",
@@ -11425,7 +11433,7 @@
       -93.1892612
     ],
     "departments": [],
-    "description": null,
+    "description": "In Heath Creek's forest, by the 2009 planting: the first restoration there, where a corn field was seeded straight to trees.",
     "floors": [],
     "id": "trail-bigwoodstrail",
     "name": "Big Woods Trail",
@@ -11462,7 +11470,7 @@
       -93.1878167
     ],
     "departments": [],
-    "description": null,
+    "description": "Crosses the Heath Creek forest, about 75 acres around a stretch of the creek.",
     "floors": [],
     "id": "trail-burroaktrail",
     "name": "Burr Oak Trail",
@@ -11499,7 +11507,7 @@
       -93.1971435
     ],
     "departments": [],
-    "description": null,
+    "description": "Runs along conifers planted in 1993 and 1999 to stand in for the forests of northern Minnesota: mostly white, jack and red pine, with fir, spruce, cedar and tamarack.",
     "floors": [],
     "id": "trail-conifertrail",
     "name": "Conifer Trail",
@@ -11537,7 +11545,7 @@
       -93.1888799
     ],
     "departments": [],
-    "description": null,
+    "description": "Crosses prairie sown from 2002 to 2004 on about 100 acres of former farmland, restored under a federal wildlife easement. It is burned every four to six years to keep it prairie.",
     "floors": [],
     "id": "trail-eastprairieloop",
     "name": "East Prairie Loop",
@@ -11584,7 +11592,7 @@
       -93.1788333
     ],
     "departments": [],
-    "description": null,
+    "description": "The woods below Ellingson Hall were one of only three natural areas on campus in 1980, when the Natural Lands began. North of the trail is a 1992 planting of hand-set seedlings on what had been mown lawn.",
     "floors": [],
     "id": "trail-ellingsonwoodstrail",
     "name": "Ellingson Woods Trail",
@@ -11621,7 +11629,7 @@
       -93.1895843
     ],
     "departments": [],
-    "description": null,
+    "description": "One of two forests planted in 1990 at about 500 trees an acre, on farmland the college enrolled in a federal conservation program. Some seedlings grew in plastic tubes, an early test of how to help them survive.",
     "floors": [],
     "id": "trail-forestrestorationloop1",
     "name": "Forest Restoration Loop 1",
@@ -11658,7 +11666,7 @@
       -93.1908953
     ],
     "departments": [],
-    "description": null,
+    "description": "One of two forests planted in 1990 at about 500 trees an acre, on farmland the college enrolled in a federal conservation program. Some seedlings grew in plastic tubes, an early test of how to help them survive.",
     "floors": [],
     "id": "trail-forestrestorationloop2",
     "name": "Forest Restoration Loop 2",
@@ -11695,7 +11703,7 @@
       -93.1861085
     ],
     "departments": [],
-    "description": null,
+    "description": "Winds through a forest planted in 1989, one of the Natural Lands' first.",
     "floors": [],
     "id": "trail-knollloop",
     "name": "Knoll Loop",
@@ -11733,7 +11741,7 @@
       -93.1893472
     ],
     "departments": [],
-    "description": null,
+    "description": "Follows Heath Creek, which flows on to the Cannon River, past a 2017 planting, the first to include trees suited to a warmer climate, such as Kentucky coffee tree and swamp white oak.",
     "floors": [],
     "id": "trail-lowerheathcreektrail",
     "name": "Lower Heath Creek Trail",
@@ -11781,7 +11789,7 @@
       -93.1842606
     ],
     "departments": [],
-    "description": null,
+    "description": "Norway Valley is the oldest forest on campus, 15 acres of maple and basswood. Its big trees were logged before the college bought the land in the 1800s, and spring wildflowers cover the ground before the leaves come out.",
     "floors": [],
     "id": "trail-norwayvalleytrail",
     "name": "Norway Valley Trail",
@@ -11828,7 +11836,7 @@
       -93.1941119
     ],
     "departments": [],
-    "description": null,
+    "description": "Crosses prairie sown from 2002 to 2004 on about 100 acres of former farmland, restored under a federal wildlife easement. It is burned every four to six years to keep it prairie.",
     "floors": [],
     "id": "trail-prairieloop",
     "name": "Prairie Loop",
@@ -11865,7 +11873,7 @@
       -93.1904741
     ],
     "departments": [],
-    "description": null,
+    "description": "In Heath Creek's forest, by the 2009 planting: the first restoration there, where a corn field was seeded straight to trees.",
     "floors": [],
     "id": "trail-robintrail",
     "name": "Robin Trail",
@@ -11903,7 +11911,7 @@
       -93.1980447
     ],
     "departments": [],
-    "description": null,
+    "description": "Crosses prairie sown from 2002 to 2004 on about 100 acres of former farmland, restored under a federal wildlife easement. It is burned every four to six years to keep it prairie.",
     "floors": [],
     "id": "trail-westprairieloop",
     "name": "West Prairie Loop",
@@ -11951,7 +11959,7 @@
       -93.1947645
     ],
     "departments": [],
-    "description": null,
+    "description": "Follows a natural gas pipeline laid through the Natural Lands in 2007, past Big Ole, the college's wind turbine. The young trees on either side were seeded in 2002.",
     "floors": [],
     "id": "trail-windmilltrail",
     "name": "Windmill Trail",
