@@ -1,7 +1,7 @@
 """Building a trail from the college's segments."""
 
 import pytest
-from build import assemble_trails
+from build import assemble_trails, drop_superseded
 
 
 def segment(fid: int, coordinates: list) -> dict:
@@ -143,3 +143,22 @@ def test_a_segment_meeting_another_partway_along_it_touches_it():
         {"trails": [{"name": "Robin Trail", "segments": [2, 4], "miles": 0.19}]},
     )
     assert len(trail["geometry"]["coordinates"]) == 2
+
+
+def test_a_superseded_source_trail_is_dropped_and_nothing_else():
+    def place(slug, name):
+        return {"slug": slug, "name": name}
+
+    places = [
+        place("natural-lands-trails", "Heath Creek Trail"),
+        place("natural-lands-trails", "Big Pond Loop"),
+        # The same name in another layer is some other place.
+        place("water", "Heath Creek Trail"),
+    ]
+    kept = drop_superseded(places, {"supersedes": ["Heath Creek Trail"]})
+    assert kept == places[1:]
+
+
+def test_no_supersedes_drops_nothing():
+    places = [{"slug": "natural-lands-trails", "name": "Big Pond Loop"}]
+    assert drop_superseded(places, {}) == places

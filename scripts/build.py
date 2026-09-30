@@ -565,17 +565,23 @@ def apply_walks(places: list[dict], spec: dict) -> None:
             links.append(link)
 
 
+def drop_superseded(places: list[dict], spec: dict) -> list[dict]:
+    """The places less the college's trails that `trails: supersedes` names,
+    which the trails assembled from its segments replace."""
+    superseded = set(spec.get("supersedes") or [])
+    return [
+        place
+        for place in places
+        if not (place["slug"] == "natural-lands-trails" and place["name"] in superseded)
+    ]
+
+
 def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     """The places as scraped, merged and given ids -- before overrides touch
     them. What an `overrides.yaml` id has to match. Plus what was dropped."""
     places, dropped = read_places(source_index())
     trails = overrides.get("trails") or {}
-    superseded = set(trails.get("supersedes") or [])
-    places = [
-        place
-        for place in places
-        if not (place["slug"] == "natural-lands-trails" and place["name"] in superseded)
-    ]
+    places = drop_superseded(places, trails)
     segments = json.loads((DATA / "natural-lands-segments.geojson").read_text())
     places += assemble_trails(segments["features"], trails)
     places = merge_split_lots(places)
