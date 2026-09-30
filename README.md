@@ -256,6 +256,7 @@ $ curl https://mise.run | sh
 $ mise install
 $ uv sync --locked
 $ uv run scripts/scrape.py     # ArcGIS  -> data/*.geojson
+$ uv run scripts/scrape.py --check   # report without writing; exits 1 on drift
 $ uv run scripts/enrich.py     # WordPress -> data/residence-life.json
 $ uv run scripts/build.py      # + overrides.yaml -> map.json, map.geojson
 $ uv run scripts/verify.py
