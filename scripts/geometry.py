@@ -32,7 +32,10 @@ Ring = list[Position]
 
 
 def round_coords(value):
-    """Recursively round every coordinate in a GeoJSON coordinate structure."""
+    """Recursively round every coordinate in a GeoJSON geometry, or in its
+    bare coordinates."""
+    if isinstance(value, dict):
+        return {key: round_coords(item) for key, item in value.items()}
     if isinstance(value, list):
         return [round_coords(item) for item in value]
     if isinstance(value, float):
