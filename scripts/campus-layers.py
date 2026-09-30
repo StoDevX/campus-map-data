@@ -5,11 +5,11 @@
 label anchors. St. Olaf's dataset does not fit that shape, and forcing it to
 would produce a bad map:
 
-    buildings  38          parking  72          athletics  8    poi  10
+    buildings  38          parking  65          athletics  8    poi  10
 
-**More than half of the places are parking.** Putting 46 parking polygons into
+**Nearly half of the places are parking.** Putting 39 parking polygons into
 a layer called `campus_buildings` would be a lie the style then has to work
-around, and drawing 72 parking labels at the same zoom as the 38 building
+around, and drawing 65 parking labels at the same zoom as the 38 building
 labels makes the campus unreadable. So the polygons split by what they are, and
 every anchor carries a `kind` the style can gate on zoom.
 
@@ -52,9 +52,9 @@ import sys
 # Tostrud — is a building, which is how someone looking for it thinks of it.
 KINDS = (
     ("building", "campus_buildings"),
-    # Before `parking`, which these also are. They are 26 points that all share
-    # the name "Accessible Parking", so the style needs to tell them apart from
-    # named lots in order not to stamp the same label 26 times across campus.
+    # Before `parking`, which these also are. They are 26 points whose names
+    # all begin "Accessible Parking", so the style needs to tell them apart from
+    # named lots in order not to stamp that label 26 times across campus.
     ("accessible-parking", None),
     ("parking", "campus_grounds"),
     ("athletics", "campus_grounds"),

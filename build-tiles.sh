@@ -135,8 +135,8 @@ PAGES_FILE_LIMIT=100000000
 # drift never trips them. A bbox or zoom change in TIERS moves the tile count
 # and archive size, and is expected to move these with it.
 MIN_CAMPUS_BUILDINGS=34   # currently 38
-MIN_CAMPUS_GROUNDS=48     # currently 54
-MIN_CAMPUS_LABELS=135     # currently 151
+MIN_CAMPUS_GROUNDS=42     # currently 47
+MIN_CAMPUS_LABELS=130     # currently 144
 MIN_CAMPUS_PATHS=12       # currently 14: the 12 named trails, then walkways
                           # and the other trail segments merged
 MIN_TILES=900             # currently ~985
@@ -258,9 +258,15 @@ for tier in "${TIERS[@]}"; do
   tbbox="${rest#*:}"
   f="$WORK/tiers/z${minz}-${maxz}.pmtiles"
   echo "  z${minz}-z${maxz}  $tbbox"
-  $PMTILES extract "$PLANET_URL" "$f" \
-    --bbox="$tbbox" --minzoom="$minz" --maxzoom="$maxz" 2>&1 |
-    grep -E 'Extract transferred|Region tiles' | sed 's/^/    /'
+  # The summary lines only, unless the extract fails: then everything it said,
+  # since a filtered log hides the one line that explains the failure.
+  if ! $PMTILES extract "$PLANET_URL" "$f" \
+    --bbox="$tbbox" --minzoom="$minz" --maxzoom="$maxz" >"$WORK/extract.log" 2>&1; then
+    echo "ERROR: pmtiles extract failed for z${minz}-z${maxz}:" >&2
+    sed 's/^/    /' "$WORK/extract.log" >&2
+    exit 1
+  fi
+  grep -E 'Extract transferred|Region tiles' "$WORK/extract.log" | sed 's/^/    /'
   TIER_FILES+=("$f")
 done
 

@@ -44,6 +44,7 @@ from __future__ import annotations
 
 import html
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -239,6 +240,113 @@ def read_places(sources_by_title: dict) -> tuple[list[dict], list[str]]:
     return places, dropped
 
 
+# How far a piece may lie from the rest of its lot and still be merged into it.
+# The widest gap between two pieces of one lot today is Below Regents Hall's,
+# about 20 m.
+LOT_PIECE_REACH_M = 50
+
+# What pieces of one lot are expected to agree on. The description is compared
+# after `plain_text`, so pieces that differ only in whitespace agree.
+LOT_PIECE_FIELDS = ("description", "type", "categories", "links")
+
+
+def merge_split_lots(places: list[dict]) -> list[dict]:
+    """One place per parking lot, however many pieces the college draws it in.
+
+    Six lots come as two or three polygons under one name -- Porter is three --
+    with the same description on each piece. As separate places they list as
+    several lots of one name and number their ids, and nothing says which
+    piece is which, because nothing tells them apart. Merged, each is one
+    MultiPolygon, as the two buildings drawn in pieces already are.
+
+    A piece more than `LOT_PIECE_REACH_M` from the rest is another lot that
+    shares the name, and stays apart -- where verify.py then reports the two
+    names. A piece that disagrees with the first on anything but its shape is
+    merged, keeping the first's fields, and reported.
+    """
+    kept: list[dict] = []
+    by_name: dict[str, dict] = {}
+    for place in places:
+        if place["slug"] != "parking-lots":
+            kept.append(place)
+            continue
+        first = by_name.get(place["name"])
+        if first is None or not near(place["geometry"], first["geometry"]):
+            by_name.setdefault(place["name"], place)
+            kept.append(place)
+            continue
+        differ = [f for f in LOT_PIECE_FIELDS if place.get(f) != first.get(f)]
+        if differ:
+            print(
+                f"  ! {place['name']!r}: pieces disagree on {', '.join(differ)}; "
+                "keeping the first's",
+                file=sys.stderr,
+            )
+        first["geometry"] = {
+            "type": "MultiPolygon",
+            "coordinates": geometry.polygons(first["geometry"])
+            + geometry.polygons(place["geometry"]),
+        }
+    return kept
+
+
+def near(piece: dict, lot: dict) -> bool:
+    """Whether any corner of `piece` lies within `LOT_PIECE_REACH_M` of `lot`."""
+    return any(
+        geometry.distance_m(corner, lot) <= LOT_PIECE_REACH_M
+        for corner in geometry.positions(piece)
+    )
+
+
+# How far from a lot or building an accessible spot may sit and still be named
+# for it. Twenty-three of the 26 sit inside a lot, two within 10 m of one, and
+# one 19 m from New Hall, which has no lot of its own.
+ACCESSIBLE_REACH_M = 25
+
+
+def name_accessible_spots(places: list[dict]) -> None:
+    """Name each accessible spot for the lot it is in, or failing that the lot
+    or building nearest it, and make that its parent.
+
+    The layer is 26 points with no name at all, so all 26 read "Accessible
+    Parking". Derived rather than hand-written, unlike the rooms' parents under
+    `changes`: a spot the college adds or moves is named on the next scrape,
+    and one out of reach of everything is left alone for verify.py to report.
+    """
+    lots = [place for place in places if place["slug"] == "parking-lots"]
+    buildings = [place for place in places if place["slug"] == "buildings"]
+    for spot in places:
+        if spot["slug"] != "accessible-parking":
+            continue
+        # A parent set by hand in overrides.yaml knows better than the geometry.
+        if spot.get("parent"):
+            continue
+        point = geometry.positions(spot["geometry"])[0]
+        for candidates in (lots, buildings):
+            # Ties go to the lower id, so a rebuild names a spot the same way.
+            distance, _, nearest = min(
+                (
+                    (geometry.distance_m(point, place["geometry"]), place["id"], place)
+                    for place in candidates
+                ),
+                key=lambda entry: entry[:2],
+                default=(math.inf, "", None),
+            )
+            if nearest is not None and distance <= ACCESSIBLE_REACH_M:
+                spot["parent"] = nearest["id"]
+                spot["name"] = f"Accessible Parking, {nearest['name']}"
+                break
+
+
+def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
+    """The places as scraped, merged and given ids -- before overrides touch
+    them. What an `overrides.yaml` id has to match. Plus what was dropped."""
+    places, dropped = read_places(source_index())
+    places = merge_split_lots(places)
+    assign_ids(places, overrides)
+    return places, dropped
+
+
 def assign_ids(places: list[dict], overrides: dict) -> None:
     """Give every place a stable, unique id.
 
@@ -246,11 +354,12 @@ def assign_ids(places: list[dict], overrides: dict) -> None:
     would collide across layers — the parking lot beside Rand Hall is called
     "Rand" too. `overrides.yaml`'s `ids:` map overrides it by source name.
 
-    Several places genuinely share a name: three separate polygons are all
-    called "Porter", and the accessible-parking layer is 26 points with no name
-    at all. Those are numbered — and numbered **from 1**, so no arbitrary member
-    of the group gets to be the unsuffixed one. `verify.py` reports them,
-    because a numbered id usually means the source data wants an override.
+    Several places genuinely share a name: the accessible-parking layer is 26
+    points with no name at all, and are named for their lots only after ids
+    are given. Those are numbered — and numbered **from 1**, so no arbitrary
+    member of the group gets to be the unsuffixed one. `verify.py` reports ids
+    numbered for a name still shared, because that usually means the source
+    data wants an override.
     """
     # Scoped by layer, because a bare name is ambiguous across layers: the
     # parking lot beside Old Main is also called "Old Main", and a flat
@@ -417,10 +526,9 @@ def feature(place: dict) -> dict:
 
 def main() -> int:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
-    places, dropped = read_places(source_index())
-
-    assign_ids(places, overrides)
+    places, dropped = scraped_places(overrides)
     places = apply_overrides(places, overrides)
+    name_accessible_spots(places)
     attach_floors(places)
     places.sort(key=lambda place: place["id"])
 

@@ -12,7 +12,7 @@ requires-python = ">=3.13"
 dependencies = ["pyyaml==6.0.3", "pmtiles==3.7.0"]
 
 [dependency-groups]
-dev = ["ruff==0.16.2"]
+dev = ["pytest==9.1.1", "ruff==0.16.2"]
 
 [tool.ruff.lint]
 extend-select = [
@@ -21,3 +21,8 @@ extend-select = [
   "B",    # bugbear
   "SIM",  # simplify
 ]
+
+# The scripts import each other as top-level modules, as they do when run.
+[tool.pytest.ini_options]
+pythonpath = ["scripts"]
+testpaths = ["tests"]

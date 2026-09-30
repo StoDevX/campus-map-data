@@ -13,7 +13,7 @@ Two things, for two different readers.
 | | What it is | Read it if |
 | --- | --- | --- |
 | `data/*.geojson` | One file per source layer, the college's field names untouched | You want St. Olaf's data as St. Olaf publishes it |
-| `map.json`, `map.geojson` | 151 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
+| `map.json`, `map.geojson` | 144 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
 | `routing.json` | A pedestrian routing graph | You want to walk someone from one door to another |
 | `vendor/ole-compass/` | The 2016 survey `routing.json` is built from | You are changing how the graph is georeferenced |
 
@@ -64,13 +64,13 @@ admissions, the windmill) that are one concept split across seven layer ids.
 
 ## The published dataset
 
-`map.json` and `map.geojson` hold **151 places, 103 with a footprint** — against
+`map.json` and `map.geojson` hold **144 places, 96 with a footprint** — against
 Carleton's 124 and 96, which is a fair indication the two datasets are of
 comparable use.
 
 | | Places |
 | --- | ---: |
-| Parking (lots, accessible stalls) | 72 |
+| Parking (lots, accessible stalls) | 65 |
 | Buildings | 38 |
 | Trails | 12 |
 | Ponds | 11 |
@@ -105,13 +105,15 @@ abbreviations — `RNS`, `BMC`, `TOH`, the identifiers people on campus actually
 use — to preserve an exact field list would be throwing away good data for a bad
 reason.
 
-`parent` names the building a place sits inside, and is null for everything that
-is a building or is in none. St. Olaf publishes its dining rooms, its bookstore
-and its admissions office as points within a footprint rather than as footprints
+`parent` names the area a point-only place belongs to, and is null for
+everything else. St. Olaf publishes its dining rooms, its bookstore and its
+admissions office as points within a footprint rather than as footprints
 themselves, so a consumer asked to frame or highlight one has no area to draw
-until it follows this key. It is set by hand in `overrides.yaml`; verify.py
-rejects a parent that names no place, names the place itself, or names a place
-with no footprint of its own.
+until it follows this key. For those it is the building they sit inside, set by
+hand in `overrides.yaml`; verify.py rejects a parent that names no place, names
+the place itself, or names a place with no footprint of its own. For the
+accessible-parking spots `build.py` sets it: the lot a spot sits in, or the lot
+or building within 25 m of it -- one spot is beside New Hall rather than in it.
 
 ### Watch the coordinate order
 
@@ -139,7 +141,7 @@ horseshoe-shaped, which on this campus means Old Main, the Ade Christenson
 Complex and most of the lots that wrap a building. A label anchored outside its
 own building points at the wrong thing. So `scripts/geometry.py` uses the
 centroid when it lands inside the polygon and computes a guaranteed-interior
-point otherwise. All 103 polygonal places currently anchor inside their own
+point otherwise. All 96 polygonal places currently anchor inside their own
 footprint, and `verify.py` fails the build if that ever stops being true. A
 trail's anchor is the middle vertex of its line, and `verify.py` fails the
 build if one ever leaves it.
@@ -199,10 +201,18 @@ Ids default to the name with its spaces and punctuation removed, in Carleton's
 style: `oldmain`, `randhall`, `regentshallofnaturalsciences`. Places from
 non-building layers are prefixed (`lot-`, `field-`) because the parking lot
 beside Rand Hall is also called Rand. Where several places genuinely share a
-name — three separate polygons are all called "Porter" — the ids are numbered
-from 1, so no arbitrary member of the group gets to be the unsuffixed one.
-`verify.py` lists them, since a numbered id usually means the source wants an
-override.
+name the ids are numbered from 1, so no arbitrary member of the group gets to
+be the unsuffixed one. `verify.py` lists them, since a numbered id usually
+means the source wants an override.
+
+Two kinds of shared name are resolved in `build.py` instead. A lot the college
+draws in pieces — Porter is three polygons, five more lots are two — becomes
+one place with a MultiPolygon. And the 26 accessible-parking points, which
+carry no name at all, are each named for the lot they sit in, or failing that
+the lot or building within 25 m of them — "Accessible Parking, Porter Hall
+Parking" — which becomes their `parent`. Their ids stay numbered; their names
+are what tell them apart. `verify.py` fails if a lot name repeats or a spot
+has nothing within reach.
 
 ## Determinism is the whole design
 
@@ -323,19 +333,19 @@ its own campus.
 map-tiles tiles Carleton's data as footprints and label anchors. St. Olaf's does
 not fit that shape:
 
-    buildings 38     parking 72     athletics 8     poi 10
+    buildings 38     parking 65     athletics 8     poi 10
 
-**More than half the places are parking.** Putting 46 parking polygons in a
+**Nearly half the places are parking.** Putting 39 parking polygons in a
 layer called `campus_buildings` would be a lie the style then has to work
-around, and drawing 72 parking labels at the zoom where you want building names
+around, and drawing 65 parking labels at the zoom where you want building names
 buries the campus. So:
 
 | Layer | Geometry | Features | Zooms |
 | --- | --- | ---: | --- |
 | `campus_buildings` | MultiPolygon | 38 | z14+ |
-| `campus_grounds` | MultiPolygon | 54 | z14+ |
+| `campus_grounds` | MultiPolygon | 47 | z14+ |
 | `campus_paths` | MultiLineString | 168 lines in 14 features | z15+ |
-| `campus_labels` | Point | 151 | z15+ |
+| `campus_labels` | Point | 144 | z15+ |
 
 Every anchor carries a `kind`, which is what lets the style bring each sort of
 place in at the zoom where it stops being clutter — buildings at z15, points of
@@ -343,8 +353,8 @@ interest, fields, ponds and trails at z16, parking at z17. `buildingId` is on
 every place's feature in every layer and is the source feature's `id`, the same
 property name map-tiles uses, so AAO's selection code keys off it unchanged.
 
-The 26 accessible-parking points get their own `kind` for one reason: they all
-share the name "Accessible Parking", and without it the style stamps that label
+The 26 accessible-parking points get their own `kind` for one reason: every
+label would begin "Accessible Parking", and without it the style stamps that
 26 times across campus.
 
 Most of `campus_paths` comes from `data/` rather than `map.geojson`, because

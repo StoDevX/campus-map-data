@@ -20,6 +20,7 @@ projecting first is far below the precision anyone can place a label to by hand.
 from __future__ import annotations
 
 import itertools
+import math
 
 # ~1.1 cm at this latitude. Enough that no two distinct places collide, small
 # enough that float formatting noise cannot produce a spurious diff in the
@@ -219,3 +220,40 @@ def label_anchor(geometry: dict | None) -> Position | None:
     # Nothing worked, which means the ring is degenerate. The centroid is still
     # a better answer than nothing.
     return [x, y]
+
+
+def distance_m(point: Position, geometry: dict | None) -> float:
+    """Metres from a point to a geometry: 0 inside an area, else to its edge.
+
+    Measured on a flat projection centred on the point, which across a campus
+    is off by far less than the width of a parking space.
+    """
+    lon0, lat0 = point[0], point[1]
+    scale_x = math.cos(math.radians(lat0)) * 111_320
+    scale_y = 110_540
+
+    def local(position: Position) -> tuple[float, float]:
+        return (position[0] - lon0) * scale_x, (position[1] - lat0) * scale_y
+
+    def to_segment(a: Position, b: Position) -> float:
+        (ax, ay), (bx, by) = local(a), local(b)
+        dx, dy = bx - ax, by - ay
+        length = dx * dx + dy * dy
+        t = 0 if length == 0 else max(0, min(1, -(ax * dx + ay * dy) / length))
+        return math.hypot(ax + t * dx, ay + t * dy)
+
+    shapes = polygons(geometry)
+    if any(point_in_polygon(point, rings) for rings in shapes):
+        return 0.0
+    edges = [
+        (ring[i], ring[i + 1])
+        for rings in shapes
+        for ring in rings
+        for i in range(len(ring) - 1)
+    ]
+    if edges:
+        return min(to_segment(a, b) for a, b in edges)
+    return min(
+        (math.hypot(*local(position)) for position in positions(geometry)),
+        default=math.inf,
+    )
