@@ -258,9 +258,15 @@ for tier in "${TIERS[@]}"; do
   tbbox="${rest#*:}"
   f="$WORK/tiers/z${minz}-${maxz}.pmtiles"
   echo "  z${minz}-z${maxz}  $tbbox"
-  $PMTILES extract "$PLANET_URL" "$f" \
-    --bbox="$tbbox" --minzoom="$minz" --maxzoom="$maxz" 2>&1 |
-    grep -E 'Extract transferred|Region tiles' | sed 's/^/    /'
+  # The summary lines only, unless the extract fails: then everything it said,
+  # since a filtered log hides the one line that explains the failure.
+  if ! $PMTILES extract "$PLANET_URL" "$f" \
+    --bbox="$tbbox" --minzoom="$minz" --maxzoom="$maxz" >"$WORK/extract.log" 2>&1; then
+    echo "ERROR: pmtiles extract failed for z${minz}-z${maxz}:" >&2
+    sed 's/^/    /' "$WORK/extract.log" >&2
+    exit 1
+  fi
+  grep -E 'Extract transferred|Region tiles' "$WORK/extract.log" | sed 's/^/    /'
   TIER_FILES+=("$f")
 done
 
