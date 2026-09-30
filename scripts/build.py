@@ -8,8 +8,8 @@ shape means a St. Olaf endpoint is a configuration change rather than a second
 code path. Every key Carleton emits is emitted here, even where St. Olaf has
 nothing to put in it, so a consumer never has to test for a missing key.
 
-Four properties are added beyond Carleton's set — `abbreviation`, `type`,
-`links` and `parent`. Extra keys are additive and safe for existing consumers, and dropping
+Five properties are added beyond Carleton's set — `abbreviation`, `type`,
+`links`, `parent` and `length`. Extra keys are additive and safe for existing consumers, and dropping
 St. Olaf's building abbreviations (`RNS`, `BMC`, `TOH`) to preserve an exact
 field list would be throwing away the identifiers people on campus actually use.
 
@@ -516,6 +516,12 @@ def attach_floors(places: list[dict]) -> None:
             place["floors"] = page["floors"]
 
 
+def length_of(place: dict) -> int | None:
+    """A trail's length in metres; None for a place with no line."""
+    metres = geometry.length_m(place.get("geometry"))
+    return round(metres) if metres else None
+
+
 def record(place: dict) -> dict:
     """One `map.json` record — Carleton's key set, latitude-first coordinates."""
     anchor = place.get("anchor") or geometry.label_anchor(place.get("geometry"))
@@ -549,6 +555,7 @@ def record(place: dict) -> dict:
         "type": place.get("type"),
         "links": place.get("links") or [],
         "parent": place.get("parent"),
+        "length": length_of(place),
     }
 
 
@@ -586,12 +593,14 @@ def feature(place: dict) -> dict:
             "abbreviation": place.get("abbreviation"),
             "type": place.get("type"),
             "links": place.get("links") or [],
-            # The building this place sits inside, for the rooms and counters
-            # that have a point and no footprint. Set in overrides.yaml; null
-            # for everything that is a building, or is in none. Emitted on
+            # The area a point-only place belongs to: the building a room or
+            # counter sits inside (overrides.yaml), or the lot or building an
+            # accessible spot serves (derived). Null otherwise. Emitted on
             # every feature rather than only where it applies, so a consumer
             # reads one key rather than testing for its absence.
             "parent": place.get("parent"),
+            # A trail's length in metres, from its geometry; null otherwise.
+            "length": length_of(place),
         },
     }
 

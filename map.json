@@ -48,7 +48,8 @@
     "abbreviation": "AB",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -295,7 +296,8 @@
         "label": "women's"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -319,7 +321,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-alumnihallroad"
+    "parent": "lot-alumnihallroad",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -343,7 +346,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-skoglunds2"
+    "parent": "lot-skoglunds2",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -367,7 +371,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-chmroad"
+    "parent": "lot-chmroad",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -391,7 +396,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-ellingson"
+    "parent": "lot-ellingson",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -415,7 +421,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-thorson"
+    "parent": "lot-thorson",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -439,7 +446,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-buntrockcommonsparking"
+    "parent": "lot-buntrockcommonsparking",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -463,7 +471,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-ytterboelot"
+    "parent": "lot-ytterboelot",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -487,7 +496,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-uppertomson"
+    "parent": "lot-uppertomson",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -511,7 +521,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-oldmain"
+    "parent": "lot-oldmain",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -535,7 +546,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-skoglund"
+    "parent": "lot-skoglund",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -559,7 +571,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-mellbylot"
+    "parent": "lot-mellbylot",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -583,7 +596,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-upperlincoln"
+    "parent": "lot-upperlincoln",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -607,7 +621,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-porterhallparking"
+    "parent": "lot-porterhallparking",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -631,7 +646,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-rand"
+    "parent": "lot-rand",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -655,7 +671,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-admissionsvisitorparking"
+    "parent": "lot-admissionsvisitorparking",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -679,7 +696,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-hillkitroadlot"
+    "parent": "lot-hillkitroadlot",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -703,7 +721,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lotj"
+    "parent": "lotj",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -727,7 +746,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-skoglunds7betweenskoglundtenniscourts"
+    "parent": "lot-skoglunds7betweenskoglundtenniscourts",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -751,7 +771,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-mohnkildahl"
+    "parent": "lot-mohnkildahl",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -775,7 +796,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-upperregents"
+    "parent": "lot-upperregents",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -799,7 +821,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "newhall"
+    "parent": "newhall",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -823,7 +846,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-hollandlot"
+    "parent": "lot-hollandlot",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -847,7 +871,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-lowertomson"
+    "parent": "lot-lowertomson",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -871,7 +896,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-skoglunds7behindskoglund"
+    "parent": "lot-skoglunds7behindskoglund",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -895,7 +921,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-buntrolvaag"
+    "parent": "lot-buntrolvaag",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -919,7 +946,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "lot-lowerlincoln"
+    "parent": "lot-lowerlincoln",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -948,7 +976,8 @@
         "label": "Website"
       }
     ],
-    "parent": "toh"
+    "parent": "toh",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -1026,7 +1055,8 @@
     "abbreviation": "AHL",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -1132,7 +1162,8 @@
     "abbreviation": "AKH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -1330,7 +1361,8 @@
     "abbreviation": "ALH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -1428,7 +1460,8 @@
     "abbreviation": "AMH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -1621,7 +1654,8 @@
         "label": "Bookstore"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -1723,7 +1757,8 @@
     "abbreviation": "BMC",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -1870,7 +1905,8 @@
     "abbreviation": "CAD",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2010,7 +2046,8 @@
         "label": "Christmas Festival"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2120,7 +2157,8 @@
     "abbreviation": "EH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2144,7 +2182,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2189,7 +2228,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2235,7 +2275,8 @@
     "abbreviation": null,
     "type": "Athletics Field",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2281,7 +2322,8 @@
     "abbreviation": null,
     "type": "Athletics Field",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2506,7 +2548,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2572,7 +2615,8 @@
     "abbreviation": null,
     "type": "Athletics Field",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2653,7 +2697,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2699,7 +2744,8 @@
     "abbreviation": null,
     "type": "Athletics Field",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2744,7 +2790,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2814,7 +2861,8 @@
     "abbreviation": "GHH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -2913,7 +2961,8 @@
         "label": "St. Olaf College News - November 1, 2017: The new Holland Hall"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3103,7 +3152,8 @@
     "abbreviation": "HMH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3166,7 +3216,8 @@
     "abbreviation": "HOM",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3268,7 +3319,8 @@
     "abbreviation": "KH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3349,7 +3401,8 @@
     "abbreviation": null,
     "type": "Admissions Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3410,7 +3463,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3515,7 +3569,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3600,7 +3655,8 @@
     "abbreviation": null,
     "type": "General Vistor Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3645,7 +3701,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3694,7 +3751,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3743,7 +3801,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3792,7 +3851,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3845,7 +3905,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3898,7 +3959,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -3955,7 +4017,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4056,7 +4119,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4149,7 +4213,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4202,7 +4267,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4279,7 +4345,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4332,7 +4399,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4405,7 +4473,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4470,7 +4539,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4527,7 +4597,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4572,7 +4643,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4617,7 +4689,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4674,7 +4747,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4731,7 +4805,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4776,7 +4851,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4893,7 +4969,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4938,7 +5015,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -4983,7 +5061,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5068,7 +5147,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5121,7 +5201,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5182,7 +5263,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5227,7 +5309,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5288,7 +5371,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5333,7 +5417,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5398,7 +5483,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5515,7 +5601,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5572,7 +5659,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5617,7 +5705,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5926,7 +6015,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -5983,7 +6073,8 @@
     "abbreviation": null,
     "type": "Campus Parking",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -6012,7 +6103,8 @@
         "label": "Website"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -6078,7 +6170,8 @@
     "abbreviation": "MFB",
     "type": "Administrative",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -6232,7 +6325,8 @@
     "abbreviation": "MH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -6406,7 +6500,8 @@
     "abbreviation": null,
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -6505,7 +6600,8 @@
     "abbreviation": "OM",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -6662,7 +6758,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -6931,7 +7028,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -7028,7 +7126,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -7125,7 +7224,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -7242,7 +7342,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -7915,7 +8016,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -8020,7 +8122,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -8141,7 +8244,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -8262,7 +8366,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -8399,7 +8504,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -8564,7 +8670,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -8633,7 +8740,8 @@
     "abbreviation": null,
     "type": "Administrative",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -8678,7 +8786,8 @@
     "abbreviation": null,
     "type": "Administrative",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -8900,7 +9009,8 @@
     "abbreviation": "RH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9136,7 +9246,8 @@
         "label": "Norwegian American Historical Association (NAHA)"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9199,7 +9310,8 @@
     "abbreviation": "RMS",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9430,7 +9542,8 @@
     "abbreviation": "RNS",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9497,7 +9610,8 @@
         "label": "Christmas Festival"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9559,7 +9673,8 @@
     "abbreviation": "SH",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9642,7 +9757,8 @@
     "abbreviation": "SKH",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9671,7 +9787,8 @@
         "label": "Website"
       }
     ],
-    "parent": "bc"
+    "parent": "bc",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9729,7 +9846,8 @@
     "abbreviation": null,
     "type": "Administrative",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9758,7 +9876,8 @@
         "label": "Website"
       }
     ],
-    "parent": "bc"
+    "parent": "bc",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9841,7 +9960,8 @@
     "abbreviation": "TB",
     "type": "Administrative & Academic",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9935,7 +10055,8 @@
     "abbreviation": "TH",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9964,7 +10085,8 @@
         "label": "Website"
       }
     ],
-    "parent": "bc"
+    "parent": "bc",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -9993,7 +10115,8 @@
         "label": "Website"
       }
     ],
-    "parent": "bc"
+    "parent": "bc",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -10017,7 +10140,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": "bc"
+    "parent": "bc",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -10361,7 +10485,8 @@
         "label": "A Serious Man"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -10495,7 +10620,8 @@
     "abbreviation": null,
     "type": "Athletics",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -10645,7 +10771,8 @@
     "abbreviation": null,
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -10724,7 +10851,8 @@
         "label": "Women's Hockey"
       }
     ],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -10748,7 +10876,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 1055
   },
   {
     "accessibility": "unknown",
@@ -10772,7 +10901,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 1317
   },
   {
     "accessibility": "unknown",
@@ -10796,7 +10926,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 540
   },
   {
     "accessibility": "unknown",
@@ -10820,7 +10951,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 882
   },
   {
     "accessibility": "unknown",
@@ -10844,7 +10976,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 356
   },
   {
     "accessibility": "unknown",
@@ -10868,7 +11001,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 595
   },
   {
     "accessibility": "unknown",
@@ -10892,7 +11026,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 949
   },
   {
     "accessibility": "unknown",
@@ -10916,7 +11051,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 800
   },
   {
     "accessibility": "unknown",
@@ -10940,7 +11076,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 464
   },
   {
     "accessibility": "unknown",
@@ -10964,7 +11101,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 934
   },
   {
     "accessibility": "unknown",
@@ -10988,7 +11126,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 660
   },
   {
     "accessibility": "unknown",
@@ -11012,7 +11151,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 1782
   },
   {
     "accessibility": "unknown",
@@ -11036,7 +11176,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 496
   },
   {
     "accessibility": "unknown",
@@ -11060,7 +11201,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": 781
   },
   {
     "accessibility": "unknown",
@@ -11089,7 +11231,8 @@
         "label": "Website"
       }
     ],
-    "parent": "bc"
+    "parent": "bc",
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -11374,7 +11517,8 @@
     "abbreviation": null,
     "type": "Administrative",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -11398,7 +11542,8 @@
     "abbreviation": null,
     "type": null,
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   },
   {
     "accessibility": "unknown",
@@ -11628,6 +11773,7 @@
     "abbreviation": "YTT",
     "type": "Residence Hall",
     "links": [],
-    "parent": null
+    "parent": null,
+    "length": null
   }
 ]

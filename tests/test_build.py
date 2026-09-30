@@ -1,6 +1,6 @@
 """How build.py merges split lots and names the accessible spots."""
 
-from build import merge_split_lots, name_accessible_spots
+from build import feature, merge_split_lots, name_accessible_spots, record
 
 LAT = 44.46
 
@@ -79,3 +79,22 @@ def test_a_spot_out_of_reach_of_everything_is_left_alone():
     name_accessible_spots(places)
     assert "parent" not in places[1]
     assert places[1]["name"] == "Accessible Parking"
+
+
+def test_a_trail_carries_its_length_in_metres():
+    trail = {
+        "id": "trail-knollloop",
+        "name": "Knoll Loop",
+        "categories": ["outdoors", "trail"],
+        "geometry": {
+            "type": "LineString",
+            "coordinates": [[-93.18, 44.46], [-93.18, 44.461]],
+        },
+    }
+    assert record(trail)["length"] == 111
+    assert feature(trail)["properties"]["length"] == 111
+
+
+def test_a_place_with_no_line_has_no_length():
+    assert record(lot("Porter", -93.180))["length"] is None
+

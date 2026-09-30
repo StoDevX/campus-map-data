@@ -281,6 +281,13 @@ def verify_map_geojson(report: Report, records: list[dict]) -> None:
             for member in members
             if member["type"] in ("LineString", "MultiLineString")
         ]
+        expected = round(sum(geometry.length_m(member) for member in lines)) or None
+        report.check(
+            feature["properties"].get("length") == expected,
+            f"{feature['id']}: length {feature['properties'].get('length')} is not "
+            f"its line's {expected}",
+        )
+
         if points and lines and not areas:
             anchor = points[0]["coordinates"]
             # `label_anchor` takes a line's middle vertex, so the anchor is one
