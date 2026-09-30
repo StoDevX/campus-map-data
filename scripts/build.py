@@ -446,7 +446,7 @@ def walk_places(places: list[dict], spec: dict) -> list[dict]:
         if (
             trail is None
             or trail["geometry"]["type"] != "MultiLineString"
-            or part["index"] >= len(lines)
+            or not 0 <= part["index"] < len(lines)
         ):
             raise SystemExit(
                 f"  {entry['name']}: no part {part['index']} of {part['trail']!r} "
@@ -470,6 +470,18 @@ def walk_places(places: list[dict], spec: dict) -> list[dict]:
     return walks
 
 
+def part_walk_ids_free(places: list[dict], walks: list[dict]) -> None:
+    """The part-walks take ids of their own, given apart from the rest: a trail
+    the college names like a walk would otherwise share its id."""
+    taken = {place["id"] for place in places}
+    for walk in walks:
+        if walk["id"] in taken:
+            raise SystemExit(
+                f"  walks: {walk['id']!r} is already a place's id -- give the "
+                "walk another name in overrides.yaml `walks:`"
+            )
+
+
 def apply_walks(places: list[dict], spec: dict) -> None:
     """Every walk's time, accessibility and guide, on the place it follows.
 
@@ -490,6 +502,11 @@ def apply_walks(places: list[dict], spec: dict) -> None:
             raise SystemExit(
                 f"  walks: no place {entry.get('trail') or entry.get('name')!r} "
                 "-- was it renamed? See overrides.yaml `walks:`"
+            )
+        if "trail" not in place["categories"]:
+            raise SystemExit(
+                f"  walks: {place['id']!r} is not a trail -- a typo in "
+                "overrides.yaml `walks:`?"
             )
         place["walk"] = {
             "minutes": entry["minutes"],
@@ -522,6 +539,7 @@ def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     # their own: their names are unique, so the others' ids do not move.
     walks = walk_places(places, overrides.get("walks") or {})
     assign_ids(walks, overrides)
+    part_walk_ids_free(places, walks)
     places += walks
     return places, dropped
 

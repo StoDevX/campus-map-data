@@ -85,3 +85,29 @@ def test_every_other_place_has_no_walk():
     prairie = fresh(PRAIRIE)
     apply_walks([prairie, fresh(POND)], {"walks": [SPEC["walks"][0]]})
     assert prairie["walk"] is None
+
+
+def test_a_negative_part_fails():
+    spec = {
+        "walks": [{**SPEC["walks"][1], "part": {"trail": "Prairie Loop", "index": -1}}]
+    }
+    with pytest.raises(SystemExit, match="East Prairie Loop"):
+        walk_places([fresh(PRAIRIE)], spec)
+
+
+# A typo that names a car park would put a walk's guide on it.
+def test_a_walk_on_a_place_that_is_not_a_trail_fails():
+    lot = {**fresh(POND), "id": "lot-porter", "categories": ["parking"]}
+    spec = {"walks": [{**SPEC["walks"][0], "trail": "lot-porter"}]}
+    with pytest.raises(SystemExit, match="lot-porter"):
+        apply_walks([lot], spec)
+
+
+# A part-walk named like a place that already has its id would share it.
+def test_a_part_walk_whose_id_is_taken_fails():
+    from build import part_walk_ids_free
+
+    with pytest.raises(SystemExit, match="trail-eastprairieloop"):
+        part_walk_ids_free(
+            [{"id": "trail-eastprairieloop"}], [{"id": "trail-eastprairieloop"}]
+        )
