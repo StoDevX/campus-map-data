@@ -30,7 +30,7 @@ from pathlib import Path
 
 import geometry
 import yaml
-from build import scraped_places
+from build import RULES_LINK_LABEL, scraped_places
 from scrape import VOLATILE_FIELDS
 from sources import SOURCES, slugs
 
@@ -96,11 +96,19 @@ def verify_raw(report: Report) -> None:
         )
         report.check(bool(features), f"data/{slug}.geojson has no features")
 
+        # A layer that names its fields keeps them, volatile or not: the
+        # segments layer is addressed by FID.
+        kept = {
+            field
+            for source in SOURCES
+            if source.slug == slug
+            for field in source.fields or ()
+        }
         leaked = {
             key
             for feature in features
             for key in (feature.get("properties") or {})
-            if key in VOLATILE_FIELDS
+            if key in VOLATILE_FIELDS and key not in kept
         }
         report.check(
             not leaked,
@@ -131,6 +139,14 @@ def verify_map_json(report: Report) -> list[dict]:
         missing = CARLETON_KEYS - record.keys()
         report.check(not missing, f"{record['id']}: missing keys {sorted(missing)}")
         report.check(bool(record.get("name")), f"{record['id']}: has no name")
+
+        # The Natural Lands' ponds and trails carry the rules; nothing else does.
+        natural = {"water", "trail"} & set(record["categories"])
+        report.check(
+            bool(record.get("rules")) == bool(natural),
+            f"{record['id']}: rules "
+            f"{'missing' if natural else 'on a place outside the Natural Lands'}",
+        )
 
         center = record.get("center")
         if report.check(bool(center), f"{record['id']}: has no center"):
@@ -273,6 +289,13 @@ def verify_map_geojson(report: Report, records: list[dict]) -> None:
             for member in members
             if member["type"] in ("LineString", "MultiLineString")
         ]
+        expected = round(sum(geometry.length_m(member) for member in lines)) or None
+        report.check(
+            feature["properties"].get("length") == expected,
+            f"{feature['id']}: length {feature['properties'].get('length')} is not "
+            f"its line's {expected}",
+        )
+
         if points and lines and not areas:
             anchor = points[0]["coordinates"]
             # `label_anchor` takes a line's middle vertex, so the anchor is one
@@ -290,10 +313,64 @@ def verify_map_geojson(report: Report, records: list[dict]) -> None:
             )
 
 
+def verify_trails(report: Report, spec: dict, rows: list[dict]) -> None:
+    """The assembled trails still replace what they were written to replace.
+
+    A superseded row the college renames would come back as a place, drawn up
+    to 147 m off the path; a row that takes an assembled trail's name would
+    number both ids and lose the trail from anyone's Recents.
+    """
+    names = [((row.get("properties") or {}).get("NAME") or "").strip() for row in rows]
+    superseded = set(spec.get("supersedes") or [])
+    for name in sorted(superseded):
+        report.check(
+            name in names,
+            f"overrides.yaml: trails supersedes {name!r}, which the trails layer "
+            f"no longer has — did the source rename it?",
+        )
+    for entry in spec.get("trails") or []:
+        report.check(
+            entry["name"] not in names or entry["name"] in superseded,
+            f"overrides.yaml: the trails layer now has its own {entry['name']!r}, "
+            f"which the assembled trail of that name collides with",
+        )
+
+
+def verify_rules(report: Report, spec: dict, records: list[dict]) -> None:
+    """Every rule swap still applies, and every place with rules links them.
+
+    A swap keyed to a renamed id, or to a shared sentence since reworded, does
+    nothing -- and Norway Valley's card would say bikes are allowed.
+    """
+    known = {record["id"] for record in records}
+    shared = set(spec.get("shared") or [])
+    for place, swaps in (spec.get("replace") or {}).items():
+        report.check(
+            place in known, f"overrides.yaml: rules replace for unknown id {place!r}"
+        )
+        for sentence in swaps:
+            report.check(
+                sentence in shared,
+                f"overrides.yaml: rules replace for {place} swaps {sentence!r}, "
+                f"which is not a shared rule",
+            )
+    link = {"label": RULES_LINK_LABEL, "href": spec.get("href")}
+    for record in records:
+        if record.get("rules"):
+            report.check(
+                (record.get("links") or []).count(link) == 1,
+                f"{record['id']}: has rules but not exactly one link to them",
+            )
+
+
 def verify_overrides(report: Report, records: list[dict]) -> None:
     overrides = yaml.safe_load((ROOT / "overrides.yaml").read_text()) or {}
     known = {record["id"] for record in records}
     layers = set(slugs())
+
+    trail_rows = json.loads((DATA / "natural-lands-trails.geojson").read_text())
+    verify_trails(report, overrides.get("trails") or {}, trail_rows["features"])
+    verify_rules(report, overrides.get("rules") or {}, records)
 
     # A removal names a place by the id the build gives it, which the removed
     # place no longer has in map.json -- so rebuild the ids before removals to

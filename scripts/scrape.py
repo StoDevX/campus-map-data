@@ -65,7 +65,11 @@ VOLATILE_FIELDS = frozenset(
 LAYER_PROPERTY = "_layer"
 
 
-def clean_properties(properties: dict | None) -> dict:
+def clean_properties(
+    properties: dict | None, fields: tuple[str, ...] | None = None
+) -> dict:
+    if fields is not None:
+        return {key: (properties or {}).get(key) for key in fields}
     return {
         key: value
         for key, value in (properties or {}).items()
@@ -95,7 +99,7 @@ def sort_key(feature: dict) -> tuple[str, str]:
 def fetch(source: Source) -> list[dict]:
     features = []
     for feature in arcgis.query_features(source.url):
-        properties = clean_properties(feature.get("properties"))
+        properties = clean_properties(feature.get("properties"), source.fields)
         properties[LAYER_PROPERTY] = source.title
         features.append(
             {

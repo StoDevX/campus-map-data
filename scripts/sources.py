@@ -58,6 +58,9 @@ class Source:
     fallback_name: str | None = None
     # Property names to read a feature's name from, in order of preference.
     name_fields: tuple[str, ...] = ("Name", "NAME")
+    # The only properties to keep, when set -- volatile ones included. For a
+    # layer addressed by a database id, which the scrape would otherwise drop.
+    fields: tuple[str, ...] | None = None
     notes: str = field(default="")
 
 
@@ -153,6 +156,21 @@ SOURCES: tuple[Source, ...] = (
         # The named trails. The unnamed rows are access-trail segments joining
         # them; they stay geometry only, drawn in the tiles' campus_paths.
         categories=("outdoors", "trail"),
+    ),
+    Source(
+        slug="natural-lands-segments",
+        title="Natural Lands Segments",
+        url=f"{ORG}/stolaf_trails20220308/FeatureServer/0",
+        role="context",
+        # Keyed by FID, which overrides.yaml's `trails:` assembles the Heath
+        # Creek trails from. FIDs renumber if the layer is republished; the
+        # build then fails on a missing FID or a trail whose length moved, and
+        # a person redoes the mapping.
+        fields=("FID", "NAME", "Type"),
+        notes=(
+            "The segments the college's Natural Lands distance map is drawn "
+            "from, within 1-6 m. Used only to build the Heath Creek trails."
+        ),
     ),
     Source(
         slug="campus-roads",

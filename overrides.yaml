@@ -153,3 +153,46 @@ changes:
   # the other three points, and are in no building. They get no parent.
 
 additions: []
+
+# The Heath Creek trails, as the college's Natural Lands distance map (Jan
+# 2026, page 2, wp.stolaf.edu/naturallands/maps-2/) names them, built from the
+# natural-lands-segments layer by FID. The campus map layer's own "Heath Creek
+# Trail" and "Big Woods Trail" are rough lines, up to 147 m off the path, and
+# are superseded. Whole segments, except one cut at Burr Oak's north end, which
+# gives Big Woods the connector the map draws as part of it. `until` and `from`
+# follow the segment as the college drew it: FID 23 runs north from Burr Oak,
+# so Burr Oak takes it until the cut and Big Woods from it. `miles` is each
+# trail's length when this was written; build.py refuses a trail that moves
+# more than 0.05 mi from it, and a missing FID.
+trails:
+  supersedes: ["Heath Creek Trail", "Big Woods Trail"]
+  trails:
+    - name: Robin Trail
+      segments: [95, 30, 31, 94, 65, 38, 32]
+      miles: 0.31
+    - name: Big Woods Trail
+      segments: [17, 48, 93, {fid: 23, from: [-93.18855, 44.45332]}]
+      miles: 0.33
+    - name: Burr Oak Trail
+      segments: [{fid: 23, until: [-93.18855, 44.45332]}, 89, 90]
+      miles: 0.55
+    - name: Lower Heath Creek Trail
+      segments: [88, 83, 54, 86, 20, 21, 22]
+      miles: 0.58
+
+# The Natural Lands rules, restated from the college's visitor information and
+# FAQ pages in our own words, on every pond and trail -- not the athletic
+# fields, which are outdoors but not Natural Lands. `replace` swaps a shared
+# rule for one place: the FAQ names Norway Valley as a non-biking area.
+rules:
+  href: https://wp.stolaf.edu/naturallands/visitor-information-and-rules/
+  categories: [water, trail]
+  shared:
+    - Open to the public from 5 AM to 10 PM, and to St. Olaf students, faculty, and staff at all hours.
+    - Dogs on a 6-foot leash.
+    - Bikes allowed, except where signs say no bikes.
+    - No camping or fires.
+  replace:
+    trail-norwayvalleytrail:
+      "Bikes allowed, except where signs say no bikes.": No bikes.
+

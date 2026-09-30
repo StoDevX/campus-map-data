@@ -13,7 +13,7 @@ Two things, for two different readers.
 | | What it is | Read it if |
 | --- | --- | --- |
 | `data/*.geojson` | One file per source layer, the college's field names untouched | You want St. Olaf's data as St. Olaf publishes it |
-| `map.json`, `map.geojson` | 144 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
+| `map.json`, `map.geojson` | 146 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
 | `routing.json` | A pedestrian routing graph | You want to walk someone from one door to another |
 | `vendor/ole-compass/` | The 2016 survey `routing.json` is built from | You are changing how the graph is georeferenced |
 
@@ -49,6 +49,13 @@ credential belongs in this repo.
 | `main-campus-roads.geojson` | MultiLineString | 1 |
 | | | **370** |
 
+One more layer is outside the web map: `natural-lands-segments.geojson`, the 48
+segments of `stolaf_trails20220308`, which the college's Natural Lands distance
+map (January 2026) is drawn from. It supplies the four Heath Creek trails the
+web map lacks — Robin, Big Woods, Burr Oak and Lower Heath Creek — and keeps
+each segment's `FID`, which the scrape otherwise drops, because `overrides.yaml`
+names the segments of each trail by it. See [The Heath Creek trails](#the-heath-creek-trails).
+
 Taking the *web map's* operational layers, rather than every layer in every
 service, is what keeps that list honest: it is by construction the data the
 college publishes as its campus map. It also avoids a trap. The services carry
@@ -64,7 +71,7 @@ admissions, the windmill) that are one concept split across seven layer ids.
 
 ## The published dataset
 
-`map.json` and `map.geojson` hold **144 places, 96 with a footprint** — against
+`map.json` and `map.geojson` hold **146 places, 96 with a footprint** — against
 Carleton's 124 and 96, which is a fair indication the two datasets are of
 comparable use.
 
@@ -72,7 +79,7 @@ comparable use.
 | --- | ---: |
 | Parking (lots, accessible stalls) | 65 |
 | Buildings | 38 |
-| Trails | 12 |
+| Trails | 14 |
 | Ponds | 11 |
 | Points of interest | 10 |
 | Athletic fields | 8 |
@@ -99,7 +106,11 @@ configuration change rather than a second code path. Every key Carleton emits is
 emitted here, including the ones St. Olaf has nothing to put in, so a consumer
 never has to test for a missing key.
 
-Four properties are **added**: `abbreviation`, `type`, `links` and `parent`.
+Six properties are **added**: `abbreviation`, `type`, `links`, `parent`,
+`length` (a trail's length in metres, from its geometry; null for anything
+that is not a line) and `rules` (the Natural Lands rules on every pond and
+trail, in our own words from the college's visitor pages, with a link to them
+among `links`; empty elsewhere).
 Extra keys are additive and safe, and dropping St. Olaf's building
 abbreviations — `RNS`, `BMC`, `TOH`, the identifiers people on campus actually
 use — to preserve an exact field list would be throwing away good data for a bad
@@ -344,8 +355,8 @@ buries the campus. So:
 | --- | --- | ---: | --- |
 | `campus_buildings` | MultiPolygon | 38 | z14+ |
 | `campus_grounds` | MultiPolygon | 47 | z14+ |
-| `campus_paths` | MultiLineString | 168 lines in 14 features | z15+ |
-| `campus_labels` | Point | 144 | z15+ |
+| `campus_paths` | MultiLineString | 187 lines in 16 features | z15+ |
+| `campus_labels` | Point | 146 | z15+ |
 
 Every anchor carries a `kind`, which is what lets the style bring each sort of
 place in at the zoom where it stops being clutter — buildings at z15, points of
@@ -364,9 +375,24 @@ nothing to label, and Campus Drive, the one named access trail, is a road that
 dataset. They belong
 on the map regardless: this is something people walk around a campus with, and
 the college's 10.8 km of walkways plus 12 km of Natural Lands trails were being
-scraped and then dropped. The 12 named trails are places, and each is its own
+scraped and then dropped. The 14 named trails are places, and each is its own
 feature carrying its `buildingId`, so a tap on the line opens the trail; the
 style labels them along the line.
+
+### The Heath Creek trails
+
+The web map draws the Heath Creek woods as a "Heath Creek Trail" and a "Big
+Woods Trail", rough lines up to 147 m off the path. The college's own distance
+map names four trails there, and is drawn from `natural-lands-segments`, so
+`overrides.yaml`'s `trails:` builds those four from its segments by `FID` and
+supersedes the rough two: `build.py` drops them as places, and the tiles leave
+their lines out. Segments are used whole, except one cut at Burr Oak's north
+end that gives Big Woods the connector the map draws as part of it.
+
+FIDs renumber when a layer is republished. So each trail records its length in
+`miles`, and `build.py` fails on a missing FID or a trail more than 0.05 mi off
+it: a person then redoes the mapping, against the distance map, rather than
+the build quietly assembling a trail from the wrong segments.
 
 ### Why the campus looked like it had no sidewalks
 

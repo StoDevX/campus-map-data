@@ -8,8 +8,8 @@ shape means a St. Olaf endpoint is a configuration change rather than a second
 code path. Every key Carleton emits is emitted here, even where St. Olaf has
 nothing to put in it, so a consumer never has to test for a missing key.
 
-Four properties are added beyond Carleton's set — `abbreviation`, `type`,
-`links` and `parent`. Extra keys are additive and safe for existing consumers, and dropping
+Six properties are added beyond Carleton's set — `abbreviation`, `type`,
+`links`, `parent`, `length` and `rules`. Extra keys are additive and safe for existing consumers, and dropping
 St. Olaf's building abbreviations (`RNS`, `BMC`, `TOH`) to preserve an exact
 field list would be throwing away the identifiers people on campus actually use.
 
@@ -338,10 +338,102 @@ def name_accessible_spots(places: list[dict]) -> None:
                 break
 
 
+# How far an assembled trail's length may move from the `miles` overrides.yaml
+# records before the build refuses it: further means the college re-cut its
+# segments, and the FIDs no longer mean what the mapping says.
+TRAIL_MILES_TOLERANCE = 0.05
+METRES_PER_MILE = 1609.344
+
+
+def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
+    """The trails `overrides.yaml` builds from the college's segments.
+
+    Each segment is named by FID, whole, or as the part of it before (`until`)
+    or after (`from`) the vertex nearest a point, in the direction the college
+    drew the segment -- the one cut, where a
+    connector the map draws as part of one trail runs in a segment of another.
+    Both parts keep that vertex, so the two trails meet.
+    """
+    by_fid = {feature["properties"]["FID"]: feature for feature in segments}
+    trails = []
+    for entry in spec.get("trails") or []:
+        lines = []
+        for part in entry["segments"]:
+            fid = part if isinstance(part, int) else part["fid"]
+            if fid not in by_fid:
+                raise SystemExit(
+                    f"  {entry['name']}: FID {fid} is not in the segments layer; "
+                    "the college may have republished it -- redo `trails:`"
+                )
+            line = by_fid[fid]["geometry"]["coordinates"]
+            if isinstance(part, dict) and ("until" in part or "from" in part):
+                point = part.get("until") or part.get("from")
+                cut = min(
+                    range(len(line)),
+                    key=lambda i, line=line, point=point: geometry.distance_m(
+                        point, {"type": "Point", "coordinates": line[i]}
+                    ),
+                )
+                line = line[: cut + 1] if "until" in part else line[cut:]
+            lines.append(line)
+        shape = {"type": "MultiLineString", "coordinates": lines}
+        miles = geometry.length_m(shape) / METRES_PER_MILE
+        if abs(miles - entry["miles"]) > TRAIL_MILES_TOLERANCE:
+            raise SystemExit(
+                f"  {entry['name']}: assembles to {miles:.2f} mi, not "
+                f"{entry['miles']} -- the college may have re-cut its segments"
+            )
+        trails.append(
+            {
+                "slug": "natural-lands-trails",
+                "name": entry["name"],
+                "abbreviation": None,
+                "type": None,
+                "categories": ["outdoors", "trail"],
+                "description": None,
+                "departments": [],
+                "links": [],
+                "contact": None,
+                "geometry": shape,
+                "information": "",
+            }
+        )
+    return trails
+
+
+RULES_LINK_LABEL = "Natural Lands rules"
+
+
+def apply_rules(places: list[dict], spec: dict) -> None:
+    """The rules `overrides.yaml` gives the Natural Lands' ponds and trails,
+    in its own words, and a link to the college's page. Every other place gets
+    none, so a consumer reads one key rather than testing for its absence."""
+    categories = set(spec.get("categories") or [])
+    link = {"label": RULES_LINK_LABEL, "href": spec.get("href")}
+    for place in places:
+        if not categories & set(place.get("categories") or []):
+            place["rules"] = []
+            continue
+        swaps = (spec.get("replace") or {}).get(place["id"]) or {}
+        place["rules"] = [swaps.get(rule, rule) for rule in spec.get("shared") or []]
+        links = place.setdefault("links", [])
+        if link not in links:
+            links.append(link)
+
+
 def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     """The places as scraped, merged and given ids -- before overrides touch
     them. What an `overrides.yaml` id has to match. Plus what was dropped."""
     places, dropped = read_places(source_index())
+    trails = overrides.get("trails") or {}
+    superseded = set(trails.get("supersedes") or [])
+    places = [
+        place
+        for place in places
+        if not (place["slug"] == "natural-lands-trails" and place["name"] in superseded)
+    ]
+    segments = json.loads((DATA / "natural-lands-segments.geojson").read_text())
+    places += assemble_trails(segments["features"], trails)
     places = merge_split_lots(places)
     assign_ids(places, overrides)
     return places, dropped
@@ -444,6 +536,12 @@ def attach_floors(places: list[dict]) -> None:
             place["floors"] = page["floors"]
 
 
+def length_of(place: dict) -> int | None:
+    """A trail's length in metres; None for a place with no line."""
+    metres = geometry.length_m(place.get("geometry"))
+    return round(metres) if metres else None
+
+
 def record(place: dict) -> dict:
     """One `map.json` record — Carleton's key set, latitude-first coordinates."""
     anchor = place.get("anchor") or geometry.label_anchor(place.get("geometry"))
@@ -477,6 +575,8 @@ def record(place: dict) -> dict:
         "type": place.get("type"),
         "links": place.get("links") or [],
         "parent": place.get("parent"),
+        "length": length_of(place),
+        "rules": place.get("rules") or [],
     }
 
 
@@ -514,12 +614,16 @@ def feature(place: dict) -> dict:
             "abbreviation": place.get("abbreviation"),
             "type": place.get("type"),
             "links": place.get("links") or [],
-            # The building this place sits inside, for the rooms and counters
-            # that have a point and no footprint. Set in overrides.yaml; null
-            # for everything that is a building, or is in none. Emitted on
+            # The area a point-only place belongs to: the building a room or
+            # counter sits inside (overrides.yaml), or the lot or building an
+            # accessible spot serves (derived). Null otherwise. Emitted on
             # every feature rather than only where it applies, so a consumer
             # reads one key rather than testing for its absence.
             "parent": place.get("parent"),
+            # A trail's length in metres, from its geometry; null otherwise.
+            "length": length_of(place),
+            # The Natural Lands rules, one sentence each; empty elsewhere.
+            "rules": place.get("rules") or [],
         },
     }
 
@@ -529,6 +633,7 @@ def main() -> int:
     places, dropped = scraped_places(overrides)
     places = apply_overrides(places, overrides)
     name_accessible_spots(places)
+    apply_rules(places, overrides.get("rules") or {})
     attach_floors(places)
     places.sort(key=lambda place: place["id"])
 
