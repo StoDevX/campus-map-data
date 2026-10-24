@@ -9,3 +9,6 @@ node_modules/
 .venv/
 __pycache__/
 *.py[cod]
+
+# Planning notes from Claude sessions: kept locally, not part of the repo.
+docs/superpowers/

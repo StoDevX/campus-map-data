@@ -14,6 +14,7 @@ Two things, for two different readers.
 | --- | --- | --- |
 | `data/*.geojson` | One file per source layer, the college's field names untouched | You want St. Olaf's data as St. Olaf publishes it |
 | `map.json`, `map.geojson` | 148 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
+| `site/changes/` | A page for every change to the data: before and after, close-ups, a card for each thing that moved | You want to see what changed without reading a diff |
 | `routing.json` | A pedestrian routing graph | You want to walk someone from one door to another |
 | `vendor/ole-compass/` | The 2016 survey `routing.json` is built from | You are changing how the graph is georeferenced |
 
@@ -22,6 +23,12 @@ data**: when a building is renamed, a lot is restriped, or a footprint is
 corrected, that shows up here as a reviewable diff on the day the college makes
 it. Everything about the pipeline is arranged to protect that — see
 [Determinism](#determinism-is-the-whole-design).
+
+Every change to the places, or to the shapes of the background layers and of
+the unnamed features left as geometry only, also gets a release, titled "Campus data" and dated, with a before and after report
+at `stolaf.dev/campus-map-data/changes/`. A change only to `routing.json`, or
+only to the properties of background features, gets none. Watch the repo for
+releases to hear about changes as they land.
 
 ## Where it comes from
 
