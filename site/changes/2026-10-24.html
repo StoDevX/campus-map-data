@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus data changes, 2026-10-24</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root {
+  --bg: #f3f4ef; --panel: #fbfbf8; --fg: #1f2620; --muted: #5d675e;
+  --rule: #d5d9cf; --walk: #c9ccc2; --building: #e3e5dd; --water: #cfdde3;
+  --after: #3a5f9e; --before: #5d675e; --dropped: #d1336b; --added: #111111;
+  --del-bg: #f7d9e4; --ins-bg: #dcebe1;
+  --display: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #161a17; --panel: #1d221e; --fg: #e6e9e3; --muted: #9aa49b;
+  --rule: #313830; --walk: #3a4139; --building: #2a302b; --water: #22343b;
+  --after: #7fa6ea; --before: #9aa49b; --dropped: #ff6fa3; --added: #ffffff;
+  --del-bg: #4a2232; --ins-bg: #1f3a2b; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #161a17; --panel: #1d221e; --fg: #e6e9e3; --muted: #9aa49b;
+  --rule: #313830; --walk: #3a4139; --building: #2a302b; --water: #22343b;
+  --after: #7fa6ea; --before: #9aa49b; --dropped: #ff6fa3; --added: #ffffff;
+  --del-bg: #4a2232; --ins-bg: #1f3a2b; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.55 var(--display); padding: 28px 16px 48px; }
+main { max-width: 1040px; margin: 0 auto; display: grid; gap: 28px; }
+h1 { font-size: 1.7rem; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h2 { font-size: 1.05rem; margin: 0 0 12px; }
+h3 { font-size: 1rem; margin: 0; overflow-wrap: anywhere; }
+p { margin: 0; max-width: 68ch; }
+code { font: 0.82rem var(--mono); overflow-wrap: anywhere; }
+.lede { display: grid; gap: 10px; }
+.eyebrow { font: 500 0.72rem var(--mono); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); }
+.counts { display: flex; flex-wrap: wrap; gap: 8px; }
+.tile { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 6px 12px; color: var(--muted); font-size: 0.85rem; }
+.tile .n { font: 600 1.15rem var(--display); color: var(--fg); margin-right: 6px;
+  font-variant-numeric: tabular-nums; }
+figure { margin: 0; background: var(--panel); border: 1px solid var(--rule);
+  border-radius: 6px; padding: 14px; display: grid; gap: 10px; min-width: 0; }
+figcaption, .more, .quiet { color: var(--muted); font-size: 0.88rem; }
+figcaption strong { color: var(--fg); }
+svg { width: 100%; height: auto; display: block; }
+.closeups { display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+.controls { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.9rem; }
+.controls label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.controls input:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.85rem;
+  color: var(--muted); }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+.key { width: 26px; height: 0; display: inline-block; border-top: 4px solid; }
+.key.before { border-top: 3px dashed var(--before); }
+.key.after { border-color: var(--after); }
+.key.dropped { border-color: var(--dropped); border-top-width: 6px; }
+.key.added { border-color: var(--added); border-top-width: 3px; }
+.key.building { border-color: var(--walk); border-top-width: 6px; }
+.key.faint { width: 13px; border-top-width: 2px; opacity: 0.55; }
+.water { fill: var(--water); stroke: none; }
+.walkway { fill: none; stroke: var(--walk); stroke-width: 1.2; }
+.building { fill: var(--building); stroke: var(--walk); stroke-width: 1; }
+.before { fill: none; stroke: var(--before); stroke-width: 2.5;
+  stroke-dasharray: 5 5; opacity: 0.85; }
+.after { fill: none; stroke: var(--after); stroke-width: 4; opacity: 0.8;
+  stroke-linecap: round; stroke-linejoin: round; }
+.dropped { fill: none; stroke: var(--dropped); stroke-width: 6; opacity: 0.9;
+  stroke-linecap: round; stroke-linejoin: round; }
+.added { fill: none; stroke: var(--added); stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round; }
+.context-dropped, .context-added { fill: none; stroke-width: 1.5; opacity: 0.55;
+  stroke-linecap: round; stroke-linejoin: round; }
+.context-dropped { stroke: var(--dropped); }
+.context-added { stroke: var(--added); }
+circle.context-dropped { fill: var(--dropped); stroke: none; }
+circle.context-added { fill: var(--added); stroke: none; }
+circle.after { fill: var(--after); }
+circle.added { fill: var(--added); stroke: none; r: 2px; }
+.place { cursor: pointer; transition: opacity 0.15s; }
+.focusing .place:not(.hl) { opacity: 0.2; }
+.place.hl .after, .place.hl .before { stroke-width: 6; opacity: 1; }
+.scale text, .area-number text { font: 500 12px var(--mono); fill: var(--fg);
+  text-anchor: middle; }
+.scale path { fill: none; stroke: var(--fg); stroke-width: 1.5; }
+.area-number circle { fill: var(--panel); stroke: var(--fg); stroke-width: 1.5; }
+.hide-before .layer-before, .hide-after .layer-after { display: none; }
+.kind .count { color: var(--muted); font-weight: 400; }
+.cards { display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 12px 14px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card.hl, .card:focus-visible { border-color: var(--fg); outline: none;
+  box-shadow: 0 0 0 1px var(--fg); }
+.meta { color: var(--muted); font-size: 0.82rem; }
+dl { margin: 0; display: grid; gap: 6px; }
+dt { font: 500 0.72rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); }
+dd { margin: 0; font-size: 0.9rem; overflow-wrap: anywhere; }
+del { background: var(--del-bg); text-decoration: line-through; }
+ins { background: var(--ins-bg); text-decoration: none; }
+.items { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.items .del::before { content: "− "; color: var(--dropped); }
+.items .ins::before { content: "+ "; color: var(--muted); }
+.items .del { text-decoration: line-through; }
+.none { color: var(--muted); font-style: italic; }
+a { color: var(--after); }
+.notes ul { margin: 8px 0 0; padding-left: 20px; }
+</style>
+</head>
+<body>
+<main id="sheet">
+<header class="lede">
+<div class="eyebrow">St. Olaf campus map data</div>
+<h1>Campus data changes, 2026-10-24</h1>
+<p>2 trails changed shape: Big Woods Trail, Robin Trail. 1 trail changed: Burr Oak Trail. 1 wellness walk changed: Lower Heath Creek Trail. 20 Natural Lands segments added and 39 removed.</p>
+<div class="counts"><div class="tile"><span class="n">0</span>added</div><div class="tile"><span class="n">0</span>removed</div><div class="tile"><span class="n">0</span>renamed</div><div class="tile"><span class="n">4</span>changed</div></div>
+</header>
+<div class="controls" role="group" aria-label="Show"><label><input type="checkbox" id="show-before" checked> Before (dashed)</label><label><input type="checkbox" id="show-after" checked> After (solid)</label></div><figure class="overview"><svg viewBox="0 0 900 486" role="img" aria-label="Overview of every changed place"><path class="context-dropped layer-before" d="M908.0,1230.2 908.6,1210.6 902.9,1197.1 903.8,1179.7 897.2,1166.7 893.3,1152.8 884.0,1141.8 879.0,1123.5 867.7,1108.3 861.3,1095.6 852.6,1073.0 842.4,1056.0 835.9,1041.1 827.9,1016.4 819.0,1003.6 817.8,987.0 811.9,974.3 810.1,957.6 800.4,925.2 781.2,892.8 777.0,874.6 765.4,857.9 754.8,846.0 743.4,834.5 735.9,822.3 729.8,806.8 719.7,796.9 712.7,782.3 702.6,772.6 695.4,756.3 690.5,741.7 688.9,727.0 680.9,713.3 682.2,698.5 678.3,683.4 684.9,670.2 692.0,651.4 686.4,637.4 676.6,623.2 667.5,606.3 660.7,585.5 659.3,564.5 653.5,531.1 646.9,517.8 646.5,501.3 640.1,485.5 631.7,451.8 628.9,434.6 622.7,421.1 626.0,405.3 634.6,392.3 647.7,379.5 662.9,368.4 676.6,356.1 677.9,340.8 691.3,330.8 706.9,324.4 719.5,312.4 724.5,296.4 725.1,280.5 719.5,263.8 715.8,249.5 706.5,236.1 700.9,221.2 690.1,212.3 683.7,228.3 671.9,262.4 655.2,268.1 637.8,270.4 627.3,256.8 615.3,246.1 600.6,242.8 583.7,241.0 569.3,244.1 557.3,252.1 528.9,268.7 513.5,271.5 497.9,281.2 483.3,288.7 470.9,299.8 454.0,297.2 436.0,289.2 420.3,292.7"/><path class="context-dropped layer-before" d="M721.7,129.6 727.5,132.2 740.8,141.8 751.0,154.9 761.0,165.5 769.1,180.2 778.7,191.0 786.1,203.2 793.6,217.5 803.2,232.1 806.8,240.0 805.7,258.6 785.6,283.3 750.3,301.6 727.4,309.8"/><path class="context-dropped layer-before" d="M642.1,-186.8 644.3,-173.0 650.2,-157.7 654.7,-140.6 661.4,-128.0 662.7,-112.1 674.7,-78.3 675.4,-64.2 677.6,-47.9 674.0,-34.2 677.5,-20.0 680.2,-5.2 684.5,8.1 685.6,24.3 688.2,38.8 688.2,53.1 693.3,100.3 700.6,113.7 712.5,125.3 716.9,127.4"/><path class="context-dropped layer-before" d="M420.3,292.7 411.9,289.9"/><path class="context-dropped layer-before" d="M411.9,289.9 406.7,286.5"/><path class="context-dropped layer-before" d="M411.9,289.7 404.5,278.2"/><path class="context-dropped layer-before" d="M401.9,-289.7 402.7,-285.1 400.7,-259.3 400.5,-237.9 395.9,-166.4 395.8,-103.0 395.1,-64.4 400.0,-29.9 460.5,9.5 483.1,42.6 501.4,76.9 489.0,101.5 469.4,114.9 456.4,127.8 442.8,158.3 424.3,184.3 401.7,210.2 416.5,239.9 444.8,247.6 492.5,247.3 524.0,239.1 558.1,233.8 596.8,238.8 607.0,242.2"/><path class="context-dropped layer-before" d="M358.4,256.3 374.7,268.0 390.7,272.8 404.7,278.5"/><path class="context-dropped layer-before" d="M339.3,260.8 356.9,258.6"/><path class="context-dropped layer-before" d="M282.0,253.8 288.0,253.6 304.6,257.1 322.1,262.6 339.3,260.9"/><path class="context-dropped layer-before" d="M277.0,252.0 262.8,249.0 229.5,230.4 207.7,215.8 172.4,187.9 172.4,187.1 166.5,177.6"/><path class="context-dropped layer-before" d="M-10.4,80.6 6.6,85.2 18.3,94.1 35.0,98.7 65.6,113.9 80.4,117.3 95.4,122.5 111.7,134.3 133.3,155.7 149.3,164.3 164.4,174.1 172.4,187.1 172.4,187.9"/><path class="context-dropped layer-before" d="M-10.5,80.6 -13.6,82.5 -16.6,74.1"/><path class="context-dropped layer-before" d="M-15.6,85.3 -15.5,85.1"/><path class="context-dropped layer-before" d="M-85.2,72.6 -66.3,70.6 -55.6,58.3 -38.2,53.4 -23.4,61.5 -16.6,74.3"/><path class="context-dropped layer-before" d="M-85.2,72.6 -70.9,71.1 -84.5,73.7 -127.4,77.4 -165.7,62.1 -189.8,42.7 -202.7,-1.2 -199.8,-28.5 -167.3,-59.0 -131.5,-71.5 -111.9,-84.3 -101.5,-111.7 -83.6,-131.7 -79.4,-141.0 -88.0,-152.5 -85.6,-167.3 -87.2,-186.4 -90.1,-206.2 -94.3,-221.1 -101.9,-241.0 -106.7,-258.9 -109.4,-277.2 -114.0,-294.0 -125.1,-326.9 -137.5,-360.6 -142.9,-377.2 -147.3,-393.5 -150.0,-409.3 -151.6,-425.0 -152.0,-441.4 -153.9,-458.1 -154.1,-476.4 -153.4,-494.1 -148.8,-528.5 -147.0,-565.2 -143.5,-583.1 -133.0,-621.7 -128.6,-640.0 -127.5,-659.2 -128.2,-678.1 -130.8,-698.1 -130.1,-721.5 -125.2,-779.7 -126.4,-800.8 -132.3,-844.2 -134.0,-867.1 -136.5,-888.5 -133.1,-906.9 -123.5,-920.7 -95.4,-932.1 -83.9,-944.1 -76.7,-961.0 -71.9,-977.6 -59.1,-992.0 -40.7,-1003.7 -25.1,-1018.1 -18.6,-1038.3 -16.0,-1064.8 -18.6,-1085.9 -18.4,-1106.9 -20.1,-1126.2 -23.9,-1147.1 -24.3,-1168.2 -21.6,-1188.3 -14.2,-1204.4 0.7,-1213.0 16.7,-1214.9 32.9,-1215.5 72.1,-1209.3 94.2,-1206.7 113.6,-1207.8 132.8,-1210.3 149.7,-1210.8 165.7,-1208.9 184.1,-1203.0 196.4,-1202.4 196.2,-1206.1"/><path class="context-added layer-after" d="M948.1,1413.4 956.2,1390.1 967.3,1367.7 968.1,1354.6 986.4,1330.3 994.3,1312.8 999.5,1286.9 983.1,1272.3 933.6,1246.1 914.2,1217.6 908.2,1199.1 903.8,1179.7 897.2,1166.7 893.3,1152.8 884.0,1141.8 879.0,1123.5 867.7,1108.3 861.3,1095.6 852.6,1073.0 842.4,1056.0 835.9,1041.1 827.9,1016.4 819.0,1003.6 817.8,987.0 811.9,974.3 810.1,957.6 800.4,925.2 781.2,892.8 777.0,874.6 765.4,857.9 754.8,846.0 743.4,834.5 735.9,822.3 729.8,806.8 719.7,796.9 712.7,782.3 702.6,772.6 695.4,756.3 690.5,741.7 688.9,727.0 680.9,713.3 682.2,698.5 678.3,683.4 684.9,670.2 692.0,651.4 686.4,637.4 676.6,623.2 667.5,606.3 660.7,585.5 659.3,564.5 653.5,531.1 646.9,517.8 646.5,501.3 640.1,485.5 631.7,451.8 628.9,434.6 622.7,421.1 626.0,405.3 634.6,392.3 647.7,379.5 662.9,368.4 676.6,356.1 677.9,340.8 691.3,330.8 706.9,324.4 719.5,312.4 724.5,296.4 725.1,280.5 719.5,263.8 696.4,260.5 671.9,262.4 655.2,268.1 637.8,270.4 627.3,256.8 615.3,246.1 605.9,241.2"/><path class="context-added layer-after" d="M402.3,209.4 401.7,210.2 416.5,239.9 444.8,247.6 492.5,247.3 524.0,239.1 558.1,233.8 596.8,238.8 607.0,242.2"/><path class="context-added layer-after" d="M642.1,-186.8 644.3,-173.0 650.2,-157.7 654.7,-140.6 661.4,-128.0 662.7,-112.1 674.7,-78.3 675.4,-64.2 677.6,-47.9 674.0,-34.2 677.5,-20.0 680.2,-5.2 684.5,8.1 685.6,24.3 688.2,38.8 688.2,53.1 693.3,100.3 700.6,113.7 712.5,125.3 716.9,127.4"/><path class="context-added layer-after" d="M458.8,-120.5 457.7,-122.1"/><path class="context-added layer-after" d="M457.7,-122.1 452.3,-130.4"/><path class="context-added layer-after" d="M452.3,-130.4 450.3,-133.4"/><path class="context-added layer-after" d="M409.9,-292.4 412.5,-289.2 443.3,-275.9 451.6,-264.1 463.1,-252.0 475.1,-242.5 479.4,-227.7 482.5,-211.0 481.5,-195.1 475.7,-182.1 465.2,-172.7 453.9,-159.1 446.2,-146.6 449.2,-137.5 452.3,-130.4"/><path class="context-added layer-after" d="M457.7,-122.1 467.8,-119.4 475.5,-118.6 490.0,-119.2 504.0,-125.4 512.5,-137.4 532.4,-161.0 539.8,-176.1 544.8,-191.1 544.8,-206.8 540.1,-240.9 539.3,-265.6 545.8,-291.1 561.0,-318.2 591.5,-331.7 622.8,-331.7 660.5,-319.0 678.9,-306.2 688.6,-275.2 675.7,-246.5 654.1,-219.4 645.9,-186.7"/><path class="context-added layer-after" d="M721.7,129.6 727.5,132.2 740.8,141.8 751.0,154.9 761.0,165.5 769.1,180.2 778.7,191.0 786.1,203.2 793.6,217.5 803.2,232.1 806.8,240.0 805.7,258.6 785.6,283.3 750.3,301.6 727.4,309.8"/><path class="context-added layer-after" d="M398.0,-312.6 402.7,-285.1 400.7,-259.3 400.5,-237.9 395.9,-166.4 395.8,-103.0 395.1,-64.4 400.0,-29.9 460.5,9.5 483.1,42.6 501.4,76.9 489.0,101.5 469.4,114.9 456.4,127.8 442.8,158.3 424.3,184.3 402.3,209.4"/><path class="context-added layer-after" d="M399.2,-319.3 398.1,-312.6 402.0,-301.7"/><path class="context-added layer-after" d="M180.2,-1406.0 181.2,-1391.9 191.0,-1345.0 191.1,-1308.2 190.6,-1290.6 198.6,-1253.9 198.6,-1236.2 196.1,-1205.4 198.0,-1187.6 203.0,-1172.1 203.0,-1157.8 204.7,-1139.7 210.4,-1123.4 224.9,-1088.9 231.7,-1074.8 248.4,-1045.7 254.6,-1030.0 262.9,-1014.8 273.7,-1001.9 294.0,-974.1 300.3,-960.4 308.1,-947.6 317.4,-933.8 329.1,-902.7 338.5,-890.1 352.7,-875.1 365.7,-860.3 375.1,-826.1 377.9,-811.8 387.1,-796.0 401.6,-784.0 412.7,-768.5 421.3,-749.3 423.3,-730.5 420.9,-712.8 415.9,-699.5 414.9,-683.0 417.0,-668.8 414.4,-652.7 410.4,-637.2 411.4,-622.1 403.7,-591.4 401.1,-575.5 399.4,-561.5 405.0,-543.6 426.5,-513.2 422.3,-497.2 417.3,-482.7 410.5,-465.7 405.9,-447.8 406.3,-428.7 404.2,-413.1 402.8,-397.3 408.7,-382.4 409.2,-363.7 404.0,-349.7 399.7,-334.7 399.5,-319.1"/><path class="context-added layer-after" d="M-10.5,80.6 -13.6,82.5 -16.6,74.3"/><path class="context-added layer-after" d="M-16.6,74.3 -16.6,74.1"/><path class="context-added layer-after" d="M-70.9,71.1 -66.3,70.6 -55.6,58.3 -38.2,53.4 -23.4,61.5 -16.6,74.3"/><path class="context-added layer-after" d="M-70.9,71.1 -84.5,73.7 -127.4,77.4 -165.7,62.1 -189.8,42.7 -202.7,-1.2 -199.8,-28.5 -167.3,-59.0 -131.5,-71.5 -111.9,-84.3 -101.5,-111.7 -83.6,-131.7 -79.4,-141.0 -88.0,-152.5 -85.6,-167.3 -87.2,-186.4 -90.1,-206.2 -94.3,-221.1 -101.9,-241.0 -106.7,-258.9 -109.4,-277.2 -114.0,-294.0 -125.1,-326.9 -137.5,-360.6 -142.9,-377.2 -147.3,-393.5 -150.0,-409.3 -151.6,-425.0 -152.0,-441.4 -153.9,-458.1 -154.1,-476.4 -153.4,-494.1 -148.8,-528.5 -147.0,-565.2 -143.5,-583.1 -133.0,-621.7 -128.6,-640.0 -127.5,-659.2 -128.2,-678.1 -130.8,-698.1 -130.1,-721.5 -125.2,-779.7 -126.4,-800.8 -132.3,-844.2 -134.0,-867.1 -136.5,-888.5 -133.1,-906.9 -123.5,-920.7 -95.4,-932.1 -83.9,-944.1 -76.7,-961.0 -71.9,-977.6 -59.1,-992.0 -40.7,-1003.7 -25.1,-1018.1 -18.6,-1038.3 -16.0,-1064.8 -18.6,-1085.9 -18.4,-1106.9 -20.1,-1126.2 -23.9,-1147.1 -24.3,-1168.2 -21.6,-1188.3 -14.2,-1204.4 0.7,-1213.0 16.7,-1214.9 32.9,-1215.5 72.1,-1209.3 94.2,-1206.7 113.6,-1207.8 132.8,-1210.3 149.7,-1210.8 165.7,-1208.9 184.1,-1203.0 196.4,-1202.4 196.2,-1206.1"/><path class="context-added layer-after" d="M-10.4,80.6 6.6,85.2 18.3,94.1 35.0,98.7 65.6,113.9 80.4,117.3 95.4,122.5 111.7,134.3 133.3,155.7 149.3,164.3 164.4,174.1 176.1,180.9 190.3,185.6 208.5,189.2 231.7,197.6 284.7,201.1 307.9,201.1 326.0,200.0 348.1,200.3 365.0,202.2 401.9,210.5"/><path class="context-added layer-after" d="M-85.2,72.6 -70.9,71.1"/><path class="context-added layer-after" d="M-15.6,85.3 -15.5,85.1"/><g class="place" data-place="trail-bigwoodstrail"><title>Big Woods Trail</title><path class="before layer-before" d="M180.2,-1406.0 181.2,-1391.9 191.0,-1345.0 191.1,-1308.2 190.6,-1290.6 198.6,-1253.9 198.6,-1236.2 196.1,-1205.4 198.0,-1187.6 203.0,-1172.1 203.0,-1157.8 204.7,-1139.7 210.4,-1123.4 224.9,-1088.9 231.7,-1074.8 248.4,-1045.7 254.6,-1030.0 262.9,-1014.8 273.7,-1001.9 294.0,-974.1 300.3,-960.4 308.1,-947.6 317.4,-933.8 329.1,-902.7 338.5,-890.1 352.7,-875.1 365.7,-860.3 375.1,-826.1 377.9,-811.8 387.1,-796.0 401.6,-784.0 412.7,-768.5 421.3,-749.3 423.3,-730.5 420.9,-712.8 415.9,-699.5 414.9,-683.0 417.0,-668.8 414.4,-652.7 410.4,-637.2 411.4,-622.1 403.7,-591.4 401.1,-575.5 399.4,-561.5 405.0,-543.6 426.5,-513.2 422.3,-497.2 417.3,-482.7 410.5,-465.7 405.9,-447.8 406.3,-428.7 404.2,-413.1 402.8,-397.3 408.7,-382.4 409.2,-363.7 404.0,-349.7 399.7,-334.7 399.5,-319.1"/><path class="before layer-before" d="M399.2,-319.3 398.1,-312.6 402.0,-301.7"/><path class="before layer-before" d="M401.9,-289.7 402.7,-285.1 400.7,-259.3 400.5,-237.9 395.9,-166.4 395.8,-103.0 395.1,-64.4 400.0,-29.9 460.5,9.5 483.1,42.6 501.4,76.9 489.0,101.5 469.4,114.9 456.4,127.8 442.8,158.3 424.3,184.3 401.7,210.2 416.5,239.9 444.8,247.6 492.5,247.3 524.0,239.1 558.1,233.8 596.8,238.8 607.0,242.2"/><path class="before layer-before" d="M676.6,356.1 677.9,340.8 691.3,330.8 706.9,324.4 719.5,312.4 724.5,296.4 725.1,280.5 719.5,263.8 715.8,249.5 706.5,236.1 700.9,221.2 690.1,212.3 683.7,228.3 671.9,262.4 655.2,268.1 637.8,270.4 627.3,256.8 615.3,246.1 600.6,242.8 583.7,241.0 569.3,244.1 557.3,252.1 528.9,268.7 513.5,271.5 497.9,281.2 483.3,288.7 470.9,299.8 454.0,297.2 436.0,289.2 420.3,292.7"/><path class="after layer-after" d="M398.0,-312.6 402.7,-285.1 400.7,-259.3 400.5,-237.9 395.9,-166.4 395.8,-103.0 395.1,-64.4 400.0,-29.9 460.5,9.5 483.1,42.6 501.4,76.9 489.0,101.5 469.4,114.9 456.4,127.8 442.8,158.3 424.3,184.3 402.3,209.4"/><path class="after layer-after" d="M399.2,-319.3 398.1,-312.6 402.0,-301.7"/><path class="after layer-after" d="M180.2,-1406.0 181.2,-1391.9 191.0,-1345.0 191.1,-1308.2 190.6,-1290.6 198.6,-1253.9 198.6,-1236.2 196.1,-1205.4 198.0,-1187.6 203.0,-1172.1 203.0,-1157.8 204.7,-1139.7 210.4,-1123.4 224.9,-1088.9 231.7,-1074.8 248.4,-1045.7 254.6,-1030.0 262.9,-1014.8 273.7,-1001.9 294.0,-974.1 300.3,-960.4 308.1,-947.6 317.4,-933.8 329.1,-902.7 338.5,-890.1 352.7,-875.1 365.7,-860.3 375.1,-826.1 377.9,-811.8 387.1,-796.0 401.6,-784.0 412.7,-768.5 421.3,-749.3 423.3,-730.5 420.9,-712.8 415.9,-699.5 414.9,-683.0 417.0,-668.8 414.4,-652.7 410.4,-637.2 411.4,-622.1 403.7,-591.4 401.1,-575.5 399.4,-561.5 405.0,-543.6 426.5,-513.2 422.3,-497.2 417.3,-482.7 410.5,-465.7 405.9,-447.8 406.3,-428.7 404.2,-413.1 402.8,-397.3 408.7,-382.4 409.2,-363.7 404.0,-349.7 399.7,-334.7 399.5,-319.1"/><path class="after layer-after" d="M402.3,209.4 401.7,210.2 416.5,239.9 444.8,247.6 492.5,247.3 524.0,239.1 558.1,233.8 596.8,238.8 607.0,242.2"/><path class="after layer-after" d="M676.6,356.1 677.9,340.8 691.3,330.8 706.9,324.4 719.5,312.4 724.5,296.4 725.1,280.5 719.5,263.8 696.4,260.5 671.9,262.4 655.2,268.1 637.8,270.4 627.3,256.8 615.3,246.1 605.9,241.2"/><path class="dropped layer-before" d="M713.5,246.2 706.5,236.1 700.9,221.2 690.1,212.3 677.7,244.9"/><path class="dropped layer-before" d="M560.3,250.1 528.9,268.7 513.5,271.5 497.9,281.2 483.3,288.7 470.9,299.8 454.0,297.2 436.0,289.2 420.3,292.7"/><path class="added layer-after" d="M704.1,261.6 696.4,260.5 688.3,261.1"/></g><g class="place" data-place="trail-robintrail"><title>Robin Trail</title><path class="before layer-before" d="M-85.2,72.6 -70.9,71.1 -84.5,73.7 -127.4,77.4 -165.7,62.1 -189.8,42.7 -202.7,-1.2 -199.8,-28.5 -167.3,-59.0 -131.5,-71.5 -111.9,-84.3 -101.5,-111.7 -83.6,-131.7 -79.4,-141.0 -88.0,-152.5 -85.6,-167.3 -87.2,-186.4 -90.1,-206.2 -94.3,-221.1 -101.9,-241.0 -106.7,-258.9 -109.4,-277.2 -114.0,-294.0 -125.1,-326.9 -137.5,-360.6 -142.9,-377.2 -147.3,-393.5 -150.0,-409.3 -151.6,-425.0 -152.0,-441.4 -153.9,-458.1 -154.1,-476.4 -153.4,-494.1 -148.8,-528.5 -147.0,-565.2 -143.5,-583.1 -133.0,-621.7 -128.6,-640.0 -127.5,-659.2 -128.2,-678.1 -130.8,-698.1 -130.1,-721.5 -125.2,-779.7 -126.4,-800.8 -132.3,-844.2 -134.0,-867.1 -136.5,-888.5 -133.1,-906.9 -123.5,-920.7 -95.4,-932.1 -83.9,-944.1 -76.7,-961.0 -71.9,-977.6 -59.1,-992.0 -40.7,-1003.7 -25.1,-1018.1 -18.6,-1038.3 -16.0,-1064.8 -18.6,-1085.9 -18.4,-1106.9 -20.1,-1126.2 -23.9,-1147.1 -24.3,-1168.2 -21.6,-1188.3 -14.2,-1204.4 0.7,-1213.0 16.7,-1214.9 32.9,-1215.5 72.1,-1209.3 94.2,-1206.7 113.6,-1207.8 132.8,-1210.3 149.7,-1210.8 165.7,-1208.9 184.1,-1203.0 196.4,-1202.4 196.2,-1206.1"/><path class="before layer-before" d="M-85.2,72.6 -66.3,70.6 -55.6,58.3 -38.2,53.4 -23.4,61.5 -16.6,74.3"/><path class="before layer-before" d="M-10.4,80.6 6.6,85.2 18.3,94.1 35.0,98.7 65.6,113.9 80.4,117.3 95.4,122.5 111.7,134.3 133.3,155.7 149.3,164.3 164.4,174.1 172.4,187.1 172.4,187.9"/><path class="before layer-before" d="M277.0,252.0 262.8,249.0 229.5,230.4 207.7,215.8 172.4,187.9 172.4,187.1 166.5,177.6"/><path class="before layer-before" d="M282.0,253.8 288.0,253.6 304.6,257.1 322.1,262.6 339.3,260.9"/><path class="before layer-before" d="M339.3,260.8 356.9,258.6"/><path class="before layer-before" d="M358.4,256.3 374.7,268.0 390.7,272.8 404.7,278.5"/><path class="after layer-after" d="M-10.5,80.6 -13.6,82.5 -16.6,74.3"/><path class="after layer-after" d="M-16.6,74.3 -16.6,74.1"/><path class="after layer-after" d="M-70.9,71.1 -66.3,70.6 -55.6,58.3 -38.2,53.4 -23.4,61.5 -16.6,74.3"/><path class="after layer-after" d="M-70.9,71.1 -84.5,73.7 -127.4,77.4 -165.7,62.1 -189.8,42.7 -202.7,-1.2 -199.8,-28.5 -167.3,-59.0 -131.5,-71.5 -111.9,-84.3 -101.5,-111.7 -83.6,-131.7 -79.4,-141.0 -88.0,-152.5 -85.6,-167.3 -87.2,-186.4 -90.1,-206.2 -94.3,-221.1 -101.9,-241.0 -106.7,-258.9 -109.4,-277.2 -114.0,-294.0 -125.1,-326.9 -137.5,-360.6 -142.9,-377.2 -147.3,-393.5 -150.0,-409.3 -151.6,-425.0 -152.0,-441.4 -153.9,-458.1 -154.1,-476.4 -153.4,-494.1 -148.8,-528.5 -147.0,-565.2 -143.5,-583.1 -133.0,-621.7 -128.6,-640.0 -127.5,-659.2 -128.2,-678.1 -130.8,-698.1 -130.1,-721.5 -125.2,-779.7 -126.4,-800.8 -132.3,-844.2 -134.0,-867.1 -136.5,-888.5 -133.1,-906.9 -123.5,-920.7 -95.4,-932.1 -83.9,-944.1 -76.7,-961.0 -71.9,-977.6 -59.1,-992.0 -40.7,-1003.7 -25.1,-1018.1 -18.6,-1038.3 -16.0,-1064.8 -18.6,-1085.9 -18.4,-1106.9 -20.1,-1126.2 -23.9,-1147.1 -24.3,-1168.2 -21.6,-1188.3 -14.2,-1204.4 0.7,-1213.0 16.7,-1214.9 32.9,-1215.5 72.1,-1209.3 94.2,-1206.7 113.6,-1207.8 132.8,-1210.3 149.7,-1210.8 165.7,-1208.9 184.1,-1203.0 196.4,-1202.4 196.2,-1206.1"/><path class="after layer-after" d="M-10.4,80.6 6.6,85.2 18.3,94.1 35.0,98.7 65.6,113.9 80.4,117.3 95.4,122.5 111.7,134.3 133.3,155.7 149.3,164.3 164.4,174.1 176.1,180.9 190.3,185.6 208.5,189.2 231.7,197.6 284.7,201.1 307.9,201.1 326.0,200.0 348.1,200.3 365.0,202.2 401.9,210.5"/><path class="after layer-after" d="M-85.2,72.6 -70.9,71.1"/><path class="after layer-after" d="M-15.6,85.3 -15.5,85.1"/><path class="dropped layer-before" d="M277.0,252.0 262.8,249.0 229.5,230.4 207.7,215.8 186.5,199.1"/><path class="dropped layer-before" d="M282.0,253.8 288.0,253.6 304.6,257.1 322.1,262.6 339.3,260.9"/><path class="dropped layer-before" d="M339.3,260.8 356.9,258.6"/><path class="dropped layer-before" d="M358.4,256.3 374.7,268.0 390.7,272.8 404.7,278.5"/><path class="added layer-after" d="M194.8,186.5 208.5,189.2 231.7,197.6 284.7,201.1 307.9,201.1 326.0,200.0 348.1,200.3 365.0,202.2 401.9,210.5"/></g><g class="scale"><path d="M16,467 V472 H249.1 V467"/><text x="132.6" y="464">50 m</text></g></svg><div class="legend"><span><i class="key before"></i>before</span><span><i class="key after"></i>after</span><span><i class="key dropped"></i>dropped: no longer there</span><span><i class="key added"></i>added: not there before</span><span><i class="key faint dropped"></i><i class="key faint added"></i>background shapes gone and new</span><span><i class="key building"></i>buildings, walkways and water</span></div><figcaption><strong>Overview.</strong> Every place that moved, was added or was removed. Faint lines are background shapes that appeared or disappeared.</figcaption></figure>
+<section class="kind"><h2>Changed <span class="count">4</span></h2><div class="cards"><article class="card" data-place="trail-bigwoodstrail" tabindex="0"><h3>Big Woods Trail</h3><p class="meta"><code>trail-bigwoodstrail</code> · outdoors, trail</p><dl><dt>Shape</dt><dd><p>50 m dropped, 3 m added.</p></dd><dt>Length</dt><dd><p>540 m → 487 m (-53 m)</p></dd></dl></article><article class="card" data-place="trail-burroaktrail" tabindex="0"><h3>Burr Oak Trail</h3><p class="meta"><code>trail-burroaktrail</code> · outdoors, trail</p><dl><dt>Shape</dt><dd><p>Redrawn slightly: no part moved more than 3 m.</p></dd><dt>Length</dt><dd><p>882 m → 866 m (-16 m)</p></dd></dl></article><article class="card" data-place="trail-lowerheathcreektrail" tabindex="0"><h3>Lower Heath Creek Trail</h3><p class="meta"><code>trail-lowerheathcreektrail</code> · outdoors, trail, wellness walk</p><dl><dt>Shape</dt><dd><p>Redrawn slightly: no part moved more than 3 m.</p></dd><dt>Length</dt><dd><p>934 m → 943 m (+9 m)</p></dd></dl></article><article class="card" data-place="trail-robintrail" tabindex="0"><h3>Robin Trail</h3><p class="meta"><code>trail-robintrail</code> · outdoors, trail</p><dl><dt>Shape</dt><dd><p>50 m dropped, 45 m added.</p></dd><dt>Length</dt><dd><p>496 m → 488 m (-8 m)</p></dd></dl></article></div></section>
+<section class="notes"><h2>Also changed</h2><ul><li>Natural Lands Segments layer: 20 shapes added, 39 shapes removed.</li></ul></section>
+</main>
+<script>
+const sheet = document.getElementById("sheet");
+for (const [id, cls] of [["show-before", "hide-before"], ["show-after", "hide-after"]]) {
+  const box = document.getElementById(id);
+  if (box) box.addEventListener("change", () => sheet.classList.toggle(cls, !box.checked));
+}
+const marked = document.querySelectorAll("[data-place]");
+const drawn = new Set([...document.querySelectorAll(".place")].map((el) => el.dataset.place));
+let hovered = null;
+let focused = null;
+// Leaving a card or shape waits this long before letting go of it, so crossing
+// the gap to the next one goes straight from one highlight to the other instead
+// of undimming the map for a few frames; stopping on the background still
+// lets go.
+const LET_GO_MS = 100;
+let letGo = null;
+function highlight() {
+  const place = hovered ?? focused;
+  sheet.classList.toggle("focusing", drawn.has(place));
+  for (const el of marked) el.classList.toggle("hl", el.dataset.place === place);
+}
+for (const el of marked) {
+  const place = el.dataset.place;
+  el.addEventListener("mouseenter", () => {
+    clearTimeout(letGo);
+    hovered = place;
+    highlight();
+  });
+  el.addEventListener("mouseleave", () => {
+    clearTimeout(letGo);
+    letGo = setTimeout(() => { hovered = null; highlight(); }, LET_GO_MS);
+  });
+  el.addEventListener("focus", () => { focused = place; highlight(); });
+  el.addEventListener("blur", () => { focused = null; highlight(); });
+  if (el.classList.contains("place")) {
+    el.addEventListener("click", () => {
+      const card = [...document.querySelectorAll(".card")]
+        .find((c) => c.dataset.place === place);
+      if (card) { card.scrollIntoView({ block: "center" }); card.focus(); }
+    });
+  }
+}
+</script>
+</body>
+</html>
