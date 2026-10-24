@@ -556,6 +556,41 @@ def test_list_fields_show_the_items_added_and_removed():
     assert '<li class="ins">2</li>' in page and '<li class="del">1</li>' in page
 
 
+def page_with_fields(before: dict, after: dict) -> str:
+    shape = square(LAT, LON)
+    return page_of(
+        state([place_record("w", "Walk", shape, "trail", **before)]),
+        state([place_record("w", "Walk", shape, "trail", **after)]),
+    )
+
+
+def test_a_changed_value_in_a_dict_field_shows_before_and_after():
+    page = page_with_fields(
+        {"walk": {"minutes": [14, 17], "accessibility": "Flat."}},
+        {"walk": {"minutes": [20, 25], "accessibility": "Flat."}},
+    )
+    assert "<li>minutes: [14, 17] → [20, 25]</li>" in page
+    assert "accessibility" not in page
+
+
+def test_a_dict_field_that_appeared_shows_its_values():
+    page = page_with_fields(
+        {"walk": None}, {"walk": {"minutes": [14, 17], "accessibility": "Flat."}}
+    )
+    assert '<li>accessibility: <span class="none">none</span> → Flat.</li>' in page
+    assert '<li>minutes: <span class="none">none</span> → [14, 17]</li>' in page
+
+
+def test_a_list_that_only_changed_order_says_so():
+    page = page_with_fields({"floors": ["1", "2"]}, {"floors": ["2", "1"]})
+    assert "<p>The same items, in a new order.</p>" in page
+
+
+def test_a_repeated_list_item_removed_is_shown():
+    page = page_with_fields({"floors": ["1", "1", "2"]}, {"floors": ["1", "2"]})
+    assert '<li class="del">1</li>' in page
+
+
 def test_context_and_routing_changes_are_noted():
     page = render(*fixture(), DATE)
     assert "Walkways layer: 1 shape added." in page

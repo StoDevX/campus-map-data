@@ -16,6 +16,7 @@ file order, coordinates are rounded to a tenth of a pixel and nothing reads the
 clock; the date is an argument.
 """
 
+import collections
 import html
 import json
 import math
@@ -75,6 +76,9 @@ KIND_HEADINGS = {
 
 # Fields whose values are prose, shown as a word-by-word difference.
 PROSE_FIELDS = {"description", "rules"}
+
+# Fields whose values are dicts of flags, which read as a list of their keys.
+FLAG_FIELDS = {"categories"}
 
 FIELD_LABELS = {"geometry": "Shape"}
 
@@ -439,13 +443,37 @@ def item_html(item: object) -> str:
 
 
 def list_change(field: FieldChange) -> str:
-    def keyed(value):
-        return {json.dumps(i, sort_keys=True): i for i in list_items(value)}
+    """The items removed and added, counting repeats; a list whose items are
+    all still there, the same number of times, can only have been reordered."""
 
-    old, new = keyed(field.before), keyed(field.after)
-    removed = [f'<li class="del">{item_html(old[k])}</li>' for k in old if k not in new]
-    added = [f'<li class="ins">{item_html(new[k])}</li>' for k in new if k not in old]
+    def counted(value):
+        return collections.Counter(
+            json.dumps(i, sort_keys=True) for i in list_items(value)
+        )
+
+    old, new = counted(field.before), counted(field.after)
+    removed = [
+        f'<li class="del">{item_html(json.loads(k))}</li>'
+        for k in (old - new).elements()
+    ]
+    added = [
+        f'<li class="ins">{item_html(json.loads(k))}</li>'
+        for k in (new - old).elements()
+    ]
+    if not removed and not added:
+        return "<p>The same items, in a new order.</p>"
     return f'<ul class="items">{"".join(removed + added)}</ul>'
+
+
+def dict_change(field: FieldChange) -> str:
+    """Each key whose value changed, before and after."""
+    old, new = field.before or {}, field.after or {}
+    rows = [
+        f"<li>{escape(key)}: {plain(old.get(key))} → {plain(new.get(key))}</li>"
+        for key in sorted(old.keys() | new.keys())
+        if old.get(key) != new.get(key)
+    ]
+    return f'<ul class="items">{"".join(rows)}</ul>'
 
 
 def prose(value: object) -> str:
@@ -502,6 +530,10 @@ def field_html(change: PlaceChange, field: FieldChange) -> str:
         body = prose_change(field)
     elif field.field == "length":
         body = length_change(field)
+    elif field.field not in FLAG_FIELDS and any(
+        isinstance(v, dict) for v in (field.before, field.after)
+    ):
+        body = dict_change(field)
     elif any(isinstance(v, list | dict) for v in (field.before, field.after)):
         body = list_change(field)
     else:
