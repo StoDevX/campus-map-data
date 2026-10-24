@@ -36,8 +36,10 @@ on:
   pull_request:
 
 # To push the regenerated data back to main.
+# `actions` to dispatch the release workflow.
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   # PRs get their own group so a dry run can never queue behind, or cancel, a
@@ -84,9 +86,58 @@ jobs:
         run: uv run scripts/build_routing.py
 
       - name: Verify
+        # Non-fatal here so the change report below still gets built when the
+        # data fails verification: that is when a person most wants to see what
+        # moved. The last step of the job fails the run for it.
+        id: verify
+        continue-on-error: true
         run: uv run scripts/verify.py
 
+      - name: Build the change report
+        id: report
+        # A broken report must not hide the scrape's own result.
+        continue-on-error: true
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          # On a pull request the data is compared with the base branch; on any
+          # other run, with the commit the run started from.
+          if [ "$EVENT" = pull_request ]; then
+            git fetch --no-tags --depth=1 origin \
+              "+refs/heads/$BASE_REF:refs/remotes/origin/$BASE_REF"
+            before="origin/$BASE_REF"
+          else
+            before=HEAD
+          fi
+
+          uv run scripts/report.py \
+            --before "$before" --date "$(date -u +%F)" \
+            --out "$RUNNER_TEMP/report.html" | tee "$RUNNER_TEMP/report-summary.txt"
+
+          # report.py writes nothing when the published data did not change.
+          if [ -f "$RUNNER_TEMP/report.html" ]; then
+            echo "built=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload the change report
+        # A scheduled run that verifies is released by release.yml instead, so
+        # the page is only an artifact for a pull request or a failed verify.
+        if: >-
+          steps.report.outputs.built == 'true'
+          && (github.event_name == 'pull_request' || steps.verify.outcome != 'success')
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: change-report
+          path: ${{ runner.temp }}/report.html
+          if-no-files-found: error
+
       - name: Summarise
+        env:
+          EVENT: ${{ github.event_name }}
+          REPORT_BUILT: ${{ steps.report.outputs.built }}
+          REPORT_OUTCOME: ${{ steps.report.outcome }}
+          VERIFY_OUTCOME: ${{ steps.verify.outcome }}
         run: |
           {
             echo "## Campus data"
@@ -102,7 +153,25 @@ jobs:
               echo "> The wp.stolaf.edu scrape failed; floor plans are unchanged from the last good run."
               echo
             fi
+            if [ "$VERIFY_OUTCOME" != "success" ]; then
+              echo "> [!CAUTION]"
+              echo "> The data failed verification; nothing was committed."
+              echo
+            fi
             echo '### Changes'
+            echo
+            if [ "$REPORT_OUTCOME" != "success" ]; then
+              echo "The change report failed to build; see the step's log."
+            elif [ "$REPORT_BUILT" != "true" ]; then
+              echo "No change to the published data, so no change report."
+            elif [ "$EVENT" = pull_request ]; then
+              echo "The change report is attached to this run as the \`change-report\` artifact."
+              echo "It compares the base branch with data regenerated from today's live layers, so it can include college edits that are not this pull request's."
+            elif [ "$VERIFY_OUTCOME" != "success" ]; then
+              echo "The change report is attached to this run as the \`change-report\` artifact."
+            else
+              echo "A release and a change report follow from the release workflow."
+            fi
             echo
             if git diff --quiet; then
               echo "None — the published data already matches the source."
@@ -114,7 +183,8 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit
-        if: github.event_name != 'pull_request'
+        id: commit
+        if: github.event_name != 'pull_request' && steps.verify.outcome == 'success'
         # Only when something actually moved. A no-op commit on every run would
         # destroy the thing that makes committing this data worth doing: the
         # history being a readable log of what changed on campus and when.
@@ -134,9 +204,34 @@ jobs:
           # prevents that. A rebase covers a human push landing mid-run.
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then
+              # The bot's commit is the tip, so its parent is where the data
+              # changed from, even if a rebase put it on a person's commit.
+              {
+                echo "before=$(git rev-parse HEAD^)"
+                echo "after=$(git rev-parse HEAD)"
+              } >> "$GITHUB_OUTPUT"
               exit 0
             fi
             echo "push failed, rebasing and retrying ($attempt/3)"
             git pull --rebase origin main
           done
+          exit 1
+
+      - name: Release the change
+        # Separate from the push, and non-fatal: nothing here can undo the
+        # data that is already on main. The release workflow writes the report
+        # page and the release; a push made with GITHUB_TOKEN starts no workflow
+        # of its own, so it has to be asked.
+        if: steps.commit.outputs.after != ''
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BEFORE: ${{ steps.commit.outputs.before }}
+          AFTER: ${{ steps.commit.outputs.after }}
+        run: gh workflow run release.yml --ref main -f before="$BEFORE" -f after="$AFTER"
+
+      - name: Fail on a bad verify
+        if: steps.verify.outcome != 'success'
+        run: |
+          echo "::error::verify.py failed; see the Verify step."
           exit 1
