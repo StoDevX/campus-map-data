@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 
 import pytest
-from changes import FieldChange, State, compare, read_state
+from changes import FieldChange, State, compare, moved, read_state, word_diff
 
 POLYGON = {
     "type": "Polygon",
@@ -155,9 +155,9 @@ def test_a_changed_field_is_listed_before_and_after():
     assert change.fields == (FieldChange("description", "A", "B"),)
 
 
-def test_a_moved_center_alone_is_not_a_field_change():
+def test_a_moved_center_is_not_a_field_change():
     changes = compare(state_of(place("a")), state_of(place("a", lat=44.1)))
-    assert changes.is_empty
+    assert all(c.field != "center" for p in changes.places for c in p.fields)
 
 
 # Ids derive from names, so a rename arrives as one removed and one added.
@@ -207,3 +207,86 @@ def test_comparing_twice_gives_the_same_order():
     before = state_of(place("a"), place("b", description="x"))
     after = state_of(place("c"), place("b", description="y"), place("d"))
     assert compare(before, after) == compare(before, after)
+
+
+def line_at(lat: float, east: float = -93.0001) -> dict:
+    return {"type": "LineString", "coordinates": [[-93.0, lat], [east + 0.0002, lat]]}
+
+
+POINT = {"type": "Point", "coordinates": [-93.0, 44.0]}
+
+
+def square_at(lat: float) -> dict:
+    d = 0.0001
+    ring = [[-93, lat], [-93 + d, lat], [-93 + d, lat + d], [-93, lat + d], [-93, lat]]
+    return {"type": "Polygon", "coordinates": [ring]}
+
+
+def test_a_line_redrawn_13_m_away_is_dropped_and_added():
+    move = moved(line_at(44.4600), line_at(44.46012))
+    assert move.visible
+    assert round(move.dropped_m) == round(move.added_m) == 8
+
+
+def test_a_line_nudged_under_3_m_is_not_a_move():
+    assert not moved(line_at(44.4600), line_at(44.46001)).visible
+
+
+def test_a_shortened_line_drops_only_its_end():
+    def along(*lons):
+        return {"type": "LineString", "coordinates": [[lon, 44.0] for lon in lons]}
+
+    long = along(-93.0, -93.0005, -93.0010, -93.0015)
+    short = along(-93.0, -93.0005)
+    move = moved(long, short)
+    assert round(move.dropped_m) == 80
+    assert move.added_m == 0 and not move.added
+    assert len(move.dropped) == 1
+
+
+def test_a_point_that_became_a_polygon_is_a_move():
+    move = moved(POINT, square_at(44.01))
+    assert move.visible
+    assert move.dropped and move.added
+
+
+def test_a_point_that_stayed_is_not_a_move():
+    assert not moved(POINT, POINT).visible
+
+
+def test_a_shape_that_appeared_is_all_added():
+    move = moved(None, POINT)
+    assert move.added and not move.dropped
+
+
+def test_a_shape_that_vanished_is_all_dropped():
+    move = moved(square_at(44.0), None)
+    assert move.dropped and not move.added
+
+
+def test_word_diff_marks_the_changed_words():
+    assert word_diff("a red barn", "a blue barn") == (
+        ("same", "a"),
+        ("removed", "red"),
+        ("added", "blue"),
+        ("same", "barn"),
+    )
+
+
+def test_a_changed_place_carries_its_move():
+    before = place("a", description="A")
+    after = place("a", description="B")
+    old = State({"a": before}, {"a": line_at(44.0)}, {}, b"")
+    new = State({"a": after}, {"a": line_at(44.001)}, {}, b"")
+    (change,) = compare(old, new).places
+    assert change.move.visible
+    assert [f.field for f in change.fields] == ["description", "geometry"]
+
+
+def test_identical_shapes_add_no_geometry_field_or_move():
+    shape = {"a": line_at(44.0)}
+    old = State({"a": place("a", description="A")}, shape, {}, b"")
+    new = State({"a": place("a", description="B")}, shape, {}, b"")
+    (change,) = compare(old, new).places
+    assert change.move is None
+    assert [f.field for f in change.fields] == ["description"]

@@ -11,13 +11,14 @@ A state comes either from the working tree or from a git revision, so the same
 code compares a fresh build against the last release.
 """
 
+import difflib
 import json
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from geometry import distance_m
+from geometry import distance_m, lines, polygons, positions
 from sources import SOURCES
 
 # Water is a place layer, but it is also drawn as background, so a change to it
@@ -122,14 +123,95 @@ GEOMETRY_FIELDS = {"center", "outline"}
 KIND_ORDER = {"added": 0, "removed": 1, "renamed": 2, "changed": 3}
 
 
+# A stretch of a line or ring this far from the other shape was drawn somewhere
+# else; closer than this is survey noise, not an edit.
+MOVE_REACH_M = 3.0
+
+Stretch = tuple[tuple[float, float], ...]
+
+
 @dataclass(frozen=True)
 class Move:
-    """How far a place's geometry moved; Task 3 measures it."""
+    """The stretches of a place's outline that no longer coincide with it.
 
-    dropped: tuple = ()
-    added: tuple = ()
+    `dropped` are runs of the old shape that the new one no longer covers and
+    `added` are runs of the new shape that the old one did not; each run is
+    consecutive positions, with its length in metres alongside.
+    """
+
+    dropped: tuple[Stretch, ...] = ()
+    added: tuple[Stretch, ...] = ()
     dropped_m: float = 0.0
     added_m: float = 0.0
+
+    @property
+    def visible(self) -> bool:
+        """Whether any stretch moved far enough to show on a map."""
+        return bool(self.dropped or self.added)
+
+
+def outlines(geometry: dict | None) -> list[list]:
+    """Every line of a geometry, with each polygon ring as a closed line.
+
+    A point is a one-position line, so it can be compared like any other shape.
+    """
+    found = lines(geometry) + [ring for rings in polygons(geometry) for ring in rings]
+    if not found:
+        found = [[position] for position in positions(geometry)]
+    return found
+
+
+def off_runs(geometry: dict | None, other: dict | None) -> tuple[list[Stretch], float]:
+    """Runs of `geometry` more than `MOVE_REACH_M` from `other`, and their metres.
+
+    A stretch is judged at its midpoint, so a long segment that only grazes the
+    other shape still counts as off; consecutive off stretches join into one run
+    so a redrawn road is one close-up, not many.
+    """
+    runs: list[Stretch] = []
+    metres = 0.0
+    for line in outlines(geometry):
+        run: list = []
+        for i in range(max(len(line) - 1, 1)):
+            a, b = line[i], line[min(i + 1, len(line) - 1)]
+            mid = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
+            if other is not None and distance_m(mid, other) <= MOVE_REACH_M:
+                if run:
+                    runs.append(tuple(run))
+                run = []
+                continue
+            if not run:
+                run = [tuple(a[:2])]
+            if len(line) > 1:
+                run.append(tuple(b[:2]))
+                metres += distance_m(a, {"type": "Point", "coordinates": b})
+        if run:
+            runs.append(tuple(run))
+    return runs, metres
+
+
+def moved(before: dict | None, after: dict | None) -> Move:
+    """What of `before` and `after` the other shape does not lie along."""
+    dropped, dropped_m = off_runs(before, after)
+    added, added_m = off_runs(after, before)
+    return Move(tuple(dropped), tuple(added), dropped_m, added_m)
+
+
+def word_diff(before: str, after: str) -> tuple[tuple[str, str], ...]:
+    """Runs of ("same" | "removed" | "added", words) turning `before` into `after`."""
+    old, new = before.split(), after.split()
+    labels = {"equal": "same", "delete": "removed", "insert": "added"}
+    runs: list[tuple[str, str]] = []
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(
+        None, old, new, autojunk=False
+    ).get_opcodes():
+        if op == "replace":
+            runs.append(("removed", " ".join(old[i1:i2])))
+            runs.append(("added", " ".join(new[j1:j2])))
+        else:
+            words = old[i1:i2] if op != "insert" else new[j1:j2]
+            runs.append((labels[op], " ".join(words)))
+    return tuple(runs)
 
 
 @dataclass(frozen=True)
@@ -190,6 +272,15 @@ def metres_apart(first: dict, second: dict) -> float:
     return distance_m([first["center"][1], first["center"][0]], point)
 
 
+def shape_changes(
+    before: dict | None, after: dict | None
+) -> tuple[tuple[FieldChange, ...], Move | None]:
+    """The "geometry" field change and the move, or nothing if the shape is the same."""
+    if before == after:
+        return (), None
+    return (FieldChange("geometry", before, after),), moved(before, after)
+
+
 def pair_renames(
     before: State, after: State, removed: list[str], added: list[str]
 ) -> dict[str, str]:
@@ -215,18 +306,37 @@ def pair_renames(
     return pairs
 
 
+def place_change(
+    kind: str,
+    before_id: str,
+    after_id: str,
+    old: dict,
+    new: dict,
+    before_shape: dict | None,
+    after_shape: dict | None,
+) -> PlaceChange:
+    """A place present on both sides, with its field changes and its move."""
+    shape_fields, move = shape_changes(before_shape, after_shape)
+    fields = tuple(
+        sorted(field_changes(old, new) + shape_fields, key=lambda f: f.field)
+    )
+    return PlaceChange(
+        kind, before_id, after_id, new["name"], fields, before_shape, after_shape, move
+    )
+
+
 def compare_places(before: State, after: State) -> list[PlaceChange]:
     removed = sorted(before.places.keys() - after.places.keys())
     added = sorted(after.places.keys() - before.places.keys())
     renames = pair_renames(before, after, removed, added)
     renamed_to = set(renames.values())
     changes = [
-        PlaceChange(
+        place_change(
             "renamed",
             old_id,
             new_id,
-            after.places[new_id]["name"],
-            field_changes(before.places[old_id], after.places[new_id]),
+            before.places[old_id],
+            after.places[new_id],
             before.shapes.get(old_id),
             after.shapes.get(new_id),
         )
@@ -255,19 +365,17 @@ def compare_places(before: State, after: State) -> list[PlaceChange]:
         if new_id not in renamed_to
     ]
     for place_id in sorted(before.places.keys() & after.places.keys()):
-        fields = field_changes(before.places[place_id], after.places[place_id])
-        if fields:
-            changes.append(
-                PlaceChange(
-                    "changed",
-                    place_id,
-                    place_id,
-                    after.places[place_id]["name"],
-                    fields,
-                    before.shapes.get(place_id),
-                    after.shapes.get(place_id),
-                )
-            )
+        change = place_change(
+            "changed",
+            place_id,
+            place_id,
+            before.places[place_id],
+            after.places[place_id],
+            before.shapes.get(place_id),
+            after.shapes.get(place_id),
+        )
+        if change.fields:
+            changes.append(change)
     return sorted(
         changes,
         key=lambda c: (KIND_ORDER[c.kind], c.name, c.after_id or c.before_id),
