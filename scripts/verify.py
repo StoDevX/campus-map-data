@@ -157,6 +157,7 @@ def verify_map_json(report: Report) -> list[dict]:
                 break
 
     verify_parking(report, records)
+    verify_bike_racks(report, records)
 
     # Only where the names are shared too: the accessible spots keep numbered
     # ids but are named for their lots, so a list already tells them apart.
@@ -224,6 +225,59 @@ def verify_parking(report: Report, records: list[dict]) -> None:
             count == 1,
             f"{count} accessible spots are named {name!r} — tell them apart with a "
             f"name and parent under changes in overrides.yaml",
+        )
+
+
+# How far a bike rack may sit from the place it is named for. The farthest of
+# the college's racks that is named right is 32 m from Christiansen Hall of
+# Music; the one it named wrong is 581 m from New Hall.
+RACK_REACH_M = 40
+
+
+def verify_bike_racks(report: Report, records: list[dict]) -> None:
+    """Each rack sits beside the building or field it is named for.
+
+    The college names its racks by hand, and has named one for a building
+    across campus. A rack it adds or relabels wrongly fails here, rather than
+    sending someone to the wrong building, until overrides.yaml says better.
+    """
+    by_id = {record["id"]: record for record in records}
+    racks = [r for r in records if "bike-rack" in r["categories"]]
+    for record in racks:
+        parent = by_id.get(record.get("parent") or "")
+        if not report.check(
+            parent is not None,
+            f"{record['id']}: named {record['name']!r}, which is no building or "
+            f"field -- give it a parent under changes in overrides.yaml",
+        ):
+            continue
+        if not report.check(
+            bool(parent.get("outline")),
+            f"{record['id']}: its parent {parent['id']} has no footprint to frame",
+        ):
+            continue
+        lat, lon = record["center"]
+        footprint = {
+            "type": "Polygon",
+            "coordinates": [[[point[1], point[0]] for point in parent["outline"]]],
+        }
+        distance = geometry.distance_m([lon, lat], footprint)
+        report.check(
+            distance <= RACK_REACH_M,
+            f"{record['id']}: {distance:.0f} m from {parent['name']!r}, which "
+            f"it is named for -- if the college mislabelled it, give it its "
+            f"real parent under changes in overrides.yaml",
+        )
+        report.check(
+            record["name"].startswith(f"Bike Rack, {parent['name']}"),
+            f"{record['id']}: named {record['name']!r}, not after its parent "
+            f"{parent['name']!r}",
+        )
+    for name, count in Counter(record["name"] for record in racks).items():
+        report.check(
+            count == 1,
+            f"{count} bike racks are named {name!r} -- tell them apart with a "
+            f"side under changes in overrides.yaml",
         )
 
 

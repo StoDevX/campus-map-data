@@ -120,3 +120,9 @@ def test_every_drawn_trail_is_tappable_but_a_part_walk_need_not_be(tmp_path):
     assert campus_layers.untappable(features, [], {"trail-eastprairieloop"}) == {
         "trail-knollloop"
     }
+
+
+# Racks are points named "Bike Rack, ..." -- a kind of their own, so the style
+# can leave them unlabelled rather than stamp the name 36 times across campus.
+def test_a_bike_rack_is_its_own_kind_with_no_polygon_layer():
+    assert campus_layers.classify(["bike-rack"]) == ("bike-rack", None)
