@@ -264,14 +264,18 @@ def context_marks(view: View, context: tuple[ContextChange, ...]) -> list[str]:
     """Background shapes that disappeared or appeared, to be drawn faintly.
 
     They take the dropped and added colours of a place's move, and sit with the
-    before and after layers so the toggles hide them too.
+    before and after layers so the toggles hide them too. Only those reaching
+    into the view are drawn; the notes below the map count every one.
     """
     marks = []
     for change in context:
-        for geometry in change.removed:
-            marks += shape_marks(view, geometry, "context-dropped layer-before")
-        for geometry in change.added:
-            marks += shape_marks(view, geometry, "context-added layer-after")
+        for geometries, css in (
+            (change.removed, "context-dropped layer-before"),
+            (change.added, "context-added layer-after"),
+        ):
+            for geometry in geometries:
+                if view.overlaps(positions(geometry)):
+                    marks += shape_marks(view, geometry, css)
     return marks
 
 
@@ -575,17 +579,20 @@ def overview(
     context: tuple[ContextChange, ...],
     after: State,
 ) -> str:
-    """Every changed place and background shape on one map, framed on them all."""
+    """Every changed place on one map, with the background shapes that changed
+    within it.
+
+    Framed on the places when any changed: a background layer re-cut across
+    the whole campus would otherwise shrink them into a corner. Only a change
+    to the background alone is framed on the background.
+    """
     if not groups and not context:
         return (
             '<p class="quiet">Nothing moved on the map: every change is to a '
             "place's details.</p>"
         )
-    view = View(
-        [p for area in groups for p in area_points(area)] + context_points(context),
-        OVERVIEW_PAD_M,
-        OVERVIEW_WIDTH,
-    )
+    framed_on = [p for area in groups for p in area_points(area)]
+    view = View(framed_on or context_points(context), OVERVIEW_PAD_M, OVERVIEW_WIDTH)
     # One area needs no number: there is no close-up to match it to.
     numbered = groups if len(groups) > 1 else []
     label = "Overview of every changed place" if groups else "Overview of the changes"

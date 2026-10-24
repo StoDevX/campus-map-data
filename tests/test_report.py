@@ -555,6 +555,24 @@ def test_a_background_only_change_gets_a_map_framed_on_it():
         assert 0 <= x <= width and 0 <= y <= height
 
 
+# The Heath Creek redraw: four trails changed in one corner of campus while the
+# college re-cut segments across the whole Natural Lands. The places, not the
+# background, decide where the map looks.
+def test_places_frame_the_map_however_far_the_background_changed():
+    far = line((north_of(LAT, 2000), LON), (north_of(LAT, 2000), east_of(LON, 50)))
+    before = state([place_record("ridge", "Ridge Trail", RIDGE_BEFORE, "trail")])
+    after = state(
+        [place_record("ridge", "Ridge Trail", RIDGE_AFTER, "trail")],
+        {"walkways": [far]},
+    )
+    drawn = overview_of(page_of(before, after))
+    width = float(re.search(r'viewBox="0 0 (\d+) \d+"', drawn).group(1))
+    trail = re.search(r'class="[^"]*after[^"]*" d="M([^"Z]*)', drawn).group(1)
+    xs = [float(pair.split(",")[0]) for pair in trail.split()]
+    assert max(xs) - min(xs) > width / 3
+    assert "context-added" not in drawn
+
+
 def test_a_sweeping_background_change_stays_under_two_megabytes():
     # 400 walkways, each a 200 m line digitised at every metre.
     walkways = [
