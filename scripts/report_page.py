@@ -29,12 +29,15 @@ from changes import (
     State,
     word_diff,
 )
-from geometry import lines, polygons, positions
+from geometry import (
+    METRES_PER_DEGREE_LAT,
+    METRES_PER_DEGREE_LON_AT_EQUATOR,
+    lines,
+    polygons,
+    positions,
+)
 from report import MAX_CLOSEUPS, NAMES_SHOWN, area_geometry, areas, summary
 from sources import SOURCES
-
-METRES_PER_DEGREE_LAT = 110_540
-METRES_PER_DEGREE_LON_AT_EQUATOR = 111_320
 
 OVERVIEW_WIDTH = 900
 CLOSEUP_WIDTH = 640

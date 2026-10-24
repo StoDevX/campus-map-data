@@ -18,16 +18,17 @@ import sys
 from pathlib import Path
 
 from changes import ChangeSet, PlaceChange, compare, read_state
-from geometry import bbox, distance_m, positions
+from geometry import (
+    METRES_PER_DEGREE_LAT,
+    METRES_PER_DEGREE_LON_AT_EQUATOR,
+    bbox,
+    distance_m,
+    positions,
+)
 
 # Places whose moves are this close, directly or through a chain of others,
 # are shown together in one close-up.
 CLUSTER_REACH_M = 150
-
-# The flat projection `geometry.distance_m` measures with, so a bounding-box
-# test in degrees agrees with it.
-METRES_PER_DEGREE_LAT = 110_540
-METRES_PER_DEGREE_LON = 111_320  # at the equator; times the cosine elsewhere
 
 # More areas than this are too many close-ups to read; the report shows this
 # many and lists the rest.
@@ -122,7 +123,7 @@ def boxes_out_of_reach(first: dict | None, second: dict | None) -> bool:
     lon_gap = max(a[0] - b[2], b[0] - a[2], 0.0)
     lat_gap = max(a[1] - b[3], b[1] - a[3], 0.0)
     shortest = math.cos(math.radians(max(abs(v) for v in (a[1], a[3], b[1], b[3]))))
-    lon_m = lon_gap * shortest * METRES_PER_DEGREE_LON
+    lon_m = lon_gap * shortest * METRES_PER_DEGREE_LON_AT_EQUATOR
     return max(lon_m, lat_gap * METRES_PER_DEGREE_LAT) > CLUSTER_REACH_M
 
 

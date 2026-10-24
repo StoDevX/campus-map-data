@@ -5,12 +5,10 @@ import re
 from pathlib import Path
 
 from changes import ChangeSet, Move, PlaceChange, State, compare
-from geometry import positions
+from geometry import METRES_PER_DEGREE_LAT, positions
 from report import areas, main, release_notes, summary
 from report_page import render
 from test_changes import make_repo, write_json
-
-METRES_PER_DEGREE_LAT = 110_540
 
 
 def point(lat: float, lon: float = -93.18) -> dict:
