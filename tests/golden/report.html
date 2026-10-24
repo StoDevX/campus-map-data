@@ -134,6 +134,12 @@ const marked = document.querySelectorAll("[data-place]");
 const drawn = new Set([...document.querySelectorAll(".place")].map((el) => el.dataset.place));
 let hovered = null;
 let focused = null;
+// Leaving a card or shape waits this long before letting go of it, so crossing
+// the gap to the next one goes straight from one highlight to the other instead
+// of undimming the map for a few frames; stopping on the background still
+// lets go.
+const LET_GO_MS = 100;
+let letGo = null;
 function highlight() {
   const place = hovered ?? focused;
   sheet.classList.toggle("focusing", drawn.has(place));
@@ -141,8 +147,15 @@ function highlight() {
 }
 for (const el of marked) {
   const place = el.dataset.place;
-  el.addEventListener("mouseenter", () => { hovered = place; highlight(); });
-  el.addEventListener("mouseleave", () => { hovered = null; highlight(); });
+  el.addEventListener("mouseenter", () => {
+    clearTimeout(letGo);
+    hovered = place;
+    highlight();
+  });
+  el.addEventListener("mouseleave", () => {
+    clearTimeout(letGo);
+    letGo = setTimeout(() => { hovered = null; highlight(); }, LET_GO_MS);
+  });
   el.addEventListener("focus", () => { focused = place; highlight(); });
   el.addEventListener("blur", () => { focused = null; highlight(); });
   if (el.classList.contains("place")) {
