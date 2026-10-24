@@ -325,3 +325,17 @@ def test_identical_shapes_add_no_geometry_field_or_move():
     (change,) = compare(old, new).places
     assert change.move is None
     assert [f.field for f in change.fields] == ["description"]
+
+
+def test_a_changed_place_carries_its_categories():
+    old = State({"a": place("a", description="A")}, {}, {}, b"")
+    new = State({"a": place("a", description="B")}, {}, {}, b"")
+    (change,) = compare(old, new).places
+    assert change.categories == ("building",)
+
+
+def test_a_removed_place_carries_the_categories_it_had():
+    old = State({"a": place("a")}, {}, {}, b"")
+    new = State({}, {}, {}, b"")
+    (change,) = compare(old, new).places
+    assert change.categories == ("building",)

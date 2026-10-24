@@ -262,6 +262,7 @@ class PlaceChange:
     before_shape: dict | None = None
     after_shape: dict | None = None
     move: Move | None = None
+    categories: tuple[str, ...] = ()  # the place's category slugs, in record order
 
 
 @dataclass(frozen=True)
@@ -285,6 +286,11 @@ class ChangeSet:
         does not make a report worth publishing.
         """
         return not self.places and not self.context
+
+
+def category_slugs(*records: dict) -> tuple[str, ...]:
+    """The category slugs of the first record that has any."""
+    return next((tuple(r["categories"]) for r in records if r.get("categories")), ())
 
 
 def field_changes(before: dict, after: dict) -> tuple[FieldChange, ...]:
@@ -352,7 +358,15 @@ def place_change(
         sorted(field_changes(old, new) + shape_fields, key=lambda f: f.field)
     )
     return PlaceChange(
-        kind, before_id, after_id, new["name"], fields, before_shape, after_shape, move
+        kind,
+        before_id,
+        after_id,
+        new["name"],
+        fields,
+        before_shape,
+        after_shape,
+        move,
+        category_slugs(new, old),
     )
 
 
@@ -380,6 +394,7 @@ def compare_places(before: State, after: State) -> list[PlaceChange]:
             None,
             before.places[old_id]["name"],
             before_shape=before.shapes.get(old_id),
+            categories=category_slugs(before.places[old_id]),
         )
         for old_id in removed
         if old_id not in renames
@@ -391,6 +406,7 @@ def compare_places(before: State, after: State) -> list[PlaceChange]:
             new_id,
             after.places[new_id]["name"],
             after_shape=after.shapes.get(new_id),
+            categories=category_slugs(after.places[new_id]),
         )
         for new_id in added
         if new_id not in renamed_to
