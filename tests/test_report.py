@@ -170,6 +170,51 @@ def test_summary_names_a_place_by_its_known_category_first():
     assert summary(changes_of(trail)) == "1 trail changed: Robin Trail."
 
 
+def kinds_of(*categories: str) -> str:
+    """The summary of two places of these categories added."""
+    added = [
+        PlaceChange("added", None, f"p{i}", f"P{i}", categories=categories)
+        for i in range(2)
+    ]
+    return summary(changes_of(*added))
+
+
+def test_summary_has_a_word_for_every_kind_of_place_in_the_data():
+    assert kinds_of("outdoors", "water") == "2 ponds added: P0, P1."
+    assert kinds_of("athletics", "outdoors", "field") == (
+        "2 athletic fields added: P0, P1."
+    )
+    assert kinds_of("point-of-interest", "dining") == (
+        "2 points of interest added: P0, P1."
+    )
+    assert kinds_of("outdoors", "trail", "wellness-walk") == (
+        "2 wellness walks added: P0, P1."
+    )
+
+
+def test_summary_calls_a_place_by_its_most_specific_kind():
+    assert kinds_of("parking", "accessible-parking") == (
+        "2 accessible parking spaces added: P0, P1."
+    )
+    assert kinds_of("parking", "campus-parking") == "2 parking lots added: P0, P1."
+
+
+def test_summary_has_a_word_for_unnamed_shapes_of_place_layers():
+    changes = ChangeSet(
+        (),
+        (
+            ContextChange("athletic-fields", lines_of(2), ()),
+            ContextChange("natural-lands-trails", (), lines_of(1)),
+            ContextChange("points-of-interest", lines_of(2), ()),
+        ),
+        False,
+    )
+    assert summary(changes) == (
+        "2 unnamed athletic fields added. 1 Natural Lands access trail removed. "
+        "2 unnamed points of interest added."
+    )
+
+
 def test_summary_mentions_rebuilt_routes():
     assert summary(changes_of(added_rack(0), routing_changed=True)).endswith(
         " The walking routes were rebuilt to match."
@@ -561,6 +606,13 @@ def test_a_removed_background_shape_is_drawn_as_dropped():
     assert '<path class="context-dropped layer-before"' in overview_of(
         page_of(before, after)
     )
+
+
+def test_a_named_pond_is_drawn_as_water_like_an_unnamed_one():
+    pond = place_record("pond", "Hoyme Pond", WATER, "outdoors", "water")
+    before = state([pond], {"walkways": [WALKWAY, NEW_WALKWAY]})
+    after = state([pond], {"walkways": [NEW_WALKWAY]})
+    assert '<path class="water"' in overview_of(page_of(before, after))
 
 
 def test_a_background_only_change_gets_a_map_framed_on_it():

@@ -41,26 +41,37 @@ NEW_LAYER_SIZE = 20
 NAMES_SHOWN = 3
 NAMED_GROUP_LIMIT = 10
 
+# The singular word for a place of each category, most specific first: an
+# accessible space is also `parking`, and a wellness walk is also a `trail`.
 CATEGORY_WORDS = {
+    "accessible-parking": "accessible parking space",
     "bike-rack": "bike rack",
+    "wellness-walk": "wellness walk",
+    "trail": "trail",
+    "water": "pond",
+    "athletics": "athletic field",
+    "point-of-interest": "point of interest",
     "building": "building",
     "parking": "parking lot",
-    "trail": "trail",
 }
 PLURALS = {
-    "bike rack": "bike racks",
-    "building": "buildings",
-    "parking lot": "parking lots",
-    "trail": "trails",
+    "point of interest": "points of interest",
+    "unnamed point of interest": "unnamed points of interest",
     "campus boundary": "campus boundaries",
 }
 
-# The singular word for one shape of each background layer.
+# The singular word for one shape of each background layer. A place layer's
+# background is its unnamed features.
 CONTEXT_WORDS = {
+    "athletic-fields": "unnamed athletic field",
+    "buildings": "unnamed building",
     "campus-boundary": "campus boundary",
     "campus-roads": "campus road",
     "main-campus-roads": "main campus road",
     "natural-lands-segments": "Natural Lands segment",
+    "natural-lands-trails": "Natural Lands access trail",
+    "parking-lots": "unnamed parking lot",
+    "points-of-interest": "unnamed point of interest",
     "walkways": "walkway",
 }
 
@@ -69,13 +80,15 @@ def category_word(change: PlaceChange) -> str:
     """The singular word for what kind of place this is.
 
     A place has several categories, such as a trail's `outdoors` and `trail`;
-    the one with a word of its own says best what kind of place it is.
+    the most specific one with a word of its own says best what kind of place
+    it is.
     """
     if not change.categories:
         return "place"
-    known = [slug for slug in change.categories if slug in CATEGORY_WORDS]
-    slug = (known or change.categories)[0]
-    return CATEGORY_WORDS.get(slug, slug.replace("-", " "))
+    known = [slug for slug in CATEGORY_WORDS if slug in change.categories]
+    if known:
+        return CATEGORY_WORDS[known[0]]
+    return change.categories[0].replace("-", " ")
 
 
 def pluralise(word: str, count: int) -> str:

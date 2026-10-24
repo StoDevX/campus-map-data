@@ -24,8 +24,8 @@ corrected, that shows up here as a reviewable diff on the day the college makes
 it. Everything about the pipeline is arranged to protect that — see
 [Determinism](#determinism-is-the-whole-design).
 
-Every change to the places, or to the shapes of the background layers, also
-gets a release, titled "Campus data" and dated, with a before and after report
+Every change to the places, or to the shapes of the background layers and of
+the unnamed features left as geometry only, also gets a release, titled "Campus data" and dated, with a before and after report
 at `stolaf.dev/campus-map-data/changes/`. A change only to `routing.json`, or
 only to the properties of background features, gets none. Watch the repo for
 releases to hear about changes as they land.

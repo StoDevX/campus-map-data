@@ -206,18 +206,64 @@ def test_a_context_line_that_appears_is_added():
     assert change.removed == ()
 
 
-def test_water_is_reported_as_places_not_as_a_context_change():
-    pond = {"type": "Polygon", "coordinates": [[[0, 0], [0, 1], [1, 1], [0, 0]]]}
+def test_removing_one_of_two_identical_shapes_is_a_change():
+    line = {"type": "LineString", "coordinates": [[0, 0], [1, 1]]}
     changes = compare(
-        state_of(context={"water": []}),
-        state_of(context={"water": [pond]}),
+        state_of(context={"walkways": [line, line]}),
+        state_of(context={"walkways": [line]}),
     )
-    assert changes.context == ()
+    (change,) = changes.context
+    assert change.removed == (line,)
+    assert change.added == ()
 
 
-def test_water_is_still_read_as_background(tmp_path):
+def layer_feature(layer: str, geometry: dict | None, **properties) -> dict:
+    return {
+        "type": "Feature",
+        "geometry": geometry,
+        "properties": {"_layer": layer, **properties},
+    }
+
+
+def test_a_place_layer_unnamed_features_are_background_and_named_are_not(tmp_path):
     make_repo(tmp_path)
-    assert read_state(tmp_path, None).context["water"] == []
+    unnamed = {"type": "Polygon", "coordinates": [[[2, 2], [2, 3], [3, 3], [2, 2]]]}
+    write_json(
+        tmp_path,
+        "data/water.geojson",
+        {
+            "type": "FeatureCollection",
+            "features": [
+                layer_feature("Lakes", POLYGON, NAME="Hoyme Pond"),
+                layer_feature("Lakes", unnamed, NAME=" "),
+            ],
+        },
+    )
+    assert read_state(tmp_path, None).context["water"] == [unnamed]
+
+
+def test_an_unnamed_trail_row_is_background(tmp_path):
+    make_repo(tmp_path)
+    access = {"type": "LineString", "coordinates": [[0, 0], [1, 1]]}
+    write_json(
+        tmp_path,
+        "data/natural-lands-trails.geojson",
+        {
+            "type": "FeatureCollection",
+            "features": [layer_feature("Natural Lands Trails", access, NAME=None)],
+        },
+    )
+    assert read_state(tmp_path, None).context["natural-lands-trails"] == [access]
+
+
+def test_a_feature_with_no_geometry_is_not_a_background_shape(tmp_path):
+    make_repo(tmp_path)
+    write_json(
+        tmp_path,
+        "data/walkways.geojson",
+        {"type": "FeatureCollection", "features": [layer_feature("Walkways", None)]},
+    )
+    assert read_state(tmp_path, None).context["walkways"] == []
 
 
 def test_only_routing_changed_is_empty():

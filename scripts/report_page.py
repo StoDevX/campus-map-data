@@ -236,27 +236,38 @@ def place_marks(view: View, change: PlaceChange) -> str:
     )
 
 
+def shapes_of(state: State, category: str) -> list[dict]:
+    """The shapes of every place in a category, in id order."""
+    return [
+        state.shapes[place_id]
+        for place_id in sorted(state.shapes)
+        if category in state.places.get(place_id, {}).get("categories", {})
+    ]
+
+
+def outer_rings(view: View, geometries: list[dict], css: str) -> list[str]:
+    """The outer ring of each polygon reaching into the view, filled."""
+    return [
+        f'<path class="{css}" d="{view.path(rings[0], closed=True)}"/>'
+        for geometry in geometries
+        for rings in polygons(geometry)
+        if view.overlaps(rings[0])
+    ]
+
+
 def background(view: View, after: State) -> list[str]:
-    """Water, walkways and buildings as they are after the change."""
-    marks = []
-    for geometry in after.context.get("water", []):
-        for rings in polygons(geometry):
-            if view.overlaps(rings[0]):
-                marks.append(
-                    f'<path class="water" d="{view.path(rings[0], closed=True)}"/>'
-                )
+    """Water, walkways and buildings as they are after the change.
+
+    Unnamed ponds are background and named ones are places, so water is drawn
+    from both.
+    """
+    water = [*after.context.get("water", []), *shapes_of(after, "water")]
+    marks = outer_rings(view, water, "water")
     for geometry in after.context.get("walkways", []):
         for line in lines(geometry):
             if view.overlaps(line):
                 marks.append(f'<path class="walkway" d="{view.path(line)}"/>')
-    for building_id in sorted(after.shapes):
-        if "building" not in after.places.get(building_id, {}).get("categories", {}):
-            continue
-        for rings in polygons(after.shapes[building_id]):
-            if view.overlaps(rings[0]):
-                marks.append(
-                    f'<path class="building" d="{view.path(rings[0], closed=True)}"/>'
-                )
+    marks += outer_rings(view, shapes_of(after, "building"), "building")
     return marks
 
 

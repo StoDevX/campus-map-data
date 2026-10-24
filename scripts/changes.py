@@ -11,6 +11,7 @@ A state comes either from the working tree or from a git revision, so the same
 code compares a fresh build against the last release.
 """
 
+import collections
 import difflib
 import itertools
 import json
@@ -20,25 +21,26 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from build import LAYER_PROPERTY, name_for, source_index
 from geometry import distance_m, lines, polygons, positions
 from sources import SOURCES
 
-# Water is a place layer, but it is also drawn as background, so it is read with
-# the context layers.
-CONTEXT_SLUGS = sorted(
-    {source.slug for source in SOURCES if source.role == "context"} | {"water"}
-)
+# Every layer has background: all of a context layer, and the unnamed features
+# of a place layer, which `build.py` publishes as geometry only.
+CONTEXT_SLUGS = sorted({source.slug for source in SOURCES})
 
-# Layers whose features are places. A change to one is reported as places, so
-# comparing its geometry as background too would count the same change twice.
+# Layers whose named features are places. A change to one is reported as a
+# place, so comparing its geometry as background too would count it twice.
 PLACE_SLUGS = {source.slug for source in SOURCES if source.role == "place"}
+
+SOURCES_BY_TITLE = source_index()
 
 
 @dataclass(frozen=True)
 class State:
     places: dict[str, dict]  # id -> `map.json` record
     shapes: dict[str, dict]  # id -> GeoJSON geometry of the place itself
-    context: dict[str, list[dict]]  # slug -> geometries of a background layer
+    context: dict[str, list[dict]]  # slug -> background geometries of a layer
     routing: bytes  # raw `routing.json`, empty when absent
 
 
@@ -94,6 +96,20 @@ def place_shape(geometry: dict) -> dict:
     return next((g for g in members if g["type"] != "Point"), members[0])
 
 
+def is_background(slug: str, feature: dict) -> bool:
+    """Whether a feature is a background shape rather than a place or nothing.
+
+    A feature with no coordinates has no shape to compare or draw. In a place
+    layer, only a feature `build.py` finds no name for stays geometry only.
+    """
+    if not positions(feature["geometry"]):
+        return False
+    if slug not in PLACE_SLUGS:
+        return True
+    properties = feature["properties"]
+    return name_for(SOURCES_BY_TITLE[properties[LAYER_PROPERTY]], properties) is None
+
+
 def read_state(root: Path, revision: str | None) -> State:
     """Read the published files from the working tree (`None`) or a revision."""
     records = read_json(root, revision, "map.json", [])
@@ -104,6 +120,7 @@ def read_state(root: Path, revision: str | None) -> State:
             for feature in read_json(
                 root, revision, f"data/{slug}.geojson", {"features": []}
             )["features"]
+            if is_background(slug, feature)
         ]
         for slug in CONTEXT_SLUGS
     }
@@ -446,20 +463,25 @@ def compare_places(before: State, after: State) -> list[PlaceChange]:
 def compare_context(before: State, after: State) -> list[ContextChange]:
     """The background shapes that appeared or disappeared, layer by layer.
 
-    Background features have no ids, so a layer is compared as a set of
-    geometries: a shape redrawn is one removed and one added. Place layers
-    drawn as background, such as water, are left to `compare_places`.
+    Background features have no ids, so a layer is compared as a multiset of
+    geometries: a shape redrawn is one removed and one added, and deleting one
+    of two identical copies is still one removed.
     """
+
+    def counted(state: State, slug: str) -> collections.Counter:
+        return collections.Counter(
+            json.dumps(g, sort_keys=True) for g in state.context.get(slug, [])
+        )
+
     changes = []
-    for slug in sorted((before.context.keys() | after.context.keys()) - PLACE_SLUGS):
-        old = {json.dumps(g, sort_keys=True) for g in before.context.get(slug, [])}
-        new = {json.dumps(g, sort_keys=True) for g in after.context.get(slug, [])}
+    for slug in sorted(before.context.keys() | after.context.keys()):
+        old, new = counted(before, slug), counted(after, slug)
         if old != new:
             changes.append(
                 ContextChange(
                     slug,
-                    tuple(json.loads(g) for g in sorted(new - old)),
-                    tuple(json.loads(g) for g in sorted(old - new)),
+                    tuple(json.loads(g) for g in sorted((new - old).elements())),
+                    tuple(json.loads(g) for g in sorted((old - new).elements())),
                 )
             )
     return changes
