@@ -80,18 +80,91 @@ def test_no_trails_listed_builds_none():
     assert assemble_trails([NORTH], {}) == []
 
 
-def test_a_segment_drawn_in_pieces_fails_the_build():
-    pieces = {
-        **NORTH,
-        "geometry": {
-            "type": "MultiLineString",
-            "coordinates": [NORTH["geometry"]["coordinates"]],
+# The 2026 layer draws most Heath Creek segments in several pieces: FID 83 is
+# all of Lower Heath Creek Trail, in nine.
+PIECES = {
+    "type": "Feature",
+    "properties": {"FID": 4, "NAME": None, "Type": "Narrow"},
+    "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+            NORTH["geometry"]["coordinates"],
+            LONG["geometry"]["coordinates"],
+        ],
+    },
+}
+
+
+def test_a_segment_drawn_in_pieces_gives_the_trail_every_piece():
+    [trail] = assemble_trails(
+        [PIECES],
+        {"trails": [{"name": "Robin Trail", "segments": [4], "miles": 0.21}]},
+    )
+    assert trail["geometry"]["coordinates"] == PIECES["geometry"]["coordinates"]
+
+
+def test_a_part_picks_one_piece_of_a_segment():
+    [trail] = assemble_trails(
+        [PIECES],
+        {
+            "trails": [
+                {
+                    "name": "Robin Trail",
+                    "segments": [{"fid": 4, "part": 1}],
+                    "miles": 0.14,
+                }
+            ]
         },
-    }
-    with pytest.raises(SystemExit, match="FID 1 is drawn in pieces"):
+    )
+    assert trail["geometry"]["coordinates"] == [LONG["geometry"]["coordinates"]]
+
+
+def test_a_cut_in_a_piece_of_a_segment_cuts_that_piece():
+    [trail] = assemble_trails(
+        [PIECES],
+        {
+            "trails": [
+                {
+                    "name": "Robin Trail",
+                    "segments": [{"fid": 4, "part": 1, "until": JUNCTION}],
+                    "miles": 0.07,
+                }
+            ]
+        },
+    )
+    assert trail["geometry"]["coordinates"] == [[[-93.18, 44.461], [-93.18, 44.462]]]
+
+
+# Which piece a cut falls in is the mapping's to say, not the build's to guess.
+def test_a_cut_in_a_segment_drawn_in_pieces_must_name_its_part():
+    with pytest.raises(SystemExit, match="FID 4 is drawn in 2 pieces; name the part"):
         assemble_trails(
-            [pieces],
-            {"trails": [{"name": "Robin Trail", "segments": [1], "miles": 0.07}]},
+            [PIECES],
+            {
+                "trails": [
+                    {
+                        "name": "Robin Trail",
+                        "segments": [{"fid": 4, "until": JUNCTION}],
+                        "miles": 0.07,
+                    }
+                ]
+            },
+        )
+
+
+def test_a_part_the_segment_does_not_have_fails_the_build():
+    with pytest.raises(SystemExit, match="FID 4 has no part 2"):
+        assemble_trails(
+            [PIECES],
+            {
+                "trails": [
+                    {
+                        "name": "Robin Trail",
+                        "segments": [{"fid": 4, "part": 2}],
+                        "miles": 0.07,
+                    }
+                ]
+            },
         )
 
 

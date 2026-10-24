@@ -56,9 +56,11 @@ credential belongs in this repo.
 | `main-campus-roads.geojson` | MultiLineString | 1 |
 | | | **370** |
 
-One more layer is outside the web map: `natural-lands-segments.geojson`, the 48
+One more layer is outside the web map: `natural-lands-segments.geojson`, the 29
 segments of `stolaf_trails20220308`, which the college's Natural Lands distance
-map (January 2026) is drawn from. It supplies the four Heath Creek trails the
+map (January 2026) is drawn from. The college redrew it in October 2026 as
+"Natural Lands Trails (Updated 2026)", merging the 2022 survey's 48 segments
+into longer ones, most drawn in several pieces. It supplies the four Heath Creek trails the
 web map lacks — Robin, Big Woods, Burr Oak and Lower Heath Creek — and keeps
 each segment's `FID`, which the scrape otherwise drops, because `overrides.yaml`
 names the segments of each trail by it. See [The Heath Creek trails](#the-heath-creek-trails).
@@ -419,8 +421,9 @@ Woods Trail", rough lines up to 147 m off the path. The college's own distance
 map names four trails there, and is drawn from `natural-lands-segments`, so
 `overrides.yaml`'s `trails:` builds those four from its segments by `FID` and
 supersedes the rough two: `build.py` drops them as places, and the tiles leave
-their lines out. Segments are used whole, except one cut at Burr Oak's north
-end that gives Big Woods the connector the map draws as part of it.
+their lines out. Segments are used whole, or one of their pieces by `part`,
+except one cut at Burr Oak's north end that gives Big Woods the connector the
+map draws as part of it.
 
 FIDs renumber when a layer is republished. So each trail records its length in
 `miles`, and `build.py` fails on a missing FID or a trail more than 0.05 mi off
