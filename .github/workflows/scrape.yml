@@ -224,12 +224,11 @@ jobs:
           exit 1
 
       - name: Release the change
-        # Separate from the push, and non-fatal: nothing here can undo the
-        # data that is already on main. The release workflow writes the report
-        # page and the release; a push made with GITHUB_TOKEN starts no workflow
-        # of its own, so it has to be asked.
+        # Separate from the push, which it cannot undo: a failure here fails
+        # the run while the data stays on main. The release workflow writes the
+        # report page and the release; a push made with GITHUB_TOKEN starts no
+        # workflow of its own, so it has to be asked.
         if: steps.commit.outputs.after != ''
-        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
           BEFORE: ${{ steps.commit.outputs.before }}
