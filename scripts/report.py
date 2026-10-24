@@ -12,12 +12,19 @@ draws only from the published files, through `changes.compare`, and so says
 nothing the release itself does not.
 """
 
+import math
+
 from changes import ChangeSet, PlaceChange
-from geometry import distance_m, positions
+from geometry import bbox, distance_m, positions
 
 # Places whose moves are this close, directly or through a chain of others,
 # are shown together in one close-up.
 CLUSTER_REACH_M = 150
+
+# The flat projection `geometry.distance_m` measures with, so a bounding-box
+# test in degrees agrees with it.
+METRES_PER_DEGREE_LAT = 110_540
+METRES_PER_DEGREE_LON = 111_320  # at the equator; times the cosine elsewhere
 
 # More areas than this are too many close-ups to read; the report shows this
 # many and lists the rest.
@@ -45,10 +52,15 @@ PLURALS = {
 
 
 def category_word(change: PlaceChange) -> str:
-    """The singular word for what kind of place this is."""
+    """The singular word for what kind of place this is.
+
+    A place has several categories, such as a trail's `outdoors` and `trail`;
+    the one with a word of its own says best what kind of place it is.
+    """
     if not change.categories:
         return "place"
-    slug = change.categories[0]
+    known = [slug for slug in change.categories if slug in CATEGORY_WORDS]
+    slug = (known or change.categories)[0]
     return CATEGORY_WORDS.get(slug, slug.replace("-", " "))
 
 
@@ -82,18 +94,39 @@ def area_geometry(change: PlaceChange) -> dict | None:
     return change.after_shape or change.before_shape
 
 
-def metres_between_places(first: dict | None, second: dict | None) -> float:
-    return min(
-        (distance_m(position, second) for position in positions(first)),
-        default=float("inf"),
+def within_reach(first: dict | None, second: dict | None) -> bool:
+    """Whether any position of `first` is within reach of `second`.
+
+    It stops at the first that is: a move's stretches are sampled every metre,
+    and measuring every position against every other is quadratic in both.
+    """
+    return any(
+        distance_m(position, second) <= CLUSTER_REACH_M for position in positions(first)
     )
+
+
+def boxes_out_of_reach(first: dict | None, second: dict | None) -> bool:
+    """Whether two shapes' bounding boxes are further apart than the reach.
+
+    If they are, no position of one can be within reach of the other, so the
+    exact measure can be skipped. A degree of longitude is taken at the box
+    edge nearest a pole, where it is shortest, so the test never says apart
+    for shapes that are near.
+    """
+    a, b = bbox(first), bbox(second)
+    if a is None or b is None:
+        return True
+    lon_gap = max(a[0] - b[2], b[0] - a[2], 0.0)
+    lat_gap = max(a[1] - b[3], b[1] - a[3], 0.0)
+    shortest = math.cos(math.radians(max(abs(v) for v in (a[1], a[3], b[1], b[3]))))
+    lon_m = lon_gap * shortest * METRES_PER_DEGREE_LON
+    return max(lon_m, lat_gap * METRES_PER_DEGREE_LAT) > CLUSTER_REACH_M
 
 
 def near(first: dict | None, second: dict | None) -> bool:
-    return (
-        metres_between_places(first, second) <= CLUSTER_REACH_M
-        or metres_between_places(second, first) <= CLUSTER_REACH_M
-    )
+    if boxes_out_of_reach(first, second):
+        return False
+    return within_reach(first, second) or within_reach(second, first)
 
 
 def cluster(members: list[PlaceChange]) -> list[list[PlaceChange]]:
