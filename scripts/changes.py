@@ -23,11 +23,15 @@ from typing import Any
 from geometry import distance_m, lines, polygons, positions
 from sources import SOURCES
 
-# Water is a place layer, but it is also drawn as background, so a change to it
-# changes the picture even where no place's record changed.
+# Water is a place layer, but it is also drawn as background, so it is read with
+# the context layers.
 CONTEXT_SLUGS = sorted(
     {source.slug for source in SOURCES if source.role == "context"} | {"water"}
 )
+
+# Layers whose features are places. A change to one is reported as places, so
+# comparing its geometry as background too would count the same change twice.
+PLACE_SLUGS = {source.slug for source in SOURCES if source.role == "place"}
 
 
 @dataclass(frozen=True)
@@ -294,6 +298,11 @@ def category_slugs(*records: dict) -> tuple[str, ...]:
 
 
 def field_changes(before: dict, after: dict) -> tuple[FieldChange, ...]:
+    """Each record field that differs, by name.
+
+    The center and outline are left out: they follow from the shape, whose
+    change is reported once, as a move, rather than as numbers that changed.
+    """
     keys = sorted((before.keys() | after.keys()) - GEOMETRY_FIELDS)
     return tuple(
         FieldChange(key, before.get(key), after.get(key))
@@ -371,6 +380,11 @@ def place_change(
 
 
 def compare_places(before: State, after: State) -> list[PlaceChange]:
+    """Every place added, removed, renamed or changed, in a stable order.
+
+    Ids come from names, so a rename looks like a removal and an addition;
+    pairing the two near each other says what a reader would: it was renamed.
+    """
     removed = sorted(before.places.keys() - after.places.keys())
     added = sorted(after.places.keys() - before.places.keys())
     renames = pair_renames(before, after, removed, added)
@@ -430,8 +444,14 @@ def compare_places(before: State, after: State) -> list[PlaceChange]:
 
 
 def compare_context(before: State, after: State) -> list[ContextChange]:
+    """The background shapes that appeared or disappeared, layer by layer.
+
+    Background features have no ids, so a layer is compared as a set of
+    geometries: a shape redrawn is one removed and one added. Place layers
+    drawn as background, such as water, are left to `compare_places`.
+    """
     changes = []
-    for slug in sorted(before.context.keys() | after.context.keys()):
+    for slug in sorted((before.context.keys() | after.context.keys()) - PLACE_SLUGS):
         old = {json.dumps(g, sort_keys=True) for g in before.context.get(slug, [])}
         new = {json.dumps(g, sort_keys=True) for g in after.context.get(slug, [])}
         if old != new:

@@ -206,6 +206,20 @@ def test_a_context_line_that_appears_is_added():
     assert change.removed == ()
 
 
+def test_water_is_reported_as_places_not_as_a_context_change():
+    pond = {"type": "Polygon", "coordinates": [[[0, 0], [0, 1], [1, 1], [0, 0]]]}
+    changes = compare(
+        state_of(context={"water": []}),
+        state_of(context={"water": [pond]}),
+    )
+    assert changes.context == ()
+
+
+def test_water_is_still_read_as_background(tmp_path):
+    make_repo(tmp_path)
+    assert read_state(tmp_path, None).context["water"] == []
+
+
 def test_only_routing_changed_is_empty():
     changes = compare(state_of(routing=b"1"), state_of(routing=b"2"))
     assert changes.routing_changed and changes.is_empty
