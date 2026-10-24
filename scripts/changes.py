@@ -12,7 +12,9 @@ code compares a fresh build against the last release.
 """
 
 import difflib
+import itertools
 import json
+import math
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
@@ -127,6 +129,9 @@ KIND_ORDER = {"added": 0, "removed": 1, "renamed": 2, "changed": 3}
 # else; closer than this is survey noise, not an edit.
 MOVE_REACH_M = 3.0
 
+# How densely lines are sampled when judging which parts moved.
+SAMPLE_SPACING_M = 1.0
+
 Stretch = tuple[tuple[float, float], ...]
 
 
@@ -161,32 +166,58 @@ def outlines(geometry: dict | None) -> list[list]:
     return found
 
 
+def metres_between(a, b) -> float:
+    return distance_m(list(a), {"type": "Point", "coordinates": list(b)})
+
+
+def sampled(line: list) -> list[tuple[float, float]]:
+    """Points along a line about `SAMPLE_SPACING_M` apart, vertices included."""
+    points = [(round(line[0][0], 7), round(line[0][1], 7))]
+    for a, b in itertools.pairwise(line):
+        steps = max(1, math.ceil(metres_between(a, b)))
+        points += [
+            (
+                round(a[0] + (b[0] - a[0]) * i / steps, 7),
+                round(a[1] + (b[1] - a[1]) * i / steps, 7),
+            )
+            for i in range(1, steps + 1)
+        ]
+    return points
+
+
 def off_runs(geometry: dict | None, other: dict | None) -> tuple[list[Stretch], float]:
     """Runs of `geometry` more than `MOVE_REACH_M` from `other`, and their metres.
 
-    A stretch is judged at its midpoint, so a long segment that only grazes the
-    other shape still counts as off; consecutive off stretches join into one run
-    so a redrawn road is one close-up, not many.
+    Lines are sampled densely, because a long stretch judged at one point can
+    hide half of itself being deleted. Distance is to the other shape's outline
+    rather than its area, so a footprint redrawn inside its old outline still
+    shows its new edges. A run's metres are the sampled length of its off part.
     """
+    reference = other
+    other_lines = [line for line in outlines(other) if len(line) > 1]
+    if other_lines:
+        reference = {"type": "MultiLineString", "coordinates": other_lines}
+
+    def off(point) -> bool:
+        return reference is None or distance_m(point, reference) > MOVE_REACH_M
+
     runs: list[Stretch] = []
     metres = 0.0
     for line in outlines(geometry):
+        if len(line) == 1:
+            point = (round(line[0][0], 7), round(line[0][1], 7))
+            if off(point):
+                runs.append((point,))
+            continue
         run: list = []
-        for i in range(max(len(line) - 1, 1)):
-            a, b = line[i], line[min(i + 1, len(line) - 1)]
-            mid = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
-            if other is not None and distance_m(mid, other) <= MOVE_REACH_M:
-                if run:
-                    runs.append(tuple(run))
-                run = []
+        for point in sampled(line) + [None]:
+            if point is not None and off(point):
+                run.append(point)
                 continue
-            if not run:
-                run = [tuple(a[:2])]
-            if len(line) > 1:
-                run.append(tuple(b[:2]))
-                metres += distance_m(a, {"type": "Point", "coordinates": b})
-        if run:
-            runs.append(tuple(run))
+            if len(run) > 1:
+                runs.append(tuple(run))
+                metres += sum(metres_between(a, b) for a, b in itertools.pairwise(run))
+            run = []
     return runs, metres
 
 

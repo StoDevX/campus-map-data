@@ -5,7 +5,15 @@ import subprocess
 from pathlib import Path
 
 import pytest
-from changes import FieldChange, State, compare, moved, read_state, word_diff
+from changes import (
+    MOVE_REACH_M,
+    FieldChange,
+    State,
+    compare,
+    moved,
+    read_state,
+    word_diff,
+)
 
 POLYGON = {
     "type": "Polygon",
@@ -222,26 +230,53 @@ def square_at(lat: float) -> dict:
     return {"type": "Polygon", "coordinates": [ring]}
 
 
-def test_a_line_redrawn_13_m_away_is_dropped_and_added():
+def test_a_line_redrawn_13_m_away_is_dropped_and_added_over_its_8_m_length():
     move = moved(line_at(44.4600), line_at(44.46012))
     assert move.visible
     assert round(move.dropped_m) == round(move.added_m) == 8
+
+
+def big_square(inset: float = 0.0) -> dict:
+    """An ~80 m square, pulled in by `inset` degrees on every side."""
+    lo, hi = inset, 0.001 - inset
+    ring = [[-93 + lo, 44 + lo], [-93 + hi, 44 + lo], [-93 + hi, 44 + hi]]
+    ring += [[-93 + lo, 44 + hi], [-93 + lo, 44 + lo]]
+    return {"type": "Polygon", "coordinates": [ring]}
 
 
 def test_a_line_nudged_under_3_m_is_not_a_move():
     assert not moved(line_at(44.4600), line_at(44.46001)).visible
 
 
-def test_a_shortened_line_drops_only_its_end():
-    def along(*lons):
-        return {"type": "LineString", "coordinates": [[lon, 44.0] for lon in lons]}
+def along(*lons, lat=44.0):
+    return {"type": "LineString", "coordinates": [[lon, lat] for lon in lons]}
 
-    long = along(-93.0, -93.0005, -93.0010, -93.0015)
-    short = along(-93.0, -93.0005)
-    move = moved(long, short)
-    assert round(move.dropped_m) == 80
+
+def test_a_shortened_line_drops_only_its_end():
+    move = moved(along(-93.0, -93.0015), along(-93.0, -93.00075))  # ~120 m to ~60 m
+    # The cut end is within reach of the kept half, so ~3 m of it is not counted.
+    assert abs(move.dropped_m - (60 - MOVE_REACH_M)) < 1
     assert move.added_m == 0 and not move.added
     assert len(move.dropped) == 1
+
+
+def test_a_stretch_deleted_from_the_middle_is_measured():
+    before = along(-93.0, -93.0015)  # ~120 m
+    after = {
+        "type": "MultiLineString",
+        "coordinates": [
+            [[-93.0, 44.0], [-93.0004, 44.0]],
+            [[-93.0011, 44.0], [-93.0015, 44.0]],
+        ],
+    }
+    move = moved(before, after)
+    assert abs(move.dropped_m - 50) < 3  # the 56 m gap less 3 m of reach each side
+    assert not move.added
+
+
+def test_a_square_redrawn_inside_its_old_outline_shows_both_edges():
+    move = moved(big_square(), big_square(inset=0.00013))  # ~10 m in
+    assert move.dropped and move.added
 
 
 def test_a_point_that_became_a_polygon_is_a_move():
