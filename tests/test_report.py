@@ -89,6 +89,13 @@ def test_a_change_with_an_invisible_move_has_no_area():
     assert areas(changes_of(quiet)) == []
 
 
+def test_a_place_with_no_shape_has_no_area_and_still_renders():
+    shapeless = PlaceChange("added", None, "a", "A", categories=("building",))
+    changes = changes_of(shapeless, added_rack(0))
+    assert areas(changes) == [[added_rack(0)]]
+    assert "<h3>A</h3>" in render(changes, state([]), state([]), DATE)
+
+
 def test_an_added_place_is_placed_by_its_own_shape():
     assert len(areas(changes_of(added_rack(0)))) == 1
 

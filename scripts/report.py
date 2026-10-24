@@ -191,12 +191,14 @@ def is_point(change: PlaceChange) -> bool:
 def areas(changes: ChangeSet) -> list[list[PlaceChange]]:
     """Places that show on the map, grouped by where they are.
 
-    Places changed only in text have nothing to show, so they have no area.
+    Places changed only in text, or with no shape, have nothing to show, so
+    they have no area.
     """
     shown = [
         change
         for change in changes.places
-        if change.kind in ("added", "removed") or changed_shape(change)
+        if (change.kind in ("added", "removed") or changed_shape(change))
+        and positions(area_geometry(change))
     ]
     layer = [c for c in shown if c.kind == "added" and is_point(c)]
     groups = []
