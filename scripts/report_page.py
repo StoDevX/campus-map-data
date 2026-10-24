@@ -38,7 +38,7 @@ from geometry import (
     polygons,
     positions,
 )
-from report import MAX_CLOSEUPS, NAMES_SHOWN, area_geometry, areas, summary
+from report import MAX_CLOSEUPS, area_geometry, areas, names_in, summary
 from sources import SOURCES
 
 OVERVIEW_WIDTH = 900
@@ -341,14 +341,6 @@ def svg(
 
 def area_points(area: list[PlaceChange]) -> list:
     return [p for change in area for p in positions(area_geometry(change))]
-
-
-def names_in(area: list[PlaceChange]) -> str:
-    names = sorted(change.name for change in area)
-    listed = ", ".join(names[:NAMES_SHOWN])
-    if len(names) > NAMES_SHOWN:
-        listed += f" and {len(names) - NAMES_SHOWN} more"
-    return listed
 
 
 def point_moved_m(change: PlaceChange) -> float | None:

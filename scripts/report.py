@@ -209,15 +209,20 @@ def areas(changes: ChangeSet) -> list[list[PlaceChange]]:
     return sorted(groups, key=first_position)
 
 
-def names_of(group: list[PlaceChange]) -> str:
-    """Up to three names in name order, for a group small enough to name."""
-    if len(group) > NAMED_GROUP_LIMIT:
-        return ""
+def names_in(group: list[PlaceChange]) -> str:
+    """Up to three names in name order, and how many more there are."""
     names = sorted(change.name for change in group)
     listed = ", ".join(names[:NAMES_SHOWN])
     if len(names) > NAMES_SHOWN:
         listed = f"{listed} and {len(names) - NAMES_SHOWN} more"
-    return f": {listed}"
+    return listed
+
+
+def names_of(group: list[PlaceChange]) -> str:
+    """The names after a colon, for a group small enough to name."""
+    if len(group) > NAMED_GROUP_LIMIT:
+        return ""
+    return f": {names_in(group)}"
 
 
 def sentence_kind(change: PlaceChange) -> str:
