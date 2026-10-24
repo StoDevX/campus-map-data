@@ -77,3 +77,18 @@ def test_two_racks_of_one_name_fail():
         rack("Bike Rack, Holland Hall (North)", "hh", id="bike-rack-2"),
     ]
     assert any("Bike Rack, Holland Hall (North)" in f for f in failures(records))
+
+
+# The rack on St. Olaf Avenue is 53 m from Rolvaag Memorial Library, nearer
+# than to anything else, and named for it.
+def test_a_rack_across_a_street_from_its_parent_passes():
+    across_the_street = [44.4607 + 0.00048, -93.1795]
+    assert (
+        failures(
+            [
+                building(),
+                rack("Bike Rack, Holland Hall (North)", "hh", center=across_the_street),
+            ]
+        )
+        == []
+    )

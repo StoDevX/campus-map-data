@@ -228,10 +228,12 @@ def verify_parking(report: Report, records: list[dict]) -> None:
         )
 
 
-# How far a bike rack may sit from the place it is named for. The farthest of
-# the college's racks that is named right is 32 m from Christiansen Hall of
-# Music; the one it named wrong is 581 m from New Hall.
-RACK_REACH_M = 40
+# How far a bike rack may sit from the place it is named for. The farthest is
+# the rack on St. Olaf Avenue, 53 m from Rolvaag Memorial Library and nearer
+# nothing else; the one the college named wrong is 581 m from New Hall. A rack
+# within this reach of the wrong building still sends someone to the right
+# corner of campus.
+RACK_REACH_M = 60
 
 
 def verify_bike_racks(report: Report, records: list[dict]) -> None:
