@@ -58,6 +58,8 @@ KINDS = (
     # all begin "Accessible Parking", so the style needs to tell them apart from
     # named lots in order not to stamp that label 26 times across campus.
     ("accessible-parking", None),
+    # Likewise 36 points named "Bike Rack, ..." after the building they serve.
+    ("bike-rack", None),
     ("parking", "campus_grounds"),
     ("athletics", "campus_grounds"),
     ("point-of-interest", None),

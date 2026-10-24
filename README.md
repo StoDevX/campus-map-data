@@ -13,7 +13,7 @@ Two things, for two different readers.
 | | What it is | Read it if |
 | --- | --- | --- |
 | `data/*.geojson` | One file per source layer, the college's field names untouched | You want St. Olaf's data as St. Olaf publishes it |
-| `map.json`, `map.geojson` | 148 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
+| `map.json`, `map.geojson` | 184 places in Carleton's schema | You are AAO, ccc-server, or anything already written against Carleton's |
 | `site/changes/` | A page for every change to the data: before and after, close-ups, a card for each thing that moved | You want to see what changed without reading a diff |
 | `routing.json` | A pedestrian routing graph | You want to walk someone from one door to another |
 | `vendor/ole-compass/` | The 2016 survey `routing.json` is built from | You are changing how the graph is georeferenced |
@@ -38,7 +38,13 @@ which is what the college's [public dashboard][dashboard] embeds. Its layers are
 shared publicly and advertise `Query`, so the scrape is unauthenticated and no
 credential belongs in this repo.
 
+The one exception is the bike racks, which the campus map does not show. They
+come from the college's [**Bike Rack Locations**][bike-racks] map
+(`0e7dc1af82aa4eeab4566c45d8c150ee`), on the same ArcGIS organisation and as
+public.
+
 [webmap]: https://www.arcgis.com/home/item.html?id=48f433ddf4674d53b1754e307ffce1f4
+[bike-racks]: https://stolaf.maps.arcgis.com/apps/instant/basic/index.html?appid=b792338d01ca45d88049a84d1c41fc25
 [dashboard]: https://stolaf.maps.arcgis.com/apps/dashboards/039528a0ee874da7b5ef749c2393498d
 
 | Layer | Geometry | Features |
@@ -54,7 +60,8 @@ credential belongs in this repo.
 | `natural-lands-trails.geojson` | LineString, MultiLineString | 23 |
 | `campus-roads.geojson` | LineString, MultiLineString | 38 |
 | `main-campus-roads.geojson` | MultiLineString | 1 |
-| | | **370** |
+| `bike-racks.geojson` | Point | 36 |
+| | | **406** |
 
 One more layer is outside the web map: `natural-lands-segments.geojson`, the 29
 segments of `stolaf_trails20220308`, which the college's Natural Lands distance
@@ -80,7 +87,7 @@ admissions, the windmill) that are one concept split across seven layer ids.
 
 ## The published dataset
 
-`map.json` and `map.geojson` hold **148 places, 96 with a footprint** — against
+`map.json` and `map.geojson` hold **184 places, 96 with a footprint** — against
 Carleton's 124 and 96, which is a fair indication the two datasets are of
 comparable use.
 
@@ -88,6 +95,7 @@ comparable use.
 | --- | ---: |
 | Parking (lots, accessible stalls) | 65 |
 | Buildings | 38 |
+| Bike racks | 36 |
 | Trails | 16 |
 | Ponds | 11 |
 | Points of interest | 10 |
@@ -99,8 +107,8 @@ comparable use.
 The ponds, the trails and the athletic fields carry the `outdoors` category,
 which is what AAO's Outdoors group lists.
 
-The 48 places without a footprint are the accessible-parking stalls and the
-points of interest, which are points, and the trails, which are lines. Forty
+The 88 places without a footprint are the accessible-parking stalls, the bike
+racks and the points of interest, which are points, and the trails, which are lines. Forty
 more source features — unnamed parking polygons, ponds and trail segments, and
 blank rows in the athletic-fields layer — are **not** places, because an
 unnamed feature cannot be labelled, searched for or linked to. Their geometry is
@@ -137,6 +145,8 @@ hand in `overrides.yaml`; verify.py rejects a parent that names no place, names
 the place itself, or names a place with no footprint of its own. For the
 accessible-parking spots `build.py` sets it: the lot a spot sits in, or the lot
 or building within 25 m of it -- one spot is beside New Hall rather than in it.
+For the bike racks it is the building or field the college's layer names the
+rack for, unless `overrides.yaml` corrects it.
 
 ### Watch the coordinate order
 
@@ -236,6 +246,14 @@ the lot or building within 25 m of them — "Accessible Parking, Porter Hall
 Parking" — which becomes their `parent`. Their ids stay numbered; their names
 are what tell them apart. `verify.py` fails if a lot name repeats or a spot
 has nothing within reach.
+
+The 36 bike racks are named for 24 buildings and a field — Regents Hall of
+Natural Sciences has three — with the side of it each rack is on in the
+layer's `Description`. Each becomes "Bike Rack, Holland Hall (North)", its id
+`bike-rack-hollandhallnorth`, and its `parent` the place named. `verify.py`
+fails a rack that names no place, or sits more than 60 m from the one it names:
+the college labels one rack beside Rand Hall for New Hall, across campus, and
+`overrides.yaml` puts it right.
 
 ## Determinism is the whole design
 
@@ -389,7 +407,7 @@ buries the campus. So:
 | `campus_buildings` | MultiPolygon | 38 | z14+ |
 | `campus_grounds` | MultiPolygon | 47 | z14+ |
 | `campus_paths` | MultiLineString | 187 lines in 16 features | z15+ |
-| `campus_labels` | Point | 148 | z15+ |
+| `campus_labels` | Point | 184 | z15+ |
 
 Every anchor carries a `kind`, which is what lets the style bring each sort of
 place in at the zoom where it stops being clutter — buildings at z15, points of
@@ -399,7 +417,8 @@ property name map-tiles uses, so AAO's selection code keys off it unchanged.
 
 The 26 accessible-parking points get their own `kind` for one reason: every
 label would begin "Accessible Parking", and without it the style stamps that
-26 times across campus.
+26 times across campus. The 36 bike racks get one for the same reason, and
+the style labels neither.
 
 Most of `campus_paths` comes from `data/` rather than `map.geojson`, because
 walkways and the other trail segments are not *places* — the unnamed ones have

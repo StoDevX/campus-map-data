@@ -1,0 +1,546 @@
+{
+  "type": "FeatureCollection",
+  "name": "bike-racks",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "(Agnes) Larson Hall",
+        "Description": "North",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1848855,
+          44.4600093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "(Agnes) Mellby Hall",
+        "Description": "East",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.185124,
+          44.4607079
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "(Gertrude) Hillboe Hall",
+        "Description": "East",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1864771,
+          44.4585576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Boe Memorial Chapel",
+        "Description": "North",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1839535,
+          44.4621781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Buntrock Commons",
+        "Description": "North",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.182634,
+          44.4621956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Buntrock Commons",
+        "Description": "South",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1829753,
+          44.4614007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Center for Art and Dance",
+        "Description": "Southeast",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1844831,
+          44.4624903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Christiansen Hall of Music",
+        "Description": "Northwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1869652,
+          44.4621454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Christiansen Hall of Music",
+        "Description": "Southeast",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1862223,
+          44.4616474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Ellingson Hall",
+        "Description": "Southwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1813406,
+          44.4637712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Flaten Art Barn",
+        "Description": "Northeast",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1910575,
+          44.4626897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Holland Hall",
+        "Description": "South",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1819459,
+          44.4598264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Holland Hall",
+        "Description": "North",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.182058,
+          44.4600983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Hoyme Hall",
+        "Description": "East",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1867121,
+          44.460565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Kildahl Hall",
+        "Description": "Southwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1837969,
+          44.4634902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Mabel Shirley Field",
+        "Description": "East",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1865538,
+          44.4659514
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Mohn Hall",
+        "Description": "Southwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1822706,
+          44.4635625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "New Hall",
+        "Description": "Northwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1796725,
+          44.4602606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "New Hall",
+        "Description": "Northeast",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.184521,
+          44.4641774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "New Hall",
+        "Description": "Northeast",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1781948,
+          44.4601685
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "New Hall",
+        "Description": "North",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1789582,
+          44.4599459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Old Main",
+        "Description": "West",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1804451,
+          44.4592958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Regents Hall of Natural Sciences",
+        "Description": "Northwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1822946,
+          44.45948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Regents Hall of Natural Sciences",
+        "Description": "North",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1815235,
+          44.4593188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Regents Hall of Natural Sciences",
+        "Description": "Northeast",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1807521,
+          44.4591954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Rolvaag Memorial Library",
+        "Description": "Southwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1824966,
+          44.4611615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "St. Olaf Ave + Rolvaag Memorial Library",
+        "Description": null,
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1816064,
+          44.460573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Thorson Hall",
+        "Description": "West",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1805155,
+          44.4634153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Tom Porter Hall",
+        "Description": "Northwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1807293,
+          44.4620502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Tomson Hall",
+        "Description": "West",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1843588,
+          44.4602884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Tomson Hall",
+        "Description": "East",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1829796,
+          44.4602343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Tostrud Center",
+        "Description": "South",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1880622,
+          44.4635688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Townhouses",
+        "Description": "Northeast",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.178469,
+          44.4609976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Townhouses",
+        "Description": "Southwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1796694,
+          44.4607123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Townhouses",
+        "Description": "Northwest",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.179153,
+          44.4610507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Ytterboe Hall",
+        "Description": "Southeast",
+        "_layer": "Bike Rack Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1877593,
+          44.4616584
+        ]
+      }
+    }
+  ]
+}

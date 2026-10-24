@@ -2155,6 +2155,1338 @@
     },
     {
       "type": "Feature",
+      "id": "bike-rack-boememorialchapelnorth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1839535,
+              44.4621781
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Boe Memorial Chapel (North)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "bmc",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-buntrockcommonsnorth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.182634,
+              44.4621956
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Buntrock Commons (North)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "bc",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-buntrockcommonssouth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1829753,
+              44.4614007
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Buntrock Commons (South)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "bc",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-centerforartanddancesoutheast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1844831,
+              44.4624903
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Center for Art and Dance (Southeast)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "cad",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-christiansenhallofmusicnorthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1869652,
+              44.4621454
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Christiansen Hall of Music (Northwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "chm",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-christiansenhallofmusicsoutheast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1862223,
+              44.4616474
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Christiansen Hall of Music (Southeast)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "chm",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-ellingsonhallsouthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1813406,
+              44.4637712
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Ellingson Hall (Southwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "eh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-flatenartbarnnortheast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1910575,
+              44.4626897
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Flaten Art Barn (Northeast)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "ab",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-hillboehalleast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1864771,
+              44.4585576
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, (Gertrude) Hilleboe Hall (East)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "ghh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-hollandhallnorth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.182058,
+              44.4600983
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Holland Hall (North)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "hh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-hollandhallsouth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1819459,
+              44.4598264
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Holland Hall (South)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "hh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-hoymehalleast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1867121,
+              44.460565
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Hoyme Hall (East)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "hmh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-kildahlhallsouthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1837969,
+              44.4634902
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Kildahl Hall (Southwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "kh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-larsonhallnorth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1848855,
+              44.4600093
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, (Agnes) Larson Hall (North)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "alh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-mabelshirleyfieldeast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1865538,
+              44.4659514
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Mabel Shirley Field (East)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "field-mabelshirleyfield",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-mellbyhalleast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.185124,
+              44.4607079
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, (Agnes) Mellby Hall (East)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "amh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-mohnhallsouthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1822706,
+              44.4635625
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Mohn Hall (Southwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "mh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-newhallnorth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1789582,
+              44.4599459
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, New Hall (North)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "newhall",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-newhallnortheast-1",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.184521,
+              44.4641774
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Rand Hall (Northeast)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "rh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-newhallnortheast-2",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1781948,
+              44.4601685
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, New Hall (Northeast)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "newhall",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-newhallnorthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1796725,
+              44.4602606
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, New Hall (Northwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "newhall",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-oldmainwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1804451,
+              44.4592958
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Old Main (West)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "om",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-regentshallofnaturalsciencesnorth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1815235,
+              44.4593188
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Regents Hall of Natural Sciences (North)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "rns",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-regentshallofnaturalsciencesnortheast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1807521,
+              44.4591954
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Regents Hall of Natural Sciences (Northeast)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "rns",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-regentshallofnaturalsciencesnorthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1822946,
+              44.45948
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Regents Hall of Natural Sciences (Northwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "rns",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-rolvaagmemoriallibrarysouthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1824966,
+              44.4611615
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Rolvaag Memorial Library (Southwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "rml",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-stolafaverolvaagmemoriallibrary",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1816064,
+              44.460573
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Rolvaag Memorial Library (St. Olaf Avenue)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "rml",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-thorsonhallwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1805155,
+              44.4634153
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Thorson Hall (West)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "th",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-tomporterhallnorthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1807293,
+              44.4620502
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Tom Porter Hall (Northwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "tph",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-tomsonhalleast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1829796,
+              44.4602343
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Tomson Hall (East)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "toh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-tomsonhallwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1843588,
+              44.4602884
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Tomson Hall (West)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "toh",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-tostrudcentersouth",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1880622,
+              44.4635688
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Tostrud Center (South)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "tostrudcenter",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-townhousesnortheast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.178469,
+              44.4609976
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Townhouses (Northeast)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "townhouses",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-townhousesnorthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.179153,
+              44.4610507
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Townhouses (Northwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "townhouses",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-townhousessouthwest",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1796694,
+              44.4607123
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Townhouses (Southwest)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "townhouses",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bike-rack-ytterboehallsoutheast",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -93.1877593,
+              44.4616584
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "accessibility": "unknown",
+        "address": null,
+        "categories": [
+          "bike-rack"
+        ],
+        "departments": [],
+        "description": "",
+        "floors": [],
+        "name": "Bike Rack, Ytterboe Hall (Southeast)",
+        "nickname": "",
+        "offices": [],
+        "abbreviation": null,
+        "type": null,
+        "links": [],
+        "parent": "ytt",
+        "length": null,
+        "rules": [],
+        "walk": null,
+        "citations": []
+      }
+    },
+    {
+      "type": "Feature",
       "id": "bmc",
       "geometry": {
         "type": "GeometryCollection",

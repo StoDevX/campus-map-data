@@ -1,6 +1,7 @@
 {
   "dashboard": "https://stolaf.maps.arcgis.com/apps/dashboards/039528a0ee874da7b5ef749c2393498d",
   "webmap": "https://www.arcgis.com/home/item.html?id=48f433ddf4674d53b1754e307ffce1f4",
+  "bike_racks": "https://stolaf.maps.arcgis.com/apps/instant/basic/index.html?appid=b792338d01ca45d88049a84d1c41fc25",
   "layers": [
     {
       "slug": "buildings",
@@ -113,6 +114,13 @@
       "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/stolaf_trails20220308/FeatureServer/0",
       "role": "context",
       "features": 29
+    },
+    {
+      "slug": "bike-racks",
+      "title": "Bike Rack Locations",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/Bike_Racks_WFL1/FeatureServer/1",
+      "role": "place",
+      "features": 36
     },
     {
       "slug": "campus-roads",

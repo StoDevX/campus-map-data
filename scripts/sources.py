@@ -16,6 +16,10 @@ alongside the current ones in `StOlaf_Roads_2_WFL1` and
 the polygons from one and pops up the attributes from the other. We take the one
 with the attributes.
 
+One layer comes from elsewhere: the bike racks are not on the campus map but
+on the college's **Bike Rack Locations** app (`BIKE_RACKS_APP`), whose web map
+(`BIKE_RACKS_WEBMAP_ITEM`) draws them over the same buildings.
+
 Adding a layer is one `Source` entry. Nothing else in the pipeline enumerates
 layers by hand.
 """
@@ -30,6 +34,8 @@ ORG = "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services"
 # provenance survives someone reorganising the services.
 DASHBOARD_ITEM = "039528a0ee874da7b5ef749c2393498d"
 WEBMAP_ITEM = "48f433ddf4674d53b1754e307ffce1f4"
+BIKE_RACKS_APP = "b792338d01ca45d88049a84d1c41fc25"
+BIKE_RACKS_WEBMAP_ITEM = "0e7dc1af82aa4eeab4566c45d8c150ee"
 
 
 @dataclass(frozen=True)
@@ -172,6 +178,18 @@ SOURCES: tuple[Source, ...] = (
             '"Natural Lands Trails (Updated 2026)" has them; the 2022 '
             "version matched the distance map within 1-6 m. Used only to "
             "build the Heath Creek trails."
+        ),
+    ),
+    Source(
+        slug="bike-racks",
+        title="Bike Rack Locations",
+        url=f"{ORG}/Bike_Racks_WFL1/FeatureServer/1",
+        role="place",
+        categories=("bike-rack",),
+        notes=(
+            "From the college's Bike Rack Locations map, not the campus map. "
+            "Each rack is named for a building, with the side of it in "
+            "Description; build.py names it for its parent and that side."
         ),
     ),
     Source(

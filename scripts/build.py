@@ -97,6 +97,7 @@ ID_PREFIXES = {
     "athletic-fields": "field",
     "water": "pond",
     "natural-lands-trails": "trail",
+    "bike-racks": "bike-rack",
 }
 
 
@@ -232,6 +233,8 @@ def read_places(sources_by_title: dict) -> tuple[list[dict], list[str]]:
                         if url
                     ],
                     "contact": clean(properties.get("Contact")),
+                    # Which side of the place it is named for a bike rack is on.
+                    "side": clean(properties.get("Description")),
                     "geometry": feature["geometry"],
                     "information": properties.get("Information") or "",
                 }
@@ -336,6 +339,49 @@ def name_accessible_spots(places: list[dict]) -> None:
                 spot["parent"] = nearest["id"]
                 spot["name"] = f"Accessible Parking, {nearest['name']}"
                 break
+
+
+# What a bike rack may be named for. Not the lots: the one beside Old Main is
+# called "Old Main" too, and the rack serves the building.
+RACK_PARENT_SLUGS = ("buildings", "athletic-fields")
+
+
+def parent_bike_racks(places: list[dict]) -> None:
+    """Make each bike rack's parent the building or field the college names it
+    for.
+
+    Matched on the name as scraped, before overrides.yaml corrects a spelling,
+    since that is the name the rack layer uses too. A rack named for nothing is
+    left without a parent for verify.py to report; a parent under `changes`
+    in overrides.yaml replaces this one, which is how a mislabelled rack is put
+    right.
+    """
+    by_name = {
+        place["name"]: place["id"]
+        for place in places
+        if place["slug"] in RACK_PARENT_SLUGS
+    }
+    for rack in places:
+        if rack["slug"] == "bike-racks":
+            rack["parent"] = by_name.get(rack["name"])
+
+
+def name_bike_racks(places: list[dict]) -> None:
+    """Name each bike rack for its parent and the side of it the rack is on.
+
+    The college names 36 racks for 25 places, so a rack's own name says which
+    building and nothing more. Taken from the parent as published, so a
+    spelling overrides.yaml corrects in a building is corrected in its racks.
+    """
+    by_id = {place["id"]: place for place in places}
+    for rack in places:
+        if rack["slug"] != "bike-racks":
+            continue
+        parent = by_id.get(rack.get("parent") or "")
+        if parent is None:
+            continue
+        side = f" ({rack['side']})" if rack.get("side") else ""
+        rack["name"] = f"Bike Rack, {parent['name']}{side}"
 
 
 # How far an assembled trail's length may move from the `miles` overrides.yaml
@@ -628,6 +674,7 @@ def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     places += assemble_trails(segments["features"], trails)
     places = merge_split_lots(places)
     assign_ids(places, overrides)
+    parent_bike_racks(places)
     # The walks along part of a trail, made from that trail and given ids of
     # their own: their names are unique, so the others' ids do not move.
     walks = walk_places(places, overrides.get("walks") or {})
@@ -661,7 +708,9 @@ def assign_ids(places: list[dict], overrides: dict) -> None:
         if explicit:
             return explicit
         prefix = ID_PREFIXES.get(place["slug"])
-        base = slugify(place["name"])
+        # The side tells apart the racks the college names for one building.
+        side = f" {place['side']}" if place.get("side") else ""
+        base = slugify(place["name"] + side)
         # Skip a prefix the name already carries, so the fallback-named
         # accessible-parking points are `accessibleparking-1` rather than
         # `accessible-parking-accessibleparking-1`.
@@ -838,6 +887,7 @@ def main() -> int:
     places, dropped = scraped_places(overrides)
     places = apply_overrides(places, overrides)
     name_accessible_spots(places)
+    name_bike_racks(places)
     apply_rules(places, overrides.get("rules") or {})
     apply_walks(places, overrides.get("walks") or {})
     attach_floors(places)
