@@ -122,6 +122,8 @@ jobs:
         env:
           BEFORE: ${{ steps.range.outputs.before }}
           AFTER: ${{ steps.range.outputs.after }}
+        # bash with pipefail, so a crash in report.py is not read as "no change".
+        shell: bash
         run: |
           date=$(date -u +%F)
           name=$(uv run scripts/release_name.py "$date")

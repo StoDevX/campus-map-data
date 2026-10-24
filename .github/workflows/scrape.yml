@@ -100,6 +100,8 @@ jobs:
         env:
           EVENT: ${{ github.event_name }}
           BASE_REF: ${{ github.base_ref }}
+        # bash with pipefail, so a crash in report.py is not hidden by tee.
+        shell: bash
         run: |
           # On a pull request the data is compared with the base branch; on any
           # other run, with the commit the run started from.
@@ -140,6 +142,10 @@ jobs:
           VERIFY_OUTCOME: ${{ steps.verify.outcome }}
         run: |
           {
+            if [ -f "$RUNNER_TEMP/report-summary.txt" ]; then
+              cat "$RUNNER_TEMP/report-summary.txt"
+              echo
+            fi
             echo "## Campus data"
             echo
             echo "| | |"

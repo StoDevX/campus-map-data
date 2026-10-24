@@ -24,8 +24,8 @@ corrected, that shows up here as a reviewable diff on the day the college makes
 it. Everything about the pipeline is arranged to protect that — see
 [Determinism](#determinism-is-the-whole-design).
 
-Every change to the published data also gets a release, "Campus data
-<date>", with a before and after report at
+Every change to the published data also gets a release, titled "Campus data"
+and dated, with a before and after report at
 `stolaf.dev/campus-map-data/changes/`. Watch the repo for releases to hear
 about changes as they land.
 
