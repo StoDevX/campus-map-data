@@ -168,6 +168,18 @@ changes:
   # The Windmill, the Wind Chime Memorial and the Electric Vehicle Charger are
   # the other three points, and are in no building. They get no parent.
 
+  # Bike racks the college's layer names wrongly. The layer calls this one
+  # "New Hall", Northeast, but it stands 1 m from Rand Hall's northeast corner
+  # and 581 m from New Hall, whose own northeast rack is
+  # bike-rack-newhallnortheast-2.
+  - id: bike-rack-newhallnortheast-1
+    parent: rh
+  # Named "St. Olaf Ave + Rolvaag Memorial Library", with no side. It stands on
+  # St. Olaf Avenue, 53 m from the library and nearer nothing else.
+  - id: bike-rack-stolafaverolvaagmemoriallibrary
+    parent: rml
+    side: St. Olaf Avenue
+
   # About text for the Natural Lands' ponds and trails, in our own words, from
   # the college's History of the Natural Lands and Habitats pages, its 2024
   # restoration map (which planting a place sits in, where the text does not
