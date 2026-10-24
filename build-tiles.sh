@@ -407,6 +407,9 @@ OSM_BUILDINGS="$OSM_BUILDINGS" \
 cp "$ROOT/site/index.html" "$DIST/index.html"
 cp "$ROOT/site/.nojekyll" "$DIST/.nojekyll"
 
+# The change reports. None exist until the first release commits one.
+[ ! -d "$ROOT/site/changes" ] || cp -R "$ROOT/site/changes" "$DIST/changes"
+
 # Every mismatch this catches — style against schema, style against vendored
 # assets — renders a blank or label-less map without raising an error, which is
 # miserable to debug on device.

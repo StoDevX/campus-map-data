@@ -1,0 +1,217 @@
+name: Release data changes
+
+# Every change to the published data on main passes through here, so a scrape's
+# change and a merged pull request's are reported and released the same way:
+# a change report page, committed to site/changes/, and a GitHub release whose
+# notes summarise it.
+on:
+  # A person's push to main -- a merged pull request. The range is the push.
+  push:
+    branches: [main]
+    paths:
+      - map.json
+      - map.geojson
+      - data/**
+
+  # The scrape. A push made with GITHUB_TOKEN starts no workflow, so the scrape
+  # cannot reach the push trigger above; it dispatches this instead, passing the
+  # commit before its own and the one it pushed.
+  workflow_dispatch:
+    inputs:
+      before:
+        description: The commit the data changed from
+        required: true
+        type: string
+      after:
+        description: The commit the data changed to
+        required: true
+        type: string
+
+  # Dry run on a pull request touching the report's code: build a report against
+  # the base branch and stop. Nothing is committed, tagged or released.
+  pull_request:
+    paths:
+      - scripts/changes.py
+      - scripts/geometry.py
+      - scripts/release_name.py
+      - scripts/report.py
+      - scripts/report_page.py
+      - pyproject.toml
+      - uv.lock
+      - .github/workflows/release.yml
+
+# `contents` to push the page and create the release; `actions` to start the
+# tile workflow.
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  # PRs get their own group so a dry run can never queue behind, or cancel, a
+  # release. Releases are never cancelled mid-flight: a half-finished one would
+  # leave a page with no release, or the reverse.
+  group: >-
+    ${{ github.event_name == 'pull_request'
+        && format('release-dryrun-{0}', github.ref)
+        || 'release' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      # All history and tags: the report reads both revisions with `git show`,
+      # and release_name.py reads the existing release tags.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
+
+      - run: uv sync --locked
+
+      - name: Work out the range
+        id: range
+        # Inputs go through the environment, not into the script text, so a
+        # dispatched value can never be read as shell.
+        env:
+          EVENT: ${{ github.event_name }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          PUSH_AFTER: ${{ github.sha }}
+          INPUT_BEFORE: ${{ inputs.before }}
+          INPUT_AFTER: ${{ inputs.after }}
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          case "$EVENT" in
+            push)
+              before=$PUSH_BEFORE
+              after=$PUSH_AFTER
+              ;;
+            workflow_dispatch)
+              before=$INPUT_BEFORE
+              after=$INPUT_AFTER
+              ;;
+            pull_request)
+              git fetch --no-tags origin "$BASE_REF"
+              before="origin/$BASE_REF"
+              after=HEAD
+              ;;
+          esac
+
+          # A push that creates a branch has no earlier commit to compare with.
+          if [ -z "${before//0/}" ]; then
+            echo "No earlier commit to compare with; nothing to release."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          {
+            echo "go=true"
+            echo "before=$before"
+            echo "after=$after"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build the change report
+        id: report
+        if: steps.range.outputs.go == 'true'
+        env:
+          BEFORE: ${{ steps.range.outputs.before }}
+          AFTER: ${{ steps.range.outputs.after }}
+        # bash with pipefail, so a crash in report.py is not read as "no change".
+        shell: bash
+        run: |
+          # Resolved here so the commit link names the commit, not "HEAD".
+          after=$(git rev-parse "$AFTER^{commit}")
+
+          # A commit that already has a release keeps its name, and the page its
+          # date, so running this again for the same range builds the same page
+          # and makes no second release.
+          name=$(uv run scripts/release_name.py "$(date -u +%F)" "$after")
+          date=${name:0:10}
+
+          # Written outside the checkout, so moving to main's tip below cannot
+          # collide with the same page already committed there.
+          page="$RUNNER_TEMP/changes/$name.html"
+
+          uv run scripts/report.py \
+            --before "$BEFORE" --after "$after" --date "$date" \
+            --out "$page" --notes "$RUNNER_TEMP/notes.md" \
+            --report-url "https://stolaf.dev/campus-map-data/changes/$name.html" \
+            --commit-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$after" \
+            | tee "$RUNNER_TEMP/summary.txt"
+
+          # report.py writes nothing when the published data did not change.
+          if [ -f "$page" ]; then
+            {
+              echo "built=true"
+              echo "name=$name"
+              echo "page=$page"
+              echo "after=$after"
+            } >> "$GITHUB_OUTPUT"
+          else
+            echo "built=false" >> "$GITHUB_OUTPUT"
+          fi
+          cat "$RUNNER_TEMP/summary.txt" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Create the release
+        if: steps.report.outputs.built == 'true' && github.event_name != 'pull_request'
+        env:
+          NAME: ${{ steps.report.outputs.name }}
+          AFTER: ${{ steps.report.outputs.after }}
+        # First, so that a page on main always has its release's tag, and a run
+        # again after a later step failed reuses the name. Tagged on the data
+        # commit, not the page commit that follows it, so the release names the
+        # revision whose data it describes.
+        run: |
+          if gh release view "data-$NAME" > /dev/null 2>&1; then
+            echo "Release data-$NAME already exists."
+            exit 0
+          fi
+          gh release create "data-$NAME" \
+            --target "$AFTER" \
+            --title "Campus data $NAME" \
+            --notes-file "$RUNNER_TEMP/notes.md"
+
+      - name: Commit the page
+        if: steps.report.outputs.built == 'true' && github.event_name != 'pull_request'
+        env:
+          NAME: ${{ steps.report.outputs.name }}
+          PAGE: ${{ steps.report.outputs.page }}
+        run: |
+          # The workflow may have been dispatched, or queued behind another
+          # release, while main moved on. The page goes on main's current tip.
+          git fetch origin main
+          git checkout -B main origin/main
+          mkdir -p site/changes
+          cp "$PAGE" "site/changes/$NAME.html"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "site/changes/$NAME.html"
+          # A run again for the same range finds its page already on main.
+          if git diff --cached --quiet; then
+            echo "The page is already on main."
+            exit 0
+          fi
+          git commit -m "Add the change report for $NAME"
+
+          # A person's push can land mid-run; a rebase covers it.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "push failed, rebasing and retrying ($attempt/3)"
+            git pull --rebase origin main
+          done
+          exit 1
+
+      - name: Publish the site
+        if: steps.report.outputs.built == 'true' && github.event_name != 'pull_request'
+        # The page and the data reach Pages through the tile workflow, which a
+        # GITHUB_TOKEN push would not have started.
+        run: gh workflow run tiles.yml --ref main

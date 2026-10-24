@@ -174,8 +174,10 @@ SOURCES: tuple[Source, ...] = (
         # a person redoes the mapping.
         fields=("FID", "NAME", "Type"),
         notes=(
-            "The segments the college's Natural Lands distance map is drawn "
-            "from, within 1-6 m. Used only to build the Heath Creek trails."
+            "The college's Natural Lands trails, as its October 2026 redraw "
+            '"Natural Lands Trails (Updated 2026)" has them; the 2022 '
+            "version matched the distance map within 1-6 m. Used only to "
+            "build the Heath Creek trails."
         ),
     ),
     Source(

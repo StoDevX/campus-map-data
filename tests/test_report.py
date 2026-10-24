@@ -1,0 +1,785 @@
+"""Tests for grouping changes into areas, summarising them and the page."""
+
+import os
+import re
+from pathlib import Path
+
+from changes import ChangeSet, ContextChange, Move, PlaceChange, State, compare
+from geometry import METRES_PER_DEGREE_LAT, positions
+from report import areas, main, release_notes, summary
+from report_page import render
+from test_changes import make_repo, write_json
+
+
+def point(lat: float, lon: float = -93.18) -> dict:
+    return {"type": "Point", "coordinates": [lon, lat]}
+
+
+def north_of(lat: float, metres: float) -> float:
+    return lat + metres / METRES_PER_DEGREE_LAT
+
+
+def moved_trail(name: str, lat: float, lon: float = -93.18) -> PlaceChange:
+    stretch = ((lon, lat), (lon, lat + 0.0002))
+    return PlaceChange(
+        "changed",
+        name,
+        name,
+        name,
+        move=Move(added=(stretch,), added_m=22.0),
+        categories=("trail",),
+    )
+
+
+def added_rack(index: int) -> PlaceChange:
+    return PlaceChange(
+        "added",
+        None,
+        f"rack-{index}",
+        f"Rack {index}",
+        after_shape=point(44.46 + index * 0.00001),
+        categories=("bike-rack",),
+    )
+
+
+def changes_of(*places: PlaceChange, routing_changed: bool = False) -> ChangeSet:
+    return ChangeSet(tuple(places), (), routing_changed)
+
+
+def test_moves_near_each_other_share_an_area():
+    a = moved_trail("A", 44.46)
+    b = moved_trail("B", north_of(44.46, 100) + 0.0002)
+    assert len(areas(changes_of(a, b))) == 1
+
+
+def test_moves_far_apart_get_their_own_areas():
+    a = moved_trail("A", 44.46)
+    b = moved_trail("B", north_of(44.46, 600))
+    assert len(areas(changes_of(a, b))) == 2
+
+
+def test_moves_near_each_other_east_to_west_share_an_area():
+    # 0.0017 degrees of longitude is about 135 m at 44.46 N.
+    a = moved_trail("A", 44.46, -93.18)
+    b = moved_trail("B", 44.46, -93.18 + 0.0017)
+    c = moved_trail("C", 44.46, -93.18 + 0.0017 + 0.0021)  # about 167 m on
+    assert [len(area) for area in areas(changes_of(a, b, c))] == [2, 1]
+
+
+def test_a_chain_of_near_moves_is_one_area():
+    chain = [moved_trail(str(i), north_of(44.46, i * 140)) for i in range(4)]
+    assert len(areas(changes_of(*chain))) == 1
+
+
+def test_areas_run_north_to_south_then_west_to_east():
+    south = moved_trail("South", 44.45)
+    north_east = moved_trail("NE", 44.47, -93.17)
+    north_west = moved_trail("NW", 44.47, -93.19)
+    result = areas(changes_of(south, north_east, north_west))
+    assert [[c.name for c in area] for area in result] == [["NW"], ["NE"], ["South"]]
+
+
+def test_a_text_only_change_has_no_area():
+    text = PlaceChange("changed", "a", "a", "A", categories=("building",))
+    assert areas(changes_of(text)) == []
+
+
+def test_a_change_with_an_invisible_move_has_no_area():
+    quiet = PlaceChange("changed", "a", "a", "A", move=Move())
+    assert areas(changes_of(quiet)) == []
+
+
+def test_a_place_with_no_shape_has_no_area_and_still_renders():
+    shapeless = PlaceChange("added", None, "a", "A", categories=("building",))
+    changes = changes_of(shapeless, added_rack(0))
+    assert areas(changes) == [[added_rack(0)]]
+    assert "<h3>A</h3>" in render(changes, state([]), DATE)
+
+
+def test_an_added_place_is_placed_by_its_own_shape():
+    assert len(areas(changes_of(added_rack(0)))) == 1
+
+
+def test_a_new_layer_of_points_is_one_area():
+    racks = [
+        PlaceChange(
+            "added",
+            None,
+            f"rack-{i}",
+            f"Rack {i}",
+            after_shape=point(44.46 + i * 0.01),
+            categories=("bike-rack",),
+        )
+        for i in range(36)
+    ]
+    assert len(areas(changes_of(*racks))) == 1
+
+
+def test_a_few_scattered_added_points_are_not_a_layer():
+    racks = [
+        PlaceChange(
+            "added", None, f"r{i}", f"R{i}", after_shape=point(44.46 + i * 0.01)
+        )
+        for i in range(3)
+    ]
+    assert len(areas(changes_of(*racks))) == 3
+
+
+def trail_changes() -> ChangeSet:
+    names = [
+        "Lower Heath Creek Trail",
+        "Big Woods Trail",
+        "Zed Trail",
+        "Burr Oak Trail",
+    ]
+    trails = [moved_trail(name, 44.40 + i * 0.01) for i, name in enumerate(names)]
+    racks = [added_rack(i) for i in range(36)]
+    return changes_of(*racks, *trails)
+
+
+def test_summary_counts_and_names_the_places():
+    assert summary(trail_changes()) == (
+        "36 bike racks added. 4 trails changed shape: "
+        "Big Woods Trail, Burr Oak Trail, Lower Heath Creek Trail and 1 more."
+    )
+
+
+def test_summary_uses_the_singular_for_one():
+    assert summary(changes_of(added_rack(0))) == "1 bike rack added: Rack 0."
+
+
+def test_summary_says_what_was_removed_and_renamed():
+    gone = PlaceChange("removed", "old", None, "Old Hall", categories=("building",))
+    renamed = PlaceChange(
+        "renamed", "x", "y", "New Name", categories=("parking",), move=None
+    )
+    assert summary(changes_of(gone, renamed)) == (
+        "1 building removed: Old Hall. 1 parking lot renamed: New Name."
+    )
+
+
+def test_summary_counts_text_only_changes_apart_from_shape_changes():
+    text = PlaceChange("changed", "a", "a", "Alpha", categories=("building",))
+    assert summary(changes_of(text, moved_trail("Beta Trail", 44.4))) == (
+        "1 trail changed shape: Beta Trail. 1 building changed: Alpha."
+    )
+
+
+def test_summary_falls_back_to_the_category_slug():
+    odd = PlaceChange("added", None, "a", "Gazebo", categories=("picnic-area",))
+    assert summary(changes_of(odd)) == "1 picnic area added: Gazebo."
+
+
+def test_summary_names_a_place_by_its_known_category_first():
+    trail = PlaceChange(
+        "changed", "a", "a", "Robin Trail", categories=("outdoors", "trail")
+    )
+    assert summary(changes_of(trail)) == "1 trail changed: Robin Trail."
+
+
+def kinds_of(*categories: str) -> str:
+    """The summary of two places of these categories added."""
+    added = [
+        PlaceChange("added", None, f"p{i}", f"P{i}", categories=categories)
+        for i in range(2)
+    ]
+    return summary(changes_of(*added))
+
+
+def test_summary_has_a_word_for_every_kind_of_place_in_the_data():
+    assert kinds_of("outdoors", "water") == "2 ponds added: P0, P1."
+    assert kinds_of("athletics", "outdoors", "field") == (
+        "2 athletic fields added: P0, P1."
+    )
+    assert kinds_of("point-of-interest", "dining") == (
+        "2 points of interest added: P0, P1."
+    )
+    assert kinds_of("outdoors", "trail", "wellness-walk") == (
+        "2 wellness walks added: P0, P1."
+    )
+
+
+def test_summary_calls_a_place_by_its_most_specific_kind():
+    assert kinds_of("parking", "accessible-parking") == (
+        "2 accessible parking spaces added: P0, P1."
+    )
+    assert kinds_of("parking", "campus-parking") == "2 parking lots added: P0, P1."
+
+
+def test_summary_has_a_word_for_unnamed_shapes_of_place_layers():
+    changes = ChangeSet(
+        (),
+        (
+            ContextChange("athletic-fields", lines_of(2), ()),
+            ContextChange("natural-lands-trails", (), lines_of(1)),
+            ContextChange("points-of-interest", lines_of(2), ()),
+        ),
+        False,
+    )
+    assert summary(changes) == (
+        "2 unnamed athletic fields added. 1 Natural Lands access trail removed. "
+        "2 unnamed points of interest added."
+    )
+
+
+def test_summary_mentions_rebuilt_routes():
+    assert summary(changes_of(added_rack(0), routing_changed=True)).endswith(
+        " The walking routes were rebuilt to match."
+    )
+
+
+def lines_of(count: int) -> tuple[dict, ...]:
+    return tuple(
+        {
+            "type": "LineString",
+            "coordinates": [[-93.18, 44.46 + i * 0.001], [-93.17, 44.46]],
+        }
+        for i in range(count)
+    )
+
+
+def context_only() -> ChangeSet:
+    return ChangeSet(
+        (),
+        (
+            ContextChange("natural-lands-segments", lines_of(20), lines_of(39)),
+            ContextChange("walkways", (), lines_of(3)),
+        ),
+        False,
+    )
+
+
+def test_summary_counts_background_shapes_by_layer():
+    assert summary(context_only()) == (
+        "20 Natural Lands segments added and 39 removed. 3 walkways removed."
+    )
+
+
+def test_summary_of_one_background_shape_is_singular():
+    change = ChangeSet((), (ContextChange("campus-boundary", lines_of(1), ()),), False)
+    assert summary(change) == "1 campus boundary added."
+
+
+def test_summary_puts_places_before_background_and_routes_last():
+    changes = ChangeSet(
+        (added_rack(0),), (ContextChange("walkways", lines_of(2), ()),), True
+    )
+    assert summary(changes) == (
+        "1 bike rack added: Rack 0. 2 walkways added. "
+        "The walking routes were rebuilt to match."
+    )
+
+
+def test_release_notes_of_a_background_change_start_with_its_summary():
+    notes = release_notes(context_only(), "https://r", "https://c")
+    assert notes.startswith("20 Natural Lands segments added and 39 removed.")
+
+
+def test_release_notes_link_the_report_and_commit():
+    notes = release_notes(trail_changes(), "https://r", "https://c")
+    assert "https://r" in notes and "https://c" in notes
+    assert summary(trail_changes()) in notes
+
+
+def test_release_notes_count_each_kind():
+    notes = release_notes(trail_changes(), "https://r", "https://c")
+    assert "| Added | 36 |" in notes
+    assert "| Changed | 4 |" in notes
+    assert "| Removed | 0 |" in notes
+    assert "Background shapes" not in notes
+
+
+# A release that only re-cut the trail segments must not show a table of zeros
+# under a summary saying 62 shapes changed.
+def test_release_notes_count_background_shapes_by_layer():
+    notes = release_notes(context_only(), "https://r", "https://c")
+    assert "| Natural Lands segments | 20 | 39 |" in notes
+    assert "| Walkways | 0 | 3 |" in notes
+    assert "| Places |" not in notes
+
+
+def test_release_notes_count_places_and_background_together():
+    changes = ChangeSet(
+        trail_changes().places, context_only().context, routing_changed=False
+    )
+    notes = release_notes(changes, "https://r", "https://c")
+    assert "| Added | 36 |" in notes
+    assert "| Natural Lands segments | 20 | 39 |" in notes
+
+
+# The page. The fixtures below are before and after states run through the real
+# `compare`, so the page is tested on what the pipeline actually produces.
+
+GOLDEN = Path(__file__).parent / "golden" / "report.html"
+DATE = "2026-11-01"
+METRES_PER_DEGREE_LON = 79_000  # near enough at 44.46 N for building fixtures
+
+
+def east_of(lon: float, metres: float) -> float:
+    return lon + metres / METRES_PER_DEGREE_LON
+
+
+def record(place_id: str, name: str, shape: dict, *categories: str, **extra) -> dict:
+    """A `map.json` record whose center is the first position of its shape."""
+    lon, lat = positions(shape)[0]
+    return {
+        "id": place_id,
+        "name": name,
+        "center": [lat, lon],
+        "categories": dict.fromkeys(categories, True),
+        **extra,
+    }
+
+
+def square(lat: float, lon: float, metres: float = 30) -> dict:
+    top, right = north_of(lat, metres), east_of(lon, metres)
+    ring = [[lon, lat], [right, lat], [right, top], [lon, top], [lon, lat]]
+    return {"type": "Polygon", "coordinates": [ring]}
+
+
+def line(*points: tuple[float, float]) -> dict:
+    return {"type": "LineString", "coordinates": [[lon, lat] for lat, lon in points]}
+
+
+def state(
+    records: list[dict],
+    context: dict[str, list[dict]] | None = None,
+    routing: bytes = b"",
+) -> State:
+    places = {r["id"]: {k: v for k, v in r.items() if k != "shape"} for r in records}
+    shapes = {r["id"]: r["shape"] for r in records}
+    return State(places, shapes, context or {}, routing)
+
+
+def place_record(place_id, name, shape, *categories, **extra) -> dict:
+    return {**record(place_id, name, shape, *categories, **extra), "shape": shape}
+
+
+LAT, LON = 44.4600, -93.1800
+WATER = square(north_of(LAT, 40), east_of(LON, 260), 60)
+WALKWAY = line((LAT, east_of(LON, -40)), (LAT, east_of(LON, 300)))
+NEW_WALKWAY = line((north_of(LAT, 80), LON), (north_of(LAT, 80), east_of(LON, 200)))
+RIDGE_BEFORE = line(
+    (north_of(LAT, 100), LON),
+    (north_of(LAT, 100), east_of(LON, 100)),
+    (north_of(LAT, 100), east_of(LON, 200)),
+)
+# The middle stretch now bends 40 m north, and the trail runs 60 m further east.
+RIDGE_AFTER = line(
+    (north_of(LAT, 100), LON),
+    (north_of(LAT, 100), east_of(LON, 60)),
+    (north_of(LAT, 140), east_of(LON, 100)),
+    (north_of(LAT, 100), east_of(LON, 140)),
+    (north_of(LAT, 100), east_of(LON, 260)),
+)
+
+
+def fixture() -> tuple[ChangeSet, State]:
+    """One of each kind of change, as small as the page can show them."""
+    hall = square(LAT + 0.0003, LON)
+    lot = square(LAT - 0.0004, east_of(LON, 120), 40)
+    shared = [
+        place_record("hall", "Hall", hall, "building"),
+    ]
+    before = state(
+        [
+            *shared,
+            place_record("ridge", "Ridge Trail", RIDGE_BEFORE, "trail", length=200),
+            place_record(
+                "om",
+                "Old Main",
+                square(LAT - 0.0008, LON),
+                "building",
+                description="Built in 1877 of local limestone.",
+            ),
+            place_record("shed", "Grounds Shed", square(LAT, east_of(LON, -300), 10)),
+            place_record("lot-a", "Lot A", lot, "parking"),
+        ],
+        {"water": [WATER], "walkways": [WALKWAY]},
+        b"routes 1",
+    )
+    after = state(
+        [
+            *shared,
+            place_record("ridge", "Ridge Trail", RIDGE_AFTER, "trail", length=284),
+            place_record(
+                "om",
+                "Old Main",
+                square(LAT - 0.0008, LON),
+                "building",
+                description='Built in 1877 of <b>local</b> & "Kasota" limestone.',
+            ),
+            place_record(
+                "bike-rack-hall",
+                "Bike Rack, Hall (North)",
+                point(north_of(LAT + 0.0003, 40), east_of(LON, 10)),
+                "bike-rack",
+            ),
+            place_record("lot-b", "Lot B", lot, "parking"),
+        ],
+        {"water": [WATER], "walkways": [WALKWAY, NEW_WALKWAY]},
+        b"routes 2",
+    )
+    return compare(before, after), after
+
+
+def page_of(before: State, after: State) -> str:
+    return render(compare(before, after), after, DATE)
+
+
+def changes_with_description(text: str) -> tuple[State, State]:
+    shape = square(LAT, LON)
+    return (
+        state([place_record("om", "Old Main", shape, "building", description="")]),
+        state([place_record("om", "Old Main", shape, "building", description=text)]),
+    )
+
+
+def trails_far_apart(count: int) -> tuple[State, State]:
+    """`count` trails 600 m apart, each redrawn 10 m to the east."""
+    befores, afters = [], []
+    for i in range(count):
+        lat = north_of(LAT, i * 600)
+        ends = ((lat, LON), (north_of(lat, 100), LON))
+        moved_ends = [(la, east_of(lo, 10)) for la, lo in ends]
+        befores.append(place_record(f"t{i:02}", f"Trail {i}", line(*ends), "trail"))
+        afters.append(
+            place_record(f"t{i:02}", f"Trail {i}", line(*moved_ends), "trail")
+        )
+    return state(befores), state(afters)
+
+
+def every_building_nudged(metres: float) -> tuple[State, State]:
+    """A campus of 60 buildings 200 m apart, every one redrawn `metres` east."""
+    befores, afters = [], []
+    for i in range(60):
+        lat, lon = north_of(LAT, (i // 6) * 200), east_of(LON, (i % 6) * 200)
+        befores.append(place_record(f"b{i:02}", f"B{i}", square(lat, lon), "building"))
+        afters.append(
+            place_record(
+                f"b{i:02}", f"B{i}", square(lat, east_of(lon, metres)), "building"
+            )
+        )
+    context = {"walkways": [WALKWAY], "water": [WATER]}
+    return state(befores, context), state(afters, context)
+
+
+def test_rendering_twice_is_byte_identical():
+    changes, after = fixture()
+    assert render(changes, after, DATE) == render(changes, after, DATE)
+
+
+def test_the_page_matches_the_golden_file():
+    page = render(*fixture(), DATE)
+    if os.environ.get("UPDATE_GOLDEN") == "1":
+        GOLDEN.parent.mkdir(exist_ok=True)
+        GOLDEN.write_text(page)
+    assert page == GOLDEN.read_text()
+
+
+def test_the_title_carries_the_date():
+    assert "<title>Campus data changes, 2026-11-01</title>" in render(*fixture(), DATE)
+
+
+def test_markup_in_the_colleges_text_is_escaped():
+    page = page_of(*changes_with_description('<b>Fish & "Chips"</b>'))
+    assert "<b>Fish" not in page and "&lt;b&gt;Fish &amp;" in page
+
+
+def test_a_text_only_change_draws_no_closeup():
+    assert 'class="closeup"' not in page_of(*changes_with_description("New words."))
+
+
+def test_close_ups_stop_at_twelve():
+    page = page_of(*trails_far_apart(15))
+    assert page.count('class="closeup"') == 12 and "and 3 more areas" in page
+
+
+def test_a_sweeping_change_stays_under_two_megabytes():
+    assert len(page_of(*every_building_nudged(4)).encode()) < 2_000_000
+
+
+def test_the_page_makes_no_requests_but_fonts():
+    page = render(*fixture(), DATE)
+    loaded = re.findall(
+        r'<(?:link|script|img|iframe)\b[^>]*?(?:src|href)="(https?://[^/"]+)', page
+    )
+    assert set(loaded) <= {"https://fonts.googleapis.com"}
+
+
+def test_cards_and_shapes_share_a_place_attribute():
+    page = render(*fixture(), DATE)
+    assert page.count('data-place="ridge"') >= 2
+    assert '<article class="card" data-place="ridge"' in page
+
+
+def test_a_geometry_change_under_three_metres_is_said_not_hidden():
+    before, after = every_building_nudged(1)
+    page = page_of(before, after)
+    assert 'class="closeup"' not in page and "Redrawn slightly" in page
+
+
+def racks_moved(metres: float, count: int = 1) -> tuple[State, State]:
+    """`count` bike racks 600 m apart, each moved `metres` north."""
+    befores, afters = [], []
+    for i in range(count):
+        lat = north_of(LAT, i * 600)
+        befores.append(place_record(f"r{i}", f"Rack {i}", point(lat, LON), "bike-rack"))
+        afters.append(
+            place_record(
+                f"r{i}", f"Rack {i}", point(north_of(lat, metres), LON), "bike-rack"
+            )
+        )
+    return state(befores), state(afters)
+
+
+def test_a_moved_point_says_how_far_it_moved():
+    page = page_of(*racks_moved(22))
+    assert "<p>Moved 22 m.</p>" in page
+    assert "0 m dropped" not in page and "0 m added" not in page
+
+
+def test_a_close_up_of_a_moved_point_says_how_far_it_moved():
+    page = page_of(*racks_moved(22, count=2))
+    assert page.count('class="closeup"') == 2
+    assert "<strong>1. Rack 1.</strong> Moved 22 m.</figcaption>" in page
+    assert "0 m dropped" not in page
+
+
+def test_a_redrawn_trail_says_how_much_was_dropped_and_added():
+    page = render(*fixture(), DATE)
+    assert "m dropped" in page and "m added" in page
+    assert "200 m → 284 m" in page
+
+
+def test_list_fields_show_the_items_added_and_removed():
+    shape = square(LAT, LON)
+    before = state([place_record("om", "Old Main", shape, "building", floors=["1"])])
+    after = state(
+        [place_record("om", "Old Main", shape, "building", "academic", floors=["2"])]
+    )
+    page = page_of(before, after)
+    assert '<li class="ins">academic</li>' in page
+    assert '<li class="ins">2</li>' in page and '<li class="del">1</li>' in page
+
+
+def page_with_fields(before: dict, after: dict) -> str:
+    shape = square(LAT, LON)
+    return page_of(
+        state([place_record("w", "Walk", shape, "trail", **before)]),
+        state([place_record("w", "Walk", shape, "trail", **after)]),
+    )
+
+
+def test_a_changed_value_in_a_dict_field_shows_before_and_after():
+    page = page_with_fields(
+        {"walk": {"minutes": [14, 17], "accessibility": "Flat."}},
+        {"walk": {"minutes": [20, 25], "accessibility": "Flat."}},
+    )
+    assert "<li>minutes: [14, 17] → [20, 25]</li>" in page
+    assert "accessibility" not in page
+
+
+def test_a_dict_field_that_appeared_shows_its_values():
+    page = page_with_fields(
+        {"walk": None}, {"walk": {"minutes": [14, 17], "accessibility": "Flat."}}
+    )
+    assert '<li>accessibility: <span class="none">none</span> → Flat.</li>' in page
+    assert '<li>minutes: <span class="none">none</span> → [14, 17]</li>' in page
+
+
+def test_a_list_that_only_changed_order_says_so():
+    page = page_with_fields({"floors": ["1", "2"]}, {"floors": ["2", "1"]})
+    assert "<p>The same items, in a new order.</p>" in page
+
+
+def test_a_repeated_list_item_removed_is_shown():
+    page = page_with_fields({"floors": ["1", "1", "2"]}, {"floors": ["1", "2"]})
+    assert '<li class="del">1</li>' in page
+
+
+def test_context_and_routing_changes_are_noted():
+    page = render(*fixture(), DATE)
+    assert "Walkways layer: 1 shape added." in page
+    assert "Walking directions were rebuilt" in page
+
+
+def test_svg_coordinates_have_one_decimal():
+    page = render(*fixture(), DATE)
+    numbers = re.findall(r'd="M([^"]*)"', page)
+    assert numbers and not re.search(r"\d\.\d\d", " ".join(numbers))
+
+
+def test_one_area_draws_no_closeup_because_the_overview_frames_it():
+    page = page_of(*trails_far_apart(1))
+    assert 'class="closeup"' not in page and 'class="overview"' in page
+    assert "close-up" not in page.split('class="overview"')[1].split("</figure>")[0]
+
+
+def test_two_areas_draw_two_closeups():
+    page = page_of(*trails_far_apart(2))
+    assert page.count('class="closeup"') == 2
+    assert "each has a close-up below" in page
+
+
+def test_past_twelve_areas_the_overview_says_which_have_close_ups():
+    page = page_of(*trails_far_apart(15))
+    assert "the first 12 have close-ups below" in page
+
+
+def test_a_small_redraw_says_nothing_moved_more_than_three_metres():
+    page = page_of(*every_building_nudged(1))
+    assert "<p>Redrawn slightly: no part moved more than 3 m.</p>" in page
+
+
+def overview_of(page: str) -> str:
+    return page.split('class="overview"')[1].split("</figure>")[0]
+
+
+def test_a_background_layer_change_is_drawn_faintly_and_counted():
+    page = render(*fixture(), DATE)
+    assert "Walkways layer: 1 shape added." in page
+    assert '<path class="context-added layer-after"' in overview_of(page)
+
+
+def test_a_removed_background_shape_is_drawn_as_dropped():
+    before = state([], {"walkways": [WALKWAY, NEW_WALKWAY]})
+    after = state([], {"walkways": [WALKWAY]})
+    assert '<path class="context-dropped layer-before"' in overview_of(
+        page_of(before, after)
+    )
+
+
+def test_a_named_pond_is_drawn_as_water_like_an_unnamed_one():
+    pond = place_record("pond", "Hoyme Pond", WATER, "outdoors", "water")
+    before = state([pond], {"walkways": [WALKWAY, NEW_WALKWAY]})
+    after = state([pond], {"walkways": [NEW_WALKWAY]})
+    assert '<path class="water"' in overview_of(page_of(before, after))
+
+
+def test_a_background_only_change_gets_a_map_framed_on_it():
+    far = line((north_of(LAT, 2000), LON), (north_of(LAT, 2000), east_of(LON, 50)))
+    page = page_of(state([], {"walkways": []}), state([], {"walkways": [far]}))
+    drawn = overview_of(page)
+    width, height = map(float, re.search(r'viewBox="0 0 (\d+) (\d+)"', drawn).groups())
+    (path,) = re.findall(r'class="context-added layer-after" d="M([^"Z]*)', drawn)
+    for pair in path.split():
+        x, y = map(float, pair.split(","))
+        assert 0 <= x <= width and 0 <= y <= height
+
+
+# The Heath Creek redraw: four trails changed in one corner of campus while the
+# college re-cut segments across the whole Natural Lands. The places, not the
+# background, decide where the map looks.
+def test_places_frame_the_map_however_far_the_background_changed():
+    far = line((north_of(LAT, 2000), LON), (north_of(LAT, 2000), east_of(LON, 50)))
+    before = state([place_record("ridge", "Ridge Trail", RIDGE_BEFORE, "trail")])
+    after = state(
+        [place_record("ridge", "Ridge Trail", RIDGE_AFTER, "trail")],
+        {"walkways": [far]},
+    )
+    drawn = overview_of(page_of(before, after))
+    width = float(re.search(r'viewBox="0 0 (\d+) \d+"', drawn).group(1))
+    trail = re.search(r'class="[^"]*after[^"]*" d="M([^"Z]*)', drawn).group(1)
+    xs = [float(pair.split(",")[0]) for pair in trail.split()]
+    assert max(xs) - min(xs) > width / 3
+    assert "context-added" not in drawn
+
+
+def test_a_sweeping_background_change_stays_under_two_megabytes():
+    # 400 walkways, each a 200 m line digitised at every metre.
+    walkways = [
+        line(*((north_of(LAT, i * 10), east_of(LON, m)) for m in range(200)))
+        for i in range(400)
+    ]
+    page = page_of(state([], {"walkways": walkways}), state([], {"walkways": []}))
+    assert page.count("context-dropped") >= 400
+    assert len(page.encode()) < 2_000_000
+
+
+def test_a_background_only_change_is_not_said_to_be_details_only():
+    page = render(context_only(), state([]), DATE)
+    assert "every change is to a place&#x27;s details" not in page
+    assert "every change is to a place's details" not in page
+    assert "20 Natural Lands segments added and 39 removed." in page
+
+
+def run_report(root: Path, *extra: str) -> int:
+    return main(
+        ["--root", str(root), "--before", "HEAD", "--date", "2026-10-23", *extra]
+    )
+
+
+def test_a_change_writes_the_page_and_notes(tmp_path, capsys):
+    make_repo(tmp_path)
+    write_json(tmp_path, "map.json", [{"id": "om", "name": "Old Main Hall"}])
+    out, notes = tmp_path / "report.html", tmp_path / "notes.md"
+    code = run_report(
+        tmp_path,
+        "--out",
+        str(out),
+        "--notes",
+        str(notes),
+        "--report-url",
+        "https://example.com/report",
+        "--commit-url",
+        "https://example.com/commit",
+    )
+    assert code == 0
+    assert "Campus data changes, 2026-10-23" in out.read_text()
+    assert "https://example.com/report" in notes.read_text()
+    assert "Old Main" in capsys.readouterr().out
+
+
+def test_the_page_and_notes_go_into_directories_that_do_not_exist_yet(tmp_path):
+    make_repo(tmp_path)
+    write_json(tmp_path, "map.json", [{"id": "om", "name": "Old Main Hall"}])
+    out = tmp_path / "site" / "changes" / "report.html"
+    notes = tmp_path / "tmp" / "notes.md"
+    assert run_report(tmp_path, "--out", str(out), "--notes", str(notes)) == 0
+    assert out.is_file() and notes.is_file()
+
+
+def test_no_change_writes_nothing(tmp_path, capsys):
+    make_repo(tmp_path)
+    out = tmp_path / "report.html"
+    assert run_report(tmp_path, "--out", str(out)) == 0
+    assert not out.exists()
+    assert "No change to the published data." in capsys.readouterr().out
+
+
+def test_a_change_only_to_the_routes_writes_nothing_and_says_so(tmp_path, capsys):
+    make_repo(tmp_path)
+    (tmp_path / "routing.json").write_text('{"edges": []}')
+    out = tmp_path / "report.html"
+    assert run_report(tmp_path, "--out", str(out)) == 0
+    assert not out.exists()
+    assert capsys.readouterr().out == (
+        "Only the walking routes changed, so no change report.\n"
+    )
+
+
+def test_a_bad_revision_fails(tmp_path, capsys):
+    make_repo(tmp_path)
+    out = tmp_path / "report.html"
+    code = main(
+        [
+            "--root",
+            str(tmp_path),
+            "--before",
+            "nope",
+            "--date",
+            "2026-10-23",
+            "--out",
+            str(out),
+        ]
+    )
+    assert code != 0
+    assert not out.exists()
+    assert "nope" in capsys.readouterr().err
+
+
+def test_a_background_only_page_shows_no_place_counts_of_zero():
+    page = render(context_only(), state([]), DATE)
+    assert 'class="counts"' not in page
+    assert "20 Natural Lands segments added and 39 removed." in page

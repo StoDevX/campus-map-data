@@ -27,6 +27,11 @@ import math
 # committed data.
 PRECISION = 7
 
+# Metres in a degree on the flat projection every distance here is measured
+# with. A degree of longitude shrinks with the cosine of the latitude.
+METRES_PER_DEGREE_LAT = 110_540
+METRES_PER_DEGREE_LON_AT_EQUATOR = 111_320
+
 Position = list[float]
 Ring = list[Position]
 
@@ -249,8 +254,8 @@ def distance_m(point: Position, geometry: dict | None) -> float:
     is off by far less than the width of a parking space.
     """
     lon0, lat0 = point[0], point[1]
-    scale_x = math.cos(math.radians(lat0)) * 111_320
-    scale_y = 110_540
+    scale_x = math.cos(math.radians(lat0)) * METRES_PER_DEGREE_LON_AT_EQUATOR
+    scale_y = METRES_PER_DEGREE_LAT
 
     def local(position: Position) -> tuple[float, float]:
         return (position[0] - lon0) * scale_x, (position[1] - lat0) * scale_y

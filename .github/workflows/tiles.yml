@@ -1,10 +1,12 @@
 name: Build and publish tiles
 
 on:
-  # Whenever the data changes. The scrape workflow commits map.geojson and
-  # data/ to main, and that push lands here — so a campus edit reaches the
-  # tileset as soon as it reaches the data, without either workflow knowing
-  # about the other and without waiting for the monthly cron below.
+  # Whenever the data changes. A person's push to main lands here directly. A
+  # scrape's data arrives through release.yml, which dispatches this workflow
+  # (workflow_dispatch below) after publishing its change report: a push made
+  # with GITHUB_TOKEN starts no workflow, so the scrape's own commit never
+  # triggers this. Either way a campus edit reaches the tileset without waiting
+  # for the daily cron below.
   push:
     branches: [main]
     paths:

@@ -430,6 +430,10 @@ def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
     drew the segment -- the one cut, where a
     connector the map draws as part of one trail runs in a segment of another.
     Both parts keep that vertex, so the two trails meet.
+
+    A segment the college draws in several pieces gives the trail every piece,
+    or the one its `part` names by index. A cut falls in one piece, so a cut in
+    a segment drawn in pieces has to name its part.
     """
     by_fid: dict[int, dict] = {}
     held_twice = set()
@@ -449,17 +453,32 @@ def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
 
         lines = []
         fids = []
-        for part in entry["segments"]:
-            fid = part if isinstance(part, int) else part["fid"]
+        for named in entry["segments"]:
+            fid = named if isinstance(named, int) else named["fid"]
+            named = named if isinstance(named, dict) else {}
             if fid not in by_fid:
                 raise stale(fid, "is not in the segments layer")
             if fid in held_twice:
                 raise stale(fid, "is in the segments layer twice")
-            if by_fid[fid]["geometry"]["type"] != "LineString":
-                raise stale(fid, "is drawn in pieces, not as one line")
-            line = by_fid[fid]["geometry"]["coordinates"]
-            if isinstance(part, dict) and ("until" in part or "from" in part):
-                point = part.get("until") or part.get("from")
+            shape = by_fid[fid]["geometry"]
+            pieces = (
+                shape["coordinates"]
+                if shape["type"] == "MultiLineString"
+                else [shape["coordinates"]]
+            )
+            if "part" in named:
+                if not 0 <= named["part"] < len(pieces):
+                    raise stale(fid, f"has no part {named['part']}")
+                pieces = [pieces[named["part"]]]
+            if "until" in named or "from" in named:
+                if len(pieces) > 1:
+                    raise stale(
+                        fid,
+                        f"is drawn in {len(pieces)} pieces; name the part the "
+                        "cut is in",
+                    )
+                [line] = pieces
+                point = named.get("until") or named.get("from")
                 cut = min(
                     range(len(line)),
                     key=lambda i, line=line, point=point: geometry.distance_m(
@@ -475,9 +494,9 @@ def assemble_trails(segments: list[dict], spec: dict) -> list[dict]:
                     raise stale(
                         fid, f"has no vertex within {TRAIL_REACH_M} m of its cut"
                     )
-                line = line[: cut + 1] if "until" in part else line[cut:]
-            lines.append(line)
-            fids.append(fid)
+                pieces = [line[: cut + 1] if "until" in named else line[cut:]]
+            lines.extend(pieces)
+            fids.extend([fid] * len(pieces))
         # A wrong FID can match the trail's length by chance; it seldom also
         # joins the rest of the trail into one piece. Parts join end to end or
         # at a T, where one's end lies partway along the other.
