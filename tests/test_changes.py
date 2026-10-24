@@ -4,6 +4,7 @@ import json
 import subprocess
 from pathlib import Path
 
+import pytest
 from changes import read_state
 
 POLYGON = {
@@ -89,3 +90,18 @@ def test_a_file_missing_at_a_revision_reads_as_empty(tmp_path):
     state = read_state(tmp_path, "HEAD")
     assert state.context["campus-roads"] == []
     assert state.routing == b""
+
+
+def test_an_unknown_revision_is_an_error_not_an_empty_state(tmp_path):
+    make_repo(tmp_path)
+    with pytest.raises(ValueError, match="no-such-revision"):
+        read_state(tmp_path, "no-such-revision")
+
+
+def test_routing_is_read_when_present(tmp_path):
+    make_repo(tmp_path)
+    (tmp_path / "routing.json").write_bytes(b'{"a": 1}')
+    git(tmp_path, "add", ".")
+    git(tmp_path, "commit", "-q", "-m", "routing")
+    assert read_state(tmp_path, "HEAD").routing == b'{"a": 1}'
+    assert read_state(tmp_path, None).routing == b'{"a": 1}'

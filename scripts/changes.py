@@ -15,6 +15,7 @@ import json
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from sources import SOURCES
 
@@ -44,6 +45,23 @@ def read_file(root: Path, revision: str | None, path: str) -> bytes:
             return (root / path).read_bytes()
         except FileNotFoundError:
             return b""
+    resolved = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(root),
+            "rev-parse",
+            "--verify",
+            "--quiet",
+            f"{revision}^{{commit}}",
+        ],
+        capture_output=True,
+        check=False,
+    )
+    if resolved.returncode != 0:
+        # An unresolvable revision is not an empty state: reading it as one
+        # would report every place as newly added.
+        raise ValueError(f"cannot resolve revision {revision!r} in {root}")
     shown = subprocess.run(
         ["git", "-C", str(root), "show", f"{revision}:{path}"],
         capture_output=True,
@@ -52,7 +70,8 @@ def read_file(root: Path, revision: str | None, path: str) -> bytes:
     return shown.stdout if shown.returncode == 0 else b""
 
 
-def read_json(root: Path, revision: str | None, path: str, empty):
+def read_json(root: Path, revision: str | None, path: str, empty: Any) -> Any:
+    """Parse a JSON file as `read_file` reads it, or return `empty` if absent."""
     content = read_file(root, revision, path)
     return json.loads(content) if content else empty
 
