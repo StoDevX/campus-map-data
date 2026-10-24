@@ -556,6 +556,10 @@ def notes(changes: ChangeSet) -> str:
 
 
 def counts(changes: ChangeSet) -> str:
+    """Tiles counting places by kind; none when no place changed, rather than
+    four zeros above a map of background changes counted in the notes."""
+    if not changes.places:
+        return ""
     tiles = [
         f'<div class="tile"><span class="n">'
         f"{sum(c.kind == kind for c in changes.places)}</span>{heading.lower()}</div>"

@@ -234,6 +234,25 @@ def test_release_notes_count_each_kind():
     assert "| Added | 36 |" in notes
     assert "| Changed | 4 |" in notes
     assert "| Removed | 0 |" in notes
+    assert "Background shapes" not in notes
+
+
+# A release that only re-cut the trail segments must not show a table of zeros
+# under a summary saying 62 shapes changed.
+def test_release_notes_count_background_shapes_by_layer():
+    notes = release_notes(context_only(), "https://r", "https://c")
+    assert "| Natural Lands segments | 20 | 39 |" in notes
+    assert "| Walkways | 0 | 3 |" in notes
+    assert "| Places |" not in notes
+
+
+def test_release_notes_count_places_and_background_together():
+    changes = ChangeSet(
+        trail_changes().places, context_only().context, routing_changed=False
+    )
+    notes = release_notes(changes, "https://r", "https://c")
+    assert "| Added | 36 |" in notes
+    assert "| Natural Lands segments | 20 | 39 |" in notes
 
 
 # The page. The fixtures below are before and after states run through the real
@@ -653,3 +672,9 @@ def test_a_bad_revision_fails(tmp_path, capsys):
     assert code != 0
     assert not out.exists()
     assert "nope" in capsys.readouterr().err
+
+
+def test_a_background_only_page_shows_no_place_counts_of_zero():
+    page = render(context_only(), state([]), state([]), DATE)
+    assert 'class="counts"' not in page
+    assert "20 Natural Lands segments added and 39 removed." in page

@@ -215,9 +215,14 @@ def sentence_kind(change: PlaceChange) -> str:
 SENTENCE_ORDER = ["added", "removed", "renamed", "changed shape", "changed"]
 
 
+def context_word(slug: str) -> str:
+    """The singular word for one shape of a background layer."""
+    return CONTEXT_WORDS.get(slug, f"{slug.replace('-', ' ')} shape")
+
+
 def context_sentence(change: ContextChange) -> str:
     """How many shapes of one background layer appeared and disappeared."""
-    word = CONTEXT_WORDS.get(change.slug, f"{change.slug.replace('-', ' ')} shape")
+    word = context_word(change.slug)
     added, removed = len(change.added), len(change.removed)
     if added and removed:
         return f"{added} {pluralise(word, added)} added and {removed} removed."
@@ -246,22 +251,34 @@ def summary(changes: ChangeSet) -> str:
 
 
 def release_notes(changes: ChangeSet, report_url: str, commit_url: str) -> str:
-    """Markdown for a release: the summary, counts, and where to read more."""
-    counts = {
-        "Added": sum(c.kind == "added" for c in changes.places),
-        "Removed": sum(c.kind == "removed" for c in changes.places),
-        "Renamed": sum(c.kind == "renamed" for c in changes.places),
-        "Changed": sum(c.kind == "changed" for c in changes.places),
-    }
-    rows = [f"| {label} | {count} |" for label, count in counts.items()]
+    """Markdown for a release: the summary, counts, and where to read more.
+
+    Each table appears only when it has something to count, so every number
+    under the summary is one the summary describes.
+    """
+    lines = [summary(changes), ""]
+    if changes.places:
+        counts = {
+            "Added": sum(c.kind == "added" for c in changes.places),
+            "Removed": sum(c.kind == "removed" for c in changes.places),
+            "Renamed": sum(c.kind == "renamed" for c in changes.places),
+            "Changed": sum(c.kind == "changed" for c in changes.places),
+        }
+        lines += ["| Places | Count |", "| --- | ---: |"]
+        lines += [f"| {label} | {count} |" for label, count in counts.items()]
+        lines.append("")
+    if changes.context:
+        lines += ["| Background shapes | Added | Removed |", "| --- | ---: | ---: |"]
+        for change in changes.context:
+            layer = pluralise(context_word(change.slug), 2)
+            lines.append(
+                f"| {layer[0].upper()}{layer[1:]} | {len(change.added)} | "
+                f"{len(change.removed)} |"
+            )
+        lines.append("")
     return "\n".join(
         [
-            summary(changes),
-            "",
-            "| Places | Count |",
-            "| --- | ---: |",
-            *rows,
-            "",
+            *lines,
             f"[Full change report]({report_url})",
             "",
             f"[Commit]({commit_url})",
