@@ -246,6 +246,12 @@ def release_notes(changes: ChangeSet, report_url: str, commit_url: str) -> str:
     )
 
 
+def write(path: Path, text: str) -> None:
+    """Write `text` to `path`, creating the directories above it."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
 def main(argv: list[str] | None = None) -> int:
     """Write the change report between two states; say so when nothing changed."""
     # Imported here because the page module builds on this one.
@@ -283,9 +289,9 @@ def main(argv: list[str] | None = None) -> int:
         print("No change to the published data.")
         return 0
 
-    args.out.write_text(render(changes, before, after, args.date))
+    write(args.out, render(changes, before, after, args.date))
     if args.notes:
-        args.notes.write_text(release_notes(changes, args.report_url, args.commit_url))
+        write(args.notes, release_notes(changes, args.report_url, args.commit_url))
     print(summary(changes))
     return 0
 

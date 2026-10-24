@@ -485,6 +485,15 @@ def test_a_change_writes_the_page_and_notes(tmp_path, capsys):
     assert "Old Main" in capsys.readouterr().out
 
 
+def test_the_page_and_notes_go_into_directories_that_do_not_exist_yet(tmp_path):
+    make_repo(tmp_path)
+    write_json(tmp_path, "map.json", [{"id": "om", "name": "Old Main Hall"}])
+    out = tmp_path / "site" / "changes" / "report.html"
+    notes = tmp_path / "tmp" / "notes.md"
+    assert run_report(tmp_path, "--out", str(out), "--notes", str(notes)) == 0
+    assert out.is_file() and notes.is_file()
+
+
 def test_no_change_writes_nothing(tmp_path, capsys):
     make_repo(tmp_path)
     out = tmp_path / "report.html"
