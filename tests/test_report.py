@@ -6,8 +6,9 @@ from pathlib import Path
 
 from changes import ChangeSet, Move, PlaceChange, State, compare
 from geometry import positions
-from report import areas, release_notes, summary
+from report import areas, main, release_notes, summary
 from report_page import render
+from test_changes import make_repo, write_json
 
 METRES_PER_DEGREE_LAT = 110_540
 
@@ -455,3 +456,58 @@ def test_a_small_redraw_says_nothing_moved_more_than_three_metres():
 def test_a_background_layer_change_is_described_not_said_to_be_drawn():
     page = render(*fixture(), DATE)
     assert "Walkways layer: 1 shape added." in page and "drawn behind" not in page
+
+
+def run_report(root: Path, *extra: str) -> int:
+    return main(
+        ["--root", str(root), "--before", "HEAD", "--date", "2026-10-23", *extra]
+    )
+
+
+def test_a_change_writes_the_page_and_notes(tmp_path, capsys):
+    make_repo(tmp_path)
+    write_json(tmp_path, "map.json", [{"id": "om", "name": "Old Main Hall"}])
+    out, notes = tmp_path / "report.html", tmp_path / "notes.md"
+    code = run_report(
+        tmp_path,
+        "--out",
+        str(out),
+        "--notes",
+        str(notes),
+        "--report-url",
+        "https://example.com/report",
+        "--commit-url",
+        "https://example.com/commit",
+    )
+    assert code == 0
+    assert "Campus data changes, 2026-10-23" in out.read_text()
+    assert "https://example.com/report" in notes.read_text()
+    assert "Old Main" in capsys.readouterr().out
+
+
+def test_no_change_writes_nothing(tmp_path, capsys):
+    make_repo(tmp_path)
+    out = tmp_path / "report.html"
+    assert run_report(tmp_path, "--out", str(out)) == 0
+    assert not out.exists()
+    assert "No change to the published data." in capsys.readouterr().out
+
+
+def test_a_bad_revision_fails(tmp_path, capsys):
+    make_repo(tmp_path)
+    out = tmp_path / "report.html"
+    code = main(
+        [
+            "--root",
+            str(tmp_path),
+            "--before",
+            "nope",
+            "--date",
+            "2026-10-23",
+            "--out",
+            str(out),
+        ]
+    )
+    assert code != 0
+    assert not out.exists()
+    assert "nope" in capsys.readouterr().err

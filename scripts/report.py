@@ -12,9 +12,12 @@ draws only from the published files, through `changes.compare`, and so says
 nothing the release itself does not.
 """
 
+import argparse
 import math
+import sys
+from pathlib import Path
 
-from changes import ChangeSet, PlaceChange
+from changes import ChangeSet, PlaceChange, compare, read_state
 from geometry import bbox, distance_m, positions
 
 # Places whose moves are this close, directly or through a chain of others,
@@ -241,3 +244,51 @@ def release_notes(changes: ChangeSet, report_url: str, commit_url: str) -> str:
             "",
         ]
     )
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Write the change report between two states; say so when nothing changed."""
+    # Imported here because the page module builds on this one.
+    from report_page import render
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--before", required=True, help="revision to compare from")
+    parser.add_argument(
+        "--after", help="revision to compare to (default: working tree)"
+    )
+    parser.add_argument("--date", required=True, help="date shown on the report")
+    parser.add_argument(
+        "--out", type=Path, required=True, help="where to write the page"
+    )
+    parser.add_argument("--notes", type=Path, help="where to write the release notes")
+    parser.add_argument("--report-url", default="", help="link to the published page")
+    parser.add_argument("--commit-url", default="", help="link to the commit")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=Path(__file__).resolve().parent.parent,
+        help="the repository to read",
+    )
+    args = parser.parse_args(argv)
+
+    try:
+        before = read_state(args.root, args.before)
+        after = read_state(args.root, args.after)
+    except ValueError as error:
+        print(error, file=sys.stderr)
+        return 2
+
+    changes = compare(before, after)
+    if changes.is_empty:
+        print("No change to the published data.")
+        return 0
+
+    args.out.write_text(render(changes, before, after, args.date))
+    if args.notes:
+        args.notes.write_text(release_notes(changes, args.report_url, args.commit_url))
+    print(summary(changes))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
