@@ -399,7 +399,7 @@ def test_cards_and_shapes_share_a_place_attribute():
 def test_a_geometry_change_under_three_metres_is_said_not_hidden():
     before, after = every_building_nudged(1)
     page = page_of(before, after)
-    assert 'class="closeup"' not in page and "under 3 m" in page
+    assert 'class="closeup"' not in page and "(under 3 m)" in page
 
 
 def test_a_redrawn_trail_says_how_much_was_dropped_and_added():
@@ -421,7 +421,7 @@ def test_list_fields_show_the_items_added_and_removed():
 
 def test_context_and_routing_changes_are_noted():
     page = render(*fixture(), DATE)
-    assert "Walkways, drawn behind the map: 1 shape added." in page
+    assert "Walkways layer: 1 shape added." in page
     assert "Walking directions were rebuilt" in page
 
 
@@ -429,3 +429,29 @@ def test_svg_coordinates_have_one_decimal():
     page = render(*fixture(), DATE)
     numbers = re.findall(r'd="M([^"]*)"', page)
     assert numbers and not re.search(r"\d\.\d\d", " ".join(numbers))
+
+
+def test_one_area_draws_no_closeup_because_the_overview_frames_it():
+    page = page_of(*trails_far_apart(1))
+    assert 'class="closeup"' not in page and 'class="overview"' in page
+    assert "close-up" not in page.split('class="overview"')[1].split("</figure>")[0]
+
+
+def test_two_areas_draw_two_closeups():
+    page = page_of(*trails_far_apart(2))
+    assert page.count('class="closeup"') == 2
+    assert "each has a close-up below" in page
+
+
+def test_past_twelve_areas_the_overview_says_which_have_close_ups():
+    page = page_of(*trails_far_apart(15))
+    assert "the first 12 have close-ups below" in page
+
+
+def test_a_small_redraw_says_nothing_moved_more_than_three_metres():
+    assert "no part moved more than 3 m" in page_of(*every_building_nudged(1))
+
+
+def test_a_background_layer_change_is_described_not_said_to_be_drawn():
+    page = render(*fixture(), DATE)
+    assert "Walkways layer: 1 shape added." in page and "drawn behind" not in page

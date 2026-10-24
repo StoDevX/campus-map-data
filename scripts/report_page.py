@@ -20,9 +20,17 @@ import html
 import json
 import math
 
-from changes import ChangeSet, ContextChange, FieldChange, PlaceChange, State, word_diff
+from changes import (
+    MOVE_REACH_M,
+    ChangeSet,
+    ContextChange,
+    FieldChange,
+    PlaceChange,
+    State,
+    word_diff,
+)
 from geometry import lines, polygons, positions
-from report import MAX_CLOSEUPS, area_geometry, areas, summary
+from report import MAX_CLOSEUPS, NAMES_SHOWN, area_geometry, areas, summary
 from sources import SOURCES
 
 METRES_PER_DEGREE_LAT = 110_540
@@ -297,9 +305,9 @@ def area_points(area: list[PlaceChange]) -> list:
 
 def names_in(area: list[PlaceChange]) -> str:
     names = sorted(change.name for change in area)
-    listed = ", ".join(names[:3])
-    if len(names) > 3:
-        listed += f" and {len(names) - 3} more"
+    listed = ", ".join(names[:NAMES_SHOWN])
+    if len(names) > NAMES_SHOWN:
+        listed += f" and {len(names) - NAMES_SHOWN} more"
     return listed
 
 
@@ -325,6 +333,12 @@ def area_caption(number_shown: int, area: list[PlaceChange]) -> str:
 
 
 def closeups(groups: list[list[PlaceChange]], shown, after: State) -> str:
+    """A close-up per area, up to `MAX_CLOSEUPS`.
+
+    A single area gets none: the overview is already framed on it.
+    """
+    if len(groups) == 1:
+        return ""
     figures = []
     for i, area in enumerate(groups[:MAX_CLOSEUPS], 1):
         view = View(area_points(area), CLOSEUP_PAD_M, CLOSEUP_WIDTH)
@@ -410,7 +424,10 @@ def length_change(field: FieldChange) -> str:
 def geometry_change(change: PlaceChange) -> str:
     move = change.move
     if move is None or not move.visible:
-        return "<p>Redrawn, but no part moved 3 m or more (under 3 m).</p>"
+        return (
+            f"<p>Redrawn slightly: no part moved more than {MOVE_REACH_M:g} m "
+            f"(under {MOVE_REACH_M:g} m).</p>"
+        )
     return f"<p>{metres(move.dropped_m)} dropped, {metres(move.added_m)} added.</p>"
 
 
@@ -471,7 +488,7 @@ def context_note(change: ContextChange) -> str:
     for count, verb in ((len(change.added), "added"), (len(change.removed), "removed")):
         if count:
             parts.append(f"{count} {'shape' if count == 1 else 'shapes'} {verb}")
-    return f"<li>{escape(title)}, drawn behind the map: {', '.join(parts)}.</li>"
+    return f"<li>{escape(title)} layer: {', '.join(parts)}.</li>"
 
 
 def notes(changes: ChangeSet) -> str:
@@ -506,13 +523,20 @@ def overview(groups: list[list[PlaceChange]], shown, after: State) -> str:
         OVERVIEW_PAD_M,
         OVERVIEW_WIDTH,
     )
-    drawing = svg(view, "Overview of every changed place", after, shown, groups)
-    word = "area" if len(groups) == 1 else "areas"
+    # One area needs no number: there is no close-up to match it to.
+    numbered = groups if len(groups) > 1 else []
+    drawing = svg(view, "Overview of every changed place", after, shown, numbered)
+    caption = "Every place that moved, was added or was removed"
+    if len(groups) > MAX_CLOSEUPS:
+        caption += (
+            f", in {len(groups)} numbered areas; the first {MAX_CLOSEUPS} have "
+            "close-ups below"
+        )
+    elif numbered:
+        caption += f", in {len(groups)} numbered areas; each has a close-up below"
     return (
         f'<figure class="overview">{drawing}{LEGEND}'
-        f"<figcaption><strong>Overview.</strong> Every place that moved, was added "
-        f"or was removed, in {len(groups)} numbered {word}; each numbered area has "
-        "a close-up below.</figcaption></figure>"
+        f"<figcaption><strong>Overview.</strong> {caption}.</figcaption></figure>"
     )
 
 
@@ -537,9 +561,9 @@ CONTROLS = (
 def render(changes: ChangeSet, before: State, after: State, date: str) -> str:
     """The whole report page for `changes`, dated `date`.
 
-    `before` is accepted alongside `after` so the page reads both states the
-    same way `compare` did; the background is drawn from `after`, the campus as
-    it will be published.
+    `before` is unused, kept so the interface takes both states: the changes
+    already carry every before shape the page draws, and the background is
+    drawn from `after`, the campus as it will be published.
     """
     groups = areas(changes)
     shown = [change for area in groups for change in area]
@@ -682,24 +706,29 @@ a { color: var(--after); }
 
 # Before and after toggle the two layers; pointing at a place on a map or at its
 # card highlights it everywhere it appears, and clicking a shape finds its card.
+# A focused card keeps its place highlighted once the pointer leaves, and a
+# place with nothing on the map highlights its card without dimming the map.
 SCRIPT = """
 const sheet = document.getElementById("sheet");
 for (const [id, cls] of [["show-before", "hide-before"], ["show-after", "hide-after"]]) {
   const box = document.getElementById(id);
   if (box) box.addEventListener("change", () => sheet.classList.toggle(cls, !box.checked));
 }
-function highlight(place, on) {
-  sheet.classList.toggle("focusing", on);
-  for (const el of document.querySelectorAll("[data-place]")) {
-    el.classList.toggle("hl", on && el.dataset.place === place);
-  }
+const marked = document.querySelectorAll("[data-place]");
+const drawn = new Set([...document.querySelectorAll(".place")].map((el) => el.dataset.place));
+let hovered = null;
+let focused = null;
+function highlight() {
+  const place = hovered ?? focused;
+  sheet.classList.toggle("focusing", drawn.has(place));
+  for (const el of marked) el.classList.toggle("hl", el.dataset.place === place);
 }
-for (const el of document.querySelectorAll("[data-place]")) {
+for (const el of marked) {
   const place = el.dataset.place;
-  el.addEventListener("mouseenter", () => highlight(place, true));
-  el.addEventListener("mouseleave", () => highlight(place, false));
-  el.addEventListener("focus", () => highlight(place, true));
-  el.addEventListener("blur", () => highlight(place, false));
+  el.addEventListener("mouseenter", () => { hovered = place; highlight(); });
+  el.addEventListener("mouseleave", () => { hovered = null; highlight(); });
+  el.addEventListener("focus", () => { focused = place; highlight(); });
+  el.addEventListener("blur", () => { focused = null; highlight(); });
   if (el.classList.contains("place")) {
     el.addEventListener("click", () => {
       const card = [...document.querySelectorAll(".card")]
