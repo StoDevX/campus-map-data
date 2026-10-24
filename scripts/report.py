@@ -342,7 +342,10 @@ def main(argv: list[str] | None = None) -> int:
 
     changes = compare(before, after)
     if changes.is_empty:
-        print("No change to the published data.")
+        if changes.routing_changed:
+            print("Only the walking routes changed, so no change report.")
+        else:
+            print("No change to the published data.")
         return 0
 
     write(args.out, render(changes, before, after, args.date))

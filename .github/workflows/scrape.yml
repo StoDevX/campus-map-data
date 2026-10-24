@@ -169,7 +169,7 @@ jobs:
             if [ "$REPORT_OUTCOME" != "success" ]; then
               echo "The change report failed to build; see the step's log."
             elif [ "$REPORT_BUILT" != "true" ]; then
-              echo "No change to the published data, so no change report."
+              echo "Nothing on the map changed, so no change report."
             elif [ "$EVENT" = pull_request ]; then
               echo "The change report is attached to this run as the \`change-report\` artifact."
               echo "It compares the base branch with data regenerated from today's live layers, so it can include college edits that are not this pull request's."

@@ -748,6 +748,17 @@ def test_no_change_writes_nothing(tmp_path, capsys):
     assert "No change to the published data." in capsys.readouterr().out
 
 
+def test_a_change_only_to_the_routes_writes_nothing_and_says_so(tmp_path, capsys):
+    make_repo(tmp_path)
+    (tmp_path / "routing.json").write_text('{"edges": []}')
+    out = tmp_path / "report.html"
+    assert run_report(tmp_path, "--out", str(out)) == 0
+    assert not out.exists()
+    assert capsys.readouterr().out == (
+        "Only the walking routes changed, so no change report.\n"
+    )
+
+
 def test_a_bad_revision_fails(tmp_path, capsys):
     make_repo(tmp_path)
     out = tmp_path / "report.html"
