@@ -353,7 +353,7 @@ def main(argv: list[str] | None = None) -> int:
             print("No change to the published data.")
         return 0
 
-    write(args.out, render(changes, before, after, args.date))
+    write(args.out, render(changes, after, args.date))
     if args.notes:
         write(args.notes, release_notes(changes, args.report_url, args.commit_url))
     print(summary(changes))

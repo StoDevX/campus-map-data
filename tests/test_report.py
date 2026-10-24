@@ -93,7 +93,7 @@ def test_a_place_with_no_shape_has_no_area_and_still_renders():
     shapeless = PlaceChange("added", None, "a", "A", categories=("building",))
     changes = changes_of(shapeless, added_rack(0))
     assert areas(changes) == [[added_rack(0)]]
-    assert "<h3>A</h3>" in render(changes, state([]), state([]), DATE)
+    assert "<h3>A</h3>" in render(changes, state([]), DATE)
 
 
 def test_an_added_place_is_placed_by_its_own_shape():
@@ -374,7 +374,7 @@ RIDGE_AFTER = line(
 )
 
 
-def fixture() -> tuple[ChangeSet, State, State]:
+def fixture() -> tuple[ChangeSet, State]:
     """One of each kind of change, as small as the page can show them."""
     hall = square(LAT + 0.0003, LON)
     lot = square(LAT - 0.0004, east_of(LON, 120), 40)
@@ -420,11 +420,11 @@ def fixture() -> tuple[ChangeSet, State, State]:
         {"water": [WATER], "walkways": [WALKWAY, NEW_WALKWAY]},
         b"routes 2",
     )
-    return compare(before, after), before, after
+    return compare(before, after), after
 
 
 def page_of(before: State, after: State) -> str:
-    return render(compare(before, after), before, after, DATE)
+    return render(compare(before, after), after, DATE)
 
 
 def changes_with_description(text: str) -> tuple[State, State]:
@@ -465,8 +465,8 @@ def every_building_nudged(metres: float) -> tuple[State, State]:
 
 
 def test_rendering_twice_is_byte_identical():
-    changes, before, after = fixture()
-    assert render(changes, before, after, DATE) == render(changes, before, after, DATE)
+    changes, after = fixture()
+    assert render(changes, after, DATE) == render(changes, after, DATE)
 
 
 def test_the_page_matches_the_golden_file():
@@ -698,7 +698,7 @@ def test_a_sweeping_background_change_stays_under_two_megabytes():
 
 
 def test_a_background_only_change_is_not_said_to_be_details_only():
-    page = render(context_only(), state([]), state([]), DATE)
+    page = render(context_only(), state([]), DATE)
     assert "every change is to a place&#x27;s details" not in page
     assert "every change is to a place's details" not in page
     assert "20 Natural Lands segments added and 39 removed." in page
@@ -780,6 +780,6 @@ def test_a_bad_revision_fails(tmp_path, capsys):
 
 
 def test_a_background_only_page_shows_no_place_counts_of_zero():
-    page = render(context_only(), state([]), state([]), DATE)
+    page = render(context_only(), state([]), DATE)
     assert 'class="counts"' not in page
     assert "20 Natural Lands segments added and 39 removed." in page

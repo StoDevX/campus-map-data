@@ -685,11 +685,10 @@ CONTROLS = (
 )
 
 
-def render(changes: ChangeSet, before: State, after: State, date: str) -> str:
+def render(changes: ChangeSet, after: State, date: str) -> str:
     """The whole report page for `changes`, dated `date`.
 
-    `before` is unused, kept so the interface takes both states: the changes
-    already carry every before shape the page draws, and the background is
+    The changes carry every before shape the page draws, and the background is
     drawn from `after`, the campus as it will be published.
     """
     groups = areas(changes)
