@@ -17,7 +17,7 @@ import math
 import sys
 from pathlib import Path
 
-from changes import ChangeSet, PlaceChange, compare, read_state
+from changes import ChangeSet, ContextChange, PlaceChange, compare, read_state
 from geometry import (
     METRES_PER_DEGREE_LAT,
     METRES_PER_DEGREE_LON_AT_EQUATOR,
@@ -52,6 +52,16 @@ PLURALS = {
     "building": "buildings",
     "parking lot": "parking lots",
     "trail": "trails",
+    "campus boundary": "campus boundaries",
+}
+
+# The singular word for one shape of each background layer.
+CONTEXT_WORDS = {
+    "campus-boundary": "campus boundary",
+    "campus-roads": "campus road",
+    "main-campus-roads": "main campus road",
+    "natural-lands-segments": "Natural Lands segment",
+    "walkways": "walkway",
 }
 
 
@@ -205,8 +215,20 @@ def sentence_kind(change: PlaceChange) -> str:
 SENTENCE_ORDER = ["added", "removed", "renamed", "changed shape", "changed"]
 
 
+def context_sentence(change: ContextChange) -> str:
+    """How many shapes of one background layer appeared and disappeared."""
+    word = CONTEXT_WORDS.get(change.slug, f"{change.slug.replace('-', ' ')} shape")
+    added, removed = len(change.added), len(change.removed)
+    if added and removed:
+        return f"{added} {pluralise(word, added)} added and {removed} removed."
+    if added:
+        return f"{added} {pluralise(word, added)} added."
+    return f"{removed} {pluralise(word, removed)} removed."
+
+
 def summary(changes: ChangeSet) -> str:
-    """A plain paragraph of counts by kind and category, naming a few places."""
+    """A plain paragraph of counts by kind and category, naming a few places,
+    then the background shapes that changed, layer by layer."""
     groups: dict[tuple[str, str], list[PlaceChange]] = {}
     for change in changes.places:
         key = (sentence_kind(change), category_word(change))
@@ -217,6 +239,7 @@ def summary(changes: ChangeSet) -> str:
         for (kind, word), group in sorted(groups.items())
         if kind == phrase
     ]
+    sentences += [context_sentence(change) for change in changes.context]
     if changes.routing_changed:
         sentences.append("The walking routes were rebuilt to match.")
     return " ".join(sentences)

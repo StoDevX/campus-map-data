@@ -4,7 +4,7 @@ import os
 import re
 from pathlib import Path
 
-from changes import ChangeSet, Move, PlaceChange, State, compare
+from changes import ChangeSet, ContextChange, Move, PlaceChange, State, compare
 from geometry import METRES_PER_DEGREE_LAT, positions
 from report import areas, main, release_notes, summary
 from report_page import render
@@ -174,6 +174,53 @@ def test_summary_mentions_rebuilt_routes():
     assert summary(changes_of(added_rack(0), routing_changed=True)).endswith(
         " The walking routes were rebuilt to match."
     )
+
+
+def lines_of(count: int) -> tuple[dict, ...]:
+    return tuple(
+        {
+            "type": "LineString",
+            "coordinates": [[-93.18, 44.46 + i * 0.001], [-93.17, 44.46]],
+        }
+        for i in range(count)
+    )
+
+
+def context_only() -> ChangeSet:
+    return ChangeSet(
+        (),
+        (
+            ContextChange("natural-lands-segments", lines_of(20), lines_of(39)),
+            ContextChange("walkways", (), lines_of(3)),
+        ),
+        False,
+    )
+
+
+def test_summary_counts_background_shapes_by_layer():
+    assert summary(context_only()) == (
+        "20 Natural Lands segments added and 39 removed. 3 walkways removed."
+    )
+
+
+def test_summary_of_one_background_shape_is_singular():
+    change = ChangeSet((), (ContextChange("campus-boundary", lines_of(1), ()),), False)
+    assert summary(change) == "1 campus boundary added."
+
+
+def test_summary_puts_places_before_background_and_routes_last():
+    changes = ChangeSet(
+        (added_rack(0),), (ContextChange("walkways", lines_of(2), ()),), True
+    )
+    assert summary(changes) == (
+        "1 bike rack added: Rack 0. 2 walkways added. "
+        "The walking routes were rebuilt to match."
+    )
+
+
+def test_release_notes_of_a_background_change_start_with_its_summary():
+    notes = release_notes(context_only(), "https://r", "https://c")
+    assert notes.startswith("20 Natural Lands segments added and 39 removed.")
 
 
 def test_release_notes_link_the_report_and_commit():
@@ -398,7 +445,34 @@ def test_cards_and_shapes_share_a_place_attribute():
 def test_a_geometry_change_under_three_metres_is_said_not_hidden():
     before, after = every_building_nudged(1)
     page = page_of(before, after)
-    assert 'class="closeup"' not in page and "(under 3 m)" in page
+    assert 'class="closeup"' not in page and "Redrawn slightly" in page
+
+
+def racks_moved(metres: float, count: int = 1) -> tuple[State, State]:
+    """`count` bike racks 600 m apart, each moved `metres` north."""
+    befores, afters = [], []
+    for i in range(count):
+        lat = north_of(LAT, i * 600)
+        befores.append(place_record(f"r{i}", f"Rack {i}", point(lat, LON), "bike-rack"))
+        afters.append(
+            place_record(
+                f"r{i}", f"Rack {i}", point(north_of(lat, metres), LON), "bike-rack"
+            )
+        )
+    return state(befores), state(afters)
+
+
+def test_a_moved_point_says_how_far_it_moved():
+    page = page_of(*racks_moved(22))
+    assert "<p>Moved 22 m.</p>" in page
+    assert "0 m dropped" not in page and "0 m added" not in page
+
+
+def test_a_close_up_of_a_moved_point_says_how_far_it_moved():
+    page = page_of(*racks_moved(22, count=2))
+    assert page.count('class="closeup"') == 2
+    assert "<strong>1. Rack 1.</strong> Moved 22 m.</figcaption>" in page
+    assert "0 m dropped" not in page
 
 
 def test_a_redrawn_trail_says_how_much_was_dropped_and_added():
@@ -448,12 +522,55 @@ def test_past_twelve_areas_the_overview_says_which_have_close_ups():
 
 
 def test_a_small_redraw_says_nothing_moved_more_than_three_metres():
-    assert "no part moved more than 3 m" in page_of(*every_building_nudged(1))
+    page = page_of(*every_building_nudged(1))
+    assert "<p>Redrawn slightly: no part moved more than 3 m.</p>" in page
 
 
-def test_a_background_layer_change_is_described_not_said_to_be_drawn():
+def overview_of(page: str) -> str:
+    return page.split('class="overview"')[1].split("</figure>")[0]
+
+
+def test_a_background_layer_change_is_drawn_faintly_and_counted():
     page = render(*fixture(), DATE)
-    assert "Walkways layer: 1 shape added." in page and "drawn behind" not in page
+    assert "Walkways layer: 1 shape added." in page
+    assert '<path class="context-added layer-after"' in overview_of(page)
+
+
+def test_a_removed_background_shape_is_drawn_as_dropped():
+    before = state([], {"walkways": [WALKWAY, NEW_WALKWAY]})
+    after = state([], {"walkways": [WALKWAY]})
+    assert '<path class="context-dropped layer-before"' in overview_of(
+        page_of(before, after)
+    )
+
+
+def test_a_background_only_change_gets_a_map_framed_on_it():
+    far = line((north_of(LAT, 2000), LON), (north_of(LAT, 2000), east_of(LON, 50)))
+    page = page_of(state([], {"walkways": []}), state([], {"walkways": [far]}))
+    drawn = overview_of(page)
+    width, height = map(float, re.search(r'viewBox="0 0 (\d+) (\d+)"', drawn).groups())
+    (path,) = re.findall(r'class="context-added layer-after" d="M([^"Z]*)', drawn)
+    for pair in path.split():
+        x, y = map(float, pair.split(","))
+        assert 0 <= x <= width and 0 <= y <= height
+
+
+def test_a_sweeping_background_change_stays_under_two_megabytes():
+    # 400 walkways, each a 200 m line digitised at every metre.
+    walkways = [
+        line(*((north_of(LAT, i * 10), east_of(LON, m)) for m in range(200)))
+        for i in range(400)
+    ]
+    page = page_of(state([], {"walkways": walkways}), state([], {"walkways": []}))
+    assert page.count("context-dropped") >= 400
+    assert len(page.encode()) < 2_000_000
+
+
+def test_a_background_only_change_is_not_said_to_be_details_only():
+    page = render(context_only(), state([]), state([]), DATE)
+    assert "every change is to a place&#x27;s details" not in page
+    assert "every change is to a place's details" not in page
+    assert "20 Natural Lands segments added and 39 removed." in page
 
 
 def run_report(root: Path, *extra: str) -> int:

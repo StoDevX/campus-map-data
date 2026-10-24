@@ -32,6 +32,7 @@ from changes import (
 from geometry import (
     METRES_PER_DEGREE_LAT,
     METRES_PER_DEGREE_LON_AT_EQUATOR,
+    distance_m,
     lines,
     polygons,
     positions,
@@ -259,6 +260,21 @@ def background(view: View, after: State) -> list[str]:
     return marks
 
 
+def context_marks(view: View, context: tuple[ContextChange, ...]) -> list[str]:
+    """Background shapes that disappeared or appeared, to be drawn faintly.
+
+    They take the dropped and added colours of a place's move, and sit with the
+    before and after layers so the toggles hide them too.
+    """
+    marks = []
+    for change in context:
+        for geometry in change.removed:
+            marks += shape_marks(view, geometry, "context-dropped layer-before")
+        for geometry in change.added:
+            marks += shape_marks(view, geometry, "context-added layer-after")
+    return marks
+
+
 def scale_bar(view: View) -> str:
     """A bar about a fifth of the view wide, at a round number of metres."""
     target = view.width_m / 5
@@ -287,6 +303,7 @@ def svg(
     after: State,
     shown: list[PlaceChange],
     numbered: list[list[PlaceChange]] = (),
+    context: tuple[ContextChange, ...] = (),
 ) -> str:
     places = [
         place_marks(view, change)
@@ -297,7 +314,8 @@ def svg(
     return (
         f'<svg viewBox="0 0 {view.width} {view.height}" role="img" '
         f'aria-label="{escape(label)}">'
-        f"{''.join(background(view, after))}{''.join(places)}{''.join(labels)}"
+        f"{''.join(background(view, after))}{''.join(context_marks(view, context))}"
+        f"{''.join(places)}{''.join(labels)}"
         f"{scale_bar(view)}</svg>"
     )
 
@@ -314,6 +332,22 @@ def names_in(area: list[PlaceChange]) -> str:
     return listed
 
 
+def point_moved_m(change: PlaceChange) -> float | None:
+    """How far a point place moved, or `None` if it is not a point that moved.
+
+    A point has no length, so its move is a distance, not metres of outline
+    dropped and added.
+    """
+    before, after = change.before_shape, change.after_shape
+    if change.move is None or not change.move.visible:
+        return None
+    if before is None or after is None:
+        return None
+    if before["type"] != "Point" or after["type"] != "Point":
+        return None
+    return distance_m(before["coordinates"], after)
+
+
 def area_caption(number_shown: int, area: list[PlaceChange]) -> str:
     """The area's places, and how much was dropped, added or moved."""
     facts = []
@@ -323,7 +357,18 @@ def area_caption(number_shown: int, area: list[PlaceChange]) -> str:
         facts.append(f"{added} {'place' if added == 1 else 'places'} added")
     if removed:
         facts.append(f"{removed} {'place' if removed == 1 else 'places'} removed")
-    moves = [c.move for c in area if c.move is not None and c.move.visible]
+    point_moves = [m for m in map(point_moved_m, area) if m is not None]
+    if len(point_moves) == 1:
+        facts.append(f"moved {metres(point_moves[0])}")
+    elif point_moves:
+        facts.append(
+            f"{len(point_moves)} places moved, up to {metres(max(point_moves))}"
+        )
+    moves = [
+        c.move
+        for c in area
+        if c.move is not None and c.move.visible and point_moved_m(c) is None
+    ]
     if moves:
         dropped = sum(move.dropped_m for move in moves)
         gained = sum(move.added_m for move in moves)
@@ -340,7 +385,7 @@ def closeups(groups: list[list[PlaceChange]], shown, after: State) -> str:
 
     A single area gets none: the overview is already framed on it.
     """
-    if len(groups) == 1:
+    if len(groups) <= 1:
         return ""
     figures = []
     for i, area in enumerate(groups[:MAX_CLOSEUPS], 1):
@@ -427,10 +472,10 @@ def length_change(field: FieldChange) -> str:
 def geometry_change(change: PlaceChange) -> str:
     move = change.move
     if move is None or not move.visible:
-        return (
-            f"<p>Redrawn slightly: no part moved more than {MOVE_REACH_M:g} m "
-            f"(under {MOVE_REACH_M:g} m).</p>"
-        )
+        return f"<p>Redrawn slightly: no part moved more than {MOVE_REACH_M:g} m.</p>"
+    distance = point_moved_m(change)
+    if distance is not None:
+        return f"<p>Moved {metres(distance)}.</p>"
     return f"<p>{metres(move.dropped_m)} dropped, {metres(move.added_m)} added.</p>"
 
 
@@ -515,43 +560,76 @@ def counts(changes: ChangeSet) -> str:
     return f'<div class="counts">{"".join(tiles)}</div>'
 
 
-def overview(groups: list[list[PlaceChange]], shown, after: State) -> str:
-    if not groups:
+def context_points(context: tuple[ContextChange, ...]) -> list:
+    return [
+        p
+        for change in context
+        for geometry in (*change.removed, *change.added)
+        for p in positions(geometry)
+    ]
+
+
+def overview(
+    groups: list[list[PlaceChange]],
+    shown,
+    context: tuple[ContextChange, ...],
+    after: State,
+) -> str:
+    """Every changed place and background shape on one map, framed on them all."""
+    if not groups and not context:
         return (
             '<p class="quiet">Nothing moved on the map: every change is to a '
             "place's details.</p>"
         )
     view = View(
-        [p for area in groups for p in area_points(area)],
+        [p for area in groups for p in area_points(area)] + context_points(context),
         OVERVIEW_PAD_M,
         OVERVIEW_WIDTH,
     )
     # One area needs no number: there is no close-up to match it to.
     numbered = groups if len(groups) > 1 else []
-    drawing = svg(view, "Overview of every changed place", after, shown, numbered)
-    caption = "Every place that moved, was added or was removed"
-    if len(groups) > MAX_CLOSEUPS:
-        caption += (
-            f", in {len(groups)} numbered areas; the first {MAX_CLOSEUPS} have "
-            "close-ups below"
+    label = "Overview of every changed place" if groups else "Overview of the changes"
+    drawing = svg(view, label, after, shown, numbered, context)
+    sentences = []
+    if groups:
+        caption = "Every place that moved, was added or was removed"
+        if len(groups) > MAX_CLOSEUPS:
+            caption += (
+                f", in {len(groups)} numbered areas; the first {MAX_CLOSEUPS} have "
+                "close-ups below"
+            )
+        elif numbered:
+            caption += f", in {len(groups)} numbered areas; each has a close-up below"
+        sentences.append(f"{caption}.")
+    if context:
+        sentences.append(
+            "Faint lines are background shapes that appeared or disappeared."
         )
-    elif numbered:
-        caption += f", in {len(groups)} numbered areas; each has a close-up below"
     return (
-        f'<figure class="overview">{drawing}{LEGEND}'
-        f"<figcaption><strong>Overview.</strong> {caption}.</figcaption></figure>"
+        f'<figure class="overview">{drawing}{legend(bool(context))}'
+        f"<figcaption><strong>Overview.</strong> {' '.join(sentences)}"
+        "</figcaption></figure>"
     )
 
 
-LEGEND = (
-    '<div class="legend">'
-    '<span><i class="key before"></i>before</span>'
-    '<span><i class="key after"></i>after</span>'
-    '<span><i class="key dropped"></i>dropped: no longer there</span>'
-    '<span><i class="key added"></i>added: not there before</span>'
-    '<span><i class="key building"></i>buildings, walkways and water</span>'
-    "</div>"
-)
+def legend(with_context: bool) -> str:
+    faint = (
+        '<span><i class="key faint dropped"></i><i class="key faint added"></i>'
+        "background shapes gone and new</span>"
+        if with_context
+        else ""
+    )
+    return (
+        '<div class="legend">'
+        '<span><i class="key before"></i>before</span>'
+        '<span><i class="key after"></i>after</span>'
+        '<span><i class="key dropped"></i>dropped: no longer there</span>'
+        '<span><i class="key added"></i>added: not there before</span>'
+        f"{faint}"
+        '<span><i class="key building"></i>buildings, walkways and water</span>'
+        "</div>"
+    )
+
 
 CONTROLS = (
     '<div class="controls" role="group" aria-label="Show">'
@@ -571,8 +649,8 @@ def render(changes: ChangeSet, before: State, after: State, date: str) -> str:
     groups = areas(changes)
     shown = [change for area in groups for change in area]
     title = f"Campus data changes, {escape(date)}"
-    maps = overview(groups, shown, after)
-    if groups:
+    maps = overview(groups, shown, changes.context, after)
+    if groups or changes.context:
         maps = CONTROLS + maps + closeups(groups, shown, after)
     return f"""<!doctype html>
 <html lang="en">
@@ -662,6 +740,7 @@ svg { width: 100%; height: auto; display: block; }
 .key.dropped { border-color: var(--dropped); border-top-width: 6px; }
 .key.added { border-color: var(--added); border-top-width: 3px; }
 .key.building { border-color: var(--walk); border-top-width: 6px; }
+.key.faint { width: 13px; border-top-width: 2px; opacity: 0.55; }
 .water { fill: var(--water); stroke: none; }
 .walkway { fill: none; stroke: var(--walk); stroke-width: 1.2; }
 .building { fill: var(--building); stroke: var(--walk); stroke-width: 1; }
@@ -673,6 +752,12 @@ svg { width: 100%; height: auto; display: block; }
   stroke-linecap: round; stroke-linejoin: round; }
 .added { fill: none; stroke: var(--added); stroke-width: 2.5;
   stroke-linecap: round; stroke-linejoin: round; }
+.context-dropped, .context-added { fill: none; stroke-width: 1.5; opacity: 0.55;
+  stroke-linecap: round; stroke-linejoin: round; }
+.context-dropped { stroke: var(--dropped); }
+.context-added { stroke: var(--added); }
+circle.context-dropped { fill: var(--dropped); stroke: none; }
+circle.context-added { fill: var(--added); stroke: none; }
 circle.after { fill: var(--after); }
 circle.added { fill: var(--added); stroke: none; r: 2px; }
 .place { cursor: pointer; transition: opacity 0.15s; }
