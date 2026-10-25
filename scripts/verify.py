@@ -30,7 +30,13 @@ from pathlib import Path
 
 import geometry
 import yaml
-from build import RULES_LINK_LABEL, WALK_LINK_LABEL, scraped_places
+from build import (
+    EMERGENCY_KINDS,
+    INSIDE_REACH_M,
+    RULES_LINK_LABEL,
+    WALK_LINK_LABEL,
+    scraped_places,
+)
 from scrape import VOLATILE_FIELDS
 from sources import SOURCES, slugs
 
@@ -158,6 +164,7 @@ def verify_map_json(report: Report) -> list[dict]:
 
     verify_parking(report, records)
     verify_bike_racks(report, records)
+    verify_emergency_services(report, records)
 
     # Only where the names are shared too: the accessible spots keep numbered
     # ids but are named for their lots, so a list already tells them apart.
@@ -236,6 +243,52 @@ def verify_parking(report: Report, records: list[dict]) -> None:
 RACK_REACH_M = 60
 
 
+def check_named_for_parent(
+    report: Report,
+    record: dict,
+    parent: dict | None,
+    reach_m: float,
+    prefix: str,
+    missing: str,
+) -> None:
+    """A point-only place has a parent with a footprint, sits within `reach_m`
+    of it, and is named `prefix` and the parent's name. `missing` says what is
+    wrong when there is no parent."""
+    if not report.check(parent is not None, f"{record['id']}: {missing}"):
+        return
+    if not report.check(
+        bool(parent.get("outline")),
+        f"{record['id']}: its parent {parent['id']} has no footprint to frame",
+    ):
+        return
+    lat, lon = record["center"]
+    footprint = {
+        "type": "Polygon",
+        "coordinates": [[[point[1], point[0]] for point in parent["outline"]]],
+    }
+    distance = geometry.distance_m([lon, lat], footprint)
+    report.check(
+        distance <= reach_m,
+        f"{record['id']}: {distance:.0f} m from {parent['name']!r}, which it is "
+        f"named for -- if the college mislabelled it, give it its real parent "
+        f"under changes in overrides.yaml",
+    )
+    report.check(
+        record["name"].startswith(f"{prefix}, {parent['name']}"),
+        f"{record['id']}: named {record['name']!r}, not after its parent "
+        f"{parent['name']!r}",
+    )
+
+
+def check_names_unique(report: Report, members: list[dict], what: str) -> None:
+    for name, count in Counter(record["name"] for record in members).items():
+        report.check(
+            count == 1,
+            f"{count} {what} are named {name!r} -- tell them apart under changes "
+            f"in overrides.yaml",
+        )
+
+
 def verify_bike_racks(report: Report, records: list[dict]) -> None:
     """Each rack sits beside the building or field it is named for.
 
@@ -246,41 +299,43 @@ def verify_bike_racks(report: Report, records: list[dict]) -> None:
     by_id = {record["id"]: record for record in records}
     racks = [r for r in records if "bike-rack" in r["categories"]]
     for record in racks:
-        parent = by_id.get(record.get("parent") or "")
-        if not report.check(
-            parent is not None,
-            f"{record['id']}: named {record['name']!r}, which is no building or "
-            f"field -- give it a parent under changes in overrides.yaml",
-        ):
+        check_named_for_parent(
+            report,
+            record,
+            by_id.get(record.get("parent") or ""),
+            RACK_REACH_M,
+            "Bike Rack",
+            f"named {record['name']!r}, which is no building or field -- give it "
+            "a parent under changes in overrides.yaml",
+        )
+    check_names_unique(report, racks, "bike racks")
+
+
+def verify_emergency_services(report: Report, records: list[dict]) -> None:
+    """Each AED and naloxone kit is inside the building it is named for, and
+    no two emergency services share a name.
+
+    Someone looking for an AED is sent to the building its name gives, so a
+    point the college moves out of every building fails here rather than
+    publishing a name that points nowhere. Assembly points are outdoors and
+    have no building.
+    """
+    by_id = {record["id"]: record for record in records}
+    services = [r for r in records if "emergency-services" in r["categories"]]
+    for record in services:
+        kind = next((k for k in EMERGENCY_KINDS if k in record["categories"]), None)
+        if kind in (None, "assembly-point"):
             continue
-        if not report.check(
-            bool(parent.get("outline")),
-            f"{record['id']}: its parent {parent['id']} has no footprint to frame",
-        ):
-            continue
-        lat, lon = record["center"]
-        footprint = {
-            "type": "Polygon",
-            "coordinates": [[[point[1], point[0]] for point in parent["outline"]]],
-        }
-        distance = geometry.distance_m([lon, lat], footprint)
-        report.check(
-            distance <= RACK_REACH_M,
-            f"{record['id']}: {distance:.0f} m from {parent['name']!r}, which "
-            f"it is named for -- if the college mislabelled it, give it its "
-            f"real parent under changes in overrides.yaml",
+        check_named_for_parent(
+            report,
+            record,
+            by_id.get(record.get("parent") or ""),
+            INSIDE_REACH_M,
+            EMERGENCY_KINDS[kind][1],
+            f"named {record['name']!r} but inside no building -- give it a "
+            "parent under changes in overrides.yaml",
         )
-        report.check(
-            record["name"].startswith(f"Bike Rack, {parent['name']}"),
-            f"{record['id']}: named {record['name']!r}, not after its parent "
-            f"{parent['name']!r}",
-        )
-    for name, count in Counter(record["name"] for record in racks).items():
-        report.check(
-            count == 1,
-            f"{count} bike racks are named {name!r} -- tell them apart with a "
-            f"side under changes in overrides.yaml",
-        )
+    check_names_unique(report, services, "emergency services")
 
 
 def verify_map_geojson(report: Report, records: list[dict]) -> None:
