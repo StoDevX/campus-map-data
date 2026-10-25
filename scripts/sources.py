@@ -16,9 +16,12 @@ alongside the current ones in `StOlaf_Roads_2_WFL1` and
 the polygons from one and pops up the attributes from the other. We take the one
 with the attributes.
 
-One layer comes from elsewhere: the bike racks are not on the campus map but
-on the college's **Bike Rack Locations** app (`BIKE_RACKS_APP`), whose web map
-(`BIKE_RACKS_WEBMAP_ITEM`) draws them over the same buildings.
+Two sets of layers come from elsewhere. The bike racks are not on the campus
+map but on the college's **Bike Rack Locations** app (`BIKE_RACKS_APP`), whose
+web map (`BIKE_RACKS_WEBMAP_ITEM`) draws them over the same buildings. The
+AEDs, evacuation assembly points and naloxone kits are on its **Emergency
+Services** map (`EMERGENCY_APP`, web map `EMERGENCY_WEBMAP_ITEM`); its
+evacuation paths are left out, unnamed lines with nothing to list or search.
 
 Adding a layer is one `Source` entry. Nothing else in the pipeline enumerates
 layers by hand.
@@ -36,6 +39,8 @@ DASHBOARD_ITEM = "039528a0ee874da7b5ef749c2393498d"
 WEBMAP_ITEM = "48f433ddf4674d53b1754e307ffce1f4"
 BIKE_RACKS_APP = "b792338d01ca45d88049a84d1c41fc25"
 BIKE_RACKS_WEBMAP_ITEM = "0e7dc1af82aa4eeab4566c45d8c150ee"
+EMERGENCY_APP = "434cf9932c174f4aa90494dc78f4165a"
+EMERGENCY_WEBMAP_ITEM = "533e0569340a41a69866f0123a3e789f"
 
 
 @dataclass(frozen=True)
@@ -191,6 +196,37 @@ SOURCES: tuple[Source, ...] = (
             "Each rack is named for a building, with the side of it in "
             "Description; build.py names it for its parent and that side."
         ),
+    ),
+    # Three layers of the Emergency Services map, one file: the AEDs and the
+    # naloxone kits name the building they are inside, the assembly points
+    # where outdoors they are.
+    Source(
+        slug="emergency-services",
+        title="Defibrillator (AED) Locations",
+        url=f"{ORG}/St__Olaf_Campus_Map__Emergency_Services_WFL1/FeatureServer/1",
+        role="place",
+        categories=("emergency-services", "aed"),
+        name_fields=("Location",),
+        notes='One field, "Building - where inside", e.g. "Alumni Hall - First floor".',
+    ),
+    Source(
+        slug="emergency-services",
+        title="Evacuation Assembly Points",
+        url=f"{ORG}/St__Olaf_Campus_Map__Emergency_Services_WFL1/FeatureServer/2",
+        role="place",
+        categories=("emergency-services", "assembly-point"),
+        name_fields=("Location",),
+    ),
+    Source(
+        slug="emergency-services",
+        title="Locations of Naloxone and Fentanyl Test Strips",
+        url=f"{ORG}/Locations_of_Naloxone_and_Fentanyl_Test_Strips_v2_WFL1/FeatureServer/1",
+        role="place",
+        categories=("emergency-services", "naloxone", "fentanyl-test-strips"),
+        name_fields=("Building",),
+        # Not the Naloxone and Fentanyl fields: they count the kits on hand,
+        # and a restock is not a change to the campus.
+        fields=("Building", "Location"),
     ),
     Source(
         slug="campus-roads",

@@ -783,3 +783,28 @@ def test_a_background_only_page_shows_no_place_counts_of_zero():
     page = render(context_only(), state([]), DATE)
     assert 'class="counts"' not in page
     assert "20 Natural Lands segments added and 39 removed." in page
+
+
+def emergency_added(index: int, kind: str) -> PlaceChange:
+    return PlaceChange(
+        kind="added",
+        before_id=None,
+        after_id=f"{kind}-{index}",
+        name=f"{kind} {index}",
+        after_shape=point(44.46),
+        categories=("emergency-services", kind),
+    )
+
+
+# Each kind of emergency service says what it is, not "emergency servicess".
+def test_summary_names_each_kind_of_emergency_service():
+    changes = changes_of(
+        *(emergency_added(i, "aed") for i in range(25)),
+        *(emergency_added(i, "assembly-point") for i in range(12)),
+        *(emergency_added(i, "naloxone") for i in range(9)),
+    )
+    assert summary(changes) == (
+        "25 AEDs added. 12 assembly points added. "
+        "9 naloxone and fentanyl test strip kits added: "
+        "naloxone 0, naloxone 1, naloxone 2 and 6 more."
+    )

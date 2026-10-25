@@ -1070,6 +1070,706 @@
     "accessibility": "unknown",
     "address": null,
     "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4624282,
+      -93.1858289
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedalumnihallfirstfloorbyelevator",
+    "name": "AED, Alumni Hall (First floor, by elevator)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "ahl",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.462036,
+      -93.1840243
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedboememorialchapeloutsidesacristy",
+    "name": "AED, Boe Memorial Chapel (Outside sacristy)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "bmc",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4620034,
+      -93.1830156
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedbuntrockcommons1of2firstfloorbytheinformationdesk",
+    "name": "AED, Buntrock Commons (First floor, by the Information Desk)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "bc",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4620034,
+      -93.1832503
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedbuntrockcommons2of2thirdfloorkingsdiningroom",
+    "name": "AED, Buntrock Commons (Third floor, Kings' Dining Room)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "bc",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.462595,
+      -93.1845546
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedcenterforartanddanceinsideeastentranceonnorthwall",
+    "name": "AED, Center for Art and Dance (Inside east entrance on north wall)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "cad",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4620404,
+      -93.185801
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedchristiansenhallofmusicinsidemaineastdoors",
+    "name": "AED, Christiansen Hall of Music (Inside main east doors)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "chm",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4626407,
+      -93.1911676
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedflatenartbarninsidenorthdoor",
+    "name": "AED, Flaten Art Barn (Inside north door)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "ab",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4599131,
+      -93.1817631
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedhollandhallthirdfloorinsouthstairwell",
+    "name": "AED, Holland Hall (Third floor in south stairwell)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "hh",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4619425,
+      -93.1809616
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedmadsonfacilitiesbuildinginsidemaineaststairwell",
+    "name": "AED, Madson Facilities Building (Inside main east stairwell)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "mfb",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4593454,
+      -93.1803674
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedoldmaininsidemaindoors",
+    "name": "AED, Old Main (Inside main doors)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "om",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4596586,
+      -93.1829882
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedregentshallofmathematicalsciencesthirdfloorofeaststairwell",
+    "name": "AED, Regents Hall of Mathematical Sciences (Third floor of east stairwell)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "rms",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4590714,
+      -93.1815681
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedregentshallofnaturalsciencesthirdfloorelevatorlobby",
+    "name": "AED, Regents Hall of Natural Sciences (Third floor elevator lobby)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "rns",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.46134,
+      -93.1823177
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedrolvaagmemoriallibrarybehindthecirculuationdeskinmainlobby",
+    "name": "AED, Rolvaag Memorial Library (Behind the circuluation desk in main lobby)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "rml",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4615292,
+      -93.1858193
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedskifterhallmainlevelincentralcornerofhallway",
+    "name": "AED, Skifter Hall (Main level, in central corner of hallway)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "skh",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4631061,
+      -93.1879617
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedskoglund1of4lifeguardstationinpool",
+    "name": "AED, Tostrud Center (Lifeguard station in pool)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tostrudcenter",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4636368,
+      -93.1881902
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedskoglundtostrud2of4mainlobby",
+    "name": "AED, Tostrud Center (Main lobby)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tostrudcenter",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4639,
+      -93.1885133
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedskoglundtostrud3of4facingtrackbymachines",
+    "name": "AED, Tostrud Center (Facing track by machines)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tostrudcenter",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4637303,
+      -93.1887235
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedskoglundtostrud4of4baseofclimbingwall",
+    "name": "AED, Tostrud Center (Base of climbing wall)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tostrudcenter",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4614814,
+      -93.1849782
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedtheaterbuildilngmainlobby",
+    "name": "AED, Theater Building (Main lobby)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tb",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4619802,
+      -93.180409
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedtomporterhall1of2secondfloorbyeaststairwell",
+    "name": "AED, Tom Porter Hall (Second floor by east stairwell)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tph",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4618856,
+      -93.1805339
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedtomporterhall2of2trainingroom",
+    "name": "AED, Tom Porter Hall (Training Room)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tph",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4602764,
+      -93.183552
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedtomsonhall1of2firstflooroutsidebreakroom",
+    "name": "AED, Tomson Hall (First floor, outside breakroom)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "toh",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4603047,
+      -93.1841767
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedtomsonhall2of2secondflooroutsideadmissions",
+    "name": "AED, Tomson Hall (Second floor, outside Admissions)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "toh",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4624639,
+      -93.1856878
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedtweethallofmusicsecondflooroutsidemusicdepartmentoffice",
+    "name": "AED, (Tweet) Hall of Music (Second floor, outside Music Department office)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "hom",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "aed": true
+    },
+    "center": [
+      44.4617119,
+      -93.1885559
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "aedytterboehallfrontdesk",
+    "name": "AED, Ytterboe Hall (Front Desk)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "ytt",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
       "building": true,
       "administrative": true,
       "academic": true
@@ -1586,6 +2286,342 @@
     "photo": null,
     "abbreviation": "AMH",
     "type": "Residence Hall",
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4592208,
+      -93.186761
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointhilleboekittelsbyhall",
+    "name": "Assembly Point, Hilleboe & Kittelsby Hall",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4596869,
+      -93.1819399
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointhollandhallsouthplaza",
+    "name": "Assembly Point, Holland Hall South Plaza",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4619634,
+      -93.1790946
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointkleinfieldatmanitou",
+    "name": "Assembly Point, Klein Field at Manitou",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4608589,
+      -93.1839468
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointlargecentralcirclesouthofbelltower",
+    "name": "Assembly Point, Large Central Circle South of Bell Tower",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4633867,
+      -93.1811445
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointlawnwestofthorsonhall",
+    "name": "Assembly Point, Lawn West of Thorson Hall",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4602068,
+      -93.1786882
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointnewhallplaza",
+    "name": "Assembly Point, New Hall Plaza",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4623157,
+      -93.1837676
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointnorthplaza",
+    "name": "Assembly Point, North Plaza",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4585276,
+      -93.1812481
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointregentsscienceparkinglot",
+    "name": "Assembly Point, Regents Science Parking Lot",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.462869,
+      -93.1894153
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointsoutheastcornerofskoglundlots4",
+    "name": "Assembly Point, Southeast Corner of Skoglund Lot S-4",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4606331,
+      -93.1789472
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointtownhousesfrontlawn",
+    "name": "Assembly Point, Townhouses Front Lawn",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4627253,
+      -93.1919119
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointturbinegate",
+    "name": "Assembly Point, Turbine Gate",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "assembly-point": true
+    },
+    "center": [
+      44.4606346,
+      -93.1825278
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "assemblypointwalkwaycirclenorthofhollandhall",
+    "name": "Assembly Point, Walkway Circle North of Holland Hall",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
     "links": [],
     "parent": null,
     "length": null,
@@ -7633,6 +8669,267 @@
     "type": "Residence Hall",
     "links": [],
     "parent": null,
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.4621013,
+      -93.1830187
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxonebuntrockcommonsfirstfloorbytheinformationdesk",
+    "name": "Naloxone and Fentanyl Test Strips, Buntrock Commons (First floor, by the Information Desk)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "bc",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.4598937,
+      -93.1819279
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxonehollandhallthirdfloorinsouthstairwell",
+    "name": "Naloxone and Fentanyl Test Strips, Holland Hall (Third floor in south stairwell)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "hh",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.4594286,
+      -93.1823614
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxoneregentshallofnaturalsciencesthirdfloorelevatorlobby",
+    "name": "Naloxone and Fentanyl Test Strips, Regents Hall of Natural Sciences (Third floor elevator lobby)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "rns",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.4614727,
+      -93.1821684
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxonerolvaagmemoriallibrarybehindthecirculationdeskinthemainlobby3rdfloor",
+    "name": "Naloxone and Fentanyl Test Strips, Rolvaag Memorial Library (Behind the circulation desk in the main lobby, 3rd floor)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "rml",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.4636968,
+      -93.1883433
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxoneskoglundtostrudmainlobbynexttotherestroom",
+    "name": "Naloxone and Fentanyl Test Strips, Tostrud Center (Main lobby, next to the restroom)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tostrudcenter",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.4614955,
+      -93.1849647
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxonetheaterbuildilngmainlobbyrightnexttoaed",
+    "name": "Naloxone and Fentanyl Test Strips, Theater Building (Main lobby, Right next to AED)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "tb",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.4601219,
+      -93.1834514
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxonetomsonhall1of2firstflooroutsidebreakroomintheatrium",
+    "name": "Naloxone and Fentanyl Test Strips, Tomson Hall (First floor, outside breakroom in the atrium)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "toh",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.460321,
+      -93.1842643
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxonetomsonhall2of2secondflooroutsideadmissions",
+    "name": "Naloxone and Fentanyl Test Strips, Tomson Hall (Second floor, outside Admissions)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "toh",
+    "length": null,
+    "rules": [],
+    "walk": null,
+    "citations": []
+  },
+  {
+    "accessibility": "unknown",
+    "address": null,
+    "categories": {
+      "emergency-services": true,
+      "naloxone": true,
+      "fentanyl-test-strips": true
+    },
+    "center": [
+      44.4616992,
+      -93.1884505
+    ],
+    "departments": [],
+    "description": null,
+    "floors": [],
+    "id": "naloxoneytterboehallrightonthefrontdesk",
+    "name": "Naloxone and Fentanyl Test Strips, Ytterboe Hall (Right on the front desk)",
+    "offices": [],
+    "outline": null,
+    "photo": null,
+    "abbreviation": null,
+    "type": null,
+    "links": [],
+    "parent": "ytt",
     "length": null,
     "rules": [],
     "walk": null,

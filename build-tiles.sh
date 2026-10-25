@@ -136,7 +136,7 @@ PAGES_FILE_LIMIT=100000000
 # and archive size, and is expected to move these with it.
 MIN_CAMPUS_BUILDINGS=34   # currently 38
 MIN_CAMPUS_GROUNDS=42     # currently 47
-MIN_CAMPUS_LABELS=165     # currently 184
+MIN_CAMPUS_LABELS=205     # currently 230
 MIN_CAMPUS_PATHS=12       # currently 16: the 14 named trails, then walkways
                           # and the other trail segments merged
 MIN_TILES=900             # currently ~985

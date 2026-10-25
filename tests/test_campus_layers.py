@@ -126,3 +126,12 @@ def test_every_drawn_trail_is_tappable_but_a_part_walk_need_not_be(tmp_path):
 # can leave them unlabelled rather than stamp the name 36 times across campus.
 def test_a_bike_rack_is_its_own_kind_with_no_polygon_layer():
     assert campus_layers.classify(["bike-rack"]) == ("bike-rack", None)
+
+
+# AEDs, kits and assembly points are points named "AED, ..." and the like -- a
+# kind of their own, unlabelled, so the map is not stamped with them.
+def test_an_emergency_service_is_its_own_kind_with_no_polygon_layer():
+    assert campus_layers.classify(["emergency-services", "aed"]) == (
+        "emergency-services",
+        None,
+    )

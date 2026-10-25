@@ -60,6 +60,9 @@ KINDS = (
     ("accessible-parking", None),
     # Likewise 36 points named "Bike Rack, ..." after the building they serve.
     ("bike-rack", None),
+    # And the AEDs, naloxone kits and assembly points, named "AED, ..." and the
+    # like, most of them inside a building that is already labelled.
+    ("emergency-services", None),
     ("parking", "campus_grounds"),
     ("athletics", "campus_grounds"),
     ("point-of-interest", None),
