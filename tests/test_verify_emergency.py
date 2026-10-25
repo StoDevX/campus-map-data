@@ -50,7 +50,9 @@ def test_a_naloxone_kit_inside_its_building_passes():
 
 
 def test_an_assembly_point_needs_no_parent():
-    assert failures([place("assembly-point", "Assembly Point, North Plaza", None)]) == []
+    assert (
+        failures([place("assembly-point", "Assembly Point, North Plaza", None)]) == []
+    )
 
 
 def test_an_aed_inside_no_building_fails():

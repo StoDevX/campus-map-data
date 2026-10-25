@@ -46,6 +46,9 @@ NAMED_GROUP_LIMIT = 10
 CATEGORY_WORDS = {
     "accessible-parking": "accessible parking space",
     "bike-rack": "bike rack",
+    "aed": "AED",
+    "assembly-point": "assembly point",
+    "naloxone": "naloxone and fentanyl test strip kit",
     "wellness-walk": "wellness walk",
     "trail": "trail",
     "water": "pond",
