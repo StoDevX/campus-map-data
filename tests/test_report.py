@@ -805,5 +805,6 @@ def test_summary_names_each_kind_of_emergency_service():
     )
     assert summary(changes) == (
         "25 AEDs added. 12 assembly points added. "
-        "9 naloxone and fentanyl test strip kits added."
+        "9 naloxone and fentanyl test strip kits added: "
+        "naloxone 0, naloxone 1, naloxone 2 and 6 more."
     )
