@@ -235,6 +235,10 @@ def read_places(sources_by_title: dict) -> tuple[list[dict], list[str]]:
                     "contact": clean(properties.get("Contact")),
                     # Which side of the place it is named for a bike rack is on.
                     "side": clean(properties.get("Description")),
+                    # Where an emergency service is, and the building the
+                    # naloxone layer names for it.
+                    "location": clean(properties.get("Location")),
+                    "building": clean(properties.get("Building")),
                     "geometry": feature["geometry"],
                     "information": properties.get("Information") or "",
                 }
@@ -382,6 +386,104 @@ def name_bike_racks(places: list[dict]) -> None:
             continue
         side = f" ({rack['side']})" if rack.get("side") else ""
         rack["name"] = f"Bike Rack, {parent['name']}{side}"
+
+
+# The emergency services, by the category that says which kind each is: the
+# word its id starts with, and the word its name starts with. The naloxone kits
+# hold fentanyl test strips too, and the college names them for both.
+EMERGENCY_KINDS = {
+    "aed": ("AED", "AED"),
+    "naloxone": ("Naloxone", "Naloxone and Fentanyl Test Strips"),
+    "assembly-point": ("Assembly Point", "Assembly Point"),
+}
+# How far outside a footprint a point may sit and still be inside it: one
+# digitised on the wall itself.
+INSIDE_REACH_M = 1
+
+
+def emergency_kind(place: dict) -> str | None:
+    """Which kind of emergency service a place is, or None if it is not one."""
+    if place["slug"] != "emergency-services":
+        return None
+    return next(
+        (c for c in place.get("categories") or [] if c in EMERGENCY_KINDS), None
+    )
+
+
+def emergency_label(place: dict) -> tuple[str, str | None]:
+    """The building an emergency service's source text names, and where in it.
+
+    The AED layer writes both in one field, "Alumni Hall - First floor, by
+    elevator"; the naloxone layer has a field for each.
+    """
+    if place.get("building"):
+        return place["building"], place.get("location")
+    building, _, spot = (place.get("location") or place["name"]).partition(" - ")
+    return building, spot or None
+
+
+def label_emergency_places(places: list[dict]) -> None:
+    """Start each emergency service's name with its kind, so its id says what
+    it is: `aedalumnihallfirstfloorbyelevator`, `assemblypointnorthplaza`.
+
+    The name is final only for an assembly point, which is outdoors and named
+    for where it is; `name_emergency_places` renames the rest for their
+    buildings once those are known.
+    """
+    for place in places:
+        kind = emergency_kind(place)
+        if kind is None:
+            continue
+        building, spot = emergency_label(place)
+        text = f"{building} - {spot}" if spot else building
+        place["name"] = f"{EMERGENCY_KINDS[kind][0]}, {text}"
+
+
+def parent_emergency_places(places: list[dict]) -> None:
+    """Make each AED's and naloxone kit's parent the building it is inside.
+
+    Found by the point, not the name: the layers' building names are typed by
+    hand -- "Theater Buildilng", "Skoglund/Tostrud" -- and every point sits
+    inside a footprint. Where two footprints meet, the one the source text
+    names wins. A parent under `changes` in overrides.yaml replaces this one,
+    and a point inside no building is left for verify.py to report.
+    """
+    buildings = [place for place in places if place["slug"] == "buildings"]
+    for place in places:
+        if emergency_kind(place) in (None, "assembly-point"):
+            continue
+        point = geometry.positions(place["geometry"])[0]
+        inside = sorted(
+            (
+                building
+                for building in buildings
+                if geometry.distance_m(point, building["geometry"]) <= INSIDE_REACH_M
+            ),
+            key=lambda building: building["id"],
+        )
+        label = slugify(emergency_label(place)[0])
+        named = [b for b in inside if label.startswith(slugify(b["name"]))]
+        chosen = (named or inside or [None])[0]
+        place["parent"] = chosen["id"] if chosen else None
+
+
+def name_emergency_places(places: list[dict]) -> None:
+    """Name each AED and naloxone kit for its building and where in it.
+
+    Taken from the parent as published, so a spelling overrides.yaml corrects
+    in a building is corrected here too. One with no parent keeps its label.
+    """
+    by_id = {place["id"]: place for place in places}
+    for place in places:
+        kind = emergency_kind(place)
+        if kind in (None, "assembly-point"):
+            continue
+        parent = by_id.get(place.get("parent") or "")
+        if parent is None:
+            continue
+        spot = emergency_label(place)[1]
+        where = f" ({spot})" if spot else ""
+        place["name"] = f"{EMERGENCY_KINDS[kind][1]}, {parent['name']}{where}"
 
 
 # How far an assembled trail's length may move from the `miles` overrides.yaml
@@ -673,8 +775,10 @@ def scraped_places(overrides: dict) -> tuple[list[dict], list[str]]:
     segments = json.loads((DATA / "natural-lands-segments.geojson").read_text())
     places += assemble_trails(segments["features"], trails)
     places = merge_split_lots(places)
+    label_emergency_places(places)
     assign_ids(places, overrides)
     parent_bike_racks(places)
+    parent_emergency_places(places)
     # The walks along part of a trail, made from that trail and given ids of
     # their own: their names are unique, so the others' ids do not move.
     walks = walk_places(places, overrides.get("walks") or {})
@@ -888,6 +992,7 @@ def main() -> int:
     places = apply_overrides(places, overrides)
     name_accessible_spots(places)
     name_bike_racks(places)
+    name_emergency_places(places)
     apply_rules(places, overrides.get("rules") or {})
     apply_walks(places, overrides.get("walks") or {})
     attach_floors(places)
