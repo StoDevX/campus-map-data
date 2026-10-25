@@ -396,9 +396,11 @@ EMERGENCY_KINDS = {
     "naloxone": ("Naloxone", "Naloxone and Fentanyl Test Strips"),
     "assembly-point": ("Assembly Point", "Assembly Point"),
 }
-# How far outside a footprint a point may sit and still be inside it: one
-# digitised on the wall itself.
-INSIDE_REACH_M = 1
+# How far outside a footprint a point may sit and still count as inside it:
+# one digitised on a wall two buildings share can land a little to either
+# side. The AED labelled for the Hall of Music is 1.9 m outside it, on Alumni
+# Hall's side of the wall between them.
+INSIDE_REACH_M = 3
 
 
 def emergency_kind(place: dict) -> str | None:
@@ -444,27 +446,25 @@ def parent_emergency_places(places: list[dict]) -> None:
 
     Found by the point, not the name: the layers' building names are typed by
     hand -- "Theater Buildilng", "Skoglund/Tostrud" -- and every point sits
-    inside a footprint. Where two footprints meet, the one the source text
-    names wins. A parent under `changes` in overrides.yaml replaces this one,
-    and a point inside no building is left for verify.py to report.
+    inside a footprint, or on its wall. Of the buildings within reach, the one
+    the source text names wins, else the nearest. A parent under `changes` in
+    overrides.yaml replaces this one, and a point near no building is left for
+    verify.py to report.
     """
     buildings = [place for place in places if place["slug"] == "buildings"]
     for place in places:
         if emergency_kind(place) in (None, "assembly-point"):
             continue
         point = geometry.positions(place["geometry"])[0]
-        inside = sorted(
-            (
-                building
-                for building in buildings
-                if geometry.distance_m(point, building["geometry"]) <= INSIDE_REACH_M
-            ),
-            key=lambda building: building["id"],
-        )
         label = slugify(emergency_label(place)[0])
-        named = [b for b in inside if label.startswith(slugify(b["name"]))]
-        chosen = (named or inside or [None])[0]
-        place["parent"] = chosen["id"] if chosen else None
+        candidates = []
+        for building in buildings:
+            metres = geometry.distance_m(point, building["geometry"])
+            if metres <= INSIDE_REACH_M:
+                named = label.startswith(slugify(building["name"]))
+                # The building the label names first, then the nearest.
+                candidates.append((not named, metres, building["id"]))
+        place["parent"] = min(candidates)[2] if candidates else None
 
 
 def name_emergency_places(places: list[dict]) -> None:

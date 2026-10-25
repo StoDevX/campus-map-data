@@ -80,6 +80,36 @@ def test_a_point_inside_two_buildings_takes_the_one_it_is_labelled_for():
     assert places[2]["parent"] == "hom"
 
 
+# The real one is digitised 1.9 m outside the Hall of Music, on Alumni Hall's
+# side of the wall the two buildings share.
+def test_a_point_just_outside_the_building_it_is_labelled_for_takes_it():
+    hall_of_music = building("(Tweet) Hall of Music", "hom", lon=LON + 0.000425)
+    places = [
+        building("Alumni Hall", "ah"),
+        hall_of_music,
+        emergency(
+            "aed",
+            "(Tweet) Hall of Music - Second floor",
+            lon=LON + 0.0004,
+            location="(Tweet) Hall of Music - Second floor",
+        ),
+    ]
+    parent_emergency_places(places)
+    assert places[2]["parent"] == "hom"
+
+
+# Unlabelled for either, a point on a shared wall belongs to the building it
+# is inside.
+def test_a_point_near_a_second_building_takes_the_one_it_is_inside():
+    places = [
+        building("Alumni Hall", "ah"),
+        building("Old Main", "om", lon=LON + 0.000425),
+        aed("Somewhere - Upstairs", lon=LON + 0.0004),
+    ]
+    parent_emergency_places(places)
+    assert places[2]["parent"] == "ah"
+
+
 def test_an_aed_inside_no_building_has_no_parent():
     places = [building("Alumni Hall", "ah"), aed("Somewhere", lon=LON + 0.01)]
     parent_emergency_places(places)
