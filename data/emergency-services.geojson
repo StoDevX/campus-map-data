@@ -1,0 +1,659 @@
+{
+  "type": "FeatureCollection",
+  "name": "emergency-services",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Klein Field at Manitou",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1790946,
+          44.4619634
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Theater Buildilng - Main lobby",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1849782,
+          44.4614814
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Holland Hall",
+        "Location": "Third floor in south stairwell",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1819279,
+          44.4598937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Tom Porter Hall (1 of 2) - Second floor by east stairwell",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.180409,
+          44.4619802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Skoglund/Tostrud",
+        "Location": "Main lobby, next to the restroom",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1883433,
+          44.4636968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Skoglund/Tostrud (4 of 4) - Base of climbing wall",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1887235,
+          44.4637303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Skoglund/Tostrud (3 of 4) - Facing track by machines",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1885133,
+          44.4639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Townhouses Front Lawn",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1789472,
+          44.4606331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Buntrock Commons",
+        "Location": "First floor, by the Information Desk",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1830187,
+          44.4621013
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Walkway Circle North of Holland Hall",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1825278,
+          44.4606346
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Regents Hall of Natural Sciences - Third floor elevator lobby",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1815681,
+          44.4590714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Buntrock Commons (1 of 2) - First floor, by the Information Desk",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1830156,
+          44.4620034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Tomson Hall (1 of 2)",
+        "Location": "First floor, outside breakroom in the atrium",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1834514,
+          44.4601219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Regents Science Parking Lot",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1812481,
+          44.4585276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Flaten Art Barn - Inside north door",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1911676,
+          44.4626407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Tomson Hall (2 of 2) - Second floor, outside Admissions",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1841767,
+          44.4603047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Turbine Gate",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1919119,
+          44.4627253
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Skoglund (1 of 4) - Lifeguard station in pool",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1879617,
+          44.4631061
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Madson Facilities Building - Inside main east stairwell",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1809616,
+          44.4619425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "New Hall Plaza",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1786882,
+          44.4602068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Skoglund/Tostrud (2 of 4) - Main lobby",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1881902,
+          44.4636368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Skifter Hall - Main level, in central corner of hallway",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1858193,
+          44.4615292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "(Tweet) Hall of Music - Second floor, outside Music Department office",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1856878,
+          44.4624639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Boe Memorial Chapel - Outside sacristy",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1840243,
+          44.462036
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Rolvaag Memorial Library",
+        "Location": "Behind the circulation desk in the main lobby, 3rd floor",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1821684,
+          44.4614727
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Center for Art and Dance - Inside east entrance on north wall",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1845546,
+          44.462595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Tom Porter Hall (2 of 2) - Training Room",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1805339,
+          44.4618856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "North Plaza",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1837676,
+          44.4623157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Ytterboe Hall",
+        "Location": "Right on the front desk",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1884505,
+          44.4616992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Holland Hall South Plaza",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1819399,
+          44.4596869
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Alumni Hall - First floor, by elevator",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1858289,
+          44.4624282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Buntrock Commons (2 of 2) - Third floor, Kings' Dining Room",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1832503,
+          44.4620034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Holland Hall - Third floor in south stairwell",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1817631,
+          44.4599131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Southeast Corner of Skoglund Lot S-4",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1894153,
+          44.462869
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Lawn West of Thorson Hall",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1811445,
+          44.4633867
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Rolvaag Memorial Library - Behind the circuluation desk in main lobby",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1823177,
+          44.46134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Regents Hall of Natural Sciences",
+        "Location": "Third floor elevator lobby",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1823614,
+          44.4594286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Large Central Circle South of Bell Tower",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1839468,
+          44.4608589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Tomson Hall (1 of 2) - First floor, outside breakroom",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.183552,
+          44.4602764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Old Main - Inside main doors",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1803674,
+          44.4593454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Tomson Hall (2 of 2)",
+        "Location": "Second floor, outside Admissions",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1842643,
+          44.460321
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Regents Hall of Mathematical Sciences - Third floor of east stairwell",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1829882,
+          44.4596586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Hilleboe & Kittelsby Hall",
+        "_layer": "Evacuation Assembly Points"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.186761,
+          44.4592208
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Christiansen Hall of Music - Inside main east doors",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.185801,
+          44.4620404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Building": "Theater Buildilng",
+        "Location": "Main lobby, Right next to AED",
+        "_layer": "Locations of Naloxone and Fentanyl Test Strips"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1849647,
+          44.4614955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Ytterboe Hall - Front Desk",
+        "_layer": "Defibrillator (AED) Locations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1885559,
+          44.4617119
+        ]
+      }
+    }
+  ]
+}

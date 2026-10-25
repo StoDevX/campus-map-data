@@ -2,6 +2,7 @@
   "dashboard": "https://stolaf.maps.arcgis.com/apps/dashboards/039528a0ee874da7b5ef749c2393498d",
   "webmap": "https://www.arcgis.com/home/item.html?id=48f433ddf4674d53b1754e307ffce1f4",
   "bike_racks": "https://stolaf.maps.arcgis.com/apps/instant/basic/index.html?appid=b792338d01ca45d88049a84d1c41fc25",
+  "emergency_services": "https://experience.arcgis.com/experience/434cf9932c174f4aa90494dc78f4165a",
   "layers": [
     {
       "slug": "buildings",
@@ -121,6 +122,27 @@
       "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/Bike_Racks_WFL1/FeatureServer/1",
       "role": "place",
       "features": 36
+    },
+    {
+      "slug": "emergency-services",
+      "title": "Defibrillator (AED) Locations",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus_Map__Emergency_Services_WFL1/FeatureServer/1",
+      "role": "place",
+      "features": 25
+    },
+    {
+      "slug": "emergency-services",
+      "title": "Evacuation Assembly Points",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/St__Olaf_Campus_Map__Emergency_Services_WFL1/FeatureServer/2",
+      "role": "place",
+      "features": 12
+    },
+    {
+      "slug": "emergency-services",
+      "title": "Locations of Naloxone and Fentanyl Test Strips",
+      "url": "https://services6.arcgis.com/5aTZOBLHgY2JnmmE/arcgis/rest/services/Locations_of_Naloxone_and_Fentanyl_Test_Strips_v2_WFL1/FeatureServer/1",
+      "role": "place",
+      "features": 9
     },
     {
       "slug": "campus-roads",
