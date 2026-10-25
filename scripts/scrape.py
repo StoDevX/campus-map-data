@@ -181,7 +181,7 @@ def main(argv: list[str] | None = None) -> int:
                 "dashboard": f"https://stolaf.maps.arcgis.com/apps/dashboards/{DASHBOARD_ITEM}",
                 "webmap": f"https://www.arcgis.com/home/item.html?id={WEBMAP_ITEM}",
                 "bike_racks": f"https://stolaf.maps.arcgis.com/apps/instant/basic/index.html?appid={BIKE_RACKS_APP}",
-                "emergency_services": f"https://stolaf.maps.arcgis.com/apps/experiencebuilder/experience/?id={EMERGENCY_APP}",
+                "emergency_services": f"https://experience.arcgis.com/experience/{EMERGENCY_APP}",
                 "layers": manifest,
             },
             indent=2,
