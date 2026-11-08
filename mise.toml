@@ -2,6 +2,11 @@
 # sha256 per platform. CI installs from it with jdx/mise-action; locally
 # `mise install` gets you the same versions.
 
+# Same floor as aao-react-native. mise.lock writes identically under 2026.11.1
+# and the 2026.11.4 CI installs (checked byte for byte), so an older mise
+# refuses to run rather than rewrite the lock.
+min_version = "2026.11.1"
+
 [settings]
 lockfile = true
 
