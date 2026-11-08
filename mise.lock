@@ -95,22 +95,27 @@ backend = "aqua:mgdm/htmlq"
 specifiers = ["0.4.0"]
 
 [tools.htmlq."platforms.linux-x64"]
+checksum = "sha256:4f63c8d9d835aa1f18f472da2eb5fc88295ede6aebcc7949fd428403707fc74a"
 url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-linux.tar.gz"
 url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128274"
 
 [tools.htmlq."platforms.linux-x64-musl"]
+checksum = "sha256:4f63c8d9d835aa1f18f472da2eb5fc88295ede6aebcc7949fd428403707fc74a"
 url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-linux.tar.gz"
 url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128274"
 
 [tools.htmlq."platforms.macos-arm64"]
+checksum = "sha256:2df22ac78faa315388855b1341974f84265f283ef409d2b40ce04f222513addf"
 url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-darwin.tar.gz"
 url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128388"
 
 [tools.htmlq."platforms.macos-x64"]
+checksum = "sha256:2df22ac78faa315388855b1341974f84265f283ef409d2b40ce04f222513addf"
 url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-darwin.tar.gz"
 url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128388"
 
 [tools.htmlq."platforms.windows-x64"]
+checksum = "sha256:58b9bb55279da2a58acd1465e0448cc9556e280f8208f60a5f669b2bd4617005"
 url = "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-windows.zip"
 url_api = "https://api.github.com/repos/mgdm/htmlq/releases/assets/53128332"
 

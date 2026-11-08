@@ -26,4 +26,4 @@ shellcheck = "0.11.0"
 htmlq = "0.4.0"
 
 # The PMTiles CLI: does the planet extract and the tier merge in build-tiles.sh.
-"github:protomaps/go-pmtiles" = { version = "v1.31.2", exe = "pmtiles" }
+"github:protomaps/go-pmtiles" = "v1.31.2"
